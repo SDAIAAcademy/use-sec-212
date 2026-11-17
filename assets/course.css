@@ -1,0 +1,6 @@
+/* Eight sessions a day: the generated agenda runs in two columns of four, read top to bottom. */
+.slide#agenda .agenda { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(4, auto); grid-auto-flow: column; column-gap: 16px; }
+.slide#agenda .agenda .item { grid-template-columns: 1fr; padding: 12px 20px; }
+@media (max-width: 760px) {
+  .slide#agenda .agenda { grid-template-columns: 1fr; grid-template-rows: none; grid-auto-flow: row; }
+}
