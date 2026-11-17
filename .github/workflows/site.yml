@@ -1,0 +1,85 @@
+# Builds the course site on every push to main and deploys it to GitHub Pages.
+#
+# This is one of two ways to publish. The other is "node academy.mjs publish" on your own
+# machine, which pushes the checked build to the gh-pages branch. Use one, not both.
+#
+# Before the first run, a person with admin rights on this repository:
+#   1. In Settings > Pages, sets "Source" to "GitHub Actions".
+#   2. If the engine repository is private, adds a secret ENGINE_TOKEN (Settings > Secrets and
+#      variables > Actions): a fine-grained token that can read the engine repository. Without
+#      the secret the workflow uses its own token, which can read only public repositories.
+#
+# What to change here: ENGINE_REF when the course moves to a newer engine (keep the major
+# version that "engine" in course.json asks for), ENGINE_REPO if the engine lives elsewhere.
+
+name: Course site
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  ENGINE_REPO: SDAIAAcademy/engine   # where the engine lives
+  ENGINE_REF: v1.0.0               # the engine tag this course is built with
+  ACADEMY_ENGINE: .engine                  # where academy.mjs finds the engine checked out below
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# one deployment at a time; a newer push waits for the running one
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the course
+        uses: actions/checkout@v4
+
+      - name: Check out the engine at the pinned tag
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.ENGINE_REPO }}
+          ref: ${{ env.ENGINE_REF }}
+          path: .engine
+          token: ${{ secrets.ENGINE_TOKEN || github.token }}
+          persist-credentials: false   # the token reads the engine once and is not left in .engine/.git
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The gates of "node academy.mjs publish", in its order. The build with --strict fails on
+      # any error or warning of the build. It builds the view the course chose in course.json,
+      # "publish": {"audience"}: "trainer" (the default) puts the speaker notes, the trainer
+      # block of each lab page and labs/**/solutions/ on the public site; "trainee" leaves them out.
+      - name: Build the site
+        run: node academy.mjs build --strict
+
+      # Then the static gates of "academy check" (the text rules, what a clone of the course
+      # has, the README, the bank): an error stops the deployment, a warning is printed in the
+      # log and does not. The layout check needs a browser and is not run here.
+      - name: Check the course
+        run: node academy.mjs check
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,15 @@
+# Text is stored and checked out with LF on every platform: the build compares bytes, and a
+# notebook with CRLF line endings does not open in every tool.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.pdf binary
+*.woff2 binary
+*.xlsx binary
+*.docx binary
+*.pptx binary
+*.parquet binary

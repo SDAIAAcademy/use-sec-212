@@ -1,0 +1,143 @@
+{
+  "format": "academy-bank",
+  "version": 1,
+  "questions": [
+    {
+      "id": "q-example-1",
+      "type": "single",
+      "prompt": "REPLACE: سؤال تدريبي على LO1 في صورة موقف قصير",
+      "options": [
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: الإجابة الصحيحة",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "REPLACE: لماذا الإجابة الصحيحة صحيحة، في جملة",
+      "misconceptions": [
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار"
+      ],
+      "lo": [
+        "LO1"
+      ],
+      "day": "day1",
+      "session": 1,
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-example-2",
+      "type": "tf",
+      "prompt": "REPLACE: عبارة صحيحة عن LO2",
+      "options": [
+        "صح",
+        "خطأ"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "REPLACE: لماذا الإجابة الصحيحة صحيحة، في جملة",
+      "misconceptions": [
+        "",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار"
+      ],
+      "lo": [
+        "LO2"
+      ],
+      "day": "day1",
+      "session": 1,
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-example-3",
+      "type": "single",
+      "prompt": "REPLACE: سؤال تدريبي على LO3 في صورة موقف قصير",
+      "options": [
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: الإجابة الصحيحة",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "REPLACE: لماذا الإجابة الصحيحة صحيحة، في جملة",
+      "misconceptions": [
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار"
+      ],
+      "lo": [
+        "LO3"
+      ],
+      "day": "day1",
+      "session": 1,
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-example-4",
+      "type": "tf",
+      "prompt": "REPLACE: عبارة صحيحة عن LO4",
+      "options": [
+        "صح",
+        "خطأ"
+      ],
+      "correct": [
+        0
+      ],
+      "explanation": "REPLACE: لماذا الإجابة الصحيحة صحيحة، في جملة",
+      "misconceptions": [
+        "",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار"
+      ],
+      "lo": [
+        "LO4"
+      ],
+      "day": "day1",
+      "session": 1,
+      "level": "understand",
+      "pool": "practice",
+      "weight": 1
+    },
+    {
+      "id": "q-example-5",
+      "type": "single",
+      "prompt": "REPLACE: سؤال تدريبي على LO5 في صورة موقف قصير",
+      "options": [
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: الإجابة الصحيحة",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع",
+        "REPLACE: خيار خاطئ يغري به مفهوم خاطئ شائع"
+      ],
+      "correct": [
+        1
+      ],
+      "explanation": "REPLACE: لماذا الإجابة الصحيحة صحيحة، في جملة",
+      "misconceptions": [
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار",
+        "REPLACE: المفهوم الخاطئ وراء هذا الخيار"
+      ],
+      "lo": [
+        "LO5"
+      ],
+      "day": "day1",
+      "session": 1,
+      "level": "apply",
+      "pool": "practice",
+      "weight": 1
+    }
+  ]
+}

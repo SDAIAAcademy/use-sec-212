@@ -1,0 +1,36 @@
+# Built by the engine: never committed on main ("node academy.mjs publish" sends dist/ to gh-pages)
+dist/
+dist-pdf/
+.shots/
+
+# Exams and their keys stay off a public repository
+exams/
+assessments/*.private.json
+
+# Trainers' raw feedback and its triage stay on this computer; reviews/CHANGELOG.md, the log of
+# what was done about them, is committed
+reviews/inbox/
+reviews/*-feedback.*
+
+# Where this computer keeps the engine (written by "academy new"; see academy.mjs)
+.academy-engine
+
+# Python environments and caches of the labs
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Editors and systems; log files at the root only, since a lab may ship log files as data
+.DS_Store
+Thumbs.db
+/*.log
