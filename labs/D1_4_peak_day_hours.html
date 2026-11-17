@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.4 · يوم الذروة بالساعات · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_4_peak_day_hours.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.4</span>
+<h1>يوم الذروة بالساعات</h1>
+<p>توزع وافدي يوم الذروة على ساعاته، وتحسب رحلات الحافلات الترددية في ساعة الذروة، وتحدد الساعات التي يتقاطع فيها الزحام مع الإجهاد الحراري.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 1</span><span>الجلسة 4: النقل والإجهاد الحراري في يوم الذروة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.4">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>وافدو يوم الذروة ساعة بساعة، وساعة الذروة وعدد وافديها.</li>
+      <li>عدد رحلات الحافلات الترددية في ساعة الذروة، والساعات التي يجتمع فيها الزحام والإجهاد الحراري.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/peakday/peak_day_hours.xlsx" download><b>peakday/peak_day_hours.xlsx</b><span>حصة كل ساعة من وافدي اليوم، ومؤشر الحرارة، والثوابت.</span></a>
+    <a href="files/peakday/README.txt" target="_blank"><b>peakday/README.txt</b><span>من أين جاءت الأرقام، وفئات الإجهاد الحراري في خطة المدينة.</span></a>
+  </div>
+  <p class="small">يجوز مساعد عام بدور المعلّم. لا يحتاج هذا المختبر إلى ملف من المختبرات السابقة.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · اقرأ ملف يوم الذروة وسعة الحافلة <span class="min">3 د</span></h3>
+    <p>في ورقة «الثوابت»: وافدو اليوم 45 إلى الحي التاريخي، وحصة الحافلات الترددية، وسعة الحافلة، وحدود فئات الإجهاد الحراري.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · احسب الوافدين في كل ساعة وحدد ساعة الذروة <span class="min">5 د</span></h3>
+    <p>العمود D = حصة الساعة × وافدي اليوم. ثم ابحث عن أكبر قيمة. اقسمها على 24: هذا عدد الوافدين مع كل قطار حين يصل قطار كل 150 ثانية، وهو ما يدخل نموذج المحاكاة.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · احسب رحلات الحافلات اللازمة في ساعة الذروة <span class="min">5 د</span></h3>
+    <p>الرحلات = تقريب إلى أعلى (وافدو ساعة الذروة × حصة الحافلات ÷ سعة الحافلة). كم ثانية بين حافلة وأخرى يعني ذلك من محطة واحدة؟</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · حدد ساعات الإجهاد الحراري المتقاطعة مع الزحام <span class="min">7 د</span></h3>
+    <p>العمود E: فئة كل ساعة من مؤشر الحرارة، لا من درجة الحرارة. ثم علّم الساعات التي يكون فيها مؤشر الحرارة في فئة «حذر شديد» أو أعلى وتصل فيها حصة الساعة إلى 6% أو أكثر. في هذه الساعات تحتاج الساحة إلى ظل وماء وفرق ميدانية إضافية.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>أعد حساب الرحلات إذا زاد الوافدون بالهامش الاحتياطي الذي يناسب ذروة هذا اليوم.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>هل ساعة الذروة هي أشد ساعات اليوم حرًا؟ ماذا يعني ذلك لخطة الظل والماء؟</li>
+    <li>لماذا لا يكفي العدد اليومي لتخطيط الحافلات؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع: ساعة الذروة هي الساعة 17 بـ 10,800 وافد، أي 450 مع كل قطار، وهو رقم الخطة في نموذج المحاكاة. الرحلات 54 في ساعة الذروة (حافلة كل 67 ثانية تقريبًا من محطة واحدة). ساعات «خطر» من الساعة 12 إلى الساعة 15، والساعات التي يجتمع فيها الزحام والحرارة: 15 و16 و17.</p>
+    <p>الفخ: من يبحث عن أحر ساعة وحدها يجد الساعة 13 فيضع الظل والماء هناك، ومن يبحث عن ساعة الذروة وحدها يجد الساعة 17. الخطر في التقاطع: ساعات ما زال فيها الحر شديدًا والناس يتوافدون.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D1_3_peak_error.html" rel="prev">→ المختبر السابق</a><a href="D1_5_plan_a.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"1.4","title":"يوم الذروة بالساعات","summary":"توزع وافدي يوم الذروة على ساعاته، وتحسب رحلات الحافلات الترددية في ساعة الذروة، وتحدد الساعات التي يتقاطع فيها الزحام مع الإجهاد الحراري.","minutes":20,"day":1,"unit":"اليوم 1","session":4,"deck":"../slides/day1.html#lab-1-4","prev":"D1_3_peak_error.html","next":"D1_5_plan_a.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

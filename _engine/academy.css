@@ -1,0 +1,3164 @@
+/* ======== theme/tokens.css ======== */
+/* SDAIA Academy engine · theme tokens
+   Every colour, font, type size and radius the theme uses, as a custom property on :root.
+   A course changes the look by overriding tokens in assets/course.css, never by editing the
+   engine. The track accent comes from data-track; right-to-left pages switch the Arabic type
+   settings and the few direction helpers at the end of this file. */
+
+:root {
+  /* brand */
+  --navy: #1c355e;
+  --navy-deep: #142846;
+  --teal: #00ae8d;
+  --coral: #e96852;
+  --green: #6abf4b;
+  --cyan: #00c1de;
+  --amber: #ffb548;
+  --amber-ink: #d98f17;
+  --purple: #625d9c;
+
+  /* The accents as text. Most of them are too light to read as text (4.5 to 1): on white, on
+     paper and on their own tints the text is the accent darkened with black; on navy it is the
+     accent lightened with white. The shares are the largest that still reach 4.5 to 1. Fills,
+     bars and borders keep the accents themselves. A course that changes an accent changes these
+     with it. */
+  --teal-text: color-mix(in srgb, var(--teal) 70%, #000);
+  --coral-text: color-mix(in srgb, var(--coral) 72%, #000);
+  --green-text: color-mix(in srgb, var(--green) 62%, #000);
+  --cyan-text: color-mix(in srgb, var(--cyan) 60%, #000);
+  --amber-text: color-mix(in srgb, var(--amber) 55%, #000);
+  --amber-ink-text: color-mix(in srgb, var(--amber-ink) 66%, #000);
+  --purple-text: var(--purple);
+  --navy-text: var(--navy);
+  --teal-on-dark: color-mix(in srgb, var(--teal) 62%, #fff);
+  --coral-on-dark: color-mix(in srgb, var(--coral) 57%, #fff);
+  --green-on-dark: color-mix(in srgb, var(--green) 80%, #fff);
+  --cyan-on-dark: color-mix(in srgb, var(--cyan) 82%, #fff);
+  --amber-on-dark: var(--amber);
+
+  /* neutrals */
+  --ink: #101820;
+  --black: #000;
+  --white: #fff;
+  --paper: #f7f5f0;
+  --paper-2: #efece4;
+  --paper-3: #fbfaf7;
+  --line: #d4d0c5;
+  --muted: #5b6472;
+  --stage-bg: #0b111a;
+  --glow: rgba(0, 174, 141, .22);
+  --glow-page: rgba(0, 174, 141, .25);
+
+  /* text and lines on dark slides (title, section, dark, break) */
+  --on-dark: #fff;
+  --on-dark-1: rgba(255, 255, 255, .88);
+  --on-dark-soft: rgba(255, 255, 255, .82);
+  --on-dark-2: rgba(255, 255, 255, .78);
+  --on-dark-3: rgba(255, 255, 255, .66);
+  --on-dark-line: rgba(255, 255, 255, .3);
+  --on-dark-line-2: rgba(255, 255, 255, .4);
+  --on-dark-fill: rgba(255, 255, 255, .14);
+  --on-dark-fill-2: rgba(255, 255, 255, .08);
+  --on-dark-fill-3: rgba(255, 255, 255, .12);
+
+  /* code */
+  --code-bg: #0f1722;
+  --code-fg: #e6edf3;
+  --code-file: #8b98a9;
+  --code-comment: #7d8a9b;
+  --code-line: #26364a;
+  --code-mark: rgba(255, 181, 72, .16);
+  --code-inline: rgba(28, 53, 94, .08);
+  --code-inline-page: rgba(28, 53, 94, .07);
+  --nb-fg: #ffd18a;
+  --nb-hover: #1c2a3d;
+
+  /* highlight.js classes, written at build time (the atom-one-dark palette) */
+  --hl-comment: #7f8796; /* lighter than the palette's #5c6370, which reads at 3 to 1 */
+  --hl-keyword: #c678dd;
+  --hl-name: #e06c75;
+  --hl-literal: #56b6c2;
+  --hl-string: #98c379;
+  --hl-number: #d19a66;
+  --hl-title: #61aeee;
+  --hl-class: #e6c07b;
+
+  /* token chips, in cycles of five */
+  --chip: #dbe7ff;
+  --chip-1: #ffe3b3;
+  --chip-2: #c9efe6;
+  --chip-3: #ffd3cb;
+  --chip-4: #d7f0ff;
+  --chip-5: #e2def5;
+  --chip-ids: #eef0f3;
+  --chip-edge: rgba(0, 0, 0, .06);
+
+  /* fonts: local IBM Plex (fonts.css), system fonts as the fallback */
+  --font-latin: "IBM Plex Sans", "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ar: "IBM Plex Sans Arabic", "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font: var(--font-latin);
+  /* Plex Mono has no Arabic: Arabic in code and key caps takes Plex Sans Arabic, which is loaded
+     for the Arabic range only, instead of a system monospace that shapes it badly. */
+  --mono: "IBM Plex Mono", "IBM Plex Sans Arabic", ui-monospace, "Cascadia Code", Consolas, monospace;
+
+  /* the stage */
+  --stage-w: 1600px;
+  --stage-h: 900px;
+  --slide-pad-top: 92px;
+  --slide-pad-inline: 110px;
+  --slide-pad-bottom: 90px;
+
+  /* type on the stage */
+  --fs-body: 30px;
+  --lh-body: 1.42;
+  --fs-title: 96px;
+  --fs-h1: 84px;
+  --fs-section: 80px;
+  --fs-break: 90px;
+  --fs-h2: 54px;
+  --fs-h3: 34px;
+  --fs-h4: 26px;
+  --fs-lead: 36px;
+  --fs-small: 24px;
+  --fs-xsmall: 20px;
+  --fs-kicker: 20px;
+  --fs-caption: 19px;
+  --fs-chrome: 17px;
+  --fs-footer: 16px;
+  --fs-big: 96px;
+  --fs-stat: 72px;
+  --fs-timer: 190px;
+  --fs-sess-no: 240px;
+  --lh-h1: 1.05;
+  --lh-h2: 1.12;
+  --lh-title: 1.05;
+  --ls-heading: -.01em;
+  --ls-kicker: .14em;
+  --ls-label: .1em;
+  --ls-chrome: .04em;
+  --case-label: uppercase;
+  --ar-bump: 0px; /* Arabic small labels read one size up */
+
+  /* course pages and lab pages */
+  --lh-page: 1.55;
+  --lh-lab: 1.65;
+  --lh-page-h1: 1.05;
+  --lh-lab-h1: 1.2;
+
+  /* radii */
+  --r-card: 18px;
+  --r-callout: 16px;
+  --r-code: 16px;
+  --r-opt: 14px;
+  --r-table: 14px;
+  --r-chip: 12px;
+  --r-tag: 10px;
+  --r-token: 8px;
+  --r-inline: 6px;
+  --r-bar: 6px;
+  --r-cell: 4px;
+  --r-pill: 999px;
+
+  /* engine UI (theme/ui.css) */
+  --ui-bg: rgba(16, 24, 32, .97);
+  --ui-bg-solid: #101820;
+  --ui-bg-2: #142238;
+  --ui-fg: #e6edf3;
+  --ui-muted: #9aa7b8;
+  --ui-line: rgba(255, 255, 255, .14);
+  --ui-hover: rgba(255, 255, 255, .08);
+  --ui-press: rgba(255, 255, 255, .16);
+  --ui-backdrop: rgba(5, 10, 18, .72);
+  --ui-shadow: 0 16px 48px rgba(0, 0, 0, .38);
+  --ui-focus: #3b8bff;
+  --ui-ok: #2fbf8f;
+  --ui-warn: #ffb548;
+  --ui-error: #ff7a66;
+  --ui-black: #000;
+  --ui-font-size: 15px;
+  --ui-radius: 12px;
+  --ui-radius-s: 8px;
+  --ui-z: 1000;
+
+  /* the accent of the course's track (data-track), amber when there is none; as text on a light
+     background and on navy */
+  --track-color: var(--amber);
+  --track-text: var(--amber-text);
+  --track-on-dark: var(--amber-on-dark);
+
+  /* Direction helpers for the few things CSS has no logical keyword for: a horizontal
+     inset shadow (multiply its offset by --ax-dir), text-align that must follow the page and
+     not the element, a gradient that starts at the reading start. */
+  --ax-dir: 1;
+  --ax-start: left;
+  --ax-end: right;
+  --ax-to-end: to right;
+  --ax-x-near-end: 85%;
+  --ax-x-start: 0%;
+}
+
+/* tracks: data-track on <html>, .deck or <body> */
+:root, [data-track] { --track-color: var(--amber); --track-text: var(--amber-text); --track-on-dark: var(--amber-on-dark); }
+[data-track="fluency"] { --track-color: var(--teal); --track-text: var(--teal-text); --track-on-dark: var(--teal-on-dark); }
+[data-track="foundations"] { --track-color: var(--green); --track-text: var(--green-text); --track-on-dark: var(--green-on-dark); }
+[data-track="ai-engineering"] { --track-color: var(--amber); --track-text: var(--amber-text); --track-on-dark: var(--amber-on-dark); }
+[data-track="data-science"] { --track-color: var(--cyan); --track-text: var(--cyan-text); --track-on-dark: var(--cyan-on-dark); }
+[data-track="executives"] { --track-color: var(--coral); --track-text: var(--coral-text); --track-on-dark: var(--coral-on-dark); }
+
+/* Arabic: the Arabic face first, taller lines, no letter spacing, no capitals to imitate */
+[dir="rtl"] {
+  --font: var(--font-ar);
+  --lh-h1: 1.22;
+  --lh-h2: 1.3;
+  --lh-title: 1.2;
+  --ls-heading: 0;
+  --ls-kicker: 0;
+  --ls-label: 0;
+  --ls-chrome: 0;
+  --case-label: none;
+  --ar-bump: 1.5px;
+  --fs-kicker: 22px;
+  --lh-page: 1.7;
+  --lh-lab: 1.75;
+  --lh-page-h1: 1.2;
+  --lh-lab-h1: 1.3;
+  --ax-dir: -1;
+  --ax-start: right;
+  --ax-end: left;
+  --ax-to-end: to left;
+  --ax-x-near-end: 15%;
+  --ax-x-start: 100%;
+}
+
+/* ======== theme/fonts.css ======== */
+/* SDAIA Academy engine · fonts
+   IBM Plex, local (SIL Open Font License 1.1, fonts/OFL.txt), so a deck opened from disk or
+   offline looks the same. The paths are relative to the bundle (_engine/academy.css next to
+   _engine/fonts/). Each file declares the characters it holds: an English page never
+   downloads an Arabic file, and an Arabic page fetches the Latin files only for Latin text.
+   The file names are short on purpose: Windows refuses a path longer than 260 characters, and
+   a course repository can sit in a deep folder. */
+
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plex-sans-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/plex-sans-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/plex-sans-700.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plex-arabic-400.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/plex-arabic-600.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+@font-face {
+  font-family: "IBM Plex Sans Arabic";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("fonts/plex-arabic-700.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/plex-mono-400.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/plex-mono-600.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ======== theme/deck.css ======== */
+/* SDAIA Academy engine · the deck: stage, slides, chrome, typography, layout helpers, slide
+   kinds, fragments, and the column a deck becomes without JavaScript, in the reading view and
+   in the print preview.
+   Slide rules are written as :where(.deck) .x: they apply only inside a deck (one stylesheet
+   serves decks, course pages and labs) and keep the weight of a plain .x, so a course's
+   assets/course.css overrides them exactly as it overrode the previous system. */
+
+* { box-sizing: border-box; }
+
+html[data-ax="deck"], html[data-ax="deck"] body { margin: 0; height: 100%; }
+html[data-ax="deck"] body {
+  background: var(--stage-bg);
+  color: var(--ink);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+html.ax-js[data-ax="deck"]:not(.ax-view-read):not(.ax-view-print) body { overflow: hidden; }
+
+/* ---------- the stage: 1600 by 900, placed and scaled by Academy.deck with one transform ----------
+   left and top are physical on purpose: the transform that places the stage is physical too. */
+.ax-js .deck {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform-origin: 0 0;
+}
+
+:where(.deck) .slide {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  padding: var(--slide-pad-top) var(--slide-pad-inline) var(--slide-pad-bottom);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+}
+:where(.deck) .slide.active { display: flex; }
+:where(.deck) .slide:focus { outline: none; }
+:where(.deck) .slide > .body { flex: 1; display: flex; flex-direction: column; justify-content: center; min-height: 0; }
+:where(.deck) .slide.top > .body { justify-content: flex-start; }
+:where(.deck) .slide.entered > .body { animation: ax-enter .35s ease both; }
+@keyframes ax-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+:where(.deck) aside.notes { display: none; }
+
+/* ---------- fragments: .frag waits for its step; elements sharing data-frag come together ---------- */
+.ax-js :where(.deck) .frag { opacity: 0; transform: translateY(14px); transition: opacity .35s ease, transform .35s ease; }
+:where(.deck) .frag.on { opacity: 1; transform: none; }
+:where(.deck) .frag.dim-after.on:not(:last-of-type) { opacity: .55; }
+
+/* ---------- chrome drawn by the runtime ---------- */
+:where(.deck) .chrome-top {
+  position: absolute;
+  inset-inline: var(--slide-pad-inline);
+  top: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-chrome);
+  letter-spacing: var(--ls-chrome);
+  color: var(--muted);
+}
+:where(.deck) .chrome-top .logo { height: 44px; color: var(--navy); display: flex; }
+:where(.deck) .chrome-top .logo svg { height: 100%; width: auto; }
+:where(.deck) .chrome-top .crumb { display: flex; gap: 14px; align-items: center; }
+:where(.deck) .chrome-top .crumb b { color: var(--navy); font-weight: 600; }
+:where(.deck) .chrome-bottom {
+  position: absolute;
+  inset-inline: var(--slide-pad-inline);
+  bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-footer);
+  color: var(--muted);
+}
+:where(.deck) .chrome-bottom .track { display: flex; align-items: center; gap: 10px; }
+:where(.deck) .chrome-bottom .track i { width: 12px; height: 12px; border-radius: 3px; background: var(--track-color); display: inline-block; }
+:where(.deck) .chrome-bottom .no { direction: ltr; unicode-bidi: isolate; }
+:where(.deck) > .progress {
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: 0;
+  height: 6px;
+  background: var(--track-color);
+  transition: width .25s ease;
+}
+
+/* ---------- typography ---------- */
+:where(.deck) :is(h1, h2, h3, h4) { margin: 0; color: var(--navy); font-weight: 700; letter-spacing: var(--ls-heading); }
+:where(.deck) h1 { font-size: var(--fs-h1); line-height: var(--lh-h1); }
+:where(.deck) h2 { font-size: var(--fs-h2); line-height: var(--lh-h2); margin-bottom: 30px; }
+:where(.deck) h3 { font-size: var(--fs-h3); line-height: 1.2; margin-bottom: 12px; }
+:where(.deck) h4 { font-size: var(--fs-h4); margin-bottom: 8px; }
+:where(.deck) p { margin: 0 0 18px; }
+:where(.deck) .kicker {
+  font-size: var(--fs-kicker);
+  font-weight: 600;
+  letter-spacing: var(--ls-kicker);
+  text-transform: var(--case-label);
+  color: var(--teal-text);
+  margin-bottom: 14px;
+}
+:where(.deck) .lead { font-size: var(--fs-lead); color: var(--muted); line-height: 1.35; }
+:where(.deck) .small { font-size: var(--fs-small); }
+:where(.deck) .xsmall { font-size: var(--fs-xsmall); }
+:where(.deck) .muted { color: var(--muted); }
+:where(.deck) .center { text-align: center; }
+:where(.deck) .ar { font-family: var(--font-ar); direction: rtl; unicode-bidi: isolate; }
+:where(.deck) .en, :where(.deck) .ltr { direction: ltr; unicode-bidi: isolate; }
+:where(.deck) .en { font-family: var(--font-latin); }
+:where(.deck) :is(b, strong) { font-weight: 600; }
+:where(.deck) em { color: var(--coral-text); font-style: normal; font-weight: 600; }
+:where(.deck) code {
+  font-family: var(--mono);
+  font-size: .86em;
+  background: var(--code-inline);
+  padding: 2px 8px;
+  border-radius: var(--r-inline);
+  color: var(--navy);
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+:where(.deck) a { color: var(--teal-text); }
+
+:where(.deck) :is(ul, ol).bullets { margin: 0; padding-inline-start: 0; list-style: none; }
+:where(.deck) :is(ul, ol).bullets > li { position: relative; padding-inline-start: 42px; margin-bottom: 16px; }
+:where(.deck) ul.bullets > li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 6px;
+  top: .52em;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--track-color);
+  transform: rotate(45deg);
+}
+/* The number is the list's own (list-item), so <ol start="4"> counts from 4 as in any HTML
+   (Chrome does not carry <li value> into this pseudo-element). A list written for the previous system with an inline counter-reset keeps its counter. */
+:where(.deck) ol.bullets > li::before {
+  content: counter(list-item);
+  position: absolute;
+  inset-inline-start: 0;
+  top: .1em;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+:where(.deck) ol.bullets[style*="counter-reset"] > li { counter-increment: n; }
+:where(.deck) ol.bullets[style*="counter-reset"] > li::before { content: counter(n); }
+:where(.deck) :is(ul, ol).bullets.tight > li { margin-bottom: 8px; }
+:where(.deck) ul.bullets ul { margin: 6px 0 0; padding-inline-start: 26px; font-size: .86em; color: var(--muted); }
+
+/* ---------- layout helpers ---------- */
+:where(.deck) .cols { display: grid; gap: 44px; align-items: start; }
+:where(.deck) .cols-2 { grid-template-columns: 1fr 1fr; }
+:where(.deck) .cols-3 { grid-template-columns: repeat(3, 1fr); }
+:where(.deck) .cols-4 { grid-template-columns: repeat(4, 1fr); }
+:where(.deck) .cols-12 { grid-template-columns: 1fr 2fr; }
+:where(.deck) .cols-21 { grid-template-columns: 2fr 1fr; }
+:where(.deck) .cols-32 { grid-template-columns: 3fr 2fr; }
+:where(.deck) .cols.gap-s { gap: 24px; }
+:where(.deck) .cols.mid { align-items: center; }
+:where(.deck) .cols > .card { align-self: stretch; } /* cards in one row share the row height */
+:where(.deck) .stack > * + * { margin-top: 20px; }
+:where(.deck) .stack.dense > * + * { margin-top: 12px; }
+:where(.deck) .mt { margin-top: 30px; }
+:where(.deck) .mt-s { margin-top: 14px; }
+:where(.deck) .mb0 { margin-bottom: 0; }
+
+/* ---------- slide kinds ---------- */
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) {
+  background:
+    radial-gradient(1200px 700px at 85% 15%, var(--glow), transparent 60%),
+    radial-gradient(900px 600px at 10% 100%, color-mix(in srgb, var(--track-color) 16%, transparent), transparent 60%),
+    var(--navy);
+  color: var(--on-dark);
+}
+/* Text on the navy itself is light. A box with a light background of its own (a card, a callout,
+   a table, an option…: the list below) keeps the colours it has on a light slide, and so does
+   everything in it, so every component reads on a dark slide as on a light one. */
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) :is(h1, h2, h3, h4, .big):where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input) *)) { color: var(--on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) :is(.lead, .muted, .caption, .stat .lbl, .bars .val, .checklist li .min, .matrix .lbl, .flow .arrow, .agenda .item.brk, ul.bullets ul, .ax-act-status, .ax-act-unit):where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input) *)) { color: var(--on-dark-2); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) a:where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input) *)) { color: var(--teal-on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) em:where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input) *)) { color: var(--coral-on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) .kicker:where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input) *)) { color: var(--track-on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) code:where(:not(:is(.card, .callout, .pill, table.t, .flow .step, .agenda .item:not(.brk), .quiz .opt, .prompt:not(.dark), .chat .msg, .trace .ev, .tools span, .ladder .rung, .figure, .tokens span, .legend span, .lab-tag, .ax-act-btn, .ax-act-input, pre) *)) { background: var(--on-dark-fill); color: var(--on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) ol.bullets > li::before { background: var(--track-color); color: var(--ink); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) .chrome-top .logo { color: var(--on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) :is(.chrome-top, .chrome-bottom) { color: var(--on-dark-3); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) .chrome-top .crumb b { color: var(--on-dark); }
+
+:where(.deck) .slide.title h1 { font-size: var(--fs-title); line-height: var(--lh-title); max-width: 1250px; }
+:where(.deck) .slide.title .meta { display: flex; gap: 14px; margin-top: 46px; flex-wrap: wrap; }
+:where(.deck) .slide.title .meta span {
+  font-size: 21px;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--on-dark-line);
+  color: var(--on-dark-1);
+  clip-path: inset(0 round var(--r-pill));
+}
+:where(.deck) .slide.title .meta span.track { background: var(--track-color); color: var(--ink); border-color: var(--track-color); font-weight: 600; }
+
+:where(.deck) .slide.section .sess-no {
+  position: absolute;
+  inset-inline-end: var(--slide-pad-inline);
+  bottom: 110px;
+  font-size: var(--fs-sess-no);
+  font-weight: 700;
+  line-height: .8;
+  letter-spacing: -.04em;
+  color: transparent;
+  -webkit-text-stroke: 2px color-mix(in srgb, var(--track-color) 75%, transparent);
+}
+:where(.deck) .slide.section h1 { font-size: var(--fs-section); max-width: 1100px; }
+:where(.deck) .slide.section .outcomes { margin-top: 40px; font-size: 26px; color: var(--on-dark-1); max-width: 1000px; }
+:where(.deck) .slide.section .outcomes li::before { background: var(--track-color); }
+
+:where(.deck) .slide.break .body { align-items: center; text-align: center; }
+:where(.deck) .slide.break h1 { font-size: var(--fs-break); }
+
+/* the lab slide: the second column on a paper panel that starts at the middle of the stage */
+:where(.deck) .slide.lab { background: linear-gradient(var(--ax-to-end), var(--white) 0 50%, var(--paper) 50%); }
+:where(.deck) .slide.lab .cols-2 { gap: 0; }
+:where(.deck) .slide.lab .cols-2 > :first-child { padding-inline-end: 48px; }
+:where(.deck) .slide.lab .cols-2 > :last-child { padding-inline-start: 48px; }
+
+/* capstone day: the running order and "now presenting" */
+:where(.deck) .slide.order input {
+  font: inherit;
+  width: 100%;
+  border: none;
+  border-bottom: 1px dashed var(--line);
+  background: transparent;
+  color: var(--ink);
+  padding: 2px 0;
+}
+:where(.deck) .slide.presenting .center input {
+  font: 700 72px var(--font);
+  text-align: center;
+  width: 100%;
+  max-width: 1300px;
+  color: var(--on-dark);
+  background: transparent;
+  border: none;
+  border-bottom: 2px dashed var(--on-dark-line);
+  padding: 6px 0;
+}
+
+/* ---------- the column: no JavaScript, the reading view, the print preview ----------
+   Each slide keeps its 1600 by 900 layout and is zoomed to the column, so it reads exactly as
+   it projects. Without JavaScript the zoom steps with the window width; with it, Academy.deck
+   sets --ax-col-scale to the column width. In a window narrower than 900 pixels the reading
+   view and the page without JavaScript reflow each slide instead (plugin-read.css). */
+html:not(.ax-js)[data-ax="deck"] body, html.ax-view-read body, html.ax-view-print body { overflow: auto; height: auto; }
+html:not(.ax-js) .deck, .ax-view-read .deck, .ax-view-print .deck {
+  position: static;
+  transform: none !important;
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 16px 96px;
+}
+html:not(.ax-js) :where(.deck) .slide, .ax-view-read :where(.deck) .slide, .ax-view-print :where(.deck) .slide {
+  display: flex;
+  position: relative;
+  inset: auto;
+  flex: none;
+  width: var(--stage-w);
+  height: var(--stage-h);
+}
+.ax-view-read :where(.deck) .slide, .ax-view-print :where(.deck) .slide { zoom: var(--ax-col-scale, 1); }
+html:not(.ax-js) :where(.deck) .slide { justify-content: center; zoom: .25; }
+html:not(.ax-js) .frag, .ax-view-read .frag, .ax-view-print .frag { opacity: 1; transform: none; }
+.ax-view-read :where(.deck) .slide.entered > .body, .ax-view-print :where(.deck) .slide.entered > .body { animation: none; }
+.ax-view-read .deck > .progress, .ax-view-print .deck > .progress { display: none; }
+@media (min-width: 520px) { html:not(.ax-js) :where(.deck) .slide { zoom: .3; } }
+@media (min-width: 700px) { html:not(.ax-js) :where(.deck) .slide { zoom: .42; } }
+@media (min-width: 1000px) { html:not(.ax-js) :where(.deck) .slide { zoom: .6; } }
+@media (min-width: 1300px) { html:not(.ax-js) :where(.deck) .slide { zoom: .78; } }
+@media (min-width: 1660px) { html:not(.ax-js) :where(.deck) .slide { zoom: 1; } }
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.deck) .slide.entered > .body { animation: none; }
+  .ax-js :where(.deck) .frag { transform: none; transition: opacity .01s; }
+  :where(.deck) > .progress { transition: none; }
+}
+
+/* ======== theme/components.css ======== */
+/* SDAIA Academy engine · slide components
+   The class vocabulary of the previous system, kept whole so its decks move over unchanged:
+   cards, pills, callouts, tables, code, token chips, flows, numbers, bars, agenda, quiz,
+   checklist and the lab slide pieces, prompts, chats, tool chips, traces, the ladder, figures,
+   matrices, meters, timers. docs/components.md shows the markup of each.
+   Rounded boxes keep a uniform 1px border and draw their accent strip as an inset shadow, and
+   clip their painting to their own radius: mixed border widths and plain-rectangle backgrounds
+   both leave small artifacts in the corners when the stage is scaled. */
+
+:where(.deck) :is(.card, .chat .msg) { clip-path: inset(0 round var(--r-card)); }
+:where(.deck) :is(.callout, .prompt) { clip-path: inset(0 round var(--r-callout)); }
+:where(.deck) .quiz .opt { clip-path: inset(0 round var(--r-opt)); }
+:where(.deck) :is(.trace .ev, .tools span) { clip-path: inset(0 round var(--r-chip)); }
+:where(.deck) :is(.lab-tag, .nb) { clip-path: inset(0 round var(--r-tag)); }
+:where(.deck) :is(.pill, .legend span) { clip-path: inset(0 round var(--r-pill)); }
+
+/* ---------- accent colours: c-* sets --c, which boxes, bars and chips read, and --c-text, the
+   same accent as text on a light box (tokens.css) ---------- */
+.c-teal { --c: var(--teal); --c-text: var(--teal-text); }
+.c-coral { --c: var(--coral); --c-text: var(--coral-text); }
+.c-green { --c: var(--green); --c-text: var(--green-text); }
+.c-cyan { --c: var(--cyan); --c-text: var(--cyan-text); }
+.c-amber { --c: var(--amber-ink); --c-text: var(--amber-ink-text); }
+.c-purple { --c: var(--purple); --c-text: var(--purple-text); }
+.c-navy { --c: var(--navy); --c-text: var(--navy-text); }
+
+/* ---------- cards and pills ---------- */
+/* Every box with a light background of its own names its text colour, so it reads the same on
+   a dark slide (deck.css, "slide kinds") */
+:where(.deck) .card {
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-card);
+  padding: 31px 30px 26px;
+  font-size: var(--fs-small);
+  line-height: 1.4;
+  box-shadow: inset 0 6px 0 var(--c, var(--navy));
+}
+:where(.deck) .card :is(h3, h4) { color: var(--c-text, var(--c, var(--navy))); }
+:where(.deck) .card :is(p, ul):last-child { margin-bottom: 0; }
+:where(.deck) .card ul { margin: 6px 0 0; padding-inline-start: 22px; }
+:where(.deck) .card ul li { margin-bottom: 4px; }
+:where(.deck) .card.flat { padding-block: 26px; padding-inline: 37px 30px; box-shadow: inset calc(8px * var(--ax-dir)) 0 0 var(--c, var(--navy)); }
+:where(.deck) .card.tint { background: color-mix(in srgb, var(--c, var(--navy)) 7%, var(--white)); }
+:where(.deck) .stack.dense .card { font-size: 21px; padding: 21px 22px 16px; }
+:where(.deck) .stack.dense .card.flat { padding-block: 16px; padding-inline: 29px 22px; }
+
+:where(.deck) .pill {
+  display: inline-block;
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: var(--r-pill);
+  background: color-mix(in srgb, var(--c, var(--navy)) 14%, var(--white));
+  color: var(--c-text, var(--c, var(--navy)));
+  border: 1px solid color-mix(in srgb, var(--c, var(--navy)) 35%, var(--white));
+  margin-block: 0 8px;
+  margin-inline: 0 6px;
+}
+
+/* ---------- callouts ---------- */
+:where(.deck) .callout {
+  border-radius: var(--r-callout);
+  padding-block: 22px;
+  padding-inline: 35px 28px;
+  font-size: 25px;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--c, var(--teal)) 10%, var(--white));
+  box-shadow: inset calc(8px * var(--ax-dir)) 0 0 var(--c, var(--teal));
+}
+:where(.deck) .callout b:first-child { color: var(--c-text, var(--c, var(--teal-text))); }
+.callout.warn { --c: var(--coral); --c-text: var(--coral-text); }
+.callout.tip { --c: var(--teal); --c-text: var(--teal-text); }
+.callout.note { --c: var(--purple); --c-text: var(--purple-text); }
+
+/* ---------- tables ---------- */
+:where(.deck) table.t { border-collapse: collapse; width: 100%; font-size: 23px; background: var(--white); color: var(--ink); border-radius: var(--r-table); overflow: hidden; }
+:where(.deck) table.t th { background: var(--navy); color: var(--white); text-align: start; font-weight: 600; padding: 13px 18px; }
+:where(.deck) table.t td { padding: 11px 18px; border-bottom: 1px solid var(--paper-2); vertical-align: top; }
+:where(.deck) table.t tr:last-child td { border-bottom: none; }
+:where(.deck) table.t :is(td, th).num { text-align: end; font-variant-numeric: tabular-nums; }
+:where(.deck) table.t.small { font-size: var(--fs-xsmall); }
+:where(.deck) table.t.small :is(th, td) { padding: 9px 14px; }
+:where(.deck) table.t td.ar { text-align: var(--ax-start); } /* Arabic text in a cell lines up with the page, not with itself */
+:where(.deck) table.t th .muted { color: var(--on-dark-2); font-weight: 400; }
+:where(.deck) table.t tr.hl td { background: color-mix(in srgb, var(--track-color) 18%, var(--white)); font-weight: 600; }
+
+/* ---------- code: highlighted at build time; code always reads left to right ---------- */
+:where(.deck) pre.code {
+  margin: 0;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border-radius: var(--r-code);
+  padding: 24px 28px;
+  font-family: var(--mono);
+  font-size: var(--fs-caption);
+  line-height: 1.5;
+  overflow: hidden;
+  white-space: pre;
+  position: relative;
+  flex-shrink: 0;
+  direction: ltr;
+  text-align: left;
+  unicode-bidi: isolate;
+}
+:where(.deck) pre.code code { background: none; padding: 0; color: inherit; font-size: inherit; }
+:where(.deck) pre.code[data-file]::before {
+  content: attr(data-file);
+  display: block;
+  font-size: 15px;
+  color: var(--code-file);
+  margin: -8px 0 12px;
+  letter-spacing: .05em;
+}
+:where(.deck) pre.code.s { font-size: 17px; }
+:where(.deck) pre.code.l { font-size: var(--fs-small); }
+:where(.deck) pre.code .cm { color: var(--code-comment); font-style: italic; }
+:where(.deck) pre.code .hl-line { background: var(--code-mark); display: inline-block; width: 100%; }
+
+/* highlight.js token classes (atom-one-dark), for decks, course pages and labs alike */
+.hljs-comment, .hljs-quote { color: var(--hl-comment); font-style: italic; }
+.hljs-doctag, .hljs-formula, .hljs-keyword { color: var(--hl-keyword); }
+.hljs-deletion, .hljs-name, .hljs-section, .hljs-selector-tag, .hljs-subst { color: var(--hl-name); }
+.hljs-literal { color: var(--hl-literal); }
+.hljs-addition, .hljs-attribute, .hljs-meta .hljs-string, .hljs-regexp, .hljs-string { color: var(--hl-string); }
+.hljs-attr, .hljs-number, .hljs-selector-attr, .hljs-selector-class, .hljs-selector-pseudo, .hljs-template-variable, .hljs-type, .hljs-variable { color: var(--hl-number); }
+.hljs-bullet, .hljs-link, .hljs-meta, .hljs-selector-id, .hljs-symbol, .hljs-title { color: var(--hl-title); }
+.hljs-built_in, .hljs-class .hljs-title, .hljs-title.class_ { color: var(--hl-class); }
+.hljs-emphasis { font-style: italic; }
+.hljs-strong { font-weight: 700; }
+.hljs-link { text-decoration: underline; }
+
+/* ---------- token chips ---------- */
+:where(.deck) .tokens { display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--mono); font-size: var(--fs-h4); }
+:where(.deck) .tokens span { padding: 4px 10px; border-radius: var(--r-token); background: var(--tc, var(--chip)); color: var(--ink); border: 1px solid var(--chip-edge); }
+:where(.deck) .tokens span:nth-child(5n+1) { --tc: var(--chip-1); }
+:where(.deck) .tokens span:nth-child(5n+2) { --tc: var(--chip-2); }
+:where(.deck) .tokens span:nth-child(5n+3) { --tc: var(--chip-3); }
+:where(.deck) .tokens span:nth-child(5n+4) { --tc: var(--chip-4); }
+:where(.deck) .tokens span:nth-child(5n+5) { --tc: var(--chip-5); }
+:where(.deck) .tokens.ids span { --tc: var(--chip-ids) !important; color: var(--navy); }
+:where(.deck) .tokens.ar { direction: rtl; font-family: var(--font-ar); }
+
+/* ---------- flows ---------- */
+:where(.deck) .flow { display: flex; align-items: stretch; gap: 0; }
+/* A step is one paragraph: its label on a line of its own, then its text and any inline element
+   (code, a link, a bold word) flowing together, centred in the height of the row. */
+:where(.deck) .flow .step {
+  flex: 1;
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid var(--c, var(--navy));
+  border-radius: var(--r-callout);
+  padding: 18px;
+  text-align: center;
+  font-size: 22px;
+  line-height: 1.3;
+  display: block;
+  align-content: center;
+}
+:where(.deck) .flow .step b { display: block; color: var(--c-text, var(--c, var(--navy))); font-size: 25px; margin-bottom: 4px; }
+:where(.deck) .flow .arrow { width: 46px; display: grid; place-items: center; color: var(--muted); font-size: var(--fs-h3); flex: 0 0 46px; }
+:where(.deck) .flow.v { flex-direction: column; }
+:where(.deck) .flow.v .arrow { width: auto; height: 34px; flex-basis: 34px; font-size: 22px; }
+
+/* ---------- numbers ---------- */
+:where(.deck) .big { font-size: var(--fs-big); font-weight: 700; color: var(--navy); line-height: 1; letter-spacing: -.03em; }
+:where(.deck) .stat .big { font-size: var(--fs-stat); }
+:where(.deck) .stat .lbl { font-size: 22px; color: var(--muted); margin-top: 8px; }
+
+/* The rows share one grid (subgrid), so the bars start at one line. The label column is at most
+   260 pixels and 30% of the row, never narrower than its longest word: on a full slide it is the
+   260 of before, and in a narrow column the bar keeps more than a third of the width. */
+:where(.deck) .bars { display: grid; grid-template-columns: minmax(min-content, min(260px, 30%)) minmax(35%, 1fr) minmax(min-content, auto); gap: 12px 16px; font-size: 22px; }
+:where(.deck) .bars .row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: center; }
+:where(.deck) .bars .bar { height: 26px; border-radius: var(--r-bar); background: var(--c, var(--teal)); width: var(--w); }
+:where(.deck) .bars .val { text-align: end; font-variant-numeric: tabular-nums; color: var(--muted); }
+
+:where(.deck) .meter { height: 12px; border-radius: var(--r-bar); background: var(--paper-2); overflow: hidden; }
+:where(.deck) .meter i { display: block; height: 100%; width: var(--w); background: var(--c, var(--teal)); }
+
+/* ---------- agenda ---------- */
+:where(.deck) .agenda { display: grid; gap: 8px; }
+:where(.deck) .agenda .item {
+  display: grid;
+  grid-template-columns: 1fr 130px;
+  align-items: center;
+  gap: 24px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-table);
+  padding: 16px 26px;
+  font-size: var(--fs-h4);
+  color: var(--ink);
+}
+:where(.deck) .agenda .item .d { text-align: end; font-size: var(--fs-xsmall); color: var(--muted); }
+:where(.deck) .agenda .item b { color: var(--navy); }
+:where(.deck) .agenda .item small { display: block; font-size: var(--fs-caption); color: var(--muted); }
+:where(.deck) .agenda .item.brk { background: transparent; border-style: dashed; padding: 5px 26px; font-size: 21px; color: var(--muted); }
+:where(.deck) .agenda .item.now { border: 2px solid var(--track-color); box-shadow: 0 0 0 4px color-mix(in srgb, var(--track-color) 18%, transparent); }
+
+/* ---------- quiz: the look; answering and revealing belong to the activities plugin ---------- */
+:where(.deck) .quiz .opts { display: grid; gap: 14px; margin-top: 24px; }
+:where(.deck) .quiz .opt {
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: var(--r-opt);
+  padding: 16px 24px;
+  font-size: var(--fs-h4);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+  transition: border-color .15s, background .15s;
+}
+:where(.deck) .quiz .opt::before { content: attr(data-k); font-weight: 700; color: var(--navy); }
+:where(.deck) .quiz.revealed .opt[data-ok] { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 10%, var(--white)); }
+:where(.deck) .quiz.revealed .opt:not([data-ok]) { opacity: .55; }
+:where(.deck) .quiz .why { display: none; margin-top: 22px; }
+:where(.deck) .quiz.revealed .why { display: block; }
+
+/* ---------- the lab slide ---------- */
+:where(.deck) .lab-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--track-color);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: var(--fs-xsmall);
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  padding: 8px 18px;
+  border-radius: var(--r-tag);
+  margin-bottom: 18px;
+}
+:where(.deck) .nb {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 21px;
+  background: var(--code-bg);
+  color: var(--nb-fg);
+  padding: 10px 18px;
+  border-radius: var(--r-tag);
+  text-decoration: none;
+  direction: ltr;
+  unicode-bidi: isolate;
+}
+:where(.deck) a.nb:hover { background: var(--nb-hover); }
+:where(.deck) .checklist { list-style: none; margin: 0; padding: 0; font-size: 25px; }
+:where(.deck) .checklist li { padding-block: 12px; padding-inline: 50px 80px; position: relative; border-bottom: 1px dashed var(--line); }
+:where(.deck) .checklist li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 15px;
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid var(--teal);
+  border-radius: 7px;
+}
+/* the minutes stay on the first line however long the item */
+:where(.deck) .checklist li .min { position: absolute; inset-inline-end: 0; top: 16px; color: var(--muted); font-size: var(--fs-xsmall); font-variant-numeric: tabular-nums; }
+:where(.deck) .checklist li .ltr { white-space: nowrap; } /* a Latin run in an Arabic step ("--apply") is never broken after its dashes */
+:where(.deck) .checklist li.stretch::before { border-color: var(--purple); border-style: dashed; }
+
+/* ---------- prompts and conversations ---------- */
+/* .prompt: text a participant can type as it is; data-tool names where to run it.
+   .seg marks one part of a prompt (role, context, task...), with a .legend underneath. */
+:where(.deck) .prompt {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-callout);
+  padding: 22px 28px;
+  padding-inline-start: 35px;
+  font-size: var(--fs-small);
+  color: var(--ink);
+  line-height: 1.6;
+  white-space: pre-line;
+  box-shadow: inset calc(8px * var(--ax-dir)) 0 0 var(--c, var(--amber));
+}
+:where(.deck) .prompt[data-tool]::before {
+  content: attr(data-tool);
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--muted);
+  margin: -6px 0 8px;
+  white-space: normal;
+}
+:where(.deck) .prompt.s { font-size: 21px; padding: 16px 22px; padding-inline-start: 29px; }
+:where(.deck) .prompt.dark { background: var(--code-bg); color: var(--code-fg); border-color: var(--code-line); }
+:where(.deck) .prompt.dark[data-tool]::before { color: var(--code-file); }
+:where(.deck) .prompt .seg {
+  background: color-mix(in srgb, var(--c, var(--teal)) 16%, var(--white));
+  border-bottom: 3px solid var(--c, var(--teal));
+  padding: 1px 6px;
+  border-radius: var(--r-inline);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+/* on a dark prompt a segment is a tint of the code background, and its text stays light */
+:where(.deck) .prompt.dark .seg { background: color-mix(in srgb, var(--c, var(--teal)) 28%, var(--code-bg)); color: var(--code-fg); }
+:where(.deck) .prompt .seg[data-k] { position: relative; }
+:where(.deck) .legend { display: flex; flex-wrap: wrap; gap: 8px 10px; margin-top: 16px; }
+:where(.deck) .legend span {
+  font-size: var(--fs-caption);
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: var(--r-pill);
+  color: var(--c-text, color-mix(in srgb, var(--c) 72%, var(--black)));
+  background: color-mix(in srgb, var(--c) 14%, var(--white));
+  border: 1px solid color-mix(in srgb, var(--c) 35%, var(--white));
+}
+
+:where(.deck) .chat { display: flex; flex-direction: column; gap: 12px; font-size: 22px; line-height: 1.5; }
+:where(.deck) .chat .msg { max-width: 86%; padding: 14px 20px; border-radius: var(--r-card); background: var(--white); color: var(--ink); border: 1px solid var(--line); }
+:where(.deck) .chat .msg.user { align-self: flex-start; background: color-mix(in srgb, var(--navy) 8%, var(--white)); border-color: color-mix(in srgb, var(--navy) 20%, var(--white)); }
+:where(.deck) .chat .msg.ai { align-self: flex-end; }
+:where(.deck) .chat .msg.bad { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 7%, var(--white)); }
+:where(.deck) .chat .msg.good { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 7%, var(--white)); }
+:where(.deck) .chat .who { display: block; font-size: 15px; font-weight: 600; color: var(--muted); margin-bottom: 2px; }
+
+/* ---------- tool chips ---------- */
+:where(.deck) .tools { display: flex; flex-wrap: wrap; gap: 12px; }
+:where(.deck) .tools span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--r-chip);
+  padding: 8px 14px;
+  font-size: var(--fs-xsmall);
+  font-weight: 600;
+  color: var(--ink);
+}
+:where(.deck) .tools img { height: 28px; width: 28px; object-fit: contain; }
+:where(.deck) .tools.s span { font-size: 17px; padding: 6px 12px; }
+:where(.deck) .tools.s img { height: 22px; width: 22px; }
+:where(.deck) .slide.dark .tools span { color: var(--ink); }
+
+/* ---------- agent traces: one run, event by event ---------- */
+:where(.deck) .trace { display: flex; flex-direction: column; gap: 8px; font-size: var(--fs-xsmall); line-height: 1.42; }
+:where(.deck) .trace .ev {
+  display: grid;
+  grid-template-columns: 128px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  background: var(--white);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-chip);
+  padding: 9px 16px;
+  padding-inline-start: 21px;
+  box-shadow: inset calc(6px * var(--ax-dir)) 0 0 var(--c, var(--navy));
+}
+:where(.deck) .trace .ev > b { font-size: 14px; letter-spacing: .08em; text-transform: var(--case-label); color: var(--c-text, var(--c, var(--navy))); }
+:where(.deck) .trace .ev code { font-size: .84em; word-break: break-word; }
+:where(.deck) .trace .ev.user { --c: var(--navy); --c-text: var(--navy-text); }
+:where(.deck) .trace .ev.model { --c: var(--teal); --c-text: var(--teal-text); }
+:where(.deck) .trace .ev.call { --c: var(--amber-ink); --c-text: var(--amber-ink-text); }
+:where(.deck) .trace .ev.result { --c: var(--cyan); --c-text: var(--cyan-text); }
+:where(.deck) .trace .ev.final { --c: var(--green); --c-text: var(--green-text); }
+:where(.deck) .trace .ev.error { --c: var(--coral); --c-text: var(--coral-text); }
+:where(.deck) .trace .ev.guard { --c: var(--purple); --c-text: var(--purple-text); }
+:where(.deck) .trace .ev.dim { opacity: .45; }
+:where(.deck) .trace.s { font-size: 18px; }
+:where(.deck) .trace.s .ev { padding: 7px 14px; }
+
+/* ---------- the ladder: rungs that rise along the reading direction; .on highlights one ---------- */
+:where(.deck) .ladder { display: grid; grid-template-columns: repeat(var(--n, 5), 1fr); gap: 14px; align-items: end; }
+:where(.deck) .ladder .rung {
+  background: var(--white);
+  border: 2px solid var(--c, var(--navy));
+  border-radius: var(--r-opt);
+  padding: 14px 16px;
+  font-size: var(--fs-caption);
+  line-height: 1.32;
+  color: var(--ink);
+}
+:where(.deck) .ladder .rung b { display: block; color: var(--c-text, var(--c, var(--navy))); font-size: 25px; margin-bottom: 4px; }
+:where(.deck) .ladder .rung small { display: block; color: var(--muted); font-size: var(--fs-footer); margin-top: 6px; }
+:where(.deck) .ladder .rung:nth-child(1) { min-height: 150px; }
+:where(.deck) .ladder .rung:nth-child(2) { min-height: 200px; }
+:where(.deck) .ladder .rung:nth-child(3) { min-height: 250px; }
+:where(.deck) .ladder .rung:nth-child(4) { min-height: 300px; }
+:where(.deck) .ladder .rung:nth-child(5) { min-height: 350px; }
+:where(.deck) .ladder .rung.on { background: color-mix(in srgb, var(--c, var(--navy)) 12%, var(--white)); box-shadow: 0 0 0 5px color-mix(in srgb, var(--c, var(--navy)) 25%, transparent); }
+:where(.deck) .ladder .rung.off { opacity: .45; }
+:where(.deck) .ladder.s .rung { font-size: 17px; padding: 10px 12px; }
+:where(.deck) .ladder.s .rung b { font-size: 21px; }
+:where(.deck) .ladder.s .rung:nth-child(n) { min-height: 0; }
+:where(.deck) .slide.dark .ladder .rung { color: var(--ink); }
+
+/* ---------- figures: a picture takes the height that is left on the slide, never more ----------
+   A slide is 900 pixels high whatever it holds, so a picture cannot grow it. A picture is an
+   img or an svg that is a child of a .figure, of the slide body or of a column of .cols. It
+   fills the width of its box, its height follows its proportions, and when the slide is full
+   it gives up height: the box gets shorter and the drawing is scaled into it (object-fit for an
+   img, the viewBox for an svg), so nothing is cut and nothing is stretched. A caption keeps
+   its own height and stays on the slide. Every box between the slide body and the figure
+   passes the limit on: a column of .cols, a .stack or a div without a class. Elsewhere (the
+   .board of a course, a tool chip) pictures keep the size their own rules give them. The
+   rules hold without JavaScript too, where the slide has no .body around its content. */
+:where(.deck) .figure { background: var(--white); color: var(--ink); border: 1px solid var(--line); border-radius: var(--r-card); padding: 18px; }
+:where(.deck) .figure svg { width: 100%; height: auto; display: block; max-height: 520px; direction: ltr; }
+:where(.deck) .caption,
+:where(.deck .figure:has(> :is(img, svg))) > figcaption { font-size: var(--fs-caption); color: var(--muted); margin-top: 10px; }
+
+/* The figure is a column whose picture is the part that gives way. Selectors keep the weight
+   of a plain .figure rule (the rest is in :where), so a course's own rule still wins. A
+   <figure class="figure"> without a picture (a course's drawing board) is left alone. */
+:where(.deck) .figure:where(:has(> :is(img, svg))) { display: flex; flex-direction: column; min-height: 0; max-height: 100%; }
+:where(.deck) .figure > :where(.caption, figcaption) { flex: none; }
+
+/* The boxes that hold such a figure may be shorter than their content too. In a flex column
+   min-height: 0 lets a box shrink; in a grid row it is max-height: 100% that holds a column to
+   the height of its row. */
+:where(.deck .slide :is(.cols, div:not([class]), .stack, .cols > *):not(.figure):has(.figure > :is(img, svg))) {
+  min-height: 0;
+  max-height: 100%;
+}
+:where(.deck .slide :is(div:not([class]), .stack, .cols > *):not(.figure, .cols):has(.figure > :is(img, svg))) {
+  display: flex;
+  flex-direction: column;
+}
+
+/* the picture; an img with a width="…" of its own keeps that width */
+:where(.deck) .figure > :is(img, svg),
+:where(.deck .slide > .body, .deck .slide, .deck .cols) > :is(img, svg) {
+  display: block;
+  flex: 0 1 auto;
+  min-height: 0;
+  max-width: 100%;
+  object-fit: contain;
+}
+:where(.deck) .figure > img:where(:not([width])),
+:where(.deck .slide > .body, .deck .slide, .deck .cols) > img:where(:not([width])) { width: 100%; height: auto; }
+:where(.deck) .figure > img:where([width]),
+:where(.deck .slide > .body, .deck .slide, .deck .cols) > img:where([width]) { height: auto; margin-inline: auto; }
+:where(.deck .slide > .body, .deck .slide, .deck .cols) > svg { width: 100%; height: auto; direction: ltr; }
+:where(.deck .cols) > :is(img, svg) { max-height: 100%; }
+
+:where(.deck) .matrix { display: grid; gap: 3px; font-size: 18px; font-family: var(--mono); direction: ltr; }
+/* Cells are square up to 120 pixels high; in a wider box they get wider, not taller, so a matrix
+   in a column of the slide stays on the slide. Columns given in pixels keep them square. */
+:where(.deck) .matrix div { aspect-ratio: 1; max-height: 120px; border-radius: var(--r-cell); display: grid; place-items: center; color: var(--ink); } /* cells carry light tints of their own */
+:where(.deck) .matrix .lbl { background: none; color: var(--muted); aspect-ratio: auto; }
+
+/* ---------- timers: the countdown face; the timers plugin adds its buttons ---------- */
+:where(.deck) .timer {
+  font-family: var(--mono);
+  font-size: var(--fs-timer);
+  font-weight: 600;
+  color: var(--track-text);
+  letter-spacing: -.02em;
+  margin: 26px 0 10px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  direction: ltr;
+}
+:where(.deck) .timer.done { color: var(--coral-text); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) .timer { color: var(--track-on-dark); }
+:where(.deck) :is(.slide.title, .slide.section, .slide.break, .slide.dark) .timer.done { color: var(--coral-on-dark); }
+:where(.deck) .timers { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; text-align: center; }
+:where(.deck) .timers .timer { font-size: 150px; }
+
+/* ======== theme/ui.css ======== */
+/* SDAIA Academy engine · engine UI (Academy.ui)
+   The layer outside the stage: buttons, side panels, dialogs, menus, toasts, fields. It keeps
+   its real size whatever the stage scale. Dark, like the speaker notes and help of the
+   previous system, with the track colour as the accent. Mirrors through logical properties. */
+
+.ax-ui {
+  position: fixed;
+  inset: 0;
+  z-index: var(--ui-z);
+  pointer-events: none;
+  font: var(--ui-font-size)/1.5 var(--font);
+  color: var(--ui-fg);
+}
+.ax-ui > * { pointer-events: auto; }
+
+/* On a course, lab or practice page the layer sits inside a page whose own style sheet dresses
+   bare elements: header gets the page's banner, h3 its navy, p, a, em and table their page
+   look. None of that may reach a panel or a dialog. Here each such element in the layer goes
+   back to what the browser gives it, which is what it has in a deck, and the ax- classes
+   below build on that. :where() keeps this rule as light as one class, so every later ax-
+   rule still wins. Decks are left alone: their own rules are scoped to the stage. */
+:where(html:not([data-ax="deck"])) .ax-ui :where(header, footer, nav, h1, h2, h3, h4, p, ul, ol, li, a, b, strong, em, code, pre, table, th, td, details, summary) {
+  all: revert;
+  box-sizing: border-box;
+}
+.ax-ui :focus-visible, :where(.deck) :focus-visible { outline: 3px solid var(--ui-focus); outline-offset: 2px; }
+.ax-ui :focus:not(:focus-visible) { outline: none; }
+
+.ax-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ax-icon { width: 20px; height: 20px; flex: none; display: block; }
+.ax-icon-mirror { transform: scaleX(var(--ax-dir)); }
+.ax-sr {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+.ax-muted { color: var(--ui-muted); }
+.ax-clip { position: fixed; top: 0; inset-inline-start: -9999px; opacity: 0; }
+
+/* ---------- buttons: at least 36 pixels, so a finger can hit them ---------- */
+.ax-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 7px 14px;
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--ui-bg-2);
+  color: var(--ui-fg);
+  font: 600 14px/1.2 var(--font);
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.ax-btn:hover { background: color-mix(in srgb, var(--ui-bg-2) 80%, var(--white)); }
+.ax-btn:active { background: var(--ui-press); }
+.ax-btn[disabled] { opacity: .5; cursor: default; }
+.ax-btn-icon { width: 36px; padding: 0; }
+.ax-btn-small { min-height: 28px; padding: 4px 10px; font-size: 13px; }
+.ax-btn-small.ax-btn-icon { width: 28px; }
+.ax-btn-primary { background: var(--track-color); border-color: var(--track-color); color: var(--ink); }
+.ax-btn-primary:hover { background: color-mix(in srgb, var(--track-color) 85%, var(--white)); }
+.ax-btn-ghost { background: transparent; border-color: transparent; }
+.ax-btn-ghost:hover { background: var(--ui-hover); }
+.ax-btn-danger { background: transparent; border-color: var(--ui-error); color: var(--ui-error); }
+.ax-btn-danger:hover { background: color-mix(in srgb, var(--ui-error) 16%, transparent); }
+
+/* ---------- panels: a side sheet at the end edge, or under the stage ---------- */
+.ax-panel {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  background: var(--ui-bg);
+  color: var(--ui-fg);
+  box-shadow: var(--ui-shadow);
+  visibility: hidden;
+  transition: transform .22s ease, visibility 0s linear .22s;
+}
+/* A page under a panel is navy on cream or white on navy, and even 3 in 100 of that shows as
+   ghost words behind the words of the panel. Over a page the panel is solid. */
+:where(html:not([data-ax="deck"])) .ax-panel { background: var(--ui-bg-solid); }
+.ax-panel.ax-open { visibility: visible; transform: none; transition: transform .22s ease; }
+.ax-panel:focus { outline: none; }
+.ax-panel-end {
+  top: 0;
+  bottom: 0;
+  inset-inline-end: 0;
+  width: min(420px, 92vw);
+  border-inline-start: 3px solid var(--track-color);
+  transform: translateX(calc(105% * var(--ax-dir)));
+}
+.ax-panel-bottom {
+  inset-inline: 0;
+  bottom: 0;
+  max-height: 34vh;
+  border-top: 3px solid var(--track-color);
+  transform: translateY(105%);
+}
+.ax-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 8px 0; padding-inline: 24px 12px; }
+.ax-panel-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-kicker);
+  text-transform: var(--case-label);
+  color: var(--track-color);
+}
+.ax-panel-body { overflow: auto; padding: 4px 24px 18px; flex: 1; min-height: 0; }
+
+/* ---------- dialogs ---------- */
+.ax-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: var(--ui-backdrop);
+}
+.ax-dialog {
+  background: var(--ui-bg-2);
+  color: var(--ui-fg);
+  border-radius: 16px;
+  padding: 22px 26px;
+  width: min(460px, 100%);
+  max-height: 86vh;
+  overflow: auto;
+  box-shadow: var(--ui-shadow);
+}
+.ax-dialog:focus { outline: none; }
+.ax-dialog-title { margin: 0 0 14px; font-size: 18px; font-weight: 600; }
+.ax-dialog-body > * + * { margin-top: 12px; }
+.ax-dialog-body p { margin: 0; }
+.ax-dialog-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+/* ---------- popup menus ---------- */
+.ax-menu {
+  position: fixed;
+  min-width: 280px;
+  max-width: calc(100vw - 16px);
+  overflow: auto;
+  padding: 6px;
+  background: var(--ui-bg-2);
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-shadow);
+}
+.ax-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: var(--ui-radius-s);
+  background: transparent;
+  color: var(--ui-fg);
+  font: 15px/1.3 var(--font);
+  text-align: start;
+  cursor: pointer;
+}
+.ax-menu-item:hover, .ax-menu-item:focus { background: var(--ui-hover); }
+.ax-menu-item[disabled] { opacity: .5; cursor: default; }
+.ax-menu-item .ax-icon { color: var(--ui-muted); }
+.ax-menu-gap, .ax-menu-check { width: 20px; height: 20px; flex: none; color: var(--track-color); }
+.ax-menu-check { border: 1.5px solid var(--ui-muted); border-radius: 5px; display: grid; place-items: center; }
+.ax-menu-check .ax-icon { width: 16px; height: 16px; color: var(--track-color); }
+.ax-menu-label { flex: 1; }
+.ax-menu-hint {
+  margin-inline-start: auto;
+  font: 600 12px var(--mono);
+  color: var(--ui-muted);
+  background: var(--ui-hover);
+  border-radius: 5px;
+  padding: 1px 7px;
+  direction: ltr;
+}
+/* on a lit item the key stands on two tints: it takes the full colour to keep 4.5 to 1 */
+.ax-menu-item:is(:hover, :focus) .ax-menu-hint { color: var(--ui-fg); }
+.ax-menu-heading {
+  padding: 8px 10px 2px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--ui-muted);
+}
+.ax-menu-sep { height: 1px; margin: 6px 4px; background: var(--ui-line); }
+
+/* ---------- toasts ---------- */
+.ax-toasts {
+  position: fixed;
+  bottom: 24px;
+  left: 50%; /* centred: the same in both directions */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  pointer-events: none; /* a message, not a control: a click goes to what is under it */
+}
+.ax-toast :where(a, button) { pointer-events: auto; } /* unless the message carries a control of its own */
+.ax-toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--ui-bg-2);
+  color: var(--ui-fg);
+  box-shadow: var(--ui-shadow);
+  border-inline-start: 4px solid var(--ui-muted);
+  animation: ax-toast-in .2s ease both;
+  transition: opacity .35s ease;
+}
+.ax-toast.ax-out { opacity: 0; }
+.ax-toast-ok { border-inline-start-color: var(--ui-ok); }
+.ax-toast-warn { border-inline-start-color: var(--ui-warn); }
+.ax-toast-error { border-inline-start-color: var(--ui-error); }
+@keyframes ax-toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- fields ---------- */
+.ax-field { display: flex; flex-direction: column; gap: 4px; }
+.ax-field-label { font-size: 13px; color: var(--ui-muted); }
+.ax-input {
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--ui-hover);
+  color: var(--ui-fg);
+  font: 15px/1.4 var(--font);
+  color-scheme: dark;
+}
+textarea.ax-input { resize: vertical; }
+.ax-field-checkbox { flex-direction: row; align-items: center; gap: 8px; }
+.ax-field-checkbox .ax-input { width: 18px; min-height: 18px; height: 18px; accent-color: var(--track-color); }
+.ax-field-checkbox .ax-field-label { font-size: 14px; color: var(--ui-fg); }
+
+/* keys drawn as keycaps, in the help and wherever a plugin shows one */
+.ax-ui kbd {
+  display: inline-block;
+  font: 600 13px var(--mono);
+  background: var(--on-dark-fill-3);
+  border-radius: 6px;
+  padding: 2px 8px;
+  margin-block: 2px;
+  margin-inline: 0 4px;
+  direction: ltr;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-panel, .ax-panel.ax-open, .ax-btn, .ax-toast { transition: none; }
+  .ax-toast { animation: none; }
+}
+
+/* ======== theme/lab.css ======== */
+/* SDAIA Academy engine · lab guide pages: <html data-ax="lab">
+   The lab.css of the previous system, scoped like page.css: :where() limits the rules to lab
+   pages without adding weight. The copy button on prompts is in plugin-prompt-copy.css. */
+
+:where(html[data-ax="lab"]) body { margin: 0; background: var(--paper); color: var(--ink); font: 17.5px/var(--lh-lab) var(--font); }
+:where(html[data-ax="lab"]) a { color: var(--teal-text); }
+:where(html[data-ax="lab"]) .wrap { max-width: 900px; margin: 0 auto; padding: 0 22px; }
+:where(html[data-ax="lab"]) code { font-family: var(--mono); font-size: .86em; background: var(--code-inline-page); padding: 1px 6px; border-radius: 5px; direction: ltr; unicode-bidi: isolate; }
+:where(html[data-ax="lab"]) pre.code { background: var(--code-bg); color: var(--code-fg); border-radius: 12px; padding: 14px 18px; font: 15px/1.5 var(--mono); overflow: auto; direction: ltr; text-align: left; margin: 10px 0; }
+:where(html[data-ax="lab"]) pre.code code { background: none; padding: 0; color: inherit; font-size: inherit; }
+:where(html[data-ax="lab"]) :is(.en, .ltr) { direction: ltr; unicode-bidi: isolate; }
+:where(html[data-ax="lab"]) .en { font-family: var(--font-latin); }
+:where(html[data-ax="lab"]) .ar { direction: rtl; unicode-bidi: isolate; font-family: var(--font-ar); }
+:where(html[data-ax="lab"]) :is(b, strong) { font-weight: 600; }
+:where(html[data-ax="lab"]) em { color: var(--coral-text); font-style: normal; font-weight: 600; }
+:where(html[data-ax="lab"]) .muted { color: var(--muted); }
+
+/* ---------- header ---------- */
+:where(html[data-ax="lab"]) header {
+  background:
+    radial-gradient(800px 420px at var(--ax-x-near-end) 0%, var(--glow-page), transparent 60%),
+    radial-gradient(600px 360px at var(--ax-x-start) 100%, color-mix(in srgb, var(--track-color) 18%, transparent), transparent 60%),
+    var(--navy);
+  color: var(--white);
+  padding: 22px 0 34px;
+}
+:where(html[data-ax="lab"]) header .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+:where(html[data-ax="lab"]) header .logo { height: 40px; color: var(--white); display: flex; flex: none; direction: ltr; }
+:where(html[data-ax="lab"]) header .logo svg { height: 100%; width: auto; }
+:where(html[data-ax="lab"]) header nav { font-size: 15px; display: flex; gap: 14px; flex-wrap: wrap; }
+:where(html[data-ax="lab"]) header nav a { color: var(--on-dark-soft); text-decoration: none; }
+:where(html[data-ax="lab"]) header nav a:hover { color: var(--white); text-decoration: underline; }
+:where(html[data-ax="lab"]) header p a { color: var(--teal-on-dark); }
+:where(html[data-ax="lab"]) .tag { display: inline-block; background: var(--track-color); color: var(--ink); font-weight: 700; font-size: 15px; padding: 4px 14px; border-radius: var(--r-token); margin: 30px 0 10px; }
+:where(html[data-ax="lab"]) header h1 { font-size: clamp(28px, 5vw, 42px); line-height: var(--lh-lab-h1); margin: 0 0 8px; }
+:where(html[data-ax="lab"]) header p { color: var(--on-dark-soft); margin: 0; font-size: 18px; max-width: 720px; }
+:where(html[data-ax="lab"]) .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+:where(html[data-ax="lab"]) .meta span { font-size: 14px; padding: 4px 12px; border-radius: var(--r-pill); border: 1px solid var(--on-dark-line); }
+
+/* ---------- content ---------- */
+:where(html[data-ax="lab"]) main { padding-bottom: 40px; }
+:where(html[data-ax="lab"]) h2 { color: var(--navy); font-size: 25px; margin: 40px 0 12px; line-height: 1.35; }
+:where(html[data-ax="lab"]) h3 { color: var(--navy); font-size: 20px; margin: 26px 0 8px; }
+:where(html[data-ax="lab"]) p { margin: 0 0 12px; }
+:where(html[data-ax="lab"]) :is(ul, ol) { padding-inline-start: 22px; margin: 0 0 12px; }
+:where(html[data-ax="lab"]) li { margin-bottom: 5px; }
+
+:where(html[data-ax="lab"]) .box { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-table); padding: 18px 22px; margin: 14px 0; }
+:where(html[data-ax="lab"]) .box > :last-child { margin-bottom: 0; }
+:where(html[data-ax="lab"]) .box > h3:first-child { margin-top: 0; }
+:where(html[data-ax="lab"]) .goal { border-inline-start: 6px solid var(--teal); }
+/* a file name is one long word ("meeting_transcript_sept_review.txt"): the column may not grow
+   with it, and the name breaks anywhere rather than push the page sideways on a phone */
+:where(html[data-ax="lab"]) .files { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
+:where(html[data-ax="lab"]) .files a { display: flex; flex-wrap: wrap; column-gap: 10px; min-width: 0; align-items: baseline; text-decoration: none; color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: var(--r-tag); padding: 10px 14px; }
+:where(html[data-ax="lab"]) .files a:hover { border-color: var(--teal); }
+:where(html[data-ax="lab"]) .files a b { color: var(--navy); min-width: 0; overflow-wrap: anywhere; }
+:where(html[data-ax="lab"]) .files a span { color: var(--muted); font-size: 15px; }
+
+/* steps */
+:where(html[data-ax="lab"]) .step { position: relative; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-callout); padding: 18px 22px 16px; margin: 16px 0; }
+/* The heading is a line of text: a <code> or a span in it stays in the sentence. Only the
+   minutes sit apart, floated to the end of the line they follow, at the height of that line. */
+:where(html[data-ax="lab"]) .step > h3 { margin: 0 0 8px; display: flow-root; }
+:where(html[data-ax="lab"]) .step > h3 .min { float: inline-end; margin-inline-start: 12px; font-size: 14px; line-height: calc(20em / 14 * var(--lh-lab)); font-weight: 600; color: var(--muted); white-space: nowrap; }
+:where(html[data-ax="lab"]) .step.stretch { border-style: dashed; border-color: var(--purple); }
+:where(html[data-ax="lab"]) .step.stretch > h3 { color: var(--purple); }
+:where(html[data-ax="lab"]) .step > :last-child { margin-bottom: 0; }
+
+/* prompts: the copy button is added by the prompt-copy plugin */
+:where(html[data-ax="lab"]) .prompt {
+  position: relative;
+  background: var(--paper-3);
+  border: 1px solid var(--line);
+  border-inline-start: 6px solid var(--c, var(--amber));
+  border-radius: var(--r-chip);
+  padding: 14px 18px;
+  margin: 10px 0;
+  white-space: pre-line;
+  font-size: 16.5px;
+  line-height: 1.8;
+}
+:where(html[data-ax="lab"]) .prompt[data-tool]::before { content: attr(data-tool); display: block; font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 4px; white-space: normal; }
+:where(html[data-ax="lab"]) .prompt .ph { color: var(--coral-text); font-weight: 600; }
+
+:where(html[data-ax="lab"]) .callout { border-radius: var(--r-chip); padding: 12px 18px; margin: 12px 0; background: color-mix(in srgb, var(--c, var(--teal)) 9%, var(--white)); border-inline-start: 6px solid var(--c, var(--teal)); }
+:where(html[data-ax="lab"]) .callout > :last-child { margin-bottom: 0; }
+
+:where(html[data-ax="lab"]) table { width: 100%; border-collapse: collapse; font-size: 15.5px; background: var(--white); border-radius: var(--r-chip); overflow: hidden; margin: 10px 0; }
+:where(html[data-ax="lab"]) th { background: var(--navy); color: var(--white); text-align: start; font-weight: 600; padding: 9px 14px; }
+:where(html[data-ax="lab"]) td { padding: 9px 14px; border-top: 1px solid var(--paper-2); vertical-align: top; }
+:where(html[data-ax="lab"]) td.fill { min-width: 140px; color: var(--muted); }
+:where(html[data-ax="lab"]) :is(td, th).num { text-align: end; font-variant-numeric: tabular-nums; }
+
+:where(html[data-ax="lab"]) details { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-chip); padding: 10px 18px; margin: 12px 0; }
+:where(html[data-ax="lab"]) details summary { cursor: pointer; font-weight: 600; color: var(--navy); }
+:where(html[data-ax="lab"]) details[open] summary { margin-bottom: 8px; }
+:where(html[data-ax="lab"]) details.instructor { border-color: color-mix(in srgb, var(--purple) 45%, var(--white)); }
+:where(html[data-ax="lab"]) details.instructor summary { color: var(--purple); }
+
+:where(html[data-ax="lab"]) .checks { counter-reset: q; list-style: none; padding: 0; }
+:where(html[data-ax="lab"]) .checks li { counter-increment: q; position: relative; padding-inline-start: 38px; margin-bottom: 10px; }
+:where(html[data-ax="lab"]) .checks li::before {
+  content: counter(q);
+  position: absolute;
+  inset-inline-start: 0;
+  top: 2px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+}
+
+:where(html[data-ax="lab"]) .tools { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+:where(html[data-ax="lab"]) .tools span { display: inline-flex; align-items: center; gap: 8px; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-tag); padding: 4px 10px; font-size: 15px; font-weight: 600; }
+:where(html[data-ax="lab"]) .tools img { width: 20px; height: 20px; object-fit: contain; }
+
+:where(html[data-ax="lab"]) .pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 36px; flex-wrap: wrap; }
+:where(html[data-ax="lab"]) .pager a { text-decoration: none; background: var(--navy); color: var(--white); padding: 9px 16px; border-radius: var(--r-tag); font-weight: 600; font-size: 15px; }
+:where(html[data-ax="lab"]) footer { border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; padding: 20px 0 34px; }
+
+/* Narrow screens: a wide table scrolls inside its own box instead of widening the page. A
+   block cannot stretch the rows inside it, so the box takes the width of its rows (up to the
+   page) and its header and background end where the rows end, in both directions. */
+@media (max-width: 720px) { :where(html[data-ax="lab"]) table { display: block; overflow-x: auto; width: max-content; max-width: 100%; } }
+@media print {
+  :where(html[data-ax="lab"]) header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :where(html[data-ax="lab"]) .pager { display: none; }
+  :where(html[data-ax="lab"]) details { display: block; }
+  :where(html[data-ax="lab"]) .step { break-inside: avoid; }
+}
+
+/* ======== theme/page.css ======== */
+/* SDAIA Academy engine · the course page and other long pages: <html data-ax="page">
+   The page.css of the previous system, scoped so that one stylesheet serves every kind of
+   page: :where() adds the scope without adding weight, so a course overrides a rule here with
+   the same selector it used before. Mirrors through logical properties and the tokens.
+   The frame (body, links, the column, the header, the footer) is also the frame of the
+   practice page, <html data-ax="practice">; the content rules below it are the course page's. */
+
+:where(html[data-ax="page"], html[data-ax="practice"]) body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/var(--lh-page) var(--font); }
+:where(html[data-ax="page"], html[data-ax="practice"]) a { color: var(--teal-text); }
+:where(html[data-ax="page"], html[data-ax="practice"]) :is(b, strong) { font-weight: 600; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .ar { font-family: var(--font-ar); direction: rtl; unicode-bidi: isolate; }
+:where(html[data-ax="page"], html[data-ax="practice"]) :is(.en, .ltr) { direction: ltr; unicode-bidi: isolate; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .en { font-family: var(--font-latin); }
+:where(html[data-ax="page"], html[data-ax="practice"]) .muted { color: var(--muted); }
+
+/* ---------- header ---------- */
+:where(html[data-ax="page"], html[data-ax="practice"]) header {
+  background:
+    radial-gradient(900px 500px at var(--ax-x-near-end) 0%, var(--glow-page), transparent 60%),
+    radial-gradient(700px 400px at var(--ax-x-start) 100%, color-mix(in srgb, var(--track-color) 18%, transparent), transparent 60%),
+    var(--navy);
+  color: var(--white);
+  padding: 28px 0 56px;
+}
+:where(html[data-ax="page"], html[data-ax="practice"]) header .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+:where(html[data-ax="page"], html[data-ax="practice"]) header nav { font-size: 15px; display: flex; gap: 14px; flex-wrap: wrap; }
+:where(html[data-ax="page"], html[data-ax="practice"]) header nav a { color: var(--on-dark-soft); text-decoration: none; }
+:where(html[data-ax="page"], html[data-ax="practice"]) header nav a:hover { color: var(--white); text-decoration: underline; }
+:where(html[data-ax="page"], html[data-ax="practice"]) header :is(p, .sub) a { color: var(--teal-on-dark); }
+:where(html[data-ax="page"], html[data-ax="practice"]) .logo { height: 44px; color: var(--white); display: flex; flex: none; direction: ltr; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .logo svg { height: 100%; width: auto; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .kicker {
+  font-size: calc(13px + var(--ar-bump));
+  letter-spacing: var(--ls-kicker);
+  text-transform: var(--case-label);
+  font-weight: 600;
+  color: var(--track-on-dark);
+  margin: 48px 0 10px;
+}
+:where(html[data-ax="page"], html[data-ax="practice"]) header h1 { font-size: clamp(34px, 6vw, 58px); line-height: var(--lh-page-h1); margin: 0 0 14px; letter-spacing: var(--ls-heading); }
+:where(html[data-ax="page"], html[data-ax="practice"]) header .sub { display: block; font-size: 24px; margin: 0 0 12px; color: var(--on-dark-1); }
+:where(html[data-ax="page"], html[data-ax="practice"]) header p { color: var(--on-dark-soft); font-size: 20px; max-width: 800px; margin: 0; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+:where(html[data-ax="page"], html[data-ax="practice"]) .meta span { font-size: 14px; padding: 6px 14px; border-radius: var(--r-pill); border: 1px solid var(--on-dark-line); }
+:where(html[data-ax="page"], html[data-ax="practice"]) .meta span.track { background: var(--track-color); color: var(--ink); border-color: var(--track-color); font-weight: 600; }
+
+/* ---------- content ---------- */
+:where(html[data-ax="page"]) h2 { color: var(--navy); font-size: 28px; margin: 56px 0 16px; }
+:where(html[data-ax="page"]) h3 { color: var(--navy); margin: 0 0 6px; font-size: 20px; }
+:where(html[data-ax="page"]) p { margin: 0 0 12px; }
+:where(html[data-ax="page"]) :is(ul, ol) { padding-inline-start: 20px; margin: 0 0 12px; }
+:where(html[data-ax="page"]) li { margin-bottom: 6px; }
+:where(html[data-ax="page"]) code { font-family: var(--mono); font-size: 13.5px; background: var(--code-inline-page); padding: 1px 6px; border-radius: 5px; direction: ltr; unicode-bidi: isolate; }
+:where(html[data-ax="page"]) pre.code { background: var(--code-bg); color: var(--code-fg); border-radius: 12px; padding: 16px 20px; font: 14px/1.5 var(--mono); overflow: auto; direction: ltr; text-align: left; }
+:where(html[data-ax="page"]) pre.code code { background: none; padding: 0; color: inherit; font-size: inherit; }
+
+:where(html[data-ax="page"]) .grid { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+:where(html[data-ax="page"]) .card { background: var(--white); border: 1px solid var(--line); border-top: 5px solid var(--c, var(--navy)); border-radius: var(--r-table); padding: 20px; }
+:where(html[data-ax="page"]) .card p { margin: 0; color: var(--muted); font-size: 15px; }
+:where(html[data-ax="page"]) .card p + p { margin-top: 8px; }
+:where(html[data-ax="page"]) .c-amber { --c: var(--amber); --c-text: var(--amber-text); }
+
+:where(html[data-ax="page"]) .day { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-callout); margin-bottom: 18px; overflow: hidden; }
+:where(html[data-ax="page"]) .day-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+  border-inline-start: 8px solid var(--c, var(--navy));
+}
+:where(html[data-ax="page"]) .day-head .t {
+  font-size: calc(13px + var(--ar-bump));
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--c-text, var(--c, var(--navy)));
+  font-weight: 700;
+}
+:where(html[data-ax="page"]) .day-head h3 { font-size: 22px; margin: 2px 0 0; }
+:where(html[data-ax="page"]) .btn { display: inline-block; text-decoration: none; background: var(--navy); color: var(--white); padding: 9px 16px; border-radius: var(--r-tag); font-weight: 600; font-size: 15px; }
+:where(html[data-ax="page"]) .btn:hover { background: var(--navy-deep); }
+
+:where(html[data-ax="page"]) table { width: 100%; border-collapse: collapse; font-size: 15px; }
+:where(html[data-ax="page"]) :is(td, th) { padding: 10px 22px; border-top: 1px solid var(--paper-2); text-align: start; vertical-align: top; }
+:where(html[data-ax="page"]) th {
+  font-size: calc(12px + var(--ar-bump));
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--muted);
+  font-weight: 600;
+}
+:where(html[data-ax="page"]) .scroll { overflow-x: auto; }
+
+:where(html[data-ax="page"]) .two { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+:where(html[data-ax="page"]) .bar { display: grid; grid-template-columns: 1fr 52px; gap: 10px; align-items: center; margin-bottom: 8px; font-size: 15px; }
+:where(html[data-ax="page"]) .bar i { display: block; height: 10px; border-radius: 5px; background: var(--c, var(--teal)); width: var(--w); margin-top: 4px; }
+
+:where(html[data-ax="page"]) .files { display: grid; gap: 10px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+:where(html[data-ax="page"]) .files a { display: block; background: var(--white); border: 1px solid var(--line); border-radius: var(--r-chip); padding: 12px 16px; text-decoration: none; color: var(--ink); }
+:where(html[data-ax="page"]) .files a:hover { border-color: var(--teal); }
+/* a file name reads left to right but lines up with the page: start would be its own left */
+:where(html[data-ax="page"]) .files a b { display: block; font-family: var(--mono); font-size: 14px; color: var(--navy); direction: ltr; text-align: var(--ax-start); }
+:where(html[data-ax="page"]) .files a span { font-size: 14px; color: var(--muted); }
+:where(html[data-ax="page"]) .note { background: var(--white); border: 1px solid var(--line); border-inline-start: 6px solid var(--c, var(--track-color)); border-radius: var(--r-chip); padding: 14px 18px; font-size: 15px; }
+:where(html[data-ax="page"]) .note.warn { --c: var(--coral); }
+:where(html[data-ax="page"]) .note.tip { --c: var(--teal); }
+:where(html[data-ax="page"]) .note.info { --c: var(--purple); }
+
+:where(html[data-ax="page"]) .prompt { position: relative; background: var(--paper-3); border: 1px solid var(--line); border-inline-start: 6px solid var(--c, var(--amber)); border-radius: var(--r-chip); padding: 14px 18px; margin: 10px 0; white-space: pre-line; font-size: 16px; line-height: 1.8; }
+
+:where(html[data-ax="page"], html[data-ax="practice"]) footer { margin: 64px 0 0; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 14px; }
+
+@media (max-width: 640px) {
+  :where(html[data-ax="page"]) :is(td, th) { padding: 9px 12px; }
+  :where(html[data-ax="page"]) .day-head { padding: 16px; }
+}
+@media print {
+  :where(html[data-ax="page"], html[data-ax="practice"]) header { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  :where(html[data-ax="page"]) :is(.day, .card, .files a) { break-inside: avoid; }
+}
+
+/* ======== theme/plugin-activities.css ======== */
+/* SDAIA Academy engine · plugin 'activities': answering, revealing and the bars of a vote.
+   The look of a quiz is in components.css; this sheet adds the states. Right and wrong carry a
+   tick or a cross as well as a colour, so they read without colour vision. Sizes are in em, so
+   the same rules serve the 1600 by 900 stage and the practice page. Bars grow from the reading
+   start (logical properties), so they mirror in right to left. */
+
+.ax-act .opt { position: relative; isolation: isolate; flex-wrap: wrap; row-gap: 2px; user-select: none; }
+/* the letters of an order question follow the right order, so they would give it away */
+.quiz.ax-act.ax-act-order .opt::before { content: none; }
+.ax-act .opt:hover { border-color: color-mix(in srgb, var(--navy) 45%, var(--line)); }
+.ax-act .opt.ax-chosen { border-color: var(--navy); box-shadow: inset 0 0 0 1px var(--navy); }
+
+/* components.css fades every option without data-ok on reveal; here only the ones that were
+   neither right nor chosen fade, and nothing fades where there is no right answer */
+.quiz.ax-act.revealed .opt { opacity: 1; }
+.quiz.ax-act.ax-scored.revealed:not(.ax-act-order) .opt:not(.ax-right):not(.ax-wrong) { opacity: .62; }
+.quiz.ax-act.revealed .opt.ax-right {
+  border-color: var(--teal);
+  background: color-mix(in srgb, var(--teal) 12%, var(--white));
+  box-shadow: inset 0 0 0 1px var(--teal);
+}
+.quiz.ax-act.revealed .opt.ax-wrong {
+  border-color: var(--coral);
+  background: color-mix(in srgb, var(--coral) 10%, var(--white));
+  box-shadow: inset 0 0 0 1px var(--coral);
+}
+
+.ax-act .ax-mark { display: inline-flex; align-self: center; }
+.ax-act .ax-mark:empty { display: none; }
+.ax-act .ax-mark .ax-icon { width: 1.15em; height: 1.15em; stroke-width: 3; }
+.ax-act .ax-right .ax-mark { color: var(--teal-text); }
+.ax-act .ax-wrong .ax-mark { color: var(--coral-text); }
+
+/* The misconception behind a wrong option, after the reveal: beside the option's text when the
+   line has room, under it when not, so a reveal makes the slide as little taller as it can. */
+.ax-act .ax-opt-why { display: none; order: 1; flex: 1 1 16em; margin-inline-start: .4em; font-size: .72em; line-height: 1.3; color: var(--muted); }
+.quiz.ax-act.ax-scored.revealed .opt:not(.ax-right) .ax-opt-why { display: block; }
+
+/* order: the place given, then the right place */
+.ax-act .ax-pos {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5em;
+  height: 1.5em;
+  padding-inline: .3em;
+  border-radius: var(--r-pill);
+  background: var(--navy);
+  color: var(--white);
+  font-size: .85em;
+  font-weight: 700;
+  align-self: center;
+}
+.ax-act .ax-pos:empty { display: none; }
+.quiz.ax-act-order.revealed .ax-pos { background: var(--teal-text); }
+
+/* bars: the share of answers, drawn inside the option from the reading start */
+.ax-act .ax-bar {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: var(--ax-share, 0%);
+  background: color-mix(in srgb, var(--track-color) 30%, transparent);
+  z-index: -1;
+  transition: width .45s ease;
+}
+.ax-act .ax-count { display: none; order: 2; margin-inline-start: auto; gap: .7em; align-self: center; font-variant-numeric: tabular-nums; }
+.ax-act.ax-has-bars .ax-count { display: inline-flex; }
+.ax-act .ax-count .ax-pct { font-weight: 700; color: var(--navy); }
+.ax-act .ax-count .ax-n { color: var(--muted); min-width: 1.6em; text-align: end; }
+
+/* the controls and the line under the options */
+.ax-act-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .5em 1em; margin-top: .7em; font-size: .8em; }
+.ax-act-tools { display: flex; flex-wrap: wrap; align-items: center; gap: .6em; }
+.ax-act-btn {
+  font: 600 1em/1.2 var(--font);
+  padding: .45em 1.2em;
+  border-radius: var(--r-pill);
+  border: 2px solid var(--navy);
+  background: var(--white);
+  color: var(--navy);
+  cursor: pointer;
+}
+.ax-act-btn:hover:not([disabled]) { background: color-mix(in srgb, var(--navy) 8%, var(--white)); }
+.ax-act-btn[disabled] { opacity: .45; cursor: default; }
+.ax-act-input {
+  font: 600 1.1em/1.2 var(--font);
+  width: 8em;
+  padding: .4em .6em;
+  border: 2px solid var(--line);
+  border-radius: var(--r-cell);
+  background: var(--white);
+  color: var(--ink);
+}
+.ax-act-input:focus { border-color: var(--navy); } /* and the focus ring of every control */
+.ax-act-input.ax-right { border-color: var(--teal); background: color-mix(in srgb, var(--teal) 12%, var(--white)); }
+.ax-act-input.ax-wrong { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 10%, var(--white)); }
+.ax-act-unit { color: var(--muted); }
+.ax-act-status { margin: 0; color: var(--muted); line-height: 1.4; }
+.ax-act-status:empty { display: none; }
+
+/* a live platform has the checkpoint open: the outline goes round a quiz block, and on a
+   checkpoint slide (the slide is the activity) round its options, never round the whole slide */
+.quiz.ax-act.ax-live-open:not(.ax-act-slide),
+.quiz.ax-act-slide.ax-live-open .opts { outline: 3px solid var(--track-color); outline-offset: 10px; border-radius: var(--r-opt); }
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-act .ax-bar { transition: none; }
+}
+
+/* ======== theme/plugin-ai.css ======== */
+/* SDAIA Academy engine · plugin 'ai': the Ask AI panel (scope, task, question, size, the
+   assistants as a grid of buttons) and the corner button of course, lab and practice pages. */
+
+:root {
+  --ai-tool-bg: rgba(255, 255, 255, .05);
+  --ai-tool-hover: rgba(255, 255, 255, .1);
+}
+
+.ax-ai-section { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
+.ax-ai-section:first-child { margin-top: 4px; }
+.ax-ai-heading { margin: 0; font-size: 15px; font-weight: 600; }
+.ax-ai-sub {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--ui-muted);
+}
+.ax-ai-choices { display: flex; gap: 6px; flex-wrap: wrap; }
+.ax-ai-hint { margin: 0; font-size: 13px; }
+.ax-ai-trainer {
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: var(--ui-radius-s);
+  font-size: 13px;
+  background: color-mix(in srgb, var(--ui-warn) 18%, transparent);
+  color: var(--ui-fg);
+}
+.ax-ai-question { margin-top: 14px; }
+
+.ax-ai-size { margin-top: 10px; display: flex; flex-direction: column; gap: 6px; }
+.ax-ai-size p { margin: 0; font-size: 13px; }
+.ax-ai-tokens { color: var(--ui-muted); }
+.ax-ai-warn {
+  padding: 8px 10px;
+  border-radius: var(--ui-radius-s);
+  border-inline-start: 3px solid var(--ui-warn);
+  background: color-mix(in srgb, var(--ui-warn) 14%, transparent);
+  color: var(--ui-fg);
+}
+
+.ax-ai-tools { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 8px; }
+.ax-ai-tool {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2px;
+  min-height: 52px;
+  padding: 8px 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--ai-tool-bg);
+  color: var(--ui-fg);
+  font: 600 14px/1.2 var(--font);
+  text-align: start;
+  cursor: pointer;
+  transition: background .15s, border-color .15s;
+}
+.ax-ai-tool:hover { background: var(--ai-tool-hover); border-color: var(--track-color); }
+.ax-ai-tool.ax-ai-last { border-color: var(--track-color); }
+.ax-ai-tool-name { direction: ltr; unicode-bidi: isolate; }
+.ax-ai-tool-tag { font-size: 11px; font-weight: 400; color: var(--ui-muted); }
+
+.ax-ai-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--ui-line);
+}
+
+/* ---------- course, lab and practice pages: the corner button ---------- */
+
+.ax-ai-launch.ax-btn {
+  position: fixed;
+  bottom: 16px;
+  inset-inline-end: 16px;
+  min-height: 44px;
+  padding-inline: 18px;
+  border-radius: var(--r-pill);
+  box-shadow: var(--ui-shadow);
+}
+/* The page ends above the button, so its last line and its last control can scroll clear of
+   it, and what the browser scrolls into view (the control that takes the focus, a link target)
+   stops above the button instead of under it. */
+:where(html:not([data-ax="deck"])) body:has(> .ax-ui > .ax-ai-launch) { padding-block-end: 76px; }
+html:not([data-ax="deck"]):has(body > .ax-ui > .ax-ai-launch) { scroll-padding-block-end: 76px; }
+@media print {
+  .ax-ai-launch { display: none !important; }
+  :where(html:not([data-ax="deck"])) body:has(> .ax-ui > .ax-ai-launch) { padding-block-end: 0; }
+}
+@media (prefers-reduced-motion: reduce) { .ax-ai-tool { transition: none; } }
+
+/* ======== theme/plugin-blank.css ======== */
+/* SDAIA Academy engine · plugin 'blank': the black screen */
+
+.ax-blank { position: fixed; inset: 0; background: var(--ui-black); cursor: none; }
+
+/* ======== theme/plugin-break.css ======== */
+/* SDAIA Academy engine · plugin 'break': the break screen laid over the current slide */
+
+:where(.deck) .slide.live { z-index: 5; }
+/* not a slide: the column of the reading view and of the print preview shows every .slide */
+:is(.ax-view-read, .ax-view-print) :where(.deck) .slide.live { display: none; }
+:where(.deck) .slide.live .kicker { font-size: var(--fs-h4); letter-spacing: .08em; }
+:where(.deck) .slide.live h1.back { font-size: 40px; font-weight: 600; color: var(--on-dark-2); margin-top: 6px; cursor: pointer; }
+:where(.deck) .slide.live h1.back b {
+  display: block;
+  font: 600 200px/1 var(--mono);
+  color: var(--track-on-dark);
+  letter-spacing: -.02em;
+  font-variant-numeric: tabular-nums;
+  margin-top: 10px;
+  direction: ltr;
+}
+:where(.deck) .slide.live .timer { font-size: 78px; margin: 30px 0 6px; cursor: pointer; }
+:where(.deck) .slide.live .timer:not(.done) { color: var(--on-dark-1); }
+:where(.deck) .slide.live .edit { display: none; margin: 10px 0 0; }
+:where(.deck) .slide.live[data-edit="back"] .edit-back, :where(.deck) .slide.live[data-edit="mins"] .edit-mins { display: flex; }
+:where(.deck) .slide.live .lead.small { margin-top: 24px; font-size: 22px; }
+
+:where(.deck) .timer-edit {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-xsmall);
+  color: var(--on-dark-2);
+  margin-bottom: 20px;
+}
+:where(.deck) .timer-edit input {
+  font: 600 20px var(--mono);
+  background: var(--on-dark-fill-2);
+  color: var(--on-dark);
+  border: 1px solid var(--on-dark-line);
+  border-radius: 8px;
+  padding: 4px 10px;
+  margin-inline: 6px;
+  color-scheme: dark;
+}
+:where(.deck) .timer-edit input.mins { width: 70px; text-align: center; }
+
+/* ======== theme/plugin-bridge.css ======== */
+/* SDAIA Academy engine · plugin 'bridge': the trainer's live indicator, the Launch control on
+   each activity and the join card for the room. The indicator is engine UI at the top middle of
+   the stage, between the logo and the day line of a slide, small and quiet; the join card sits
+   in the middle of the window, large enough to read from the back of the room. */
+
+.ax-bridge {
+  --ax-bridge-stage-h: min(100vh, 100vw * 9 / 16);
+  position: fixed;
+  top: calc((100vh - var(--ax-bridge-stage-h)) / 2 + var(--ax-bridge-stage-h) * 18 / 900);
+  inset-inline: 0;
+  margin-inline: auto;
+  width: max-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  max-width: 40vw;
+  pointer-events: none;
+}
+.ax-bridge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  background: var(--ui-bg);
+  color: var(--ui-fg);
+  font-size: 13px;
+  line-height: 1.5;
+  box-shadow: var(--ui-shadow);
+}
+.ax-bridge-live i { width: 8px; height: 8px; border-radius: 50%; background: var(--ui-ok); }
+.ax-bridge-signal[data-kind="lost"], .ax-bridge-signal[data-kind="muddy"] { background: color-mix(in srgb, var(--ui-warn) 30%, var(--ui-bg)); }
+
+.ax-bridge-launch[hidden] { display: none; }
+.ax-act-btn.ax-bridge-launch { border-color: var(--track-color); }
+
+.ax-join {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: max-content;
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 28px 28px 24px;
+  text-align: center;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: var(--r-card);
+  box-shadow: var(--ui-shadow);
+  border-top: 6px solid var(--track-color);
+}
+.ax-join h2 { margin: 0; font-size: 28px; color: var(--navy); }
+.ax-join-qr { width: min(260px, 60vw); height: auto; image-rendering: pixelated; }
+.ax-join-code { margin: 0; display: flex; align-items: baseline; gap: 12px; font-size: 18px; color: var(--muted); }
+.ax-join-code bdi { font: 700 44px/1.1 var(--mono); letter-spacing: .08em; color: var(--ink); }
+.ax-join-url { margin: 0; font: 600 20px/1.3 var(--mono); color: var(--navy); overflow-wrap: anywhere; }
+.ax-join .ax-btn { background: var(--paper-2); color: var(--ink); border-color: var(--line); }
+
+@media print { .ax-bridge, .ax-join, .ax-bridge-launch { display: none !important; } }
+
+/* ======== theme/plugin-comments.css ======== */
+/* SDAIA Academy engine · plugin 'comments': the comments panel, the marker of slides with open
+   comments, and the corner button of course and lab pages.
+
+   The marker sits before the slide number in the slide's own footer (a pseudo-element of
+   .no, so it scales with the stage and needs no element of its own). It is a trainer's note to
+   self: shown only with trainer tools on (html.ax-trainer), never in fullscreen, where the
+   room is looking, and never on paper. In the overview the same marker grows, because the
+   thumbnails are the slides at a fifth of their size. */
+
+:root {
+  --cm-mark: var(--coral);
+  --cm-mark-ink: var(--white);
+  --cm-quote-line: var(--track-color);
+  --cm-item-bg: rgba(255, 255, 255, .04);
+}
+
+/* ---------- the marker ---------- */
+
+html.ax-trainer:not(.ax-fullscreen) :where(.deck) .chrome-bottom .no[data-ax-cm]::before {
+  content: attr(data-ax-cm);
+  display: inline-grid;
+  place-items: center;
+  min-width: 26px;
+  height: 26px;
+  padding: 0 7px;
+  margin-inline-end: 10px;
+  border-radius: var(--r-pill);
+  background: var(--cm-mark);
+  color: var(--cm-mark-ink);
+  font: 600 15px/1 var(--font);
+  vertical-align: 1px;
+}
+html.ax-trainer.ax-overview:not(.ax-fullscreen) :where(.deck) .chrome-bottom .no[data-ax-cm]::before {
+  min-width: 80px;
+  height: 80px;
+  padding: 0 20px;
+  font-size: 48px;
+  vertical-align: 0;
+}
+@media print { :where(.deck) .chrome-bottom .no[data-ax-cm]::before { content: none !important; } }
+html.ax-view-print :where(.deck) .chrome-bottom .no[data-ax-cm]::before { content: none !important; }
+
+/* ---------- the panel ---------- */
+
+.ax-cm-form, .ax-cm-lists, .ax-cm-tools { display: flex; flex-direction: column; gap: 10px; }
+.ax-cm-lists, .ax-cm-tools { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--ui-line); }
+.ax-cm-heading { margin: 4px 0 0; font-size: 15px; font-weight: 600; }
+.ax-cm-slide-title { margin: -6px 0 0; font-size: 13px; }
+.ax-cm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ax-cm-tip { margin: 0; font-size: 12.5px; }
+.ax-cm-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ax-cm-keys { font-size: 12.5px; margin-inline-start: auto; }
+.ax-cm-editing { padding: 10px; border-radius: var(--ui-radius-s); background: var(--ui-hover); }
+
+.ax-cm-quote-box { display: flex; flex-direction: column; gap: 6px; }
+.ax-cm-quote-head { display: flex; align-items: center; justify-content: space-between; }
+.ax-cm-quote {
+  margin: 0;
+  padding: 6px 10px;
+  border-inline-start: 3px solid var(--cm-quote-line);
+  background: var(--ui-hover);
+  border-radius: 0 var(--ui-radius-s) var(--ui-radius-s) 0;
+  font-size: 14px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+[dir="rtl"] .ax-cm-quote { border-radius: var(--ui-radius-s) 0 0 var(--ui-radius-s); }
+
+.ax-cm-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.ax-cm-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.ax-cm-none { margin: 0; font-size: 14px; }
+.ax-cm-item {
+  padding: 10px 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius-s);
+  background: var(--cm-item-bg);
+}
+.ax-cm-item > p { margin: 6px 0 0; }
+.ax-cm-item.ax-cm-resolved, .ax-cm-item.ax-cm-declined { opacity: .72; }
+.ax-cm-foreign { border-style: dashed; }
+.ax-cm-item-head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.ax-cm-badge, .ax-cm-sev, .ax-cm-status {
+  font-size: 11.5px;
+  font-weight: 600;
+  padding: 1px 8px;
+  border-radius: var(--r-pill);
+  background: var(--ui-press);
+}
+.ax-cm-badge-error, .ax-cm-badge-outdated { background: color-mix(in srgb, var(--ui-error) 30%, transparent); }
+.ax-cm-badge-typo, .ax-cm-badge-wording, .ax-cm-badge-unclear { background: color-mix(in srgb, var(--ui-warn) 28%, transparent); }
+.ax-cm-badge-praise, .ax-cm-badge-idea { background: color-mix(in srgb, var(--ui-ok) 28%, transparent); }
+.ax-cm-badge-flag { background: var(--cm-mark); color: var(--cm-mark-ink); }
+.ax-cm-sev-high { color: var(--ui-error); background: transparent; border: 1px solid var(--ui-error); }
+.ax-cm-sev-low { color: var(--ui-muted); background: transparent; border: 1px solid var(--ui-line); }
+.ax-cm-status { background: transparent; border: 1px solid var(--ui-ok); color: var(--ui-ok); }
+.ax-cm-where {
+  margin-inline-start: auto;
+  font: 12.5px var(--font);
+  color: var(--ui-muted);
+  background: none;
+  border: 0;
+  padding: 2px 4px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.ax-cm-where:hover { color: var(--ui-fg); }
+span.ax-cm-where { cursor: default; text-decoration: none; }
+.ax-cm-body { font-size: 14.5px; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ax-cm-by, .ax-cm-readonly { font-size: 12.5px; }
+.ax-cm-stale { font-size: 12.5px; color: var(--ui-warn); }
+.ax-cm-suggested, .ax-cm-resolution { font-size: 13.5px; overflow-wrap: anywhere; }
+.ax-cm-resolution { color: var(--ui-ok); }
+.ax-cm-item-actions { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; margin-inline-start: -8px; }
+
+.ax-cm-tool-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.ax-cm-author { margin: 0; font-size: 13px; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.ax-cm-report { margin: 0; font-size: 13px; color: var(--ui-ok); }
+.ax-cm-refused { margin: 0; padding-inline-start: 18px; font-size: 14px; overflow-wrap: anywhere; }
+.ax-cm-refused li + li { margin-top: 6px; }
+.ax-cm-author-form > * + * { margin-top: 10px; }
+
+/* ---------- course, lab and practice pages: the corner button, above Ask AI ---------- */
+
+.ax-cm-launch.ax-btn {
+  position: fixed;
+  bottom: 72px;
+  inset-inline-end: 16px;
+  border-radius: var(--r-pill);
+  box-shadow: var(--ui-shadow);
+}
+.ax-cm-launch[hidden] { display: none; }
+/* with both buttons in the corner, the page ends above the upper one, and what is scrolled
+   into view stops above it */
+:where(html:not([data-ax="deck"])) body:has(> .ax-ui > .ax-cm-launch:not([hidden])) { padding-block-end: 132px; }
+html:not([data-ax="deck"]):has(body > .ax-ui > .ax-cm-launch:not([hidden])) { scroll-padding-block-end: 132px; }
+@media print {
+  .ax-cm-launch { display: none !important; }
+  :where(html:not([data-ax="deck"])) body:has(> .ax-ui > .ax-cm-launch:not([hidden])) { padding-block-end: 0; }
+}
+
+/* ======== theme/plugin-help.css ======== */
+/* SDAIA Academy engine · plugin 'help': the keyboard map */
+
+.ax-keys { width: 100%; border-collapse: collapse; margin-bottom: 14px; font-size: 14.5px; }
+.ax-keys caption, .ax-keys-caption {
+  text-align: start;
+  padding: 12px 0 4px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--ui-muted);
+}
+.ax-keys td { padding: 5px 0; vertical-align: top; border-top: 1px solid var(--ui-line); }
+.ax-keys td.ax-keys-k { width: 42%; padding-inline-end: 14px; }
+.ax-keys-caption { margin: 0; }
+.ax-keys-menu { margin: 0 0 14px; padding: 0; list-style: none; font-size: 14.5px; }
+.ax-keys-menu li { padding: 5px 0; border-top: 1px solid var(--ui-line); }
+
+/* ======== theme/plugin-ink.css ======== */
+/* SDAIA Academy engine · plugin 'ink': the laser dot and the pen canvas inside the stage (in
+   stage units, so they scale and move with it), and the toolbar that shows while a tool is on.
+   left and top are physical on purpose: stage coordinates are physical in both directions. */
+
+:root {
+  --ink-laser: #ff2a1f;
+  --ink-laser-glow: rgba(255, 42, 31, .45);
+  --ink-laser-size: 26px; /* stage units */
+  --ink-z: 8; /* above the slides and the break screen */
+}
+
+:where(.deck) > .ax-ink-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  z-index: var(--ink-z);
+  pointer-events: none;
+  touch-action: none;
+}
+.ax-ink-pen :where(.deck) > .ax-ink-canvas { pointer-events: auto; cursor: crosshair; }
+.ax-ink-laser .deck { cursor: none; }
+
+:where(.deck) > .ax-laser {
+  position: absolute;
+  left: calc(var(--ink-laser-size) / -2);
+  top: calc(var(--ink-laser-size) / -2);
+  width: var(--ink-laser-size);
+  height: var(--ink-laser-size);
+  border-radius: 50%;
+  z-index: calc(var(--ink-z) + 1);
+  pointer-events: none;
+  background: radial-gradient(circle, var(--white) 0 12%, var(--ink-laser) 30%, color-mix(in srgb, var(--ink-laser) 60%, transparent) 62%, transparent 72%);
+  box-shadow: 0 0 22px 8px var(--ink-laser-glow);
+}
+:where(.deck) > .ax-laser[hidden] { display: none; }
+
+/* no ink in the column of the reading view, the print preview or the overview grid */
+:is(.ax-view-read, .ax-view-print, .ax-overview) :where(.deck) > :is(.ax-ink-canvas, .ax-laser) { display: none; }
+
+.ax-ink-bar {
+  position: fixed;
+  top: 12px;
+  left: 50%; /* centred: the same in both directions */
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: var(--ui-radius);
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-line);
+  border-top: 3px solid var(--track-color);
+  box-shadow: var(--ui-shadow);
+}
+.ax-ink-bar[hidden] { display: none; }
+.ax-ink-bar .ax-btn[aria-pressed="true"] { background: var(--track-color); color: var(--ink); }
+
+/* ======== theme/plugin-menu.css ======== */
+/* SDAIA Academy engine · plugin 'menu': the round button in the bottom corner (end side) and
+   the hint with the main keys that shows for a few seconds when a deck opens.
+
+   Neither may cover the slide number or the footer text. Academy.deck centres the 1600 by 900
+   stage in the window and scales it to fit, so where the stage sits can be written here from
+   the window size alone, and the dock follows every resize without a script:
+   - the button lives in the slide's end margin, the 110 of 1600 stage pixels beside the slide
+     number (--slide-pad-inline over --stage-w), plus whatever room the window leaves beside the
+     stage; where that strip is narrow the button gets smaller and closer to the edge;
+   - the hint sits beside the button and just above the footer row, which is 30 stage pixels
+     from the bottom of the stage and about 23 high, with a gap of 9. */
+
+.ax-menu-dock {
+  --ax-stage-w: min(100vw, 100vh * 16 / 9);
+  --ax-stage-h: min(100vh, 100vw * 9 / 16);
+  --ax-stage-under: calc((100vh - var(--ax-stage-h)) / 2);
+  --ax-end-strip: calc((100vw - var(--ax-stage-w)) / 2 + var(--ax-stage-w) * 110 / 1600);
+  --ax-menu-size: clamp(28px, var(--ax-end-strip) - 22px, 44px);
+  --ax-menu-edge: clamp(6px, var(--ax-end-strip) - var(--ax-menu-size) - 8px, 14px);
+  position: fixed;
+  bottom: var(--ax-menu-edge);
+  inset-inline-end: var(--ax-menu-edge);
+  display: flex;
+  align-items: center;
+  transition: opacity .6s ease;
+}
+/* Faded, the button still takes a click where it always is. In fullscreen it is out of the way
+   entirely until the pointer moves or the screen is touched. A touch screen has no pointer to
+   move, so there the button does not fade outside fullscreen: a control nobody can see is a
+   control nobody finds. */
+.ax-menu-dock.ax-idle { opacity: 0; }
+.ax-fullscreen .ax-menu-dock.ax-idle { pointer-events: none; }
+@media (hover: none) {
+  html:not(.ax-fullscreen) .ax-menu-dock.ax-idle { opacity: 1; }
+}
+.ax-menu-dock:focus-within { opacity: 1; pointer-events: auto; }
+.ax-menu-button.ax-btn {
+  width: var(--ax-menu-size);
+  height: var(--ax-menu-size);
+  min-height: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--ui-bg-2) 82%, transparent);
+  border-color: var(--ui-line);
+  color: var(--ui-fg);
+}
+.ax-menu-button.ax-btn:hover { background: var(--ui-bg-2); }
+.ax-menu-button[aria-expanded="true"] { border-color: var(--track-color); }
+.ax-menu-hint-text {
+  position: fixed;
+  bottom: calc(var(--ax-stage-under) + var(--ax-stage-h) * 62 / 900);
+  inset-inline-end: calc(var(--ax-menu-edge) + var(--ax-menu-size) + 10px);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--ui-fg);
+  background: color-mix(in srgb, var(--ui-bg-2) 85%, transparent);
+  border-radius: var(--r-pill);
+  padding: 3px 12px;
+  white-space: nowrap;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+.ax-menu-hint-text.ax-gone, .ax-fullscreen .ax-menu-hint-text { opacity: 0; }
+.ax-view-read .ax-menu-hint-text, .ax-ui:has(> .ax-panel.ax-open) .ax-menu-hint-text { display: none; }
+/* the open menu says all the hint says, and the hint would lie across its last row */
+.ax-menu-dock:has(.ax-menu-button[aria-expanded="true"]) .ax-menu-hint-text { display: none; }
+
+/* In the reading view there is no stage to keep clear of: a full-size button for a finger. */
+.ax-view-read .ax-menu-dock { --ax-menu-size: 44px; --ax-menu-edge: 14px; }
+
+/* The dock stays above any panel so the menu is always reachable; a bottom panel keeps its text
+   clear of the round button, and a side panel pushes the button beside it. */
+.ax-menu-dock { z-index: 1; }
+.ax-ui:has(> .ax-panel-end.ax-open) .ax-menu-dock { --ax-menu-size: 44px; --ax-menu-edge: 14px; inset-inline-end: calc(min(420px, 92vw) + 14px); }
+.ax-ui .ax-panel-bottom .ax-panel-body { padding-inline-end: 72px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-menu-dock, .ax-menu-hint-text { transition: none; }
+}
+
+/* ======== theme/plugin-notes.css ======== */
+/* SDAIA Academy engine · plugin 'notes': the speaker notes under the stage */
+
+.ax-notes-text { font-size: 17px; line-height: 1.55; max-width: 110ch; }
+.ax-notes-text p { margin: 0 0 8px; }
+.ax-notes-text ul, .ax-notes-text ol { margin: 0 0 8px; padding-inline-start: 22px; }
+.ax-notes-text code { font-family: var(--mono); font-size: .9em; background: var(--ui-hover); padding: 1px 5px; border-radius: 4px; direction: ltr; unicode-bidi: isolate; }
+.ax-notes-text b, .ax-notes-text strong { color: var(--white); font-weight: 600; }
+.ax-notes-text em { color: var(--nb-fg); font-style: normal; }
+
+/* ======== theme/plugin-overview.css ======== */
+/* SDAIA Academy engine · plugin 'overview': the real slides scaled to thumbnails in a grid,
+   with a heading per session and a search bar on top. A slide is 1600 by 900 scaled by .2;
+   the negative margins give the grid the scaled size. */
+
+.ax-ov-head, .ax-ov-bar { display: none; }
+
+html.ax-overview body { overflow: hidden; }
+html.ax-overview .deck {
+  position: fixed;
+  inset: 0;
+  width: auto;
+  height: auto;
+  transform: none !important;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 320px);
+  justify-content: center;
+  align-content: start;
+  gap: 18px;
+  padding: 84px 24px 32px;
+}
+html.ax-overview :where(.deck) .slide {
+  display: flex;
+  position: relative;
+  inset: auto;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform: scale(.2);
+  transform-origin: top left;
+  margin-block-end: calc(var(--stage-h) * -.8);
+  margin-inline-end: calc(var(--stage-w) * -.8);
+  cursor: pointer;
+  outline: 6px solid transparent;
+  border-radius: 4px;
+}
+[dir="rtl"].ax-overview :where(.deck) .slide { transform-origin: top right; }
+html.ax-overview :where(.deck) .slide > * { pointer-events: none; }
+html.ax-overview :where(.deck) .slide.active { outline-color: var(--track-color); }
+html.ax-overview :where(.deck) .slide:focus-visible { outline: 12px solid var(--ui-focus); outline-offset: 0; }
+html.ax-overview :where(.deck) .slide.ax-ov-hide, html.ax-overview .ax-ov-head.ax-ov-hide { display: none; }
+html.ax-overview .frag { opacity: 1; transform: none; }
+html.ax-overview .slide.entered > .body { animation: none; }
+html.ax-overview .deck > .progress, html.ax-overview .slide.live { display: none; }
+
+html.ax-overview .ax-ov-head {
+  display: block;
+  grid-column: 1 / -1;
+  margin-top: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--ui-line);
+  font: 600 13px var(--font);
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--track-color);
+}
+
+html.ax-overview .ax-ov-bar {
+  position: fixed;
+  top: 0;
+  inset-inline: 0;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 20px;
+  background: var(--ui-bg);
+  border-bottom: 1px solid var(--ui-line);
+}
+.ax-ov-title { margin: 0; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.ax-ov-bar .ax-field { flex: 1; max-width: 520px; flex-direction: row; align-items: center; gap: 10px; }
+.ax-ov-bar .ax-field-label { white-space: nowrap; }
+.ax-ov-count { color: var(--ui-muted); font-size: 13px; white-space: nowrap; margin-inline-start: auto; }
+@media (max-width: 640px) {
+  .ax-ov-title, .ax-ov-count, .ax-ov-bar .ax-field-label { display: none; }
+}
+
+/* ======== theme/plugin-pacing.css ======== */
+/* SDAIA Academy engine · plugin 'pacing': the panel of class recordings */
+
+.ax-pace-now { display: flex; flex-direction: column; gap: 10px; align-items: flex-start; padding-block: 6px 14px; border-bottom: 1px solid var(--ui-line); }
+.ax-pace-now p { margin: 0; }
+.ax-pace-now .ax-field { align-self: stretch; }
+.ax-pace-run { padding-block: 14px; border-bottom: 1px solid var(--ui-line); }
+.ax-pace-label { display: flex; gap: 10px; align-items: baseline; margin: 0 0 2px; font-size: 16px; }
+.ax-pace-live {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--ui-error);
+}
+.ax-pace-meta { margin: 0 0 10px; font-size: 13px; }
+.ax-pace-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; margin-bottom: 10px; }
+.ax-pace-table :is(th, td) { padding: 4px 6px; text-align: start; border-bottom: 1px solid var(--ui-line); }
+.ax-pace-table thead th { font-size: 12px; color: var(--ui-muted); font-weight: 600; }
+.ax-pace-table td { text-align: end; }
+.ax-pace-table tr[data-pace="over"] td:last-child { color: var(--ui-error); font-weight: 600; }
+.ax-pace-sub { margin: 4px 0; font-size: 13px; color: var(--ui-muted); font-weight: 600; }
+.ax-pace-longest { margin: 0 0 12px; padding: 0; list-style: none; font-size: 14px; }
+.ax-pace-longest li { display: flex; justify-content: space-between; gap: 10px; padding-block: 2px; }
+.ax-pace-time { font-family: var(--mono); color: var(--ui-muted); direction: ltr; }
+.ax-pace-privacy { font-size: 12.5px; margin-top: 14px; }
+
+/* ======== theme/plugin-practice.css ======== */
+/* SDAIA Academy engine · plugin 'practice': the practice page (<html data-ax="practice">).
+   The page frame (body, header, column) is the course page's, from page.css; here are the
+   filters, the question cards and the score.
+   The quiz look of components.css is scoped to the deck; the same look is given here to the
+   practice page's activities at page size. Mirrors through logical properties; one column
+   below 720 pixels, large tap targets on phones. */
+
+/* a narrower column than the course page: one question is read, not scanned */
+:where(html[data-ax="practice"]) .wrap { max-width: 920px; }
+
+/* ---------- the app ---------- */
+.ax-practice-main { padding-block: 28px; } /* the room under the page for the Ask AI button is plugin-ai.css's */
+.ax-practice-main h2 { color: var(--navy); font-size: 24px; margin: 0 0 16px; }
+.ax-practice-main h2:focus { outline: none; }
+.ax-practice-main h3 { color: var(--navy); font-size: 18px; margin: 24px 0 8px; }
+.ax-practice-hint, .ax-practice-last, .ax-practice-count { color: var(--muted); margin: 8px 0; font-size: 15px; }
+.ax-practice-count { color: var(--ink); font-weight: 600; }
+.ax-practice-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+/* engine buttons and fields, light on the paper of the page */
+.ax-practice-main .ax-btn { min-height: 44px; padding: 9px 18px; font-size: 15px; background: var(--white); color: var(--navy); border-color: var(--line); }
+.ax-practice-main .ax-btn:hover { background: var(--paper-2); }
+.ax-practice-main .ax-btn-primary { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.ax-practice-main .ax-btn-primary:hover { background: var(--navy-deep); }
+.ax-practice-main .ax-btn-ghost { background: transparent; border-color: transparent; }
+.ax-practice-main .ax-btn-small { min-height: 36px; padding: 6px 14px; }
+.ax-practice-main .ax-btn[disabled] { opacity: .5; }
+.ax-practice-main :focus-visible { outline: 3px solid var(--ui-focus); outline-offset: 2px; }
+.ax-practice-main .ax-field-label { color: var(--muted); font-size: 14px; }
+.ax-practice-main .ax-input { background: var(--white); color: var(--ink); border-color: var(--line); color-scheme: light; min-height: 44px; font-size: 16px; }
+
+.ax-practice-setup { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-table); padding: 22px 24px; }
+.ax-practice-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ax-practice-mode { border: 0; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.ax-practice-mode legend { color: var(--muted); font-size: 14px; padding: 0; margin-bottom: 6px; }
+.ax-practice-radio { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; cursor: pointer; }
+.ax-practice-radio input { width: 18px; height: 18px; accent-color: var(--navy); }
+.ax-practice-seedrow { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 14px; margin-top: 16px; }
+.ax-practice-seedrow .ax-field { width: 140px; }
+.ax-practice-seedrow .ax-practice-hint { flex-basis: 100%; margin: 0; }
+.ax-practice-seed { font-variant-numeric: tabular-nums; }
+
+/* ---------- a question ---------- */
+.ax-practice-list { display: grid; gap: 18px; }
+.ax-practice-q { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-table); padding: 20px 24px 22px; }
+.ax-practice-meta { display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0 0 6px; font-size: 14px; color: var(--muted); }
+.ax-practice-meta b { color: var(--navy); }
+.ax-practice-main .quiz { font-size: 18px; }
+.ax-practice-main .quiz .lead { font-size: 21px; line-height: 1.4; margin: 0 0 14px; color: var(--ink); }
+.ax-practice-main .quiz .opts { display: grid; gap: 10px; }
+.ax-practice-main .quiz .opt {
+  background: var(--white);
+  border: 2px solid var(--line);
+  border-radius: var(--r-opt);
+  clip-path: inset(0 round var(--r-opt));
+  padding: 12px 16px;
+  min-height: 48px;
+  cursor: pointer;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.ax-practice-main .quiz .opt::before { content: attr(data-k); font-weight: 700; color: var(--navy); }
+.ax-practice-main .quiz .why {
+  display: none;
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--r-callout);
+  background: color-mix(in srgb, var(--teal) 10%, var(--white));
+  border-inline-start: 4px solid var(--teal);
+}
+.ax-practice-main .quiz.revealed .why { display: block; }
+.ax-practice-main .ax-act-foot { font-size: 16px; }
+.ax-practice-main .ax-act-btn, .ax-practice-main .ax-act-input { min-height: 44px; }
+.ax-practice-feedback:empty { display: none; }
+.ax-practice-feedback { margin-top: 12px; }
+.ax-practice-feedback p { margin: 6px 0; }
+.ax-practice-why { padding: 8px 12px; border-radius: var(--r-cell); background: color-mix(in srgb, var(--coral) 10%, var(--white)); }
+.ax-practice-verdict { font-weight: 700; }
+.ax-practice-grade { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.ax-practice-grade p { margin: 0; flex-basis: 100%; }
+.ax-practice-nav:empty { display: none; }
+.ax-practice-nav { margin-top: 16px; display: flex; justify-content: flex-end; }
+
+/* ---------- the score ---------- */
+.ax-practice-score { background: var(--white); border: 1px solid var(--line); border-top: 5px solid var(--track-color); border-radius: var(--r-table); padding: 22px 24px; }
+.ax-practice-score ul { padding-inline-start: 20px; margin: 0; }
+.ax-practice-score li { margin: 4px 0; }
+.ax-practice-tag { margin-inline-start: 8px; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 720px) {
+  :where(html[data-ax="practice"]) .wrap { padding-inline: 16px; }
+  .ax-practice-grid { grid-template-columns: 1fr; }
+  .ax-practice-setup, .ax-practice-q, .ax-practice-score { padding: 16px; }
+  .ax-practice-main .quiz .lead { font-size: 19px; }
+  .ax-practice-nav .ax-btn, .ax-practice-actions .ax-btn-primary { flex: 1 1 100%; }
+}
+
+/* ======== theme/plugin-presenter.css ======== */
+/* SDAIA Academy engine · plugin 'presenter': the presenter window and its floating timer.
+   The layout sits in the UI layer above the stage. Its box for the current slide is empty and
+   lets the pointer through: Academy.deck.setFrame places the real stage under it. The rest of
+   the layout mirrors in right-to-left pages through the grid and logical properties. */
+
+:root {
+  --pv-gap: 12px;
+  --pv-notes-size: 24px; /* set by the A− and A+ buttons */
+  --pv-bar-h: 44px;
+  --pv-big: 600 30px/1.1 var(--mono);
+}
+
+.ax-ui > .ax-pv {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(280px, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas: "top top" "main side";
+  gap: var(--pv-gap);
+  padding: var(--pv-gap);
+  pointer-events: none;
+}
+.ax-pv > *, .ax-pv-side > *, .ax-pv-bar { pointer-events: auto; }
+
+.ax-pv-k {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-label);
+  text-transform: var(--case-label);
+  color: var(--ui-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ax-pv-big { font: var(--pv-big); font-variant-numeric: tabular-nums; direction: ltr; unicode-bidi: isolate; color: var(--ui-fg); }
+.ax-pv-row { display: flex; align-items: baseline; gap: 8px; min-width: 0; }
+.ax-pv-row small { color: var(--ui-muted); font-size: 14px; direction: ltr; unicode-bidi: isolate; }
+
+/* ---------- the top row: clock, time since start, session, slide number ---------- */
+.ax-pv-top { grid-area: top; display: flex; gap: var(--pv-gap); align-items: stretch; min-width: 0; }
+.ax-pv-top > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  min-width: 0;
+  padding: 8px 16px;
+  border-radius: var(--ui-radius);
+  background: var(--ui-bg-2);
+}
+.ax-pv-session { flex: 1; border-inline-start: 4px solid var(--ui-ok); }
+.ax-pv-top > div[hidden] { display: none; } /* no session clock on a unit without sessions */
+.ax-pv-session[data-pace="near"] { border-inline-start-color: var(--ui-warn); }
+.ax-pv-session[data-pace="over"] { border-inline-start-color: var(--ui-error); }
+.ax-pv-session[data-pace="near"] .ax-pv-big { color: var(--ui-warn); }
+.ax-pv-session[data-pace="over"] .ax-pv-big { color: var(--ui-error); }
+.ax-pv-meter { height: 6px; margin-top: 4px; border-radius: 3px; background: var(--ui-hover); overflow: hidden; }
+.ax-pv-meter i { display: block; height: 100%; width: 0; background: var(--ui-ok); transition: width .3s ease; }
+.ax-pv-session[data-pace="near"] .ax-pv-meter i { background: var(--ui-warn); }
+.ax-pv-session[data-pace="over"] .ax-pv-meter i { background: var(--ui-error); }
+
+.ax-pv-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: start;
+  cursor: pointer;
+}
+.ax-pv-timer small { color: var(--ui-muted); font-size: 12px; }
+.ax-pv-timer[aria-pressed="true"] .ax-pv-big { color: var(--track-color); }
+.ax-pv-badge {
+  align-self: center;
+  padding: 6px 14px;
+  border-radius: var(--r-pill);
+  background: var(--ui-warn);
+  color: var(--ink);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.ax-pv-badge[hidden] { display: none; }
+
+/* ---------- the current slide and the controls under it ---------- */
+.ax-pv-main { grid-area: main; display: flex; flex-direction: column; gap: var(--pv-gap); min-height: 0; min-width: 0; container-type: inline-size; }
+.ax-ui > .ax-pv > .ax-pv-main, .ax-pv-cur { pointer-events: none; }
+.ax-pv-cur { flex: none; width: 100%; aspect-ratio: 16 / 9; max-height: calc(100% - var(--pv-bar-h) - var(--pv-gap)); }
+.ax-pv-bar { display: flex; justify-content: space-between; gap: 8px; min-height: var(--pv-bar-h); align-items: center; }
+.ax-pv-group { display: flex; gap: 6px; }
+.ax-pv-bar .ax-btn[aria-pressed="true"] { background: var(--track-color); border-color: var(--track-color); color: var(--ink); }
+.ax-pv-bar .ax-btn[hidden] { display: none; }
+.ax-pv-bar .ax-btn-label { white-space: nowrap; }
+/* a narrower box keeps the words on previous and next only; the others keep their names for screen readers */
+@container (max-width: 900px) {
+  .ax-pv-group:not(:first-child) .ax-btn-label { display: none; }
+  .ax-pv-group:not(:first-child) .ax-btn { width: 36px; padding: 0; }
+}
+
+/* the real stage, framed */
+.ax-view-presenter .deck:not(.ax-pv-copy) { box-shadow: 0 0 0 1px var(--ui-line); }
+
+/* ---------- the side: next step or slide, then the notes ---------- */
+.ax-pv-side { grid-area: side; display: flex; flex-direction: column; gap: var(--pv-gap); min-height: 0; min-width: 0; }
+.ax-pv-next, .ax-pv-notes { border-radius: var(--ui-radius); background: var(--ui-bg-2); padding: 10px 14px; }
+.ax-pv-next { flex: none; }
+.ax-pv-head {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--ls-kicker);
+  text-transform: var(--case-label);
+  color: var(--track-color);
+}
+.ax-pv-thumb { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 6px; background: var(--stage-bg); }
+.ax-pv-thumb[data-kind="end"] { display: none; }
+.ax-pv-thumb > .ax-pv-copy {
+  position: absolute;
+  left: 0; /* physical: the scale below starts from the top left corner in both directions */
+  top: 0;
+  width: var(--stage-w);
+  height: var(--stage-h);
+  transform-origin: 0 0;
+  /* the slide's own text settings, not the UI layer's it sits in */
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: normal;
+}
+.ax-pv-copy .frag, .ax-pv-copy .slide > .body { transition: none; animation: none; }
+.ax-pv-next-title { margin: 6px 0 0; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.ax-pv-notes { flex: 1; min-height: 0; display: flex; flex-direction: column; padding-bottom: 0; }
+.ax-pv-notes-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ax-pv-notes-head .ax-pv-head { margin: 0; }
+.ax-pv-notes-head .ax-btn-label { direction: ltr; unicode-bidi: isolate; } /* "A−" reads the same in Arabic */
+.ax-pv-notes-text {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding-block: 8px 64px; /* clear of the round menu button in the corner */
+  font-size: var(--pv-notes-size);
+  line-height: 1.5;
+}
+.ax-pv-notes-text :is(p, ul, ol) { margin: 0 0 .6em; }
+.ax-pv-notes-text :is(ul, ol) { padding-inline-start: 1.2em; }
+
+/* the ink tools have their buttons in the bar here, and the key hint is for the room */
+.ax-view-presenter .ax-ink-bar, .ax-view-presenter .ax-menu-hint-text { display: none; }
+
+/* ---------- a narrow window: one column that scrolls ---------- */
+@media (max-width: 860px) {
+  .ax-ui > .ax-pv {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "top" "main" "side";
+    overflow: auto;
+  }
+  .ax-pv-top { flex-wrap: wrap; }
+  .ax-pv-cur { max-height: none; }
+  .ax-pv-notes { min-height: 50vh; }
+}
+
+/* the toast that follows a blocked popup carries the button that opens it */
+.ax-pv-blocked .ax-btn { margin-inline-start: 6px; }
+
+/* ---------- the floating timer (Document Picture-in-Picture) ---------- */
+.ax-pip {
+  margin: 0;
+  padding: 12px 16px;
+  background: var(--ui-bg-2);
+  color: var(--ui-fg);
+  font: var(--ui-font-size)/1.4 var(--font);
+}
+.ax-pip-row { display: flex; justify-content: space-between; gap: 16px; }
+.ax-pip b { display: block; font: var(--pv-big); direction: ltr; unicode-bidi: isolate; }
+.ax-pip [data-pace="near"] b { color: var(--ui-warn); }
+.ax-pip [data-pace="over"] b { color: var(--ui-error); }
+.ax-pip-next { margin: 10px 0 0; color: var(--ui-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-pv-meter i { transition: none; }
+}
+
+/* ======== theme/plugin-progress.css ======== */
+/* SDAIA Academy engine · plugin 'progress': the summary card on the last slide of a deck.
+   Engine UI (dark, real size), in the top end corner where it covers the least of the slide. */
+
+.ax-progress {
+  position: fixed;
+  top: 16px;
+  inset-inline-end: 16px;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 120px);
+  overflow: auto;
+  padding: 14px 16px 16px;
+  background: var(--ui-bg);
+  color: var(--ui-fg);
+  border: 1px solid var(--ui-line);
+  border-radius: var(--ui-radius);
+  box-shadow: var(--ui-shadow);
+}
+.ax-progress-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.ax-progress-head h2 { margin: 0; font-size: 16px; font-weight: 700; }
+.ax-progress-score { margin: 6px 0 10px; }
+.ax-progress-again { margin: 0 0 4px; color: var(--ui-muted); }
+.ax-progress-list { margin: 0 0 12px; padding-inline-start: 18px; }
+.ax-progress-list li { margin: 2px 0; }
+.ax-progress-list a { color: var(--ui-fg); text-decoration: underline; text-underline-offset: 2px; }
+.ax-progress-list a:hover { color: var(--track-color); }
+.ax-progress-tag { margin-inline-start: 6px; font-size: 12px; color: var(--ui-muted); }
+
+@media print { .ax-progress { display: none; } }
+
+/* ======== theme/plugin-prompt-copy.css ======== */
+/* SDAIA Academy engine · plugin 'prompt-copy': the copy button on a prompt, on course pages
+   and lab pages. The prompt keeps room for it at its end. */
+
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt { padding-inline-end: 96px; }
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy {
+  position: absolute;
+  inset-inline-end: 10px;
+  top: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font: 600 13px var(--font);
+  background: var(--navy);
+  color: var(--white);
+  border: none;
+  border-radius: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  white-space: normal;
+}
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy .ax-icon { width: 15px; height: 15px; }
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy:hover { background: var(--navy-deep); }
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy.ok { background: var(--teal); }
+:where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy:focus-visible { outline: 3px solid var(--ui-focus); outline-offset: 2px; }
+@media print { :where(html[data-ax="page"], html[data-ax="lab"]) .prompt .copy { display: none; } }
+
+/* ======== theme/plugin-read.css ======== */
+/* SDAIA Academy engine · plugin 'read': the reading view.
+   The column (every slide zoomed to its width) is in deck.css, shared with the page without
+   JavaScript and with the print preview. This sheet adds the button that returns to slide mode
+   and the reflow.
+
+   THE REFLOW. In a window narrower than 900 CSS pixels the reading view (and the page without
+   JavaScript) lays every slide out as flowing content, at its natural height, in one column of
+   at most 640 pixels: below 900 the zoomed slide would set its body text (--fs-body, 30 stage
+   pixels) under 16 pixels and the text of its boxes (--fs-small, 24) under 13, smaller than the
+   reflow sets them. The same media query is FLOW_QUERY in core/deck.js, which sets the class
+   ax-reflow on <html> while the reflow is on (a course's own rule for the phone hangs on it).
+   The print preview and print media never reflow.
+
+   The type comes from the theme's own tokens, redefined on each reflowed slide, so a course's
+   components written with var(--fs-…) follow. Sizes the components state in stage pixels are
+   restated here, component by component (docs/components.md, "On a phone").
+
+   A slide keeps its projected layout, zoomed to the column, when it is marked
+   data-read="scaled" by its author, when it holds an element positioned by an inline style
+   (style="position: absolute …": its geometry is its content), and, with JavaScript, when its
+   content is still wider than the column after the reflow (the read plugin marks it
+   data-ax-read="scaled"). Every rule below is written for the slides that reflow. */
+
+.ax-read-back { display: none; }
+
+/* A box that scrolls sideways (a table, a code block) shows that it does: the side that has more
+   fades out, 28 pixels wide. The fades follow the box's own scrolling (a scroll-driven
+   animation, no script), on its inline axis, so they are right in both directions of writing:
+   in an Arabic table the start is the right edge. A box that fits has no fade. */
+@property --ax-fade-start { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@property --ax-fade-end { syntax: "<length>"; inherits: false; initial-value: 0px; }
+/* the last 2% of the way at either end counts as the edge: a box scrolled to its end can stop a
+   fraction of a pixel short of it (an Arabic table, measured) */
+@keyframes ax-scroll-fade {
+  0%, 2% { --ax-fade-start: 0px; }
+  10%, 100% { --ax-fade-start: 28px; }
+  0%, 90% { --ax-fade-end: 28px; }
+  98%, 100% { --ax-fade-end: 0px; }
+}
+/* a slide scrolled to (on entering, from the address) stops below the button, which would
+   otherwise sit on that slide's chrome */
+.ax-view-read .deck { padding-top: 64px; }
+.ax-view-read :where(.deck) .slide { scroll-margin-top: 64px; }
+.ax-view-read .ax-read-back.ax-btn {
+  display: inline-flex;
+  position: fixed;
+  top: 12px;
+  inset-inline-end: 12px;
+  box-shadow: var(--ui-shadow);
+}
+
+@media screen and (max-width: 899.98px) {
+
+  /* ---------- the column ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) .deck { gap: 12px; }
+  /* the button steps aside while the reader scrolls down the text and comes back on the way up
+     (the read plugin sets ax-read-down); the menu button also leaves the reading view */
+  html.ax-reflow.ax-read-down .ax-read-back.ax-btn { opacity: 0; pointer-events: none; }
+  html.ax-reflow .ax-read-back.ax-btn { transition: opacity .2s ease; }
+
+  /* A slide that keeps its projected layout is zoomed to the column of the reflow. With
+     JavaScript the zoom is --ax-col-scale (core/deck.js); without it, steps that fit the window. */
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .18; }
+
+  /* ---------- a slide that reflows: tokens, box, chrome ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) {
+    --fs-body: 17px;
+    --lh-body: 1.55;
+    --fs-title: 30px;
+    --fs-h1: 28px;
+    --fs-section: 28px;
+    --fs-break: 28px;
+    --fs-h2: 23px;
+    --fs-h3: 19px;
+    --fs-h4: 17px;
+    --fs-lead: 18px;
+    --fs-small: 16px;
+    --fs-xsmall: 14px;
+    --fs-kicker: 12.5px;
+    --fs-caption: 14px;
+    --fs-chrome: 12.5px;
+    --fs-footer: 12.5px;
+    --fs-big: 44px;
+    --fs-stat: 38px;
+    --fs-timer: 60px;
+    --fs-sess-no: 64px;
+    --lh-h1: 1.15;
+    --lh-h2: 1.22;
+    --lh-title: 1.12;
+    --slide-pad-top: 14px;
+    --slide-pad-inline: 18px;
+    --slide-pad-bottom: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-content: start;
+    width: 100%;
+    max-width: 640px;
+    height: auto;
+    zoom: 1;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    border-radius: 10px;
+  }
+  /* Arabic: one size up for the body and the small labels, taller lines (tokens.css does the
+     same on the stage) */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"])[dir="rtl"] :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) {
+    --fs-body: 18px;
+    --lh-body: 1.75;
+    --fs-small: 17px;
+    --fs-xsmall: 15px;
+    --fs-caption: 15px;
+    --fs-kicker: 14px;
+    --fs-chrome: 13px;
+    --fs-footer: 13px;
+    --lh-h1: 1.35;
+    --lh-h2: 1.4;
+    --lh-title: 1.3;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.live { display: none; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > * { grid-column: 1 / -1; min-width: 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > .body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: none;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > .body > * { min-width: 0; }
+
+  /* the chrome: one quiet line, the session (or the unit) at the start, the number at the end */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > :is(.chrome-top, .chrome-bottom) {
+    position: static;
+    align-self: baseline;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > .chrome-top { grid-area: 1 / 1; display: block; min-width: 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) > .chrome-bottom { grid-area: 1 / 2; display: block; padding-inline-start: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(.chrome-top .logo, .chrome-bottom .track, .chrome-top .crumb > :not(:last-child)) { display: none; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .chrome-top .crumb {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-wrap: normal;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .chrome-top .crumb b { font-weight: 600; }
+
+  /* ---------- text ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) h2 { margin-bottom: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) h3 { margin-bottom: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) h4 { margin-bottom: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) p { margin-bottom: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .kicker { margin-bottom: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .lead { line-height: 1.45; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) code { padding: 1px 5px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .mt { margin-top: 16px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .mt-s { margin-top: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .stack > * + * { margin-top: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .stack.dense > * + * { margin-top: 8px; }
+
+  /* lists: the same marks, drawn to the size of the text */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(ul, ol).bullets > li { padding-inline-start: 24px; margin-bottom: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(ul, ol).bullets.tight > li { margin-bottom: 4px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) ul.bullets > li::before { inset-inline-start: 3px; top: .58em; width: 8px; height: 8px; border-radius: 2px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) ol.bullets > li::before { top: .15em; width: 19px; height: 19px; font-size: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) ul.bullets ul { margin-top: 4px; padding-inline-start: 16px; font-size: .9em; }
+
+  /* ---------- layout: one column; inline geometry made for the stage is released ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(.cols, .timers, .ladder, [style*="grid-template-columns"]:not(.matrix)) {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 14px;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(.cols, .timers, .ladder) > * { min-width: 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .cols.mid { align-items: start; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) [style*="grid-column"] { grid-column: auto !important; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :not(img, svg, video, canvas, iframe, .bar, .meter i)[style*="width"] { width: auto !important; max-width: 100% !important; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :not(img, svg, video, canvas, iframe)[style*="height"] { height: auto !important; min-height: 0 !important; }
+  /* an inline font size is a stage size: text alone is shrunk in proportion, a box that holds
+     other boxes takes the reading size */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) [style*="font-size"]:not(:has(:not(b, strong, i, em, code, span, a, br, sub, sup, small, kbd, bdi, mark))) { zoom: .6; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) [style*="font-size"]:has(:not(b, strong, i, em, code, span, a, br, sub, sup, small, kbd, bdi, mark)) { font-size: inherit !important; }
+
+  /* ---------- slide kinds ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.title:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) { padding-block: 18px 26px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .meta { margin-top: 18px; gap: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.title:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .meta span { font-size: 13px; padding: 4px 11px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.section:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) { padding-bottom: 14px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.section:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .outcomes { margin-top: 14px; font-size: var(--fs-small); }
+  /* the outlined session number closes the slide at the end side instead of standing in its corner */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.section:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .sess-no {
+    position: static;
+    align-self: flex-end;
+    justify-self: end;
+    margin-top: 4px;
+    -webkit-text-stroke-width: 1.5px;
+  }
+  /* the lab slide: the brief on white, the checklist on a paper panel to the edges of the slide */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.lab:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) { background: var(--white); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.lab:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .cols-2 > :first-child { padding-inline-end: 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.lab:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .cols-2 > :last-child {
+    padding-block: 6px 12px;
+    padding-inline: var(--slide-pad-inline);
+    margin-inline: calc(-1 * var(--slide-pad-inline));
+    background: var(--paper);
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide.lab:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .cols-2:not(:has(~ :not(aside.notes))) > :last-child { margin-bottom: calc(-1 * var(--slide-pad-bottom)); padding-bottom: var(--slide-pad-bottom); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .lab-tag { padding: 5px 11px; margin-bottom: 10px; gap: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .nb { font-size: 13.5px; padding: 8px 12px; max-width: 100%; min-height: 44px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .checklist { font-size: var(--fs-small); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .checklist li { padding-block: 8px; padding-inline: 28px 58px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .checklist li::before { top: 11px; width: 16px; height: 16px; border-width: 2px; border-radius: 4px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .checklist li .min { top: 10px; font-size: 13px; }
+  /* the capstone's running order and "now presenting" */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])).presenting .center input { font-size: 22px; }
+
+  /* ---------- boxes ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .card { padding: 15px 16px 13px; box-shadow: inset 0 4px 0 var(--c, var(--navy)); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .card.flat { padding-block: 12px; padding-inline: 21px 16px; box-shadow: inset calc(5px * var(--ax-dir)) 0 0 var(--c, var(--navy)); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .stack.dense .card { font-size: 15px; padding: 12px 14px 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .stack.dense .card.flat { padding-block: 10px; padding-inline: 19px 14px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .card ul { padding-inline-start: 18px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .pill { padding: 2px 10px; margin-block: 0 6px; margin-inline: 0 4px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .callout { padding-block: 12px; padding-inline: 19px 14px; font-size: var(--fs-small); box-shadow: inset calc(5px * var(--ax-dir)) 0 0 var(--c, var(--teal)); }
+
+  /* tables: a table that does not fit scrolls sideways inside its own box, never the page. With
+     one body (the usual case) the body is the table, so a narrow table still fills the width. */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table:not(:has(> thead, > tfoot, > tbody + tbody, > caption)) > tbody { display: table; width: 100%; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table.t { font-size: 15px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table.t th { padding: 8px 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table.t td { padding: 7px 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table.t.small { font-size: var(--fs-xsmall); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table.t.small :is(th, td) { padding: 6px 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) table :is(th, td) { min-width: 4.5em; }
+
+  @supports (animation-timeline: scroll()) {
+    :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(table, pre) {
+      --ax-fade-to: to right;
+      mask-image: linear-gradient(var(--ax-fade-to), transparent 0, #000 var(--ax-fade-start), #000 calc(100% - var(--ax-fade-end)), transparent 100%);
+      animation: ax-scroll-fade linear both;
+      animation-timeline: scroll(self inline);
+    }
+    /* the fade runs the way the box scrolls: from the right in a right-to-left box, and from
+       the left in highlighted code, which reads left to right in every deck */
+    :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(table, pre):dir(rtl):not(pre.code) { --ax-fade-to: to left; }
+  }
+
+  /* code keeps its lines and scrolls inside its box */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) pre {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    -webkit-overflow-scrolling: touch;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) pre.code { padding: 12px 14px; font-size: 13px; border-radius: 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) pre.code.l { font-size: 14px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) pre.code[data-file]::before { font-size: 12px; margin: -2px 0 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) pre.code .hl-line { min-width: 100%; width: auto; }
+
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tokens { font-size: 15px; gap: 4px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tokens span { padding: 2px 6px; }
+
+  /* flows run top to bottom; an arrow written along the reading direction (→ in English,
+     ← in Arabic) is turned to point down */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .flow { flex-direction: column; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .flow .step { flex: none; padding: 10px 12px; font-size: 15px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .flow .step b { font-size: 16px; margin-bottom: 2px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .flow .arrow { width: 26px; height: 26px; flex: 0 0 26px; align-self: center; font-size: 18px; line-height: 1; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .flow:not(.v) > .arrow { transform: rotate(calc(90deg * var(--ax-dir))); }
+
+  /* numbers */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .stat .lbl { font-size: 15px; margin-top: 4px; }
+  /* a bar's label above it, the bar and its value on the line below */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .bars { font-size: 15px; gap: 10px; grid-template-columns: minmax(0, 1fr); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .bars .row { grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .bars .row > :first-child:not(.bar) { grid-column: 1 / -1; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .bars .bar { height: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .meter { height: 8px; }
+
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .agenda { gap: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .agenda .item { grid-template-columns: minmax(0, 1fr) auto; gap: 10px; padding: 10px 14px; font-size: var(--fs-small); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .agenda .item.brk { padding: 4px 14px; font-size: var(--fs-xsmall); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .agenda .item.now { box-shadow: 0 0 0 3px color-mix(in srgb, var(--track-color) 18%, transparent); }
+
+  /* prompts, conversations, chips, traces */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .prompt { padding-block: 12px; padding-inline: 19px 14px; box-shadow: inset calc(5px * var(--ax-dir)) 0 0 var(--c, var(--amber)); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .prompt.s { font-size: 15px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .prompt[data-tool]::before { font-size: 12px; margin: -2px 0 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .prompt .seg { padding: 0 3px; border-bottom-width: 2px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .legend { gap: 6px; margin-top: 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .legend span { padding: 2px 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .chat { font-size: var(--fs-small); gap: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .chat .msg { max-width: 92%; padding: 10px 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .chat .who { font-size: 12.5px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tools { gap: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tools span { padding: 5px 10px; gap: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tools.s span { font-size: 13px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .tools img { height: 20px; width: 20px; }
+  /* a trace event: its kind above its text */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .trace { gap: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .trace .ev { grid-template-columns: minmax(0, 1fr); gap: 2px; padding: 7px 12px; padding-inline-start: 16px; box-shadow: inset calc(4px * var(--ax-dir)) 0 0 var(--c, var(--navy)); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .trace .ev > b { font-size: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .trace .ev code { font-size: .9em; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .trace.s { font-size: var(--fs-xsmall); }
+  /* the ladder: one rung under another, first to last */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ladder { gap: 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ladder .rung { min-height: 0; padding: 10px 12px; font-size: var(--fs-xsmall); }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ladder .rung b { font-size: 16px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ladder .rung small { font-size: 13px; margin-top: 2px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ladder .rung.on { box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, var(--navy)) 25%, transparent); }
+
+  /* pictures fill the column with their proportions; a tall one stops at most of a screen */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .figure { padding: 10px; border-radius: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(img, svg, video, canvas, iframe) { max-width: 100%; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) :is(img, svg):not(.tools img, svg.ax-icon) { max-height: 80vh; height: auto; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .caption,
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .figure > figcaption { margin-top: 6px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .matrix { font-size: 13px; gap: 2px; }
+
+  /* timers and their buttons */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .timer { margin: 10px 0 8px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .timers .timer { font-size: 52px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .timer-btns { gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .timer-btns button { font-size: 15px; padding: 0 18px; min-height: 44px; }
+
+  /* ---------- checkpoints: usable by touch, the answer and its reasons shown in place ---------- */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts { gap: 8px; margin-top: 12px; }
+  /* an option is a block of text with its letter hanging at the start, so a phrase in code or
+     bold inside it stays in the line instead of becoming a column of its own */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt {
+    display: block;
+    position: relative;
+    min-height: 44px;
+    padding-block: 9px;
+    padding-inline: 40px 14px;
+    border-radius: 12px;
+    font-size: var(--fs-h4);
+    line-height: 1.4;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt::before { position: absolute; inset-inline-start: 14px; top: 9px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ax-act-order .opts > .opt,
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])).ax-act-order .opts > .opt { padding-inline-start: 44px; }
+  /* an order question has no letters: the place given hangs where the letter would be */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt .ax-pos { position: absolute; inset-inline-start: 10px; top: 9px; margin: 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt .ax-mark { display: inline-flex; vertical-align: -.15em; margin-inline: 6px 0; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt :is(.ax-mark, .ax-pos):empty { display: none; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt .ax-count { float: inline-end; margin-inline-start: 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .opts > .opt .ax-opt-why { margin: 2px 0 0; font-size: 14px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .why { margin-top: 12px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ax-act-foot { font-size: 15px; margin-top: 10px; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ax-act-btn { min-height: 44px; padding: 0 20px; touch-action: manipulation; }
+  /* 16 pixels or more, so a phone does not zoom the page when the field takes the focus */
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ax-act-input { min-height: 44px; font-size: 16px; width: 9em; max-width: 100%; }
+  :is(html.ax-view-read, html:not(.ax-js)[data-ax="deck"]) :where(.deck) > .slide:not([data-read="scaled"], [data-ax-read="scaled"], :has([style*="absolute"])) .ax-live-open { outline-offset: 4px; }
+}
+
+/* Without JavaScript, a slide that keeps its projected layout is zoomed in steps that fit the
+   window (with JavaScript the zoom follows the column exactly). */
+@media screen and (min-width: 360px) and (max-width: 899.98px) {
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .2; }
+}
+@media screen and (min-width: 390px) and (max-width: 899.98px) {
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .22; }
+}
+@media screen and (min-width: 430px) and (max-width: 899.98px) {
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .245; }
+}
+@media screen and (min-width: 520px) and (max-width: 899.98px) {
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .3; }
+}
+@media screen and (min-width: 672px) and (max-width: 899.98px) {
+  html:not(.ax-js)[data-ax="deck"] :where(.deck) > .slide:is([data-read="scaled"], :has([style*="absolute"])) { zoom: .4; }
+}
+
+/* ======== theme/plugin-timers.css ======== */
+/* SDAIA Academy engine · plugin 'timers': the start/pause and reset buttons under a .timer.
+   White on the dark slides where timers usually sit, navy on light ones. */
+
+:where(.deck) .timer-btns { display: flex; gap: 14px; justify-content: center; margin-bottom: 24px; }
+:where(.deck) .timer-btns button {
+  font: 600 20px var(--font);
+  padding: 10px 26px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--navy);
+  background: transparent;
+  color: var(--navy);
+  cursor: pointer;
+  clip-path: inset(0 round var(--r-pill));
+}
+:where(.deck) .timer-btns button:hover { background: color-mix(in srgb, var(--navy) 8%, transparent); }
+:where(.deck) :is(.slide.dark, .slide.title, .slide.section) .timer-btns button { border-color: var(--on-dark-line-2); color: var(--on-dark); }
+:where(.deck) :is(.slide.dark, .slide.title, .slide.section) .timer-btns button:hover { background: var(--on-dark-fill-3); }
+
+/* ======== theme/print.css ======== */
+/* SDAIA Academy engine · print (the last file of the bundle)
+   A deck prints one slide per 1600 by 900 page, every fragment shown, in exact colours; with
+   notes (?print=notes) each slide sits on a portrait page with its speaker notes under it.
+   Named pages keep these sizes to decks: a course page or a lab prints on ordinary paper.
+   On screen, ?print shows the same pages in a column (deck.css). */
+
+@page ax-slide { size: 1600px 900px; margin: 0; }
+@page ax-notes { size: A4 portrait; margin: 12mm; }
+
+/* the notes block after each slide, added by the print plugin in notes mode */
+.ax-pnotes { display: none; }
+.ax-view-print.ax-print-notes .ax-pnotes {
+  display: block;
+  width: calc(var(--stage-w) * var(--ax-col-scale, 1));
+  margin-top: -8px;
+  padding: 14px 18px;
+  background: var(--white);
+  color: var(--ink);
+  font: 15px/1.55 var(--font);
+  border-radius: 0 0 8px 8px;
+}
+.ax-pnotes-head { font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+.ax-pnotes-body p { margin: 0 0 8px; }
+.ax-pnotes-body ul, .ax-pnotes-body ol { margin: 0 0 8px; padding-inline-start: 22px; }
+.ax-pnotes-body code { font-family: var(--mono); font-size: .9em; direction: ltr; unicode-bidi: isolate; }
+.ax-pnotes .ax-muted { color: var(--muted); }
+
+@media print {
+  html { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  html[data-ax="deck"], html[data-ax="deck"] body { background: none; height: auto; overflow: visible !important; }
+  html[data-ax="deck"] .deck {
+    position: static;
+    transform: none !important;
+    width: auto;
+    height: auto;
+    display: block;
+    padding: 0;
+  }
+  html[data-ax="deck"] :where(.deck) .slide {
+    display: flex !important;
+    position: relative;
+    inset: auto;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    zoom: 1;
+    page: ax-slide;
+    break-after: page;
+    break-inside: avoid;
+  }
+  html[data-ax="deck"] .frag { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html[data-ax="deck"] .slide.entered > .body { animation: none !important; }
+  html[data-ax="deck"] :is(.ax-ui, .deck > .progress, .slide.live, .ax-ov-head, #ax-check-report) { display: none !important; }
+
+  /* A4 is 186 mm wide inside its margins, about 700 CSS pixels: the slide is zoomed to that */
+  html.ax-print-notes[data-ax="deck"] :where(.deck) .slide { zoom: .435; page: ax-notes; break-after: avoid; }
+  html.ax-print-notes[data-ax="deck"] .ax-pnotes {
+    display: block;
+    width: 696px;
+    margin: 0;
+    padding: 16px 0 0;
+    page: ax-notes;
+    break-after: page;
+    font-size: 14px;
+  }
+}

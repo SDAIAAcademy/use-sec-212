@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.4 · الطاقة: المقارنة الخام · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_4_energy_raw.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.4</span>
+<h1>الطاقة: المقارنة الخام</h1>
+<p>تقارن استهلاك مركز الزوار قبل تشغيل «نسيم» وبعده في الأشهر نفسها، وتحسب التوفير الخام، وتسجل ما تغير بين الفترتين في الطقس والزوار والمبنى.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 2</span><span>الجلسة 4: ادعاءات توفير الطاقة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.4">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>جدول مقارنة لاستهلاك مركز الزوار في الأشهر الستة قبل «نسيم» وبعده: عدد الأيام، والمجموع، ومتوسط اليوم.</li>
+      <li>التوفير الخام بطريقتين، وقائمة بما تغير بين الفترتين غير النظام نفسه.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/energy/meter_daily.xlsx" download><b>energy/meter_daily.xlsx</b><span>قراءات العداد اليومية 18 شهرًا مع الحرارة ودرجات التبريد والزوار، وورقة «المقارنة» لك.</span></a>
+    <a href="files/energy/naseem_claim.txt" target="_blank"><b>energy/naseem_claim.txt</b><span>ادعاء المورِّد، وملاحظات إدارة المرافق.</span></a>
+  </div>
+  <p class="small">يجوز مساعد عام بدور المعلّم. الأرقام اصطناعية، على شكل بيانات العدادات المفتوحة مثل Building Data Genome Project 2.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · اقرأ ادعاء المورِّد وملف العداد <span class="min">3 د</span></h3>
+    <p>ما الذي يقارنه المورِّد بالضبط؟ وما ملاحظات عبدالهادي المليباري الأربع؟</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · احسب الاستهلاك في الأشهر الستة قبل وبعد <span class="min">6 د</span></h3>
+    <p>في ورقة «المقارنة»: لكل فترة عدد الأيام في الملف، ومجموع الكهرباء، ومتوسط اليوم. مثلًا: <code>=SUMIFS(العداد!F:F,العداد!B:B,"&lt;=6")</code> و<code>=COUNTIFS(العداد!B:B,"&gt;=13")</code>.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · احسب التوفير الخام وقارنه بالادعاء <span class="min">4 د</span></h3>
+    <p>مرة بالمجموع: 1 ناقص (مجموع بعد ÷ مجموع قبل). ومرة بمتوسط اليوم. أي الطريقتين استعمل المورِّد؟ ولماذا تختلفان؟</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · سجّل ما تغير في الطقس والزوار والمبنى <span class="min">7 د</span></h3>
+    <p>متوسط درجات التبريد ومتوسط الزوار في الفترتين، ثم ما في ملاحظات المرافق. لكل تغيير: هل يخفض الاستهلاك أم يرفعه؟</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>ابحث في ملف العداد عن الأيام الناقصة وقدّر أثرها على المقارنة.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>كم يومًا في كل فترة؟ ولماذا يهم ذلك لمقارنة المجاميع؟</li>
+    <li>اذكر ثلاثة أسباب غير «نسيم» لانخفاض الاستهلاك.</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع: 180 يومًا قبل و171 بعد. التوفير بالمجاميع 18.8% (هو رقم المورِّد مقربًا: 19%)، وبمتوسط اليوم 14.6%. درجات التبريد اليومية 10.7 ثم 9.1 (الفترة اللاحقة أبرد)، والزوار 5,811 ثم 5,434 (القاعة الكبرى مغلقة في الشهرين 15 و16). وتبديل الإنارة من الشهر 14.</p>
+    <p>الفخ الأول: مقارنة المجاميع والأيام غير متساوية. الفخ الثاني: نسبة كل الانخفاض إلى «نسيم». المختبر 2.5 يفصل الأسباب.</p>
+    <p>اجمع الملفات في النهاية: ملف البداية للمختبر 2.5 فيه هذه المقارنة مكتملة.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D2_3_scores_by_language.html" rel="prev">→ المختبر السابق</a><a href="D2_5_energy_adjusted.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"2.4","title":"الطاقة: المقارنة الخام","summary":"تقارن استهلاك مركز الزوار قبل تشغيل «نسيم» وبعده في الأشهر نفسها، وتحسب التوفير الخام، وتسجل ما تغير بين الفترتين في الطقس والزوار والمبنى.","minutes":20,"day":2,"unit":"اليوم 2","session":4,"deck":"../slides/day2.html#lab-2-4","prev":"D2_3_scores_by_language.html","next":"D2_5_energy_adjusted.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

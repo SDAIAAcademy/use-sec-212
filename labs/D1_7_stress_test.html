@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.7 · المحاكاة: اختبار الضغط · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_7_stress_test.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-7">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.7</span>
+<h1>المحاكاة: اختبار الضغط</h1>
+<p>تقرأ نتائج أربعة اختبارات ضغط للخطتين: زيادة الوافدين ربعًا، وإغلاق بوابة، والاثنان معًا، وتختار الخطة وتكتب الظرف الذي تتجاوز فيه الحد. يبدأ من جدول المقارنة المكتمل.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 1</span><span>الجلسة 7: اختبار الخطة تحت الضغط</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.7">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>قمم الكثافة والثواني فوق الحد للخطتين في أربعة اختبارات ضغط.</li>
+      <li>الخطة المختارة، والظرف الذي تتجاوز فيه الحد، والإجراء في ذلك الظرف: كثافات الذروة والخطة المختارة في سجلك.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/sim/comparison_complete.xlsx" download><b>sim/comparison_complete.xlsx</b><span>ملف البداية: مقارنة اليوم المعتاد مكتملة، وورقتا «الضغط» و«القرار» لك.</span></a>
+    <a href="files/sim/results_stress.csv" download><b>sim/results_stress.csv</b><span>نتائج اختبارات الضغط الجاهزة للخطتين بثلاث بذور.</span></a>
+    <a href="sim/plaza_sim.ipynb" download><b>sim/plaza_sim.ipynb</b><span>دفتر المحاكاة، لمن يريد أن يشغّل اختبارًا بنفسه.</span></a>
+  </div>
+  <p class="small">يبدأ من جدول المقارنة المكتمل. يجوز مساعد عام بدور المعلّم.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح جدول المقارنة المكتمل وملف اختبارات الضغط <span class="min">3 د</span></h3>
+    <p>الاختبارات: وافدون أكثر بالربع (563 مع كل قطار: الهامش الذي يحتاجه تنبؤ «توقّع» في الذروة)، وبوابة مغلقة، والاثنان معًا. البوابة المغلقة في الخطة أ هي G2، وفي الخطة ب الوسطى.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · املأ قمم الكثافة في الاختبارات الأربعة <span class="min">7 د</span></h3>
+    <p>في ورقة «الضغط»، من <code>results_stress.csv</code>. اختر صفًا واحدًا وشغّله في الدفتر بنفسك إن أردت أن تتأكد أن الرقم يتكرر.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · حدد أي اختبار يتجاوز الحد في كل خطة <span class="min">5 د</span></h3>
+    <p>لكل خطة واختبار: أعلى قمة، وأطول مدة فوق الحد. علّم الخلايا التي تتجاوز 2.0.</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · اختر الخطة واكتب الظرف الذي تسقط فيه <span class="min">6 د</span></h3>
+    <p>في ورقة «القرار». الخطة المتينة ليست التي لا تسقط أبدًا، بل التي تعرف متى تسقط وماذا تفعل حينها.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · سجّل كثافات الذروة والخطة المختارة في السجل <span class="min">4 د</span></h3>
+    <p>احفظ الملف وسلّمه. هذا دليل المخرج الثالث: كثافات الذروة وخطة مختارة.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>اقترح تعديلًا واحدًا على الخطة المختارة، وصف التشغيل الذي يثبت أنه يكفي.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>أي اختبار ضغط يكسر الخطتين معًا؟</li>
+    <li>هل تكفي أعلى قمة وحدها، أم تحتاج إلى المدة فوق الحد أيضًا؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع (أعلى قمة على البذور، وأطول مدة فوق الحد لبوابة): وافدون أكثر بالربع: أ 2.80 و136 ثانية، ب 2.40 و75 ثانية. بوابة مغلقة: أ نحو 4.1 وأكثر من 420 ثانية، ب نحو 3.0 ونحو 160 ثانية. الاثنان معًا: الخطتان فوق 3.4. القيم الدقيقة تطبعها <code>check.py</code>.</p>
+    <p>كل اختبار ضغط يكسر الخطتين، والخطة ب أدنى في كل اختبار. القرار المرجعي: الخطة ب، مع إجراء عند تجاوز 1.5 (تنظيم التدفق من المحطة) وإيقاف الدخول عند 2.5 بقرار مدير العمليات، وإصلاح أي بوابة معطلة قبل أن يبلغ الزحام ذروته. هذا ما تكتبه بطاقة المختبر 1.8.</p>
+    <p>الفخ: من يقرأ اليوم المعتاد وحده يظن الخطة ب آمنة بهامش مريح. مع خطأ التنبؤ في الذروة تتجاوز الحد.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D1_6_plan_b.html" rel="prev">→ المختبر السابق</a><a href="D1_8_command_card.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"1.7","title":"المحاكاة: اختبار الضغط","summary":"تقرأ نتائج أربعة اختبارات ضغط للخطتين: زيادة الوافدين ربعًا، وإغلاق بوابة، والاثنان معًا، وتختار الخطة وتكتب الظرف الذي تتجاوز فيه الحد. يبدأ من جدول المقارنة المكتمل.","minutes":25,"day":1,"unit":"اليوم 1","session":7,"deck":"../slides/day1.html#lab-1-7","prev":"D1_6_plan_b.html","next":"D1_8_command_card.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

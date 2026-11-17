@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="deck" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اليوم 1 · التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="day1.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<div class="deck" data-course="الذكاء الاصطناعي في المدن والسياحة والحج" data-track="fluency" data-day="اليوم 1">
+<section class="slide title" id="title" data-auto="title" data-label="الترحيب" data-n="1">
+  <div class="kicker">أكاديمية سدايا · الذكاء الاصطناعي في المدن والسياحة والحج</div>
+  <h1>التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد</h1>
+  <p class="lead mt">اليوم 1: ثماني جلسات: أين المخاطر، والتنبؤ مقابل خط الأساس، والذروة والهامش، والنقل والحرارة، والمحاكاة بخطتين وتحت الضغط، والقيادة البشرية</p>
+  <div class="meta"><span class="track">مسار الطلاقة في البيانات والذكاء الاصطناعي</span><span>يومان تدريبيان + يوم للمشروع الختامي</span><span>8 جلسات · 8 مختبرات</span><span>USE-SEC-212</span></div>
+  <aside class="notes"><p>رحّب بالمشاركين واطلب من كل منهم جملة واحدة: خدمة للزوار في جهته من ورقة العمل التحضيري، وأي نظام فيها يتنبأ أو يعدّ أو يتعرف أو يجيب. ستعود إلى هذه الأوراق في المختبر 1.1.</p><p>كل ما في الورشة اصطناعي: هيئة الرفادة ومدينتها وأشخاصها وأرقامها. لا يضع أحد بيانات زوار حقيقية في أي مساعد.</p></aside>
+</section>
+
+<section class="slide" id="agenda" data-auto="agenda" data-label="جدول اليوم" data-n="2">
+  <div class="kicker">اليوم</div>
+  <h2>التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد</h2>
+  <div class="agenda"><div class="item"><div><b>الجلسة 1 · أين تكون المخاطر أعلى</b><small>رحلة الزائر، ونوعا المخاطر، ومستويات سدايا</small></div></div><div class="item"><div><b>الجلسة 2 · التنبؤ مقابل خط أساس</b><small>خط الأساس الموسمي ومقاييس الخطأ</small></div></div><div class="item"><div><b>الجلسة 3 · الحكم على التنبؤ في الذروة</b><small>خطأ الذروة وانحيازها والهامش الاحتياطي</small></div></div><div class="item"><div><b>الجلسة 4 · النقل والإجهاد الحراري في يوم الذروة</b><small>الساعة، والحافلات، ومؤشر الحرارة</small></div></div><div class="item"><div><b>الجلسة 5 · كيف تعمل محاكاة حركة المشاة</b><small>المدخلات والكثافة ومنطقة القياس والحد</small></div></div><div class="item"><div><b>الجلسة 6 · مقارنة خطتين للبوابات</b><small>مقارنة عادلة، والبذور، والقمة والمدة</small></div></div><div class="item"><div><b>الجلسة 7 · اختبار الخطة تحت الضغط</b><small>زيادة الوافدين، وبوابة مغلقة، والخطة المتينة</small></div></div><div class="item"><div><b>الجلسة 8 · إنسان يقود ويملك قرار الإيقاف</b><small>العتبات، وقرار الإيقاف، والبدائل</small></div></div></div>
+  <aside class="notes"><p>اليوم الأول عن سؤالين: هل نثق بالأرقام التي نخطط بها لأيام الذروة، وهل تتحمل الساحة ما نخطط له. ثماني جلسات قصيرة، في كل منها شرح ثم مختبر. الاستراحات بزر B.</p></aside>
+</section>
+
+<section class="slide" id="setup-check" data-n="3">
+  <div class="kicker">قبل أن نبدأ</div>
+  <h2>ثلاثة أشياء مفتوحة على حاسوبك</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>جدول بيانات</h4><p class="small mb0">Excel أو LibreOffice Calc أو Google Sheets. افتح <span class="en">arrivals_seasons.xlsx</span>: هل ترى ثلاث أوراق؟</p></div>
+    <div class="card c-cyan"><h4>Google Colab</h4><p class="small mb0">حساب Google يفتح <span class="en">colab.research.google.com</span>. لمختبرات المحاكاة فقط، ولها نتائج جاهزة إن لم يعمل.</p></div>
+    <div class="card c-purple"><h4>حزمة الملفات</h4><p class="small mb0">مجلدا <span class="en">labs/files</span> و<span class="en">labs/sim</span> من صفحة المقرر، وورقة عملك التحضيري.</p></div>
+  </div>
+  <div class="callout note mt"><b>لا مفتاح ولا اشتراك.</b> لا يحتاج أي مختبر إلى مفتاح نموذج أو خدمة مدفوعة.</div>
+  <aside class="notes"><p>دقيقتان. من لم يفتح Colab لا ينتظر: مختبرات المحاكاة 1.5 إلى 1.7 لها ملفات نتائج جاهزة هي التشغيل نفسه. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته في المختبر 1.1.</p></aside>
+</section>
+
+<section class="slide" id="ai-rules" data-n="4">
+  <div class="kicker">قواعد استخدام الذكاء الاصطناعي في الورشة</div>
+  <h2>متى تستعين بمساعد، ومتى لا</h2>
+  <table class="t">
+    <tr><th>القاعدة</th><th>أين</th></tr>
+    <tr><td><b>دون ذكاء اصطناعي</b></td><td>فحص السيناريوهات العشرة، ومراجعة الخصوصية (2.6 و2.7)، وتقدير إجابات المساعد (2.1 و2.2)</td></tr>
+    <tr><td><b>مساعد بدور المعلّم</b></td><td>مختبرات التنبؤ والمحاكاة والطاقة: يشرح الصيغة ولا يحكم بدلًا منك</td></tr>
+    <tr><td><b>مساعد كامل</b></td><td>الخريطة، وتدافع عنها بنفسك مباشرة</td></tr>
+  </table>
+  <aside class="notes"><p>هذه قواعد المقرر كما يحددها الدليل. السبب في كل منها: ما يقيس حكمك أنت يُعمل دونه، وما يقيس قدرتك على العمل بالأرقام يجوز فيه معلّم، وما ستعمله في جهتك مع مساعد يُعمل معه ثم تُسأل عنه.</p></aside>
+</section>
+
+<!-- الجلسة 1 -->
+
+<section class="slide section" id="s1" data-auto="section" data-session="1" data-n="5">
+  <div class="kicker">الجلسة 1</div>
+  <h1>أين تكون المخاطر أعلى</h1>
+  <ul class="bullets outcomes"><li>ترسم الاستخدامات على رحلة الزائر وتسمي البيانات التي يلمسها كل استخدام</li><li>تفرّق بين خطر يقع على سلامة الناس في الحشد وخطر يقع على خصوصيتهم</li><li>ترتب استخدامين بحسب أسوأ خطأ ممكن ومن يقع عليه</li></ul>
+  <div class="sess-no">01</div>
+</section>
+
+<section class="slide" id="rifada-case" data-lo="LO1" data-n="6" data-session="1">
+  <div class="kicker">دراسة الحالة</div>
+  <h2>هيئة الرفادة تستقبل الزوار والمعتمرين والحجاج العابرين</h2>
+  <div class="cols cols-21">
+    <ul class="bullets">
+      <li><b>مدينة الرفادة</b> مدينة افتراضية: حي تاريخي تتقدمه ساحة المشرع، ومنشأة فعاليات، وخط قطار، ومركز زوار</li>
+      <li><b>نحو مليونين وثلاثمئة ألف وافد</b> في الموسم، أكثر من نصفهم من خارج المملكة</li>
+      <li><b>أنظمة تدرسها الهيئة:</b> «توقّع» للتنبؤ، و«مِضياف» للمساعدة بأربع لغات، و«نسيم» للتكييف، وخيارات للكاميرات</li>
+      <li><b>دورك:</b> مدير يطلب النظام ويوقّع على قبوله، لا مهندس يبنيه</li>
+    </ul>
+    <div class="card c-teal"><h4>من في الحالة</h4><p class="small mb0">مهجة الكعكي مديرة خدمات الزوار، ونادر الزمزمي مدير عمليات الحشود، ومنتهى فلاتة مسؤولة حماية البيانات، وعبدالهادي المليباري مدير المرافق والطاقة، وغيداء حجازي قائدة مكتب الزوار متعدد اللغات.</p></div>
+  </div>
+  <aside class="notes"><p>كل ما في الحالة افتراضي، ومنه المدينة. لا تقارن أرقامها بمدينة حقيقية.</p><p>اسأل: من منكم يطلب أنظمة لجهته أو يوقّع على قبولها؟ هذا المقرر لهم. من يبني النماذج يجد العمق في مقررات المسار الهندسي.</p></aside>
+</section>
+
+<section class="slide" id="visitor-journey" data-lo="LO1" data-n="7" data-session="1">
+  <div class="kicker">رحلة الزائر</div>
+  <h2>الاستخدامات تقع على طول رحلة الزائر، ولكل محطة بياناتها</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>قبل الوصول</b>تنبؤ الأعداد، وتوزيع الموظفين، والحجوزات</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الوصول والتنقل</b>القطار والحافلات، والحرارة في الطريق</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>في الساحة</b>عدّ الكثافة، والبوابات، والكاميرات</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>الخدمة</b>الإرشاد بلغات الزوار، والمباني، والطوارئ</div>
+  </div>
+  <div class="callout tip mt"><b>اسأل في كل محطة:</b> ماذا يرى النظام، ومن يبني قرارًا على مخرجه، ومن يقع عليه خطؤه؟</div>
+  <aside class="notes"><p>اطلب من كل مشارك أن يضع خدمة من ورقته التحضيرية على إحدى المحطات الأربع، في نصف دقيقة. الأسئلة الثلاثة في الصندوق هي أعمدة جدول المختبر 1.1.</p></aside>
+</section>
+
+<section class="slide" id="two-stakes" data-lo="LO1" data-n="8" data-session="1">
+  <div class="kicker">نوعان من المخاطر</div>
+  <h2>خطر على سلامة الناس في الحشد، وخطر على خصوصيتهم</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>مخاطر السلامة</h4><p class="small mb0">خطأ يؤخر قرارًا في حشد أو حر أو طارئ: كثافة تُقرأ أقل من حقيقتها، أو إحالة عاجلة لا تحدث. الضرر جسدي، وقد لا يُتدارك.</p></div>
+    <div class="card c-purple"><h4>مخاطر الخصوصية</h4><p class="small mb0">بيانات تُجمع عن أناس لم يطلبوا شيئًا: صورة، أو موقع، أو وجه، أو محادثة. الضرر قد لا يُرى، ويقع على من لا يعلم.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> نظام بلا بيانات شخصية قد يكون عالي المخاطر في السلامة، ونظام آمن جسديًا قد يكون عالي المخاطر في الخصوصية. قدّر كلًّا على حدة.</div>
+  <aside class="notes"><p>هذا التفريق هو عمودا التقدير في المختبر 1.1. مثال من خارج الحالة: حساس امتلاء موقف سيارات لا يلمس بيانات شخصية، وخطؤه يرسل السيارات إلى موقف ممتلئ؛ وقارئ لوحات السيارات عند المدخل يلمس بيانات تتبع أصحابها.</p></aside>
+</section>
+
+<section class="slide" id="who-is-affected" data-lo="LO1" data-n="9" data-session="1">
+  <div class="kicker">من يتأثر</div>
+  <h2>المتأثر في الأماكن العامة غالبًا ليس مستخدم النظام</h2>
+  <table class="t">
+    <tr><th>الاستخدام (أمثلة من خارج الحالة)</th><th>من يستخدمه</th><th>من يقع عليه</th></tr>
+    <tr><td>حساسات امتلاء المواقف</td><td>إدارة المواقف</td><td>السائقون، ولا بيانات عنهم</td></tr>
+    <tr><td>قراءة لوحات السيارات عند المدخل</td><td>إدارة المواقف</td><td>كل سائق يدخل، وتتبع تنقله</td></tr>
+    <tr><td>شاشة زمن الانتظار من عدّ الهواتف</td><td>الزائر المنتظر</td><td>كل من يحمل هاتفًا في المكان</td></tr>
+    <tr class="hl"><td>بوابات تذاكر بمسح الوجه</td><td>منظم الفعالية</td><td>كل داخل، ومنهم أطفال</td></tr>
+  </table>
+  <aside class="notes"><p>الأمثلة من خارج حالات الرفادة عمدًا: الحالات الست للمختبر 1.1. اسأل: أي هذه الأربعة يقع خطؤه على أطفال؟ وأيها يجمع بيانات عمن لم يستخدمه؟</p></aside>
+</section>
+
+<section class="slide" id="sdaia-levels" data-lo="LO1" data-n="10" data-session="1">
+  <div class="kicker">مبادئ أخلاقيات الذكاء الاصطناعي، سدايا</div>
+  <h2>أربعة مستويات للمخاطر، يحددها الأثر لا التقنية</h2>
+  <table class="t small">
+    <tr><th>المستوى</th><th>ما تقوله المبادئ، بإيجاز</th></tr>
+    <tr><td><b>بسيطة أو منعدمة</b></td><td>لا قيود، ويوصى بالالتزام بالأخلاقيات. مثالها مرشحات البريد العشوائي</td></tr>
+    <tr><td><b>محدودة</b></td><td>تخضع لمبادئ الأخلاقيات</td></tr>
+    <tr class="hl"><td><b>عالية</b></td><td>مخاطر عالية على الحقوق الأساسية: تقييم مطابقة قبل التشغيل وبعده، ومراعاة المتطلبات النظامية</td></tr>
+    <tr><td><b>غير مقبولة</b></td><td>لا يُسمح بها، مثل التصنيف الاجتماعي واستغلال الأطفال وتشويه السلوك</td></tr>
+  </table>
+  <div class="callout note mt"><b>ومعها:</b> القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا لإنسان، ولا تُستخدم الأنظمة للمراقبة الجماعية.</div>
+  <aside class="notes"><p>المستويات من قسم نطاق المخاطر في المبادئ، والسطر الأخير من مبدأ الموثوقية والسلامة. صياغة الشريحة تلخيص، لا اقتباس.</p><p>المصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي (النسخة العربية والإنجليزية).</p></aside>
+</section>
+
+<section class="slide" id="worst-error" data-lo="LO1" data-n="11" data-session="1">
+  <div class="kicker">كيف ترتب</div>
+  <h2>رتّب بأسوأ خطأ واقعي ومن يقع عليه، لا بالخطأ المعتاد</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>ماذا يفعل</b>يتنبأ، يعدّ، يتعرف، يجيب، يضبط</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>ما يلمسه</b>أعداد مجمعة، صورة، موقع، وجه، محادثة</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>أسوأ خطأ</b>من يقع عليه، وهل يعلم، وهل يُتدارك</div>
+  </div>
+  <div class="callout tip mt"><b>عند التساوي</b> قدّم الحالة التي يقع خطؤها على أشخاص لا يعلمون بالنظام ولا يستطيعون الاعتراض.</div>
+  <aside class="notes"><p>هذه خطوات المختبر 1.1 الثلاث. مثال من خارج الحالة: شاشة زمن الانتظار، أسوأ أخطائها أن تقول عشر دقائق والانتظار ساعة؛ يقع على المنتظر، ويعلم به، ويُتدارك. قارنه بقارئ اللوحات: خطؤه أن يُحفظ مسار سائق شهورًا، ولا يعلم به.</p></aside>
+</section>
+
+<section class="slide" id="check-stakes" data-lo="LO1" data-n="12" data-session="1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي الاستخدامين أعلى مخاطر؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1" data-id="check-stakes-q1">
+    <p class="lead">متحف تراثي (ليس من حالات الرفادة) يدرس استخدامين: شاشة تتنبأ بزمن الانتظار عند الشباك من عدّ التذاكر، وكاميرات عند المدخل تقدّر عمر الزائر لتطبيق سعر الأطفال آليًا. أيهما أعلى مخاطر، ولماذا؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يرتب بما يراه الزوار: الشاشة ظاهرة للجميع، لكن خطأها يُتدارك ولا يلمس بيانات شخصية" data-k="أ">الشاشة، لأن كل الزوار يرونها</div>
+      <div class="opt" data-ok data-k="ب">الكاميرات، لأنها تحلل الوجوه</div>
+      <div class="opt" data-why="يرتب بالقيمة المالية: الخطأ في السعر صغير، والمخاطر في البيانات التي تُجمع عن الوجوه" data-k="ج">الشاشة، لأن خطأها يكلف المتحف أكثر</div>
+      <div class="opt" data-why="يخلط بين التقنية والأثر: كون الاستخدامين آليين لا يجعل مخاطرهما متساوية" data-k="د">متساويان، لأن كليهما آلي بالكامل</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الكاميرات تعالج وجه كل داخل، ومنهم أطفال لم يطلبوا شيئًا، والخطأ فيها يقع على أشخاص لا يعلمون. الشاشة تلمس أعدادًا مجمعة وخطؤها يُتدارك.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. إن اختار كثيرون «ج» فارجع إلى شريحة «نوعان من المخاطر»: الكلفة المالية ليست مخاطر السلامة ولا الخصوصية. ثم انتقل إلى المختبر.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-1" data-auto="lab" data-lab="1.1" data-label="المختبر 1.1" data-n="13" data-session="1">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.1 · 25 دقيقة</div><h2>ترتيب ستة استخدامات</h2><p class="lead small">ترتب ست حالات نشر في هيئة الرفادة بحسب مخاطر السلامة والخصوصية، وتسمي لكل حالة بياناتها والأشخاص المتأثرين وأسوأ خطأ فيها. تخرج بجدول مرتب.</p><a class="nb" href="../labs/D1_1_rank_deployments.html">D1_1_rank_deployments.html</a></div><ul class="checklist"><li>اقرأ بطاقات الحالات الست وورقة عملك التحضيري <span class="min">4 د</span></li><li>سمِّ لكل حالة بياناتها والأشخاص المتأثرين <span class="min">7 د</span></li><li>اكتب أسوأ خطأ ممكن ومن يقع عليه <span class="min">6 د</span></li><li>رتّب الحالات الست وسوّغ أعلى حالتين <span class="min">5 د</span></li><li>قارن ترتيبك بزميل وسجّل موضع الخلاف <span class="min">3 د</span></li><li class="stretch">✱ إضافي: رتّب بالطريقة نفسها ثلاثة استخدامات من ورقة عملك التحضيري، وضعها في الجدول بين حالات الرفادة</li></ul></div>
+  <aside class="notes"><p>دون مساعد. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته. اجمع جداول الترتيب بعد الخطوة 4، قبل مقارنة الزملاء: هذه النسخة دليل المخرج الأول.</p><p>راقب من يضع «توقّع» في الأسفل «لأنه بلا بيانات شخصية» دون أن يذكر أثر خطئه على المنتظرين في الحر.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-1" data-lo="LO1" data-n="14" data-session="1">
+  <div class="kicker">بعد المختبر 1.1</div>
+  <h2>الحالات الثلاث الأعلى: العدّ في الساحة، وأساور الأطفال، والوجوه</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>D2 عدّ الكثافة</h4><p class="small mb0">قرار الإيقاف يُبنى عليه، والكاميرات تصوّر كل من في الساحة. سلامة عالية وخصوصية متوسطة.</p></div>
+    <div class="card c-purple"><h4>D6 أساور الأطفال</h4><p class="small mb0">موقع أطفال كل دقيقة طوال الزيارة. خصوصية عالية، وسلامة عالية إذا تعطل واطمأن الأهل.</p></div>
+    <div class="card c-navy"><h4>D3 الوجوه عند البوابات</h4><p class="small mb0">بيانات حيوية لتحديد الهوية، وهي حساسة في نظام حماية البيانات الشخصية. الخطأ يوقف بريئًا أمام الناس.</p></div>
+  </div>
+  <div class="callout note mt"><b>والأسفل:</b> «نسيم» ثم «توقّع». لكن «توقّع» ليس بلا مخاطر: خطؤه إلى الأقل في الذروة يترك المنتظرين في الحر.</div>
+  <aside class="notes"><p>الترتيب المرجعي: D2، D6، D3، D4، D1، D5. اقبل ترتيبًا آخر للثلاث الأعلى إذا سمّى السبب البيانات والأشخاص وأسوأ خطأ. اسأل الطاولات عن موضع الخلاف الذي سجلوه في الخطوة 5.</p><p>المصدر: تعريف البيانات الحساسة في نظام حماية البيانات الشخصية.</p></aside>
+</section>
+
+<!-- الجلسة 2 -->
+
+<section class="slide section" id="s2" data-auto="section" data-session="2" data-n="15">
+  <div class="kicker">الجلسة 2</div>
+  <h1>التنبؤ مقابل خط أساس</h1>
+  <ul class="bullets outcomes"><li>تبني خط أساس موسميًا من الموسم السابق ونمو معلوم</li><li>تحسب الخطأ المطلق ونسبة الخطأ ليوم واحد ولموسم كامل</li><li>تحكم على تنبؤ بمقارنته بخط الأساس لا بالرقم وحده</li></ul>
+  <div class="sess-no">02</div>
+</section>
+
+<section class="slide" id="floor-first" data-lo="LO2" data-n="16" data-session="2">
+  <div class="kicker">خط الأساس</div>
+  <h2>لا يُحكم على تنبؤ إلا بمقارنته بطريقة بسيطة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>خط الأساس الموسمي:</b> القيمة في اليوم نفسه من الموسم السابق</li>
+      <li>ومعها نمو معلوم إن وُجد: <b>الموسم السابق × (1 + النمو)</b></li>
+      <li>لا يحتاج إلى نموذج ولا مورِّد، ويحسبه أي جدول بيانات</li>
+      <li>إن لم يتفوق النظام عليه، فما الذي تدفع ثمنه؟</li>
+    </ul>
+    <div class="card c-teal"><h4>في كتب التنبؤ</h4><p class="small mb0">الطريقة الموسمية البسيطة تجعل التنبؤ مساويًا لآخر قيمة من الموسم نفسه، وتُستخدم مقياسًا تُقارن به الطرق الأعقد.</p></div>
+  </div>
+  <aside class="notes"><p>الطريقة من كتاب Hyndman وAthanasopoulos، الفصل الخامس: الطرق البسيطة تُستعمل معايير للمقارنة لا طريقةً مختارة. خط أساس الهيئة يضيف إليها نمو الخطة.</p><p>المصادر: Hyndman and Athanasopoulos, Forecasting: Principles and Practice, 3rd ed., Some simple forecasting methods.</p></aside>
+</section>
+
+<section class="slide" id="error-measures" data-lo="LO2" data-n="17" data-session="2">
+  <div class="kicker">مقاييس الخطأ</div>
+  <h2>الخطأ بإشارته يقول الاتجاه، وبقيمته المطلقة يقول الحجم</h2>
+  <table class="t">
+    <tr><th>المقياس</th><th>الحساب</th><th>يجيب عن</th></tr>
+    <tr><td>الخطأ</td><td>التنبؤ ناقص الفعلي</td><td>هل التنبؤ أعلى من الواقع أم أقل؟</td></tr>
+    <tr><td>نسبة الخطأ</td><td>الخطأ ÷ الفعلي</td><td>كم بالنسبة إلى حجم اليوم؟</td></tr>
+    <tr><td>متوسط نسبة الخطأ المطلقة</td><td>متوسط القيم المطلقة للنسب</td><td>كم يخطئ عادة، في أي اتجاه</td></tr>
+    <tr><td>الانحياز</td><td>متوسط النسب بإشارتها</td><td>هل يميل دائمًا إلى جهة واحدة؟</td></tr>
+  </table>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> متوسط النسب بإشارتها قد يقترب من الصفر لأن الأخطاء تلغي بعضها. هذا انحياز، لا دقة.</div>
+  <aside class="notes"><p>اكتب على السبورة مثالًا من يومين: خطأ +10% ثم −10%. المتوسط بالإشارة صفر، والمتوسط المطلق 10%. الأول يقول إن التنبؤ غير منحاز، والثاني إنه يخطئ عشرة في المئة كل يوم.</p></aside>
+</section>
+
+<section class="slide" id="worked-museum" data-lo="LO2" data-n="18" data-session="2">
+  <div class="kicker">مثال محلول</div>
+  <h2>تذاكر متحف في أربعة أيام: التنبؤ مقابل خط الأساس</h2>
+  <table class="t">
+    <tr><th>اليوم</th><th class="num">الفعلي</th><th class="num">التنبؤ</th><th class="num">نسبة الخطأ</th><th class="num">خط الأساس</th><th class="num">نسبة الخطأ</th></tr>
+    <tr><td>1</td><td class="num">1,000</td><td class="num">950</td><td class="num"><span class="ltr">-5%</span></td><td class="num">1,080</td><td class="num">8%</td></tr>
+    <tr><td>2</td><td class="num">1,200</td><td class="num">1,140</td><td class="num"><span class="ltr">-5%</span></td><td class="num">1,140</td><td class="num"><span class="ltr">-5%</span></td></tr>
+    <tr><td>3</td><td class="num">800</td><td class="num">840</td><td class="num">5%</td><td class="num">760</td><td class="num"><span class="ltr">-5%</span></td></tr>
+    <tr class="hl"><td>4</td><td class="num">2,000</td><td class="num">1,500</td><td class="num"><span class="ltr">-25%</span></td><td class="num">1,900</td><td class="num"><span class="ltr">-5%</span></td></tr>
+  </table>
+  <p class="lead mt">متوسط النسبة المطلقة: 10% للتنبؤ، و5.75% لخط الأساس.</p>
+  <aside class="notes"><p>مثال مخترع للتوضيح، ليس من ملف الرفادة. احسب مع القاعة صفًا واحدًا: (950 − 1,000) ÷ 1,000 = −5%. ثم اسأل: ما الذي حدث في اليوم 4؟ لا تجب الآن؛ الجلسة التالية عن هذا اليوم بالذات.</p></aside>
+</section>
+
+<section class="slide" id="spreadsheet-steps" data-lo="LO2" data-n="19" data-session="2">
+  <div class="kicker">في جدول البيانات</div>
+  <h2>أربعة أعمدة تكفي للحكم على تنبؤ</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>خط الأساس</b>الموسم السابق × (1 + النمو)</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الخطأ</b>التنبؤ ناقص الفعلي</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>النسبة</b>الخطأ ÷ الفعلي</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>المتوسط</b>للقيمة المطلقة، لكل تنبؤ</div>
+  </div>
+  <div class="callout tip mt"><b>قسّم على الفعلي.</b> هكذا يُقارن تنبؤان على الأيام نفسها بمقام واحد.</div>
+  <aside class="notes"><p>اعرض في جدول البيانات صيغة واحدة لكل عمود على مثال المتحف، لا على ملف الرفادة. من لا يعرف ABS يضيف عمودًا للقيمة المطلقة.</p><p>المساعد هنا معلّم: اسأله «اشرح لي ABS» لا «احسب لي الخطأ».</p></aside>
+</section>
+
+<section class="slide" id="check-floor" data-lo="LO2" data-n="20" data-session="2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>متى يكون التنبؤ مفيدًا؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-floor-q1">
+    <p class="lead">مورِّد يتنبأ بإشغال فنادق مدينة (ليست الرفادة) ويعلن أن متوسط نسبة خطئه 7%. ما المقارنة التي تخبرك هل هذا جيد؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يقبل المعيار الذي يختاره البائع: رقم المورِّد وحده لا يقول هل يفعل ما لا تفعله طريقة بسيطة" data-k="أ">بنسبة الخطأ في عرض المورِّد السابق</div>
+      <div class="opt" data-why="يقارن بمعيار عام: نسبة مقبولة في قطاع آخر لا تقول شيئًا عن هذه المدينة وهذا الموسم" data-k="ب">بنسبة خطأ معتادة في قطاع الطيران</div>
+      <div class="opt" data-ok data-k="ج">بخطأ خط الأساس الموسمي</div>
+      <div class="opt" data-why="يخلط بين الثقة والدقة: نطاق الثقة الذي يعلنه المورِّد ليس اختبارًا على بيانات المدينة" data-k="د">بنطاق الثقة الذي يعلنه المورِّد</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> خط الأساس الموسمي هو ما تحصل عليه بلا نظام. التنبؤ مفيد بقدر ما يتفوق عليه على الأيام نفسها، وبالمقياس نفسه.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. ذكّر بأن المقارنة على الأيام نفسها: لا تقارن خطأ موسم بخطأ موسم آخر. ثم انتقل إلى المختبر 1.2.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-2" data-auto="lab" data-lab="1.2" data-label="المختبر 1.2" data-n="21" data-session="2">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.2 · 20 دقيقة</div><h2>فحص التنبؤ: الجزء الأول</h2><p class="lead small">تحسب خطأ «توقّع» وخطأ خط الأساس الموسمي لكل يوم من الموسم الثالث، ثم متوسط نسبة الخطأ لكل منهما على الموسم كله.</p><a class="nb" href="../labs/D1_2_forecast_error.html">D1_2_forecast_error.html</a></div><ul class="checklist"><li>افتح ملف الوافدين واقرأ أعمدته <span class="min">3 د</span></li><li>احسب خط الأساس الموسمي لكل يوم <span class="min">5 د</span></li><li>احسب الخطأ ونسبته لكل يوم للتنبؤين <span class="min">7 د</span></li><li>احسب متوسط نسبة الخطأ للموسم وقارن <span class="min">5 د</span></li><li class="stretch">✱ إضافي: ارسم الوافدين الفعليين والتنبؤين على مخطط واحد، وعلّم الأيام التي يبتعد فيها «توقّع» أكثر</li></ul></div>
+  <aside class="notes"><p>المساعد معلّم. الخطأ الأكثر شيوعًا: قسمة الخطأ على التنبؤ. والثاني: أخذ الموسم 1 بدل الموسم 2. اجمع ملفات المشاركين في نهاية المختبر، قبل أن يفتحوا ملف البداية للمختبر 1.3، فهو يحوي هذا الحساب مكتملًا.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-2" data-lo="LO2" data-n="22" data-session="2">
+  <div class="kicker">بعد المختبر 1.2</div>
+  <h2>على الموسم كله، «توقّع» يبدو أدق من خط الأساس</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">5.6%</div><div class="lbl">متوسط نسبة خطأ «توقّع» على 60 يومًا</div></div>
+    <div class="stat center"><div class="big">6.9%</div><div class="lbl">متوسط نسبة خطأ خط الأساس الموسمي</div></div>
+  </div>
+  <div class="callout warn mt"><b>لا تحكم بعد.</b> الموظفون لا يُوزَّعون على متوسط الموسم، بل على أيام الذروة. هناك نحكم في الجلسة التالية.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.2. اسأل: لو كان هذا كل ما عندك، هل تشتري «توقّع»؟ أكثرهم سيقول نعم. هذا هو الفخ.</p></aside>
+</section>
+
+<!-- الجلسة 3 -->
+
+<section class="slide section" id="s3" data-auto="section" data-session="3" data-n="23">
+  <div class="kicker">الجلسة 3</div>
+  <h1>الحكم على التنبؤ في الذروة</h1>
+  <ul class="bullets outcomes"><li>تحدد أيام الذروة مسبقًا من التنبؤ لا من الفعلي</li><li>تقيس الخطأ والانحياز في أيام الذروة وحدها</li><li>تحسب هامشًا احتياطيًا للتوظيف يغطي أغلب أيام الذروة</li></ul>
+  <div class="sess-no">03</div>
+</section>
+
+<section class="slide" id="peak-sets-staff" data-lo="LO2" data-n="24" data-session="3">
+  <div class="kicker">الذروة</div>
+  <h2>أيام الذروة هي التي تحدد عدد الموظفين والحافلات والماء</h2>
+  <ul class="bullets">
+    <li>يومٌ عادي يخطئ فيه التنبؤ 10% يمر بلا أثر يذكر</li>
+    <li>يوم ذروة يخطئ فيه 10% إلى الأقل يعني طوابير في الحر ونقصًا في الموظفين</li>
+    <li>متوسط الموسم يخلط الأيام كلها بوزن واحد</li>
+    <li><b>احكم على التنبؤ في الأيام التي تُبنى عليها القرارات</b></li>
+  </ul>
+  <div class="callout tip mt"><b>العبارة التي تبقى.</b> احكم على التنبؤ في الذروة.</div>
+  <aside class="notes"><p>ارجع إلى مثال المتحف: اليوم 4 كان يوم مهرجان، وأخطأ فيه التنبؤ ربع العدد. متوسطه 10% يخفي أن خطأه كله تقريبًا في اليوم الذي يهم.</p></aside>
+</section>
+
+<section class="slide" id="peak-in-advance" data-lo="LO2" data-n="25" data-session="3">
+  <div class="kicker">أي أيام هي الذروة؟</div>
+  <h2>حدد أيام الذروة قبل الموسم، من التقويم</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>صحيح</h4><p class="small mb0">أيام تعرفها قبل الموسم: فعالية كبرى، وعطلة، وموسم معلوم. هي الأيام التي ستبني لها جدول الموظفين.</p></div>
+    <div class="card c-coral"><h4>مضلِّل</h4><p class="small mb0">«الأيام التي ظهرت عالية» بعد وقوعها. تختار بها الأيام التي أخطأ فيها التنبؤ إلى الأقل، فتبدو النتيجة أسوأ أو أفضل مما هي.</p></div>
+  </div>
+  <aside class="notes"><p>في المختبر تأتي أيام الذروة من تقويم الموسم في ملف README. في جهتك: من يملك تقويم الفعاليات؟ اطلبه قبل أن تقيّم أي تنبؤ.</p></aside>
+</section>
+
+<section class="slide" id="bias-at-peak" data-lo="LO2" data-n="26" data-session="3">
+  <div class="kicker">الانحياز في الذروة</div>
+  <h2>النموذج الناعم يقصّ القمم</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>نموذج يتعلم «اليوم المعتاد» جيدًا يقترب من المتوسط في كل مكان</li>
+      <li>عند القمة يتنبأ بأقل من الواقع، يومًا بعد يوم</li>
+      <li>متوسط الموسم يبقى جيدًا لأن أيام القمة قليلة</li>
+      <li>الانحياز السالب في الذروة هو العلامة</li>
+    </ul>
+    <div class="card c-coral"><h4>في مثال المتحف</h4><p class="small mb0">في اليوم 4 كان الخطأ <span class="ltr">-25%</span>، والأيام الثلاثة الأخرى بين <span class="ltr">-5%</span> و5%. نموذج جيد في الأيام العادية، وسيئ في اليوم الوحيد الذي يهم.</p></div>
+  </div>
+  <aside class="notes"><p>لا تقل إن «توقّع» يفعل هذا؛ دعهم يكتشفون ذلك في المختبر. السؤال الذي يأخذونه معهم: ما انحياز التنبؤ في أيام الذروة وحدها؟</p></aside>
+</section>
+
+<section class="slide" id="buffer-of-forecast" data-lo="LO2" data-n="27" data-session="3">
+  <div class="kicker">الهامش الاحتياطي</div>
+  <h2>الهامش يُضاف إلى التنبؤ، فاحسبه نسبةً من التنبؤ</h2>
+  <div class="cols cols-2">
+    <div class="stack">
+      <div class="stat center"><div class="big">1,500</div><div class="lbl">التنبؤ في يوم المهرجان (مثال المتحف)</div></div>
+      <div class="stat center"><div class="big">2,000</div><div class="lbl">الفعلي</div></div>
+    </div>
+    <ul class="bullets">
+      <li>النقص = 500، أي <b>25% من الفعلي</b></li>
+      <li>لكن لتصل من 1,500 إلى 2,000 تحتاج <b>33% من التنبؤ</b></li>
+      <li>الهامش = أكبر (الفعلي ÷ التنبؤ ناقص 1) في أيام الذروة</li>
+      <li>قرّبه إلى أعلى، لا إلى أقرب رقم</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> هامش 25% على 1,500 يعطي 1,875، والفعلي 2,000.</div>
+  <aside class="notes"><p>هذا أكثر خطأ يتكرر في المختبر 1.3. احسبه على السبورة. ثم اسأل: كم موظفًا يخدم 2,000 زائر إن خدم الموظف 250؟ ثمانية. وبهامش 25% تحسب سبعة ونصفًا فتقرّب إلى ثمانية، ولكن في أرقام أكبر لا يحميك التقريب.</p></aside>
+</section>
+
+<section class="slide" id="buffer-has-cost" data-lo="LO2" data-n="28" data-session="3">
+  <div class="kicker">ثمن الهامش</div>
+  <h2>كل نقطة في الهامش موظفون مدفوعو الأجر في كل يوم ذروة</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>تنبؤ منحاز إلى الأقل</b>يحتاج هامشًا كبيرًا</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>هامش كبير</b>يزيد الموظفين في كل أيام الذروة، حتى التي أصاب فيها</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>المقارنة العادلة</b>كلفة التنبؤ مع هامشه، مقابل خط الأساس مع هامشه</div>
+  </div>
+  <aside class="notes"><p>السؤال الذي يكتبونه للمديرة في الخطوة 5: بأي تنبؤ نبني جدول الأسبوع الكبير، وبأي هامش؟ الجواب الجيد يذكر عدد أيام العمل الإضافية، لا النسبة وحدها.</p></aside>
+</section>
+
+<section class="slide" id="check-peak" data-lo="LO2" data-n="29" data-session="3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي رقم تضعه أمام المديرة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-peak-q1">
+    <p class="lead">تنبؤ بركاب حافلات مهرجان (ليس من ملفات الرفادة): متوسط نسبة خطئه 4% على الشهر، و15% في أيام المهرجان الخمسة بانحياز إلى الأقل. ستبني المديرة جدول السائقين لأيام المهرجان. أي رقم يحكم؟</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="أ">15% في أيام المهرجان، وانحيازه إلى الأقل</div>
+      <div class="opt" data-why="يحكم بمتوسط يخلط الأيام العادية بأيام القرار: 4% تخفي خطأ الأيام الخمسة" data-k="ب">4% على الشهر كله</div>
+      <div class="opt" data-why="يرى أن المتوسط بين الرقمين يوازن الصورة: لكنه يقلل الخطأ في الأيام التي يُبنى لها الجدول" data-k="ج">متوسط الرقمين، نحو 9%</div>
+      <div class="opt" data-why="يظن أن الانحياز لا يهم ما دام الخطأ معروفًا: الاتجاه يحدد هل يُضاف السائقون أم يُنقصون" data-k="د">15%، دون حاجة إلى معرفة اتجاهه في تلك الأيام</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الجدول يُبنى لأيام المهرجان، فالخطأ فيها هو الذي يحدد الهامش، واتجاهه إلى الأقل يقول إن الهامش يُضاف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. إن اختار بعضهم «د» فاسأل: لو كان الانحياز إلى الأعلى، هل تضيف سائقين؟ ثم انتقل إلى المختبر 1.3.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-3" data-auto="lab" data-lab="1.3" data-label="المختبر 1.3" data-n="30" data-session="3">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.3 · 25 دقيقة</div><h2>فحص التنبؤ: الجزء الثاني</h2><p class="lead small">تبني جدول أخطاء الذروة للتنبؤين على أيام الذروة الستة من تقويم الموسم الثالث، وتحسب الانحياز، ثم الهامش الاحتياطي الذي يغطي أيام الذروة الستة وعدد موظفي الاستقبال الناتج. يبدأ من ملف الجزء الأول المكتمل.</p><a class="nb" href="../labs/D1_3_peak_error.html">D1_3_peak_error.html</a></div><ul class="checklist"><li>افتح ملف البداية وحدد أيام الذروة الستة <span class="min">4 د</span></li><li>احسب الخطأ والانحياز في أيام الذروة للتنبؤين <span class="min">7 د</span></li><li>املأ جدول أخطاء الذروة وقارنه بمتوسط الموسم <span class="min">4 د</span></li><li>احسب الهامش الاحتياطي الذي يغطي أيام الذروة <span class="min">6 د</span></li><li>حوّل الهامش إلى عدد موظفين واكتب سطرين للمديرة <span class="min">4 د</span></li><li class="stretch">✱ إضافي: أعد الحساب بتعريف آخر للذروة (أعلى عشرة أيام) وانظر هل يتغير الهامش</li></ul></div>
+  <aside class="notes"><p>يبدأ من forecast_part2_start.xlsx. راقب من يقرّب أكبر نقص إلى 20% دون أن يحسبه نسبة من التنبؤ: اطلب منه أن يتحقق في ورقة «التوظيف» هل نقص الموظفون. المختبر يبني دليل المخرج الثاني: جدول أخطاء الذروة والهامش.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-3" data-lo="LO2" data-n="31" data-session="3">
+  <div class="kicker">بعد المختبر 1.3</div>
+  <h2>في الذروة انقلب الترتيب: «توقّع» يخطئ أكثر، وإلى الأقل</h2>
+  <table class="t">
+    <tr><th></th><th class="num">متوسط الموسم</th><th class="num">متوسط الذروة</th><th class="num">انحياز الذروة</th><th class="num">الهامش</th></tr>
+    <tr><td>«توقّع»</td><td class="num">5.6%</td><td class="num">9.7%</td><td class="num"><span class="ltr">-9.3%</span></td><td class="num">25%</td></tr>
+    <tr class="hl"><td>خط الأساس الموسمي</td><td class="num">6.9%</td><td class="num">6.3%</td><td class="num">1.9%</td><td class="num">10%</td></tr>
+  </table>
+  <div class="callout note mt"><b>بالموظفين:</b> دون هامش ينقص موظفو «توقّع» في 5 من 6 أيام. بالهامش: 1,148 يوم عمل لـ«توقّع» و1,138 لخط الأساس، واللازم 1,017.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.3. أكبر نقص لـ«توقّع» 18.6% من الفعلي، أي 22.9% من التنبؤ. من قرّب إلى 20% ينقصه موظفون في يومين.</p><p>الرسالة لمهجة الكعكي: «توقّع» لا يضيف شيئًا في الأسبوع الكبير على خط أساس مع هامش 10%. هامش 25% هو زيادة الوافدين في اختبار الضغط في الجلسة 7.</p></aside>
+</section>
+
+<!-- الجلسة 4 -->
+
+<section class="slide section" id="s4" data-auto="section" data-session="4" data-n="32">
+  <div class="kicker">الجلسة 4</div>
+  <h1>النقل والإجهاد الحراري في يوم الذروة</h1>
+  <ul class="bullets outcomes"><li>توزع العدد اليومي على الساعات وتجد ساعة الذروة</li><li>تحسب رحلات الحافلات الترددية اللازمة لساعة الذروة</li><li>تقرأ مؤشر الحرارة مع الرطوبة وتحدد الساعات التي تحتاج ظلًا وماءً</li></ul>
+  <div class="sess-no">04</div>
+</section>
+
+<section class="slide" id="day-to-hour" data-lo="LO2" data-n="33" data-session="4">
+  <div class="kicker">من اليوم إلى الساعة</div>
+  <h2>العدد اليومي لا يملأ حافلة: الساعة هي وحدة التشغيل</h2>
+  <ul class="bullets">
+    <li>الوافدون في الساعة = وافدو اليوم × حصة الساعة</li>
+    <li>الحصص من عدّ المواسم السابقة، ومجموعها 100%</li>
+    <li>ساعة الذروة قد تحمل ضعفي متوسط الساعات أو أكثر</li>
+    <li>الحافلات والبوابات وفرق الميدان تُخطط لساعة الذروة</li>
+  </ul>
+  <div class="callout tip mt"><b>مثال:</b> ملعب يستقبل 40,000 في يوم مباراة، و20% منهم في الساعة السابقة لها: 8,000 في ساعة واحدة.</div>
+  <aside class="notes"><p>المثال مخترع، من خارج الحالة. اسأل: لو وزعتم الأربعين ألفًا على ساعات اليوم بالتساوي، كم يكون؟ نحو 1,700 في الساعة. الفرق بين الرقمين هو الفرق بين خطة تعمل وخطة تنهار.</p></aside>
+</section>
+
+<section class="slide" id="shuttle-math" data-lo="LO2" data-n="34" data-session="4">
+  <div class="kicker">الحافلات الترددية</div>
+  <h2>الرحلات = ركاب ساعة الذروة ÷ سعة الحافلة، مقرّبة إلى أعلى</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>ركاب الحافلات</b>وافدو الساعة × حصة الحافلات</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الرحلات</b>÷ سعة الحافلة، إلى أعلى</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>التردد</b>3,600 ثانية ÷ الرحلات</div>
+  </div>
+  <div class="callout note mt"><b>في مثال الملعب:</b> 8,000 × 25% = 2,000 راكب، وبحافلة سعتها 50: أربعون رحلة، أي حافلة كل 90 ثانية.</div>
+  <aside class="notes"><p>التردد يقول لك هل الخطة ممكنة: حافلة كل 90 ثانية من محطة واحدة تحتاج إلى رصيف ومسار ومشرفين. إن لم تكن ممكنة، فالحل ليس في الجدول بل في توزيع الوصول على ساعات أكثر.</p></aside>
+</section>
+
+<section class="slide" id="heat-index" data-lo="LO2" data-n="35" data-session="4">
+  <div class="kicker">الإجهاد الحراري</div>
+  <h2>الرطوبة تجعل الحر أشد على الجسم من رقم الحرارة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>مؤشر الحرارة</b> يجمع الحرارة والرطوبة في رقم واحد يقارب ما يشعر به الجسم</li>
+      <li>خطط الحرارة تعمل بفئات: حذر، وحذر شديد، وخطر</li>
+      <li>استعمل المؤشر الذي تنشره جهة الأرصاد المعتمدة لا حسابًا خاصًا</li>
+      <li>تنبيه يُطلق من درجة الحرارة وحدها يتأخر في الأيام الرطبة</li>
+    </ul>
+    <div class="card c-coral"><h4>من في خطر أكثر</h4><p class="small mb0">كبار السن، والأطفال، ومن يمشي مسافات طويلة، ومن ينتظر واقفًا في طابور مكشوف.</p></div>
+  </div>
+  <aside class="notes"><p>لا تعطِ صيغة لمؤشر الحرارة ولا حدودًا من الذاكرة: الحدود في المختبر هي حدود خطة الحرارة في المدينة الافتراضية، وفي جهتك هي ما تعتمده جهة الأرصاد وخطة السلامة. السؤال الذي يهمنا: متى يجتمع الحر والزحام؟</p></aside>
+</section>
+
+<section class="slide" id="overlap-matters" data-lo="LO2" data-n="36" data-session="4">
+  <div class="kicker">التقاطع</div>
+  <h2>الخطر في الساعات التي يجتمع فيها الزحام والحر</h2>
+  <div class="cols cols-3">
+    <div class="card c-amber"><h4>أحر ساعة</h4><p class="small mb0">قد تكون هادئة: الناس لم يصلوا بعد.</p></div>
+    <div class="card c-cyan"><h4>ساعة الذروة</h4><p class="small mb0">قد تكون بعد أن خفّ الحر قليلًا.</p></div>
+    <div class="card c-coral"><h4>التقاطع</h4><p class="small mb0">ساعات ما زال فيها الحر في فئة عالية والناس يتوافدون. هنا الظل والماء والفرق الإضافية.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> من يضع الماء عند أحر ساعة وحدها، أو الموظفين عند ساعة الذروة وحدها، يترك ساعات التقاطع بلا غطاء.</div>
+  <aside class="notes"><p>في المختبر 1.4 تعلّم ساعات التقاطع بقاعدتين: فئة «حذر شديد» أو أعلى، وحصة الساعة 6% أو أكثر. القاعدة من صنع الحالة؛ في جهتك اتفق عليها مع فريق السلامة قبل الموسم.</p></aside>
+</section>
+
+<section class="slide" id="public-safety-chain" data-lo="LO2" data-n="37" data-session="4">
+  <div class="kicker">السلامة العامة</div>
+  <h2>رقم الساعة يدخل في ثلاث خطط في وقت واحد</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>النقل</b>رحلات الحافلات ومواعيد القطار</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الحرارة</b>الظل والماء وفرق الإسعاف</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>الحشد</b>الوافدون مع كل قطار إلى الساحة: مدخل المحاكاة</div>
+  </div>
+  <aside class="notes"><p>في المختبر تقسم وافدي ساعة الذروة على 24 قطارًا (قطار كل 150 ثانية). هذا الرقم هو ما يدخل نموذج الساحة في الجلسة التالية. نذكر هنا الطريقة فقط؛ الرقم من عملهم.</p></aside>
+</section>
+
+<section class="slide" id="check-heat" data-lo="LO2" data-n="38" data-session="4">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>تنبيه الحرارة في ساحة ملعب</h2>
+  <div class="quiz" data-type="single" data-lo="LO2" data-id="check-heat-q1">
+    <p class="lead">ساحة ملعب (ليست ساحة المشرع) تطلق تنبيه الإجهاد الحراري لفرق الميدان حين تتجاوز الحرارة 42 درجة. في يوم رطب بقيت الحرارة 38 ومؤشر الحرارة في فئة «خطر» ساعتين، ولم يُطلق التنبيه. ما الخلل؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يرى العتبة وحدها: خفضها يطلق تنبيهات في الأيام الجافة بلا حاجة، ولا يدخل الرطوبة في الحساب" data-k="أ">عتبة 42 مرتفعة، ويكفي خفضها إلى 38 درجة</div>
+      <div class="opt" data-why="ينسب الخلل إلى الحساس: الحساس قرأ الحرارة صحيحة، والقاعدة هي التي تتجاهل الرطوبة" data-k="ب">حساس الحرارة معطل ويجب استبداله</div>
+      <div class="opt" data-why="يرى الفرق أقدر من القاعدة: التقدير بالعين يتأخر ويختلف من مشرف إلى آخر" data-k="ج">يُترك التنبيه لتقدير مشرفي الفرق</div>
+      <div class="opt" data-ok data-k="د">التنبيه يقرأ الحرارة وحدها، لا مؤشر الحرارة الذي يجمعها مع الرطوبة</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الرطوبة ترفع ما يشعر به الجسم. التنبيه الذي يقرأ الحرارة وحدها يتأخر في الأيام الرطبة، فيُبنى على مؤشر الحرارة وفئاته.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. ثم انتقل إلى المختبر 1.4.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-4" data-auto="lab" data-lab="1.4" data-label="المختبر 1.4" data-n="39" data-session="4">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.4 · 20 دقيقة</div><h2>يوم الذروة بالساعات</h2><p class="lead small">توزع وافدي يوم الذروة على ساعاته، وتحسب رحلات الحافلات الترددية في ساعة الذروة، وتحدد الساعات التي يتقاطع فيها الزحام مع الإجهاد الحراري.</p><a class="nb" href="../labs/D1_4_peak_day_hours.html">D1_4_peak_day_hours.html</a></div><ul class="checklist"><li>اقرأ ملف يوم الذروة وسعة الحافلة <span class="min">3 د</span></li><li>احسب الوافدين في كل ساعة وحدد ساعة الذروة <span class="min">5 د</span></li><li>احسب رحلات الحافلات اللازمة في ساعة الذروة <span class="min">5 د</span></li><li>حدد ساعات الإجهاد الحراري المتقاطعة مع الزحام <span class="min">7 د</span></li><li class="stretch">✱ إضافي: أعد حساب الرحلات إذا زاد الوافدون بالهامش الاحتياطي الذي يناسب ذروة هذا اليوم</li></ul></div>
+  <aside class="notes"><p>لا يحتاج هذا المختبر إلى ملف سابق. راقب من يكتب الفئة من عمود الحرارة بدل المؤشر (لا يوجد عمود حرارة في الملف عمدًا)، ومن ينسى التقريب إلى أعلى في الرحلات.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-4" data-lo="LO2" data-n="40" data-session="4">
+  <div class="kicker">بعد المختبر 1.4</div>
+  <h2>ساعة الذروة ليست أحر ساعة، والخطر في ثلاث ساعات بينهما</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">10,800</div><div class="lbl">وافد في ساعة الذروة (الساعة 17)، أي 450 مع كل قطار</div></div>
+    <div class="stat center"><div class="big">54</div><div class="lbl">رحلة حافلة في ساعة الذروة، نحو واحدة كل 67 ثانية</div></div>
+    <div class="stat center"><div class="big">15 و16 و17</div><div class="lbl">ساعات يجتمع فيها الزحام والحر الشديد</div></div>
+  </div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.4. ساعات فئة «خطر» من الساعة 12 إلى الساعة 15، وساعة الذروة 17. الساعة 15 وحدها في الاثنين.</p><p>450 مع كل قطار هو الرقم الذي يبدأ به نموذج الساحة في الجلسة التالية: ليس رقمًا من المورِّد بل من حسابهم.</p></aside>
+</section>
+
+<!-- الجلسة 5 -->
+
+<section class="slide section" id="s5" data-auto="section" data-session="5" data-n="41">
+  <div class="kicker">الجلسة 5</div>
+  <h1>كيف تعمل محاكاة حركة المشاة</h1>
+  <ul class="bullets outcomes"><li>تصف ما تضعه في المحاكاة: المكان والبوابات والوافدين وسرعة المشي</li><li>تقرأ منحنى الكثافة في منطقة قياس وتجد قمته</li><li>تفسر لماذا تتغير القمة بتغير مساحة القياس ونافذة الزمن</li></ul>
+  <div class="sess-no">05</div>
+</section>
+
+<section class="slide" id="why-simulate" data-lo="LO3" data-n="42" data-session="5">
+  <div class="kicker">لماذا نحاكي</div>
+  <h2>الحشد لا يُجرَّب على الناس: يُجرَّب على نموذج قبل يوم الحشد</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>تغيير البوابات أو المسارات في يوم الحشد تجربة على أناس حقيقيين</li>
+      <li>المحاكاة تجرب الخطة على وكلاء رقميين يمشون نحو أهداف</li>
+      <li>تقول أين ومتى ترتفع الكثافة، لا هل الخطة «آمنة»</li>
+      <li>ما تحكم به هو قرار الهيئة في خطة السلامة</li>
+    </ul>
+    <div class="card c-coral"><h4>ما تعلمته البحوث من الحشود</h4><p class="small mb0">حلل باحثون تسجيلات حادثة حشد في منى عام 1426هـ، فوجدوا انتقالًا مفاجئًا من حركة منتظمة إلى حركة متقطعة ثم مضطربة. قادت النتائج إلى تغييرات في التنظيم.</p></div>
+  </div>
+  <aside class="notes"><p>الدراسة: Helbing وJohansson وAl-Abideen، تحليل تجريبي لديناميكيات كوارث الحشود (arXiv physics/0701203). نذكر ما في ملخصها فقط: الانتقالات في نمط الحركة، وأنها قادت إلى تغييرات تنظيمية. لا تذكر أرقامًا للكثافة من الذاكرة.</p><p>المصادر: Helbing, Johansson, Al-Abideen, Dynamics of crowd disasters: an empirical study.</p></aside>
+</section>
+
+<section class="slide" id="what-goes-in" data-lo="LO3" data-n="43" data-session="5">
+  <div class="kicker">ما يدخل النموذج</div>
+  <h2>أربعة أشياء تصفها أنت، والنموذج يحركها</h2>
+  <div class="cols cols-4 gap-s">
+    <div class="card c-teal"><h4>المكان</h4><p class="small mb0">الحدود والجدران والعوائق، بالأمتار.</p></div>
+    <div class="card c-cyan"><h4>البوابات</h4><p class="small mb0">مواضعها وعرضها، وأيها مفتوح.</p></div>
+    <div class="card c-coral"><h4>الوافدون</h4><p class="small mb0">كم، ومن أين، وفي أي توقيت: موجات أم تدفق.</p></div>
+    <div class="card c-purple"><h4>المشاة</h4><p class="small mb0">سرعة المشي وحجم الجسم وكيف يختار الهدف.</p></div>
+  </div>
+  <div class="callout note mt"><b>أدوات مفتوحة لهذا:</b> <span class="en">JuPedSim</span> (مكتبة بايثون) و<span class="en">Vadere</span>. أمثلة لا توصيات.</div>
+  <aside class="notes"><p>في الورشة نستعمل JuPedSim 1.4.2 (رخصة LGPL) لأنه يعمل في Colab وعلى حاسوب محمول. Vadere بديل مفتوح بواجهة رسومية. ما يهم المدير ليس الأداة بل أن يعرف ما وُضع فيها.</p><p>المصادر: JuPedSim documentation; JuPedSim on PyPI; Vadere repository.</p></aside>
+</section>
+
+<section class="slide" id="density-unit" data-lo="LO3" data-n="44" data-session="5">
+  <div class="kicker">الكثافة</div>
+  <h2>الكثافة = عدد الأشخاص في منطقة القياس ÷ مساحتها</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>منطقة القياس</b>مستطيل أمام البوابة، مثلًا 8 × 5 أمتار = 40 م²</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>العدّ</b>كل ثانية: كم شخصًا داخلها</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>المتوسط</b>على نافذة زمنية، مثلًا عشر ثوانٍ</div>
+  </div>
+  <div class="callout tip mt"><b>مثال:</b> 72 شخصًا في 40 مترًا مربعًا = 1.8 شخص في المتر المربع.</div>
+  <aside class="notes"><p>اطلب من القاعة أن تتخيل 1.8 شخص في المتر المربع: مربع ضلعه متر واحد فيه شخصان تقريبًا. ما زال المشي ممكنًا لكنه بطيء. لا تعطِ تصنيفات خارجية للكثافة من الذاكرة.</p></aside>
+</section>
+
+<section class="slide" id="measure-changes-peak" data-lo="LO3" data-n="45" data-session="5">
+  <div class="kicker">المقياس يغيّر الرقم</div>
+  <h2>التشغيل نفسه يعطي قممًا مختلفة بمساحات قياس مختلفة</h2>
+  <div class="bars">
+    <div class="row"><span>منطقة 4 × 3 م، متوسط 10 ثوانٍ</span><div class="bar c-coral" style="--w:100%"></div><span class="val">3.77</span></div>
+    <div class="row"><span>منطقة 8 × 5 م، كل ثانية</span><div class="bar c-amber" style="--w:96%"></div><span class="val">3.62</span></div>
+    <div class="row"><span>منطقة 8 × 5 م، متوسط 10 ثوانٍ</span><div class="bar c-teal" style="--w:93%"></div><span class="val">3.52</span></div>
+    <div class="row"><span>منطقة 12 × 8 م، متوسط 10 ثوانٍ</span><div class="bar c-cyan" style="--w:53%"></div><span class="val">1.99</span></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> منطقة قياس كبيرة تخلط الزحام عند البوابة بالفراغ خلفه، فتبدو الكثافة دون الحد.</div>
+  <aside class="notes"><p>مثال موازٍ من خارج الساحة: قاعة خروج في منشأة الفعاليات، 30 × 20 مترًا بمخرج واحد عرضه 2.5 متر، ثلاثة قطارات من 300 زائر، البذرة 1. شُغّل بالنموذج نفسه في JuPedSim (labs/_tools/demo_runs.py). القمة بالأشخاص في المتر المربع.</p><p>الرسالة: لهذا تحدد خطة السلامة منطقة القياس ونافذة الزمن مع الحد. حدّ بلا تعريف للقياس لا معنى له.</p></aside>
+</section>
+
+<section class="slide" id="limit-is-a-decision" data-lo="LO3" data-n="46" data-session="5">
+  <div class="kicker">من يضع الحد</div>
+  <h2>الحد قرار الجهة في خطة السلامة، لا رقم يخرجه النموذج</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>النموذج يقول</h4><p class="small mb0">في هذه الخطة، وبهذه المدخلات، تبلغ الكثافة كذا أمام هذه البوابة، وتبقى فوق كذا هذه المدة.</p></div>
+    <div class="card c-coral"><h4>الجهة تقرر</h4><p class="small mb0">الحد، ومنطقة القياس، ونافذة الزمن، وما يُفعل إذا اقتربت الكثافة منه. في ساحة المشرع: 2.0 على مستطيل 8 × 5 بمتوسط عشر ثوانٍ.</p></div>
+  </div>
+  <div class="callout warn mt"><b>قيم تعليمية.</b> أرقام الرفادة (الحد والعتبات ومنطقة القياس) من مدينة افتراضية، وليست معيارًا تشغيليًا لأي فعالية ولا لموسم الحج.</div>
+  <aside class="notes"><p>الحد 2.0 في خطة السلامة الافتراضية للرفادة، وهو قيمة تعليمية اختيرت لتظهر الفروق بين الخطتين في المختبر، لا رقم مأخوذ من دليل سلامة. الحدود الفعلية تضعها الجهة المختصة في خطة السلامة بالرجوع إلى الأدلة المنشورة، مثل دليل السلامة في الملاعب البريطاني (Green Guide) ومستويات الخدمة لـ Fruin، وإلى خبرتها في المكان. لا تذكر أرقام هذه الأدلة من الذاكرة. اسأل: في جهتك، من يوقّع على هذا الرقم؟ إن لم يعرف أحد، فالمحاكاة لا تستطيع أن تحكم على أي خطة.</p></aside>
+</section>
+
+<section class="slide" id="read-curve" data-lo="LO3" data-n="47" data-session="5">
+  <div class="kicker">قراءة المنحنى</div>
+  <h2>ثلاثة أسئلة لكل منحنى كثافة</h2>
+  <ol class="bullets">
+    <li><b>القمة:</b> أعلى قيمة بعد المتوسط، ومتى وقعت</li>
+    <li><b>المدة:</b> كم ثانية بقيت فوق الحد</li>
+    <li><b>العودة:</b> هل تنزل الكثافة قبل الموجة التالية، أم تتراكم موجة فوق موجة؟</li>
+  </ol>
+  <div class="callout tip mt"><b>التراكم أخطر من القمة.</b> قمة تنزل قبل القطار التالي تُدار. كثافة لا تنزل تعني أن البوابة أبطأ من الوصول.</div>
+  <aside class="notes"><p>اعرض منحنى قاعة الخروج من الدفتر إن أمكن (الخطة «hall» في demo_runs.py) أو ارسمه على السبورة: ثلاث قمم، كل منها بعد قطار. اسأل: ماذا لو وصل القطار التالي قبل أن تنزل الكثافة؟</p></aside>
+</section>
+
+<section class="slide" id="check-measure" data-lo="LO3" data-n="48" data-session="5">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>تقريران عن الخطة نفسها</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-measure-q1">
+    <p class="lead">مكتبان استشاريان حاكيا خطة البوابات نفسها لمحطة قطار (ليست ساحة المشرع). الأول يقول إن القمة 1.9 شخص/م²، والثاني 3.4. المدخلات واحدة. ما أول ما تسأل عنه؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يفترض أن الأداة تفسر الفرق: أداتان مختلفتان قد تقاربان، والأرجح أن القياس نفسه مختلف" data-k="أ">أي أداة محاكاة استخدم كل مكتب</div>
+      <div class="opt" data-why="يرى الأحدث أدق: تاريخ التقرير لا يغيّر كيف تُقاس الكثافة" data-k="ب">أي التقريرين أحدث تاريخًا</div>
+      <div class="opt" data-ok data-k="ج">منطقة القياس ونافذة الزمن</div>
+      <div class="opt" data-why="يأخذ الأسوأ احتياطًا: قد يكون الرقم الأعلى من منطقة صغيرة جدًا لا تطابق خطة السلامة" data-k="د">لا شيء، نعتمد الرقم الأعلى من التقريرين احتياطًا</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> التشغيل نفسه يعطي قممًا مختلفة بمساحات ونوافذ مختلفة. قبل المقارنة يجب أن يقيس التقريران كما تعرّف خطة السلامة.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. ارجع إلى شريحة «المقياس يغيّر الرقم» إن تردد كثيرون. ثم انتقل إلى المختبر 1.5.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-5" data-auto="lab" data-lab="1.5" data-label="المختبر 1.5" data-n="49" data-session="5">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.5 · 25 دقيقة</div><h2>المحاكاة: الخطة أ</h2><p class="lead small">تشغّل نموذج ساحة المشرع على الخطة أ (أو تقرأ نتائجها الجاهزة)، وتقرأ منحنى الكثافة أمام كل بوابة، وتسجل قمة الكثافة والمدة فوق الحد.</p><a class="nb" href="../labs/D1_5_plan_a.html">D1_5_plan_a.html</a></div><ul class="checklist"><li>افتح دفتر المحاكاة واقرأ وصف الساحة والخطة أ <span class="min">4 د</span></li><li>شغّل الخطة أ أو افتح نتائجها الجاهزة <span class="min">6 د</span></li><li>اقرأ منحنى الكثافة أمام كل بوابة <span class="min">6 د</span></li><li>سجّل قمة الكثافة والثواني فوق الحد <span class="min">5 د</span></li><li>اكتب ما تراه في سطرين: أين يتكدس الناس ولماذا <span class="min">4 د</span></li><li class="stretch">✱ إضافي: غيّر مساحة منطقة القياس في الدفتر وانظر كيف تتغير القمة المقيسة للتشغيل نفسه</li></ul></div>
+  <aside class="notes"><p>الدفتر يُرفع إلى Colab من File ثم Upload notebook. أول تشغيل يثبّت JuPedSim في دقيقة أو اثنتين. إن تعثرت شبكة القاعة، لا تنتظر: results_plan_A.csv وseries_A_base_seed1.csv هما التشغيل نفسه.</p><p>المساعد معلّم: يشرح سطرًا في الدفتر، ولا يغيّر النموذج.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-5" data-lo="LO3" data-n="50" data-session="5">
+  <div class="kicker">بعد المختبر 1.5</div>
+  <h2>الخطة أ تمر في اليوم المعتاد، على الحد تقريبًا</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">1.85</div><div class="lbl">قمة G1، البذرة 1</div></div>
+    <div class="stat center"><div class="big">1.92</div><div class="lbl">قمة G2، البذرة 1</div></div>
+    <div class="stat center"><div class="big">0</div><div class="lbl">ثانية فوق 2.0</div></div>
+  </div>
+  <div class="callout note mt"><b>ما رأيتموه:</b> أربع موجات، كل منها بعد قطار، وتنزل قبل التالي. البوابتان في الوسط، فيمشي القادمون من الطرفين نحوه.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي (النتائج الجاهزة للخطة أ، البذرة 1). في البذرة 3 تبلغ قمة G1 القيمة 2.00 تمامًا. اسأل: هل «تمر» خطة قمتها على الحد؟ دع السؤال مفتوحًا للجلسة التالية.</p></aside>
+</section>
+
+<!-- الجلسة 6 -->
+
+<section class="slide section" id="s6" data-auto="section" data-session="6" data-n="51">
+  <div class="kicker">الجلسة 6</div>
+  <h1>مقارنة خطتين للبوابات</h1>
+  <ul class="bullets outcomes"><li>تقارن خطتين بالمدخلات نفسها وعدة بذور</li><li>تقرأ القمة والمدة فوق الحد معًا لا القمة وحدها</li><li>تكتب مقارنة يمكن لمدير العمليات أن يعيدها</li></ul>
+  <div class="sess-no">06</div>
+</section>
+
+<section class="slide" id="fair-comparison" data-lo="LO3" data-n="52" data-session="6">
+  <div class="kicker">مقارنة عادلة</div>
+  <h2>غيّر الخطة وحدها، وأبقِ كل شيء آخر كما هو</h2>
+  <table class="t">
+    <tr><th>يبقى ثابتًا</th><th>يتغير</th></tr>
+    <tr><td>الساحة وأبعادها</td><td>مواضع البوابات</td></tr>
+    <tr><td>عدد الوافدين وتوقيت الموجات</td><td>عرض كل بوابة (والعرض الكلي ثابت)</td></tr>
+    <tr><td>منطقة القياس ونافذة الزمن والحد</td><td></td></tr>
+    <tr><td>البذور نفسها للخطتين</td><td></td></tr>
+  </table>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> خطة بعرض بوابات أكبر «تفوز» دائمًا. إن تغير العرض الكلي فأنت تقارن تكلفة لا تصميمًا.</div>
+  <aside class="notes"><p>في الساحة: الخطة أ بوابتان عرض كل منهما 3 أمتار، والخطة ب ثلاث بوابات عرض كل منها مترين. العرض الكلي 6 أمتار في الخطتين. هذا ما يجعل المقارنة عن التوزيع لا عن السعة.</p></aside>
+</section>
+
+<section class="slide" id="seeds" data-lo="LO3" data-n="53" data-session="6">
+  <div class="kicker">البذور</div>
+  <h2>البذرة تغيّر من أين يصل كل شخص، فتغيّر القمة قليلًا</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>البذرة 1</span><div class="bar c-teal" style="--w:99%"></div><span class="val">3.52</span></div>
+      <div class="row"><span>البذرة 2</span><div class="bar c-teal" style="--w:100%"></div><span class="val">3.55</span></div>
+      <div class="row"><span>البذرة 3</span><div class="bar c-teal" style="--w:97%"></div><span class="val">3.45</span></div>
+    </div>
+    <ul class="bullets">
+      <li>البذرة رقم يثبّت التوزيع العشوائي، فيتكرر التشغيل كما هو</li>
+      <li>ثلاث بذور تريك مقدار التذبذب</li>
+      <li>فرق بين خطتين أصغر من التذبذب لا يُبنى عليه قرار</li>
+    </ul>
+  </div>
+  <aside class="notes"><p>المثال الموازي نفسه: قاعة الخروج بمخرج واحد، ثلاث بذور. التذبذب نحو عُشر شخص في المتر المربع. اسأل: لو كانت خطتان تختلفان بـ 0.05، هل تختار بينهما بالمحاكاة؟</p></aside>
+</section>
+
+<section class="slide" id="peak-and-duration" data-lo="LO3" data-n="54" data-session="6">
+  <div class="kicker">رقمان لا رقم</div>
+  <h2>القمة تقول كم ارتفعت الكثافة، والمدة تقول كم بقيت</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>قمة 2.3 لعشر ثوانٍ</h4><p class="small mb0">موجة عابرة تنزل قبل القطار التالي. تحتاج إلى مراقبة وإجراء خفيف.</p></div>
+    <div class="card c-coral"><h4>قمة 2.3 لثلاث دقائق</h4><p class="small mb0">البوابة لا تصرّف الوصول. الكثافة تتراكم، وكل قطار يزيدها.</p></div>
+  </div>
+  <div class="callout tip mt"><b>سجّل الاثنين</b> لكل بوابة وكل بذرة: القمة والثواني فوق الحد.</div>
+  <aside class="notes"><p>جدول المقارنة في المختبر 1.6 فيه العمودان. من يسجل القمة وحدها لا يرى الفرق بين خطة تتنفس وخطة تختنق.</p></aside>
+</section>
+
+<section class="slide" id="spread-not-width" data-lo="LO3" data-n="55" data-session="6">
+  <div class="kicker">التوزيع</div>
+  <h2>بوابتان بعيدتان قد تفعلان ما لا تفعله بوابة عريضة</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">3.52</div><div class="lbl">قاعة الخروج: مخرج واحد في الوسط عرضه 2.5 م</div></div>
+    <div class="stat center"><div class="big">1.22</div><div class="lbl">القاعة نفسها: مخرجان على الطرفين عرض كل منهما 2.5 م</div></div>
+  </div>
+  <div class="callout note mt"><b>انتبه:</b> هنا تضاعف العرض الكلي، فالفرق سعة وتوزيع معًا. في الساحة يبقى العرض ثابتًا، فما تقيسه التوزيع وحده.</div>
+  <aside class="notes"><p>المثال الموازي (demo_runs.py): قاعة الخروج بمخرج واحد وبمخرجين، البذرة 1، 300 زائر مع كل قطار. هذا المثال يخالف قاعدة الشريحة السابقة عمدًا: اسأل القاعة ما الخطأ في هذه المقارنة. الجواب: العرض الكلي تضاعف.</p></aside>
+</section>
+
+<section class="slide" id="check-comparable" data-lo="LO3" data-n="56" data-session="6">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ما الذي يجعل المقارنة عادلة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-comparable-q1">
+    <p class="lead">فريق يقارن خطتين لمدخل معرض (ليس ساحة المشرع). شغّل الخطة الأولى بالبذرة 1 و2,000 زائر، والثانية بالبذرة 5 و1,800 زائر، فكانت الثانية أدنى قمة. ماذا تطلب قبل أن تقبل النتيجة؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يزيد التشغيلات دون إصلاح الخلل: مدخلات مختلفة تبقى مختلفة مهما تكرر التشغيل" data-k="أ">تشغيل الخطة الثانية مرتين أخريين بالبذرة 5 نفسها</div>
+      <div class="opt" data-ok data-k="ب">تشغيل الخطتين بالزوار أنفسهم وبالبذور نفسها</div>
+      <div class="opt" data-why="يحكم بالتقدير لا بالمقارنة: الرأي يتأثر بشكل المخطط لا بالأرقام" data-k="ج">رأي مهندس في أي المخططين أوضح</div>
+      <div class="opt" data-why="يغيّر المقياس بدل المدخلات: نافذة أطول تخفض القمتين ولا تجعل المقارنة عادلة" data-k="د">حساب القمة بمتوسط دقيقة بدل عشر ثوانٍ</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الخطة الثانية حملت زوارًا أقل وبذرة أخرى. لا تُنسب النتيجة إلى الخطة إلا إذا كان الفرق الوحيد بين التشغيلين هو الخطة.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. ثم انتقل إلى المختبر 1.6.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-6" data-auto="lab" data-lab="1.6" data-label="المختبر 1.6" data-n="57" data-session="6">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.6 · 20 دقيقة</div><h2>المحاكاة: الخطة ب</h2><p class="lead small">تشغّل الخطة ب (أو تقرأ نتائجها) بثلاث بذور، وتملأ جدول المقارنة مع الخطة أ: قمة الكثافة والمدة فوق الحد لكل بوابة. يبدأ من نتائج الخطة أ الجاهزة.</p><a class="nb" href="../labs/D1_6_plan_b.html">D1_6_plan_b.html</a></div><ul class="checklist"><li>افتح جدول المقارنة ونتائج الخطة أ الجاهزة <span class="min">3 د</span></li><li>شغّل الخطة ب أو افتح نتائجها بالبذور الثلاث <span class="min">6 د</span></li><li>املأ جدول المقارنة للخطتين <span class="min">7 د</span></li><li>اكتب الخطة الأفضل في الظروف المعتادة وسببها <span class="min">4 د</span></li><li class="stretch">✱ إضافي: شغّل الخطة نفسها ببذرة رابعة وانظر هل يتغير حكمك</li></ul></div>
+  <aside class="notes"><p>يبدأ من results_plan_A.csv الجاهز. من يشغّل الخطة ب في Colab يغيّر PLAN والبذرة فقط. اجمع جداول المقارنة في النهاية: المختبر 1.7 يبدأ من جدول مكتمل.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-6" data-lo="LO3" data-n="58" data-session="6">
+  <div class="kicker">بعد المختبر 1.6</div>
+  <h2>الخطة ب أدنى في اليوم المعتاد، بالعرض الكلي نفسه</h2>
+  <div class="bars">
+    <div class="row"><span>الخطة أ: أعلى قمة على البذور الثلاث</span><div class="bar c-coral" style="--w:100%"></div><span class="val">2.00</span></div>
+    <div class="row"><span>الخطة ب: أعلى قمة على البذور الثلاث</span><div class="bar c-teal" style="--w:90%"></div><span class="val">1.80</span></div>
+  </div>
+  <div class="callout note mt"><b>لا ثانية فوق الحد</b> في أي من الخطتين في اليوم المعتاد. البذور غيّرت القمة بنحو عُشر ولم تغيّر الترتيب.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي (results_plan_A.csv وresults_plan_B.csv). البوابة الوسطى في الخطة ب أقل البوابات حملًا. اسأل: أيكفي هذا لاختيار الخطة ب؟ ليس بعد: ماذا لو جاء أكثر مما تنبأنا؟</p></aside>
+</section>
+
+<!-- الجلسة 7 -->
+
+<section class="slide section" id="s7" data-auto="section" data-session="7" data-n="59">
+  <div class="kicker">الجلسة 7</div>
+  <h1>اختبار الخطة تحت الضغط</h1>
+  <ul class="bullets outcomes"><li>تختبر الخطة بزيادة الوافدين بقدر خطأ التنبؤ في الذروة</li><li>تختبر الخطة بإغلاق بوابة وتقرأ أين ينتقل الزحام</li><li>تختار خطة وتكتب حدودها والظرف الذي تسقط فيه</li></ul>
+  <div class="sess-no">07</div>
+</section>
+
+<section class="slide" id="stress-from-forecast" data-lo="LO3" data-n="60" data-session="7">
+  <div class="kicker">اختبار الضغط</div>
+  <h2>زِد الوافدين بقدر خطأ التنبؤ في الذروة</h2>
+  <ul class="bullets">
+    <li>المحاكاة بالرقم المتوقع وحده تفترض أن التنبؤ صحيح</li>
+    <li>الهامش الذي حسبته للتوظيف هو نفسه حجم المفاجأة الممكنة في الساحة</li>
+    <li>اختبر الخطة بالمتوقع، ثم بالمتوقع مع الهامش</li>
+  </ul>
+  <div class="callout tip mt"><b>الخيط بين الجلسات:</b> خطأ التنبؤ في الذروة (الجلسة 3) يصير مدخلًا لاختبار الضغط في الساحة.</div>
+  <aside class="notes"><p>اربط بما في ذاكرتهم: الهامش الذي حسبوه لـ«توقّع» في المختبر 1.3. اختبار الضغط في المختبر يزيد الوافدين بالقدر نفسه.</p></aside>
+</section>
+
+<section class="slide" id="gate-closed" data-lo="LO3" data-n="61" data-session="7">
+  <div class="kicker">ما يتعطل</div>
+  <h2>بوابة مغلقة لعطل أو حادث تنقل حملها إلى جاراتها</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">1.22</div><div class="lbl">قاعة الخروج بمخرجين: يوم معتاد</div></div>
+    <div class="stat center"><div class="big">3.20</div><div class="lbl">المخرجان وأحدهما مغلق: 176 ثانية فوق الحد</div></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> خطة تُختبر وكل بواباتها مفتوحة تُختبر في اليوم الذي لا يحتاج إلى اختبار.</div>
+  <aside class="notes"><p>المثال الموازي (demo_runs.py، قاعة الخروج بمخرجين، البذرة 1). ومع زيادة الزوار بالربع وكل المخارج مفتوحة: 1.81، أي تحت الحد. الإغلاق أقسى من الزيادة في هذه القاعة؛ ولا يلزم أن يكون كذلك في الساحة.</p></aside>
+</section>
+
+<section class="slide" id="robust-plan" data-lo="LO3" data-n="62" data-session="7">
+  <div class="kicker">الخطة المتينة</div>
+  <h2>الخطة المتينة تعرف متى تسقط وماذا تفعل حينها</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>يوم معتاد</b>تحت الحد بهامش</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>ضغط واحد</b>أين تتجاوز، وكم ثانية</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>ضغطان معًا</b>تتجاوز: ما الإجراء ومن يقرره</div>
+  </div>
+  <div class="callout tip mt"><b>قارن الخطتين في كل اختبار</b>، ثم اختر التي تبقى أدنى في أكثرها، واكتب الظرف الذي تسقط فيه.</div>
+  <aside class="notes"><p>لا توجد خطة لا تسقط إذا زدت الضغط. السؤال الإداري: في أي ظرف، وهل في البطاقة إجراء لذلك الظرف؟ هذا يقود إلى الجلسة 8.</p></aside>
+</section>
+
+<section class="slide" id="simulate-before-reroute" data-lo="LO3" data-n="63" data-session="7">
+  <div class="kicker">قاعدة باقية</div>
+  <h2>حاكِ قبل أن تغيّر المسار</h2>
+  <ul class="bullets">
+    <li>كل تغيير في البوابات أو المسارات يُحاكى قبل تطبيقه</li>
+    <li>بالمتوقع، وبالهامش، وببوابة مغلقة</li>
+    <li>بمنطقة القياس ونافذة الزمن اللتين في خطة السلامة</li>
+    <li>ويُحفظ التشغيل وبذوره ليعيده غيرك</li>
+  </ul>
+  <div class="callout note mt"><b>والتشغيل دليل.</b> ملف النتائج وجدول المقارنة جزء من سجل المختبرات في تقييم الورشة.</div>
+  <aside class="notes"><p>اسأل: في جهتك، هل غُيِّر مسار يومًا في يوم حشد دون محاكاة؟ من قرر، وعلى أي أساس؟ لا تطلب أسماء.</p></aside>
+</section>
+
+<section class="slide" id="check-robust" data-lo="LO3" data-n="64" data-session="7">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي خطة تختار لممر مشاة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-robust-q1">
+    <p class="lead">لممر مشاة إلى ملعب (ليس ساحة المشرع) خطتان. في اليوم المعتاد: الأولى 1.4 والثانية 1.6، والحد 2.0. مع زيادة الربع: الأولى 2.6 والثانية 2.1. مع مخرج مغلق: الأولى 3.5 والثانية 2.4. أيها تختار؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يحكم باليوم المعتاد وحده: الفرق فيه صغير، والفرق تحت الضغط كبير" data-k="أ">الأولى، لأنها أدنى في اليوم المعتاد</div>
+      <div class="opt" data-why="يرى تجاوز الحد سببًا لرفض الخطتين: لا توجد خطة لا تسقط، والمطلوب معرفة متى وما الإجراء" data-k="ب">لا هذه ولا تلك، فكلتاهما تتجاوز الحد</div>
+      <div class="opt" data-why="يجرّب على الناس: تجربة الخطة على حشد حقيقي هي ما تُجرى المحاكاة لتجنبه" data-k="ج">تُجرَّب الخطتان في يوم مباراة ثم يُختار</div>
+      <div class="opt" data-ok data-k="د">الثانية، مع إجراء مكتوب لظرفي الضغط</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الثانية أدنى في اختباري الضغط وتبقى تحت الحد في اليوم المعتاد. تتجاوز تحت الضغط، فتُختار ومعها إجراء مكتوب لذلك الظرف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. إن اختار بعضهم «ج» فارجع إلى شريحة «لماذا نحاكي»: يوم المباراة ليس مختبرًا. ثم انتقل إلى المختبر 1.7.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-7" data-auto="lab" data-lab="1.7" data-label="المختبر 1.7" data-n="65" data-session="7">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.7 · 25 دقيقة</div><h2>المحاكاة: اختبار الضغط</h2><p class="lead small">تقرأ نتائج أربعة اختبارات ضغط للخطتين: زيادة الوافدين ربعًا، وإغلاق بوابة، والاثنان معًا، وتختار الخطة وتكتب الظرف الذي تتجاوز فيه الحد. يبدأ من جدول المقارنة المكتمل.</p><a class="nb" href="../labs/D1_7_stress_test.html">D1_7_stress_test.html</a></div><ul class="checklist"><li>افتح جدول المقارنة المكتمل وملف اختبارات الضغط <span class="min">3 د</span></li><li>املأ قمم الكثافة في الاختبارات الأربعة <span class="min">7 د</span></li><li>حدد أي اختبار يتجاوز الحد في كل خطة <span class="min">5 د</span></li><li>اختر الخطة واكتب الظرف الذي تسقط فيه <span class="min">6 د</span></li><li>سجّل كثافات الذروة والخطة المختارة في السجل <span class="min">4 د</span></li><li class="stretch">✱ إضافي: اقترح تعديلًا واحدًا على الخطة المختارة، وصف التشغيل الذي يثبت أنه يكفي</li></ul></div>
+  <aside class="notes"><p>يبدأ من comparison_complete.xlsx وresults_stress.csv. من يريد أن يرى رقمًا يتكرر يشغّل صفًا واحدًا في الدفتر؛ اختبار «الاثنان معًا» للخطة أ يأخذ أطول وقت. هذا دليل المخرج الثالث: كثافات الذروة وخطة مختارة. اجمعه في النهاية.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-7" data-lo="LO3" data-n="66" data-session="7">
+  <div class="kicker">بعد المختبر 1.7</div>
+  <h2>كل اختبار ضغط يكسر الخطتين، والخطة ب تبقى أدنى في كل منها</h2>
+  <table class="t">
+    <tr><th>الاختبار</th><th class="num">الخطة أ</th><th class="num">الخطة ب</th></tr>
+    <tr><td>وافدون أكثر بالربع</td><td class="num">2.80</td><td class="num">2.40</td></tr>
+    <tr><td>بوابة مغلقة</td><td class="num">4.09</td><td class="num">3.02</td></tr>
+    <tr class="hl"><td>الاثنان معًا</td><td class="num">4.77</td><td class="num">3.63</td></tr>
+  </table>
+  <div class="callout note mt"><b>القرار المرجعي:</b> الخطة ب، ومعها إجراء عند الاقتراب من الحد، وإيقاف بقرار إنسان، وإصلاح أي بوابة معطلة قبل الذروة.</div>
+  <aside class="notes"><p>أعلى قمة على البذور الثلاث، من الحل المرجعي (results_stress.csv). مع زيادة الربع تبقى الخطة ب فوق الحد حتى 75 ثانية عند بوابة جانبية، والخطة أ حتى 136 ثانية. الأرقام الدقيقة كلها في check.py.</p><p>من اختار الخطة أ لأنها «مرت» في اليوم المعتاد: اسأله عن 450 مع كل قطار مقابل 563.</p></aside>
+</section>
+
+<!-- الجلسة 8 -->
+
+<section class="slide section" id="s8" data-auto="section" data-session="8" data-n="67">
+  <div class="kicker">الجلسة 8</div>
+  <h1>إنسان يقود ويملك قرار الإيقاف</h1>
+  <ul class="bullets outcomes"><li>تكتب عتبات كثافة يقابلها إجراء ومسؤول عنه</li><li>تسمي من يملك قرار الإيقاف ومن ينفذه</li><li>تحدد البديل حين يتعطل نظام العد</li></ul>
+  <div class="sess-no">08</div>
+</section>
+
+<section class="slide" id="person-in-command" data-lo="LO3" data-n="68" data-session="8">
+  <div class="kicker">القيادة البشرية</div>
+  <h2>النظام ينبه، والإنسان يقرر الإيقاف</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>قرار إيقاف الدخول يصعب الرجوع عنه وقد يمس الأرواح</li>
+      <li>مبادئ سدايا تطلب في مثله إشرافًا بشريًا وقرارًا أخيرًا لإنسان</li>
+      <li>صاحب القرار يُسمّى بدوره في خطة السلامة قبل الموسم</li>
+      <li>من ينفذ غير من يقرر، وكلاهما معروف</li>
+    </ul>
+    <div class="card c-coral"><h4>ما لا يُترك للنظام</h4><p class="small mb0">إيقاف الدخول، وتحويل الحشد إلى مسار آخر، وفتح منفذ طوارئ. النظام يقدّم الرقم والتنبيه.</p></div>
+  </div>
+  <aside class="notes"><p>المبدأ من مبادئ أخلاقيات الذكاء الاصطناعي، مبدأ الموثوقية والسلامة: القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا. صياغة الشريحة تلخيص.</p><p>المصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.</p></aside>
+</section>
+
+<section class="slide" id="three-thresholds" data-lo="LO3" data-n="69" data-session="8">
+  <div class="kicker">العتبات</div>
+  <h2>ثلاث عتبات، لكل منها فعل وشخص</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>تحت الحد</b>إجراء مبكر يبطئ الوصول، لأن أثره يحتاج وقتًا</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>عند الحد</b>حبس الموجة التالية في مكانها، ونداء</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>فوق الحد</b>إيقاف الدخول بقرار صاحب الصلاحية</div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> أول إجراء عند الحد نفسه يأتي متأخرًا: الكثافة تواصل الصعود حتى يصل أثره.</div>
+  <aside class="notes"><p>مثال من خارج الساحة لصياغة الفعل: «يُبطئ مشرف المحطة خروج الركاب إلى الممر» فعل يُنفَّذ؛ «تحسين التدفق» ليس فعلًا. البطاقة في المختبر 1.8 تطلب الصياغة الأولى.</p></aside>
+</section>
+
+<section class="slide" id="when-counter-fails" data-lo="LO3" data-n="70" data-session="8">
+  <div class="kicker">البدائل</div>
+  <h2>العداد المتوقف يبدو هادئًا</h2>
+  <div class="chat">
+    <div class="msg ai"><span class="who">شاشة غرفة العمليات</span>الكثافة أمام البوابة: 1.1 (لم تتغير منذ دقائق)</div>
+    <div class="msg user"><span class="who">مشرف البوابة باللاسلكي</span>الطابور يمتد إلى نصف الساحة.</div>
+  </div>
+  <ul class="bullets mt">
+    <li>من يلاحظ الرقم الثابت، وبأي تنبيه؟</li>
+    <li>العدّ اليدوي: من يعدّ، وكل كم دقيقة</li>
+    <li>القاعدة إلى أن يعود العداد، مكتوبة قبل الموسم</li>
+  </ul>
+  <aside class="notes"><p>حوار مخترع. اسأل: كم دقيقة مرّت قبل أن يتصل المشرف؟ لو لم يتصل؟ البديل يُكتب قبل الموسم، لا يُرتجل في يوم الحشد.</p></aside>
+</section>
+
+<section class="slide" id="stop-path" data-lo="LO3" data-n="71" data-session="8">
+  <div class="kicker">مسار القرار</div>
+  <h2>من الرقم إلى البوابة في أقل من دقيقة</h2>
+  <table class="t">
+    <tr><th>الخطوة</th><th>من</th></tr>
+    <tr><td>يرى الرقم ويتحقق منه</td><td>مشغل غرفة العمليات</td></tr>
+    <tr><td>يقرر</td><td>مدير العمليات المناوب</td></tr>
+    <tr><td>يبلّغ البوابات ومشغل القطار</td><td>غرفة العمليات، بقناة واحدة معروفة</td></tr>
+    <tr><td>ينفذ ويؤكد</td><td>مشرفو البوابات</td></tr>
+  </table>
+  <aside class="notes"><p>الأدوار هنا عامة، وفي خطة السلامة الافتراضية للرفادة مدير العمليات المناوب هو صاحب القرار. اطلب من مشارك أن يقرأ المسار بصوت عالٍ ويقدّر الثواني في كل خطوة.</p></aside>
+</section>
+
+<section class="slide" id="check-command" data-lo="LO3" data-n="72" data-session="8">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>من يوقف الدخول حين يتعطل العداد؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3" data-id="check-command-q1">
+    <p class="lead">في مدخل معرض (ليس ساحة المشرع) توقف نظام عدّ الكثافة، وأبلغ مشرف البوابة أن الطابور يمتد ويضغط. خطة السلامة تسمّي مدير العمليات المناوب صاحبًا لقرار الإيقاف. ماذا يحدث؟</p>
+    <div class="opts">
+      <div class="opt" data-ok data-k="أ">يقرر مدير العمليات المناوب من العدّ اليدوي وبلاغ المشرف</div>
+      <div class="opt" data-why="يربط القرار بالنظام: القرار للإنسان، والنظام مصدر رقم واحد بين مصادر" data-k="ب">لا قرار حتى يعود النظام ويؤكد الكثافة</div>
+      <div class="opt" data-why="ينقل قرار الساحة كلها إلى بوابة واحدة: المشرف يبلغ وينفذ، وقرار إيقاف الدخول للمدير المناوب" data-k="ج">يوقف المشرف الدخول بنفسه لأنه يرى الطابور</div>
+      <div class="opt" data-why="يرى المورِّد مسؤولًا عن التشغيل: المورِّد يصلح العطل، ولا يدير الحشد" data-k="د">يتصل المدير بالمورِّد ليقدّر الكثافة عن بعد</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> صاحب القرار لا يتغير لأن العداد توقف. يقرر من المصادر البديلة المكتوبة في البطاقة: العدّ اليدوي وبلاغ المشرف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. إن اختار بعضهم «ج» فاسأل: لو أوقف كل مشرف بوابته بتقديره، من يرى الساحة كلها؟ وفرّق بين هذا وبين الخطر الوشيك على الأرواح: ما يفعله المشرف حينها يحدده إجراء الطوارئ في خطة السلامة، ويبلّغ غرفة العمليات فورًا. ثم انتقل إلى المختبر 1.8.</p></aside>
+</section>
+
+<section class="slide lab top" id="lab-1-8" data-auto="lab" data-lab="1.8" data-label="المختبر 1.8" data-n="73" data-session="8">
+  <div class="cols cols-2 mid"><div><div class="lab-tag">المختبر 1.8 · 20 دقيقة</div><h2>بطاقة القيادة والإيقاف</h2><p class="lead small">تكتب بطاقة لمدير العمليات: ثلاث عتبات كثافة وما يقابلها من إجراء ومسؤول، ومن يملك قرار إيقاف الدخول، وما يفعله الفريق حين يتعطل العداد.</p><a class="nb" href="../labs/D1_8_command_card.html">D1_8_command_card.html</a></div><ul class="checklist"><li>اقرأ مقتطف خطة السلامة وقالب البطاقة <span class="min">3 د</span></li><li>اكتب ثلاث عتبات وإجراء كل منها <span class="min">6 د</span></li><li>سمِّ صاحب قرار الإيقاف ومن ينفذه <span class="min">4 د</span></li><li>اكتب البديل حين يتعطل العداد <span class="min">7 د</span></li><li class="stretch">✱ إضافي: اكتب رسالة النداء التي تُبث في الساحة عند العتبة الثانية بلغتين</li></ul></div>
+  <aside class="notes"><p>البطاقة بالأدوار لا بالأسماء. راقب العتبة الأولى عند الحد نفسه، وصياغات مثل «تحسين التدفق». البطاقة تدخل الخريطة غدًا في صف عدّ الكثافة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-8" data-lo="LO3" data-n="74" data-session="8">
+  <div class="kicker">بعد المختبر 1.8</div>
+  <h2>بطاقة مرجعية لساحة المشرع</h2>
+  <table class="t small">
+    <tr><th>العتبة</th><th>الإجراء</th><th>من</th></tr>
+    <tr><td>1.5</td><td>إبطاء الخروج من المحطة إلى الساحة، وفتح مسار الانتظار الجانبي</td><td>مشرف المحطة ومشرفو الساحة</td></tr>
+    <tr><td>2.0</td><td>حبس الركاب في المحطة دقيقتين مع تأخير القطار التالي، ونداء بلغات الزوار</td><td>مدير العمليات المناوب يطلب، ومشغل القطار ينفذ</td></tr>
+    <tr class="hl"><td>2.5</td><td>إيقاف الدخول إلى الساحة</td><td>مدير العمليات المناوب يقرر، ومشرفو البوابات ينفذون</td></tr>
+  </table>
+  <div class="callout note mt"><b>عند تعطل العداد:</b> عدّ يدوي من كل بوابة كل دقيقتين، وتُعامل الساحة كأنها عند العتبة الأولى حتى يعود.</div>
+  <aside class="notes"><p>البطاقة المرجعية من مفتاح المدرّب، وعتباتها قيم تعليمية لمدينة افتراضية، لا معيار تشغيلي. حبس الركاب لا يصلح إلا إن كان في الرصيف متسع ويُؤخَّر القطار التالي معه، وإلا انتقل الزحام من الساحة إلى الرصيف. اقبل أي بطاقة عتبتها الأولى تحت الحد وإجراءاتها أفعال لها أصحاب. العتبات 1.5 و2.0 و2.5 هي التي يطلبها بيان حاجة السلامة في اليوم 2.</p></aside>
+</section>
+
+<section class="slide" id="wrap-up" data-n="75" data-session="8">
+  <div class="kicker">خلاصة اليوم 1</div>
+  <h2>ثلاثة أمور تبقى معك</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>احكم في الذروة</h4><p class="small mb0">«توقّع» أدق على الموسم (5.6% مقابل 6.9%)، وأسوأ في الأسبوع الكبير (9.7% مقابل 6.3%) وإلى الأقل.</p></div>
+    <div class="card c-coral"><h4>حاكِ قبل يوم الحشد</h4><p class="small mb0">الخطة ب أدنى في كل اختبار، وتتجاوز الحد حين يأتي الوافدون بقدر خطأ التنبؤ.</p></div>
+    <div class="card c-purple"><h4>إنسان يقود</h4><p class="small mb0">ثلاث عتبات بأفعال وأصحاب، والإيقاف لمدير العمليات، وبديل مكتوب حين يتعطل العداد.</p></div>
+  </div>
+  <aside class="notes"><p>الأرقام من الحلول المرجعية للمختبرات 1.2 و1.3 و1.7. اسأل كل طاولة عن رقم واحد فاجأها اليوم.</p></aside>
+</section>
+
+<section class="slide dark" id="next" data-label="التالي" data-n="76" data-session="8">
+  <div class="kicker">التالي</div>
+  <h2>اليوم 2: المساعد، والطاقة، والخصوصية، والخريطة</h2>
+  <p class="lead">غدًا: تقدير إجابات «مِضياف» بأربع لغات دون مساعد، وادعاء «نسيم» أمام قراءات العداد، وخيارات الكاميرات والقياسات الحيوية في الساحة، وأول خريطة للفرص والمخاطر. احتفظ بجدول الترتيب والبطاقة: يدخلان الخريطة.</p>
+  <aside class="notes"><p>من لم يكمل مختبرًا يكمله من الملفات نفسها؛ لكل مختبر غدًا ملف بداية. ذكّرهم بأن تقدير الإجابات ومراجعة الخصوصية غدًا دون أي مساعد ذكي.</p></aside>
+</section>
+</div>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"deck":{"id":"day1","kind":"day","day":1,"label":"اليوم 1","title":"التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد","prev":null,"next":"day2.html","md":"day1.md","alt":{}},"sessions":[{"n":1,"label":"الجلسة 1","title":"أين تكون المخاطر أعلى","slide":"s1","outcomes":["ترسم الاستخدامات على رحلة الزائر وتسمي البيانات التي يلمسها كل استخدام","تفرّق بين خطر يقع على سلامة الناس في الحشد وخطر يقع على خصوصيتهم","ترتب استخدامين بحسب أسوأ خطأ ممكن ومن يقع عليه"],"minutes":45,"lab":{"id":"1.1","title":"ترتيب ستة استخدامات","minutes":25,"href":"../labs/D1_1_rank_deployments.html"}},{"n":2,"label":"الجلسة 2","title":"التنبؤ مقابل خط أساس","slide":"s2","outcomes":["تبني خط أساس موسميًا من الموسم السابق ونمو معلوم","تحسب الخطأ المطلق ونسبة الخطأ ليوم واحد ولموسم كامل","تحكم على تنبؤ بمقارنته بخط الأساس لا بالرقم وحده"],"minutes":38,"lab":{"id":"1.2","title":"فحص التنبؤ: الجزء الأول","minutes":20,"href":"../labs/D1_2_forecast_error.html"}},{"n":3,"label":"الجلسة 3","title":"الحكم على التنبؤ في الذروة","slide":"s3","outcomes":["تحدد أيام الذروة مسبقًا من التنبؤ لا من الفعلي","تقيس الخطأ والانحياز في أيام الذروة وحدها","تحسب هامشًا احتياطيًا للتوظيف يغطي أغلب أيام الذروة"],"minutes":45,"lab":{"id":"1.3","title":"فحص التنبؤ: الجزء الثاني","minutes":25,"href":"../labs/D1_3_peak_error.html"}},{"n":4,"label":"الجلسة 4","title":"النقل والإجهاد الحراري في يوم الذروة","slide":"s4","outcomes":["توزع العدد اليومي على الساعات وتجد ساعة الذروة","تحسب رحلات الحافلات الترددية اللازمة لساعة الذروة","تقرأ مؤشر الحرارة مع الرطوبة وتحدد الساعات التي تحتاج ظلًا وماءً"],"minutes":37,"lab":{"id":"1.4","title":"يوم الذروة بالساعات","minutes":20,"href":"../labs/D1_4_peak_day_hours.html"}},{"n":5,"label":"الجلسة 5","title":"كيف تعمل محاكاة حركة المشاة","slide":"s5","outcomes":["تصف ما تضعه في المحاكاة: المكان والبوابات والوافدين وسرعة المشي","تقرأ منحنى الكثافة في منطقة قياس وتجد قمته","تفسر لماذا تتغير القمة بتغير مساحة القياس ونافذة الزمن"],"minutes":45,"lab":{"id":"1.5","title":"المحاكاة: الخطة أ","minutes":25,"href":"../labs/D1_5_plan_a.html"}},{"n":6,"label":"الجلسة 6","title":"مقارنة خطتين للبوابات","slide":"s6","outcomes":["تقارن خطتين بالمدخلات نفسها وعدة بذور","تقرأ القمة والمدة فوق الحد معًا لا القمة وحدها","تكتب مقارنة يمكن لمدير العمليات أن يعيدها"],"minutes":38,"lab":{"id":"1.6","title":"المحاكاة: الخطة ب","minutes":20,"href":"../labs/D1_6_plan_b.html"}},{"n":7,"label":"الجلسة 7","title":"اختبار الخطة تحت الضغط","slide":"s7","outcomes":["تختبر الخطة بزيادة الوافدين بقدر خطأ التنبؤ في الذروة","تختبر الخطة بإغلاق بوابة وتقرأ أين ينتقل الزحام","تختار خطة وتكتب حدودها والظرف الذي تسقط فيه"],"minutes":45,"lab":{"id":"1.7","title":"المحاكاة: اختبار الضغط","minutes":25,"href":"../labs/D1_7_stress_test.html"}},{"n":8,"label":"الجلسة 8","title":"إنسان يقود ويملك قرار الإيقاف","slide":"s8","outcomes":["تكتب عتبات كثافة يقابلها إجراء ومسؤول عنه","تسمي من يملك قرار الإيقاف ومن ينفذه","تحدد البديل حين يتعطل نظام العد"],"minutes":37,"lab":{"id":"1.8","title":"بطاقة القيادة والإيقاف","minutes":20,"href":"../labs/D1_8_command_card.html"}}],"slides":[{"id":"title","n":1,"title":"التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد","kind":"title","session":0,"hash":"9f564254","md":"#### [day1#title] التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد\n\n*أكاديمية سدايا · الذكاء الاصطناعي في المدن والسياحة والحج*\n\nاليوم 1: ثماني جلسات: أين المخاطر، والتنبؤ مقابل خط الأساس، والذروة والهامش، والنقل والحرارة، والمحاكاة بخطتين وتحت الضغط، والقيادة البشرية\n\nمسار الطلاقة في البيانات والذكاء الاصطناعي · يومان تدريبيان + يوم للمشروع الختامي · 8 جلسات · 8 مختبرات · USE-SEC-212","notes":"رحّب بالمشاركين واطلب من كل منهم جملة واحدة: خدمة للزوار في جهته من ورقة العمل التحضيري، وأي نظام فيها يتنبأ أو يعدّ أو يتعرف أو يجيب. ستعود إلى هذه الأوراق في المختبر 1.1.\n\nكل ما في الورشة اصطناعي: هيئة الرفادة ومدينتها وأشخاصها وأرقامها. لا يضع أحد بيانات زوار حقيقية في أي مساعد.","minutes":null,"lo":[]},{"id":"agenda","n":2,"title":"التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد","kind":"content","session":0,"hash":"3c9b7ace","md":"#### [day1#agenda] التنبؤ والنقل والحشد: احكم في الذروة وحاكِ قبل يوم الحشد\n\n*اليوم*\n\n- **الجلسة 1 · أين تكون المخاطر أعلى**: رحلة الزائر، ونوعا المخاطر، ومستويات سدايا\n- **الجلسة 2 · التنبؤ مقابل خط أساس**: خط الأساس الموسمي ومقاييس الخطأ\n- **الجلسة 3 · الحكم على التنبؤ في الذروة**: خطأ الذروة وانحيازها والهامش الاحتياطي\n- **الجلسة 4 · النقل والإجهاد الحراري في يوم الذروة**: الساعة، والحافلات، ومؤشر الحرارة\n- **الجلسة 5 · كيف تعمل محاكاة حركة المشاة**: المدخلات والكثافة ومنطقة القياس والحد\n- **الجلسة 6 · مقارنة خطتين للبوابات**: مقارنة عادلة، والبذور، والقمة والمدة\n- **الجلسة 7 · اختبار الخطة تحت الضغط**: زيادة الوافدين، وبوابة مغلقة، والخطة المتينة\n- **الجلسة 8 · إنسان يقود ويملك قرار الإيقاف**: العتبات، وقرار الإيقاف، والبدائل","notes":"اليوم الأول عن سؤالين: هل نثق بالأرقام التي نخطط بها لأيام الذروة، وهل تتحمل الساحة ما نخطط له. ثماني جلسات قصيرة، في كل منها شرح ثم مختبر. الاستراحات بزر B.","minutes":null,"lo":[]},{"id":"setup-check","n":3,"title":"ثلاثة أشياء مفتوحة على حاسوبك","kind":"content","session":0,"hash":"d6564863","md":"#### [day1#setup-check] ثلاثة أشياء مفتوحة على حاسوبك\n\n*قبل أن نبدأ*\n\n- **جدول بيانات.** Excel أو LibreOffice Calc أو Google Sheets. افتح arrivals_seasons.xlsx: هل ترى ثلاث أوراق؟\n- **Google Colab.** حساب Google يفتح colab.research.google.com. لمختبرات المحاكاة فقط، ولها نتائج جاهزة إن لم يعمل.\n- **حزمة الملفات.** مجلدا labs/files وlabs/sim من صفحة المقرر، وورقة عملك التحضيري.\n\n> **لا مفتاح ولا اشتراك.** لا يحتاج أي مختبر إلى مفتاح نموذج أو خدمة مدفوعة.","notes":"دقيقتان. من لم يفتح Colab لا ينتظر: مختبرات المحاكاة 1.5 إلى 1.7 لها ملفات نتائج جاهزة هي التشغيل نفسه. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته في المختبر 1.1.","minutes":null,"lo":[]},{"id":"ai-rules","n":4,"title":"متى تستعين بمساعد، ومتى لا","kind":"content","session":0,"hash":"5f662d70","md":"#### [day1#ai-rules] متى تستعين بمساعد، ومتى لا\n\n*قواعد استخدام الذكاء الاصطناعي في الورشة*\n\n| القاعدة | أين |\n| --- | --- |\n| **دون ذكاء اصطناعي** | فحص السيناريوهات العشرة، ومراجعة الخصوصية (2.6 و2.7)، وتقدير إجابات المساعد (2.1 و2.2) |\n| **مساعد بدور المعلّم** | مختبرات التنبؤ والمحاكاة والطاقة: يشرح الصيغة ولا يحكم بدلًا منك |\n| **مساعد كامل** | الخريطة، وتدافع عنها بنفسك مباشرة |","notes":"هذه قواعد المقرر كما يحددها الدليل. السبب في كل منها: ما يقيس حكمك أنت يُعمل دونه، وما يقيس قدرتك على العمل بالأرقام يجوز فيه معلّم، وما ستعمله في جهتك مع مساعد يُعمل معه ثم تُسأل عنه.","minutes":null,"lo":[]},{"id":"s1","n":5,"title":"أين تكون المخاطر أعلى","kind":"section","session":1,"hash":"bf411566","md":"#### [day1#s1] أين تكون المخاطر أعلى\n\n*الجلسة 1*\n\n- ترسم الاستخدامات على رحلة الزائر وتسمي البيانات التي يلمسها كل استخدام\n- تفرّق بين خطر يقع على سلامة الناس في الحشد وخطر يقع على خصوصيتهم\n- ترتب استخدامين بحسب أسوأ خطأ ممكن ومن يقع عليه","notes":"","minutes":null,"lo":["LO1"]},{"id":"rifada-case","n":6,"title":"هيئة الرفادة تستقبل الزوار والمعتمرين والحجاج العابرين","kind":"content","session":1,"hash":"5c263b3b","md":"#### [day1#rifada-case] هيئة الرفادة تستقبل الزوار والمعتمرين والحجاج العابرين\n\n*دراسة الحالة*\n\n- **مدينة الرفادة** مدينة افتراضية: حي تاريخي تتقدمه ساحة المشرع، ومنشأة فعاليات، وخط قطار، ومركز زوار\n- **نحو مليونين وثلاثمئة ألف وافد** في الموسم، أكثر من نصفهم من خارج المملكة\n- **أنظمة تدرسها الهيئة:** «توقّع» للتنبؤ، و«مِضياف» للمساعدة بأربع لغات، و«نسيم» للتكييف، وخيارات للكاميرات\n- **دورك:** مدير يطلب النظام ويوقّع على قبوله، لا مهندس يبنيه\n\n- **من في الحالة.** مهجة الكعكي مديرة خدمات الزوار، ونادر الزمزمي مدير عمليات الحشود، ومنتهى فلاتة مسؤولة حماية البيانات، وعبدالهادي المليباري مدير المرافق والطاقة، وغيداء حجازي قائدة مكتب الزوار متعدد اللغات.","notes":"كل ما في الحالة افتراضي، ومنه المدينة. لا تقارن أرقامها بمدينة حقيقية.\n\nاسأل: من منكم يطلب أنظمة لجهته أو يوقّع على قبولها؟ هذا المقرر لهم. من يبني النماذج يجد العمق في مقررات المسار الهندسي.","minutes":null,"lo":["LO1"]},{"id":"visitor-journey","n":7,"title":"الاستخدامات تقع على طول رحلة الزائر، ولكل محطة بياناتها","kind":"content","session":1,"hash":"2f258f2b","md":"#### [day1#visitor-journey] الاستخدامات تقع على طول رحلة الزائر، ولكل محطة بياناتها\n\n*رحلة الزائر*\n\n1. **قبل الوصول** تنبؤ الأعداد، وتوزيع الموظفين، والحجوزات\n2. **الوصول والتنقل** القطار والحافلات، والحرارة في الطريق\n3. **في الساحة** عدّ الكثافة، والبوابات، والكاميرات\n4. **الخدمة** الإرشاد بلغات الزوار، والمباني، والطوارئ\n\n> **اسأل في كل محطة:** ماذا يرى النظام، ومن يبني قرارًا على مخرجه، ومن يقع عليه خطؤه؟","notes":"اطلب من كل مشارك أن يضع خدمة من ورقته التحضيرية على إحدى المحطات الأربع، في نصف دقيقة. الأسئلة الثلاثة في الصندوق هي أعمدة جدول المختبر 1.1.","minutes":null,"lo":["LO1"]},{"id":"two-stakes","n":8,"title":"خطر على سلامة الناس في الحشد، وخطر على خصوصيتهم","kind":"content","session":1,"hash":"b0c59acc","md":"#### [day1#two-stakes] خطر على سلامة الناس في الحشد، وخطر على خصوصيتهم\n\n*نوعان من المخاطر*\n\n- **مخاطر السلامة.** خطأ يؤخر قرارًا في حشد أو حر أو طارئ: كثافة تُقرأ أقل من حقيقتها، أو إحالة عاجلة لا تحدث. الضرر جسدي، وقد لا يُتدارك.\n- **مخاطر الخصوصية.** بيانات تُجمع عن أناس لم يطلبوا شيئًا: صورة، أو موقع، أو وجه، أو محادثة. الضرر قد لا يُرى، ويقع على من لا يعلم.\n\n> **أين يقع الخطأ.** نظام بلا بيانات شخصية قد يكون عالي المخاطر في السلامة، ونظام آمن جسديًا قد يكون عالي المخاطر في الخصوصية. قدّر كلًّا على حدة.","notes":"هذا التفريق هو عمودا التقدير في المختبر 1.1. مثال من خارج الحالة: حساس امتلاء موقف سيارات لا يلمس بيانات شخصية، وخطؤه يرسل السيارات إلى موقف ممتلئ؛ وقارئ لوحات السيارات عند المدخل يلمس بيانات تتبع أصحابها.","minutes":null,"lo":["LO1"]},{"id":"who-is-affected","n":9,"title":"المتأثر في الأماكن العامة غالبًا ليس مستخدم النظام","kind":"content","session":1,"hash":"ef2234cd","md":"#### [day1#who-is-affected] المتأثر في الأماكن العامة غالبًا ليس مستخدم النظام\n\n*من يتأثر*\n\n| الاستخدام (أمثلة من خارج الحالة) | من يستخدمه | من يقع عليه |\n| --- | --- | --- |\n| حساسات امتلاء المواقف | إدارة المواقف | السائقون، ولا بيانات عنهم |\n| قراءة لوحات السيارات عند المدخل | إدارة المواقف | كل سائق يدخل، وتتبع تنقله |\n| شاشة زمن الانتظار من عدّ الهواتف | الزائر المنتظر | كل من يحمل هاتفًا في المكان |\n| بوابات تذاكر بمسح الوجه | منظم الفعالية | كل داخل، ومنهم أطفال |","notes":"الأمثلة من خارج حالات الرفادة عمدًا: الحالات الست للمختبر 1.1. اسأل: أي هذه الأربعة يقع خطؤه على أطفال؟ وأيها يجمع بيانات عمن لم يستخدمه؟","minutes":null,"lo":["LO1"]},{"id":"sdaia-levels","n":10,"title":"أربعة مستويات للمخاطر، يحددها الأثر لا التقنية","kind":"content","session":1,"hash":"ec7e5960","md":"#### [day1#sdaia-levels] أربعة مستويات للمخاطر، يحددها الأثر لا التقنية\n\n*مبادئ أخلاقيات الذكاء الاصطناعي، سدايا*\n\n| المستوى | ما تقوله المبادئ، بإيجاز |\n| --- | --- |\n| **بسيطة أو منعدمة** | لا قيود، ويوصى بالالتزام بالأخلاقيات. مثالها مرشحات البريد العشوائي |\n| **محدودة** | تخضع لمبادئ الأخلاقيات |\n| **عالية** | مخاطر عالية على الحقوق الأساسية: تقييم مطابقة قبل التشغيل وبعده، ومراعاة المتطلبات النظامية |\n| **غير مقبولة** | لا يُسمح بها، مثل التصنيف الاجتماعي واستغلال الأطفال وتشويه السلوك |\n\n> **ومعها:** القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا لإنسان، ولا تُستخدم الأنظمة للمراقبة الجماعية.","notes":"المستويات من قسم نطاق المخاطر في المبادئ، والسطر الأخير من مبدأ الموثوقية والسلامة. صياغة الشريحة تلخيص، لا اقتباس.\n\nالمصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي (النسخة العربية والإنجليزية).","minutes":null,"lo":["LO1"]},{"id":"worst-error","n":11,"title":"رتّب بأسوأ خطأ واقعي ومن يقع عليه، لا بالخطأ المعتاد","kind":"content","session":1,"hash":"bb91c982","md":"#### [day1#worst-error] رتّب بأسوأ خطأ واقعي ومن يقع عليه، لا بالخطأ المعتاد\n\n*كيف ترتب*\n\n1. **ماذا يفعل** يتنبأ، يعدّ، يتعرف، يجيب، يضبط\n2. **ما يلمسه** أعداد مجمعة، صورة، موقع، وجه، محادثة\n3. **أسوأ خطأ** من يقع عليه، وهل يعلم، وهل يُتدارك\n\n> **عند التساوي** قدّم الحالة التي يقع خطؤها على أشخاص لا يعلمون بالنظام ولا يستطيعون الاعتراض.","notes":"هذه خطوات المختبر 1.1 الثلاث. مثال من خارج الحالة: شاشة زمن الانتظار، أسوأ أخطائها أن تقول عشر دقائق والانتظار ساعة؛ يقع على المنتظر، ويعلم به، ويُتدارك. قارنه بقارئ اللوحات: خطؤه أن يُحفظ مسار سائق شهورًا، ولا يعلم به.","minutes":null,"lo":["LO1"]},{"id":"check-stakes","n":12,"title":"أي الاستخدامين أعلى مخاطر؟","kind":"quiz","session":1,"hash":"f6e23b37","md":"#### [day1#check-stakes] أي الاستخدامين أعلى مخاطر؟\n\n*نقطة تحقق*\n\n**سؤال:** متحف تراثي (ليس من حالات الرفادة) يدرس استخدامين: شاشة تتنبأ بزمن الانتظار عند الشباك من عدّ التذاكر، وكاميرات عند المدخل تقدّر عمر الزائر لتطبيق سعر الأطفال آليًا. أيهما أعلى مخاطر، ولماذا؟\n\n- أ. الشاشة، لأن كل الزوار يرونها\n- ب. الكاميرات، لأنها تحلل الوجوه\n- ج. الشاشة، لأن خطأها يكلف المتحف أكثر\n- د. متساويان، لأن كليهما آلي بالكامل","notes":"الإجابة: ب. إن اختار كثيرون «ج» فارجع إلى شريحة «نوعان من المخاطر»: الكلفة المالية ليست مخاطر السلامة ولا الخصوصية. ثم انتقل إلى المختبر.","minutes":null,"lo":["LO1"]},{"id":"lab-1-1","n":13,"title":"ترتيب ستة استخدامات","kind":"lab","session":1,"hash":"52fb7aa1","md":"#### [day1#lab-1-1] ترتيب ستة استخدامات\n\nالمختبر 1.1 · 25 دقيقة\n\nترتب ست حالات نشر في هيئة الرفادة بحسب مخاطر السلامة والخصوصية، وتسمي لكل حالة بياناتها والأشخاص المتأثرين وأسوأ خطأ فيها. تخرج بجدول مرتب.\n\n[D1_1_rank_deployments.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_1_rank_deployments.html)\n\n- [ ] اقرأ بطاقات الحالات الست وورقة عملك التحضيري (4 د)\n- [ ] سمِّ لكل حالة بياناتها والأشخاص المتأثرين (7 د)\n- [ ] اكتب أسوأ خطأ ممكن ومن يقع عليه (6 د)\n- [ ] رتّب الحالات الست وسوّغ أعلى حالتين (5 د)\n- [ ] قارن ترتيبك بزميل وسجّل موضع الخلاف (3 د)\n- [ ] ✱ إضافي: رتّب بالطريقة نفسها ثلاثة استخدامات من ورقة عملك التحضيري، وضعها في الجدول بين حالات الرفادة","notes":"دون مساعد. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته. اجمع جداول الترتيب بعد الخطوة 4، قبل مقارنة الزملاء: هذه النسخة دليل المخرج الأول.\n\nراقب من يضع «توقّع» في الأسفل «لأنه بلا بيانات شخصية» دون أن يذكر أثر خطئه على المنتظرين في الحر.","minutes":null,"lo":[]},{"id":"debrief-1-1","n":14,"title":"الحالات الثلاث الأعلى: العدّ في الساحة، وأساور الأطفال، والوجوه","kind":"content","session":1,"hash":"74ab814f","md":"#### [day1#debrief-1-1] الحالات الثلاث الأعلى: العدّ في الساحة، وأساور الأطفال، والوجوه\n\n*بعد المختبر 1.1*\n\n- **D2 عدّ الكثافة.** قرار الإيقاف يُبنى عليه، والكاميرات تصوّر كل من في الساحة. سلامة عالية وخصوصية متوسطة.\n- **D6 أساور الأطفال.** موقع أطفال كل دقيقة طوال الزيارة. خصوصية عالية، وسلامة عالية إذا تعطل واطمأن الأهل.\n- **D3 الوجوه عند البوابات.** بيانات حيوية لتحديد الهوية، وهي حساسة في نظام حماية البيانات الشخصية. الخطأ يوقف بريئًا أمام الناس.\n\n> **والأسفل:** «نسيم» ثم «توقّع». لكن «توقّع» ليس بلا مخاطر: خطؤه إلى الأقل في الذروة يترك المنتظرين في الحر.","notes":"الترتيب المرجعي: D2، D6، D3، D4، D1، D5. اقبل ترتيبًا آخر للثلاث الأعلى إذا سمّى السبب البيانات والأشخاص وأسوأ خطأ. اسأل الطاولات عن موضع الخلاف الذي سجلوه في الخطوة 5.\n\nالمصدر: تعريف البيانات الحساسة في نظام حماية البيانات الشخصية.","minutes":null,"lo":["LO1"]},{"id":"s2","n":15,"title":"التنبؤ مقابل خط أساس","kind":"section","session":2,"hash":"54b2a681","md":"#### [day1#s2] التنبؤ مقابل خط أساس\n\n*الجلسة 2*\n\n- تبني خط أساس موسميًا من الموسم السابق ونمو معلوم\n- تحسب الخطأ المطلق ونسبة الخطأ ليوم واحد ولموسم كامل\n- تحكم على تنبؤ بمقارنته بخط الأساس لا بالرقم وحده","notes":"","minutes":null,"lo":["LO2"]},{"id":"floor-first","n":16,"title":"لا يُحكم على تنبؤ إلا بمقارنته بطريقة بسيطة","kind":"content","session":2,"hash":"3adc01f2","md":"#### [day1#floor-first] لا يُحكم على تنبؤ إلا بمقارنته بطريقة بسيطة\n\n*خط الأساس*\n\n- **خط الأساس الموسمي:** القيمة في اليوم نفسه من الموسم السابق\n- ومعها نمو معلوم إن وُجد: **الموسم السابق × (1 + النمو)**\n- لا يحتاج إلى نموذج ولا مورِّد، ويحسبه أي جدول بيانات\n- إن لم يتفوق النظام عليه، فما الذي تدفع ثمنه؟\n\n- **في كتب التنبؤ.** الطريقة الموسمية البسيطة تجعل التنبؤ مساويًا لآخر قيمة من الموسم نفسه، وتُستخدم مقياسًا تُقارن به الطرق الأعقد.","notes":"الطريقة من كتاب Hyndman وAthanasopoulos، الفصل الخامس: الطرق البسيطة تُستعمل معايير للمقارنة لا طريقةً مختارة. خط أساس الهيئة يضيف إليها نمو الخطة.\n\nالمصادر: Hyndman and Athanasopoulos, Forecasting: Principles and Practice, 3rd ed., Some simple forecasting methods.","minutes":null,"lo":["LO2"]},{"id":"error-measures","n":17,"title":"الخطأ بإشارته يقول الاتجاه، وبقيمته المطلقة يقول الحجم","kind":"content","session":2,"hash":"66bea2d5","md":"#### [day1#error-measures] الخطأ بإشارته يقول الاتجاه، وبقيمته المطلقة يقول الحجم\n\n*مقاييس الخطأ*\n\n| المقياس | الحساب | يجيب عن |\n| --- | --- | --- |\n| الخطأ | التنبؤ ناقص الفعلي | هل التنبؤ أعلى من الواقع أم أقل؟ |\n| نسبة الخطأ | الخطأ ÷ الفعلي | كم بالنسبة إلى حجم اليوم؟ |\n| متوسط نسبة الخطأ المطلقة | متوسط القيم المطلقة للنسب | كم يخطئ عادة، في أي اتجاه |\n| الانحياز | متوسط النسب بإشارتها | هل يميل دائمًا إلى جهة واحدة؟ |\n\n> **أين يقع الخطأ.** متوسط النسب بإشارتها قد يقترب من الصفر لأن الأخطاء تلغي بعضها. هذا انحياز، لا دقة.","notes":"اكتب على السبورة مثالًا من يومين: خطأ +10% ثم −10%. المتوسط بالإشارة صفر، والمتوسط المطلق 10%. الأول يقول إن التنبؤ غير منحاز، والثاني إنه يخطئ عشرة في المئة كل يوم.","minutes":null,"lo":["LO2"]},{"id":"worked-museum","n":18,"title":"تذاكر متحف في أربعة أيام: التنبؤ مقابل خط الأساس","kind":"content","session":2,"hash":"374f4f7c","md":"#### [day1#worked-museum] تذاكر متحف في أربعة أيام: التنبؤ مقابل خط الأساس\n\n*مثال محلول*\n\n| اليوم | الفعلي | التنبؤ | نسبة الخطأ | خط الأساس | نسبة الخطأ |\n| --- | --- | --- | --- | --- | --- |\n| 1 | 1,000 | 950 | -5% | 1,080 | 8% |\n| 2 | 1,200 | 1,140 | -5% | 1,140 | -5% |\n| 3 | 800 | 840 | 5% | 760 | -5% |\n| 4 | 2,000 | 1,500 | -25% | 1,900 | -5% |\n\nمتوسط النسبة المطلقة: 10% للتنبؤ، و5.75% لخط الأساس.","notes":"مثال مخترع للتوضيح، ليس من ملف الرفادة. احسب مع القاعة صفًا واحدًا: (950 − 1,000) ÷ 1,000 = −5%. ثم اسأل: ما الذي حدث في اليوم 4؟ لا تجب الآن؛ الجلسة التالية عن هذا اليوم بالذات.","minutes":null,"lo":["LO2"]},{"id":"spreadsheet-steps","n":19,"title":"أربعة أعمدة تكفي للحكم على تنبؤ","kind":"content","session":2,"hash":"5794bad0","md":"#### [day1#spreadsheet-steps] أربعة أعمدة تكفي للحكم على تنبؤ\n\n*في جدول البيانات*\n\n1. **خط الأساس** الموسم السابق × (1 + النمو)\n2. **الخطأ** التنبؤ ناقص الفعلي\n3. **النسبة** الخطأ ÷ الفعلي\n4. **المتوسط** للقيمة المطلقة، لكل تنبؤ\n\n> **قسّم على الفعلي.** هكذا يُقارن تنبؤان على الأيام نفسها بمقام واحد.","notes":"اعرض في جدول البيانات صيغة واحدة لكل عمود على مثال المتحف، لا على ملف الرفادة. من لا يعرف ABS يضيف عمودًا للقيمة المطلقة.\n\nالمساعد هنا معلّم: اسأله «اشرح لي ABS» لا «احسب لي الخطأ».","minutes":null,"lo":["LO2"]},{"id":"check-floor","n":20,"title":"متى يكون التنبؤ مفيدًا؟","kind":"quiz","session":2,"hash":"ac85e178","md":"#### [day1#check-floor] متى يكون التنبؤ مفيدًا؟\n\n*نقطة تحقق*\n\n**سؤال:** مورِّد يتنبأ بإشغال فنادق مدينة (ليست الرفادة) ويعلن أن متوسط نسبة خطئه 7%. ما المقارنة التي تخبرك هل هذا جيد؟\n\n- أ. بنسبة الخطأ في عرض المورِّد السابق\n- ب. بنسبة خطأ معتادة في قطاع الطيران\n- ج. بخطأ خط الأساس الموسمي\n- د. بنطاق الثقة الذي يعلنه المورِّد","notes":"الإجابة: ج. ذكّر بأن المقارنة على الأيام نفسها: لا تقارن خطأ موسم بخطأ موسم آخر. ثم انتقل إلى المختبر 1.2.","minutes":null,"lo":["LO2"]},{"id":"lab-1-2","n":21,"title":"فحص التنبؤ: الجزء الأول","kind":"lab","session":2,"hash":"6af6e92f","md":"#### [day1#lab-1-2] فحص التنبؤ: الجزء الأول\n\nالمختبر 1.2 · 20 دقيقة\n\nتحسب خطأ «توقّع» وخطأ خط الأساس الموسمي لكل يوم من الموسم الثالث، ثم متوسط نسبة الخطأ لكل منهما على الموسم كله.\n\n[D1_2_forecast_error.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_2_forecast_error.html)\n\n- [ ] افتح ملف الوافدين واقرأ أعمدته (3 د)\n- [ ] احسب خط الأساس الموسمي لكل يوم (5 د)\n- [ ] احسب الخطأ ونسبته لكل يوم للتنبؤين (7 د)\n- [ ] احسب متوسط نسبة الخطأ للموسم وقارن (5 د)\n- [ ] ✱ إضافي: ارسم الوافدين الفعليين والتنبؤين على مخطط واحد، وعلّم الأيام التي يبتعد فيها «توقّع» أكثر","notes":"المساعد معلّم. الخطأ الأكثر شيوعًا: قسمة الخطأ على التنبؤ. والثاني: أخذ الموسم 1 بدل الموسم 2. اجمع ملفات المشاركين في نهاية المختبر، قبل أن يفتحوا ملف البداية للمختبر 1.3، فهو يحوي هذا الحساب مكتملًا.","minutes":null,"lo":[]},{"id":"debrief-1-2","n":22,"title":"على الموسم كله، «توقّع» يبدو أدق من خط الأساس","kind":"content","session":2,"hash":"7ecd902b","md":"#### [day1#debrief-1-2] على الموسم كله، «توقّع» يبدو أدق من خط الأساس\n\n*بعد المختبر 1.2*\n\n- **5.6%** متوسط نسبة خطأ «توقّع» على 60 يومًا\n- **6.9%** متوسط نسبة خطأ خط الأساس الموسمي\n\n> **لا تحكم بعد.** الموظفون لا يُوزَّعون على متوسط الموسم، بل على أيام الذروة. هناك نحكم في الجلسة التالية.","notes":"الأرقام من الحل المرجعي للمختبر 1.2. اسأل: لو كان هذا كل ما عندك، هل تشتري «توقّع»؟ أكثرهم سيقول نعم. هذا هو الفخ.","minutes":null,"lo":["LO2"]},{"id":"s3","n":23,"title":"الحكم على التنبؤ في الذروة","kind":"section","session":3,"hash":"fc3bded0","md":"#### [day1#s3] الحكم على التنبؤ في الذروة\n\n*الجلسة 3*\n\n- تحدد أيام الذروة مسبقًا من التنبؤ لا من الفعلي\n- تقيس الخطأ والانحياز في أيام الذروة وحدها\n- تحسب هامشًا احتياطيًا للتوظيف يغطي أغلب أيام الذروة","notes":"","minutes":null,"lo":["LO2"]},{"id":"peak-sets-staff","n":24,"title":"أيام الذروة هي التي تحدد عدد الموظفين والحافلات والماء","kind":"content","session":3,"hash":"bdad757a","md":"#### [day1#peak-sets-staff] أيام الذروة هي التي تحدد عدد الموظفين والحافلات والماء\n\n*الذروة*\n\n- يومٌ عادي يخطئ فيه التنبؤ 10% يمر بلا أثر يذكر\n- يوم ذروة يخطئ فيه 10% إلى الأقل يعني طوابير في الحر ونقصًا في الموظفين\n- متوسط الموسم يخلط الأيام كلها بوزن واحد\n- **احكم على التنبؤ في الأيام التي تُبنى عليها القرارات**\n\n> **العبارة التي تبقى.** احكم على التنبؤ في الذروة.","notes":"ارجع إلى مثال المتحف: اليوم 4 كان يوم مهرجان، وأخطأ فيه التنبؤ ربع العدد. متوسطه 10% يخفي أن خطأه كله تقريبًا في اليوم الذي يهم.","minutes":null,"lo":["LO2"]},{"id":"peak-in-advance","n":25,"title":"حدد أيام الذروة قبل الموسم، من التقويم","kind":"content","session":3,"hash":"31ee0f9d","md":"#### [day1#peak-in-advance] حدد أيام الذروة قبل الموسم، من التقويم\n\n*أي أيام هي الذروة؟*\n\n- **صحيح.** أيام تعرفها قبل الموسم: فعالية كبرى، وعطلة، وموسم معلوم. هي الأيام التي ستبني لها جدول الموظفين.\n- **مضلِّل.** «الأيام التي ظهرت عالية» بعد وقوعها. تختار بها الأيام التي أخطأ فيها التنبؤ إلى الأقل، فتبدو النتيجة أسوأ أو أفضل مما هي.","notes":"في المختبر تأتي أيام الذروة من تقويم الموسم في ملف README. في جهتك: من يملك تقويم الفعاليات؟ اطلبه قبل أن تقيّم أي تنبؤ.","minutes":null,"lo":["LO2"]},{"id":"bias-at-peak","n":26,"title":"النموذج الناعم يقصّ القمم","kind":"content","session":3,"hash":"f1f0b48c","md":"#### [day1#bias-at-peak] النموذج الناعم يقصّ القمم\n\n*الانحياز في الذروة*\n\n- نموذج يتعلم «اليوم المعتاد» جيدًا يقترب من المتوسط في كل مكان\n- عند القمة يتنبأ بأقل من الواقع، يومًا بعد يوم\n- متوسط الموسم يبقى جيدًا لأن أيام القمة قليلة\n- الانحياز السالب في الذروة هو العلامة\n\n- **في مثال المتحف.** في اليوم 4 كان الخطأ -25%، والأيام الثلاثة الأخرى بين -5% و5%. نموذج جيد في الأيام العادية، وسيئ في اليوم الوحيد الذي يهم.","notes":"لا تقل إن «توقّع» يفعل هذا؛ دعهم يكتشفون ذلك في المختبر. السؤال الذي يأخذونه معهم: ما انحياز التنبؤ في أيام الذروة وحدها؟","minutes":null,"lo":["LO2"]},{"id":"buffer-of-forecast","n":27,"title":"الهامش يُضاف إلى التنبؤ، فاحسبه نسبةً من التنبؤ","kind":"content","session":3,"hash":"9df8d6cf","md":"#### [day1#buffer-of-forecast] الهامش يُضاف إلى التنبؤ، فاحسبه نسبةً من التنبؤ\n\n*الهامش الاحتياطي*\n\n- **1,500** التنبؤ في يوم المهرجان (مثال المتحف)\n- **2,000** الفعلي\n\n- النقص = 500، أي **25% من الفعلي**\n- لكن لتصل من 1,500 إلى 2,000 تحتاج **33% من التنبؤ**\n- الهامش = أكبر (الفعلي ÷ التنبؤ ناقص 1) في أيام الذروة\n- قرّبه إلى أعلى، لا إلى أقرب رقم\n\n> **أين يقع الخطأ.** هامش 25% على 1,500 يعطي 1,875، والفعلي 2,000.","notes":"هذا أكثر خطأ يتكرر في المختبر 1.3. احسبه على السبورة. ثم اسأل: كم موظفًا يخدم 2,000 زائر إن خدم الموظف 250؟ ثمانية. وبهامش 25% تحسب سبعة ونصفًا فتقرّب إلى ثمانية، ولكن في أرقام أكبر لا يحميك التقريب.","minutes":null,"lo":["LO2"]},{"id":"buffer-has-cost","n":28,"title":"كل نقطة في الهامش موظفون مدفوعو الأجر في كل يوم ذروة","kind":"content","session":3,"hash":"0a11a537","md":"#### [day1#buffer-has-cost] كل نقطة في الهامش موظفون مدفوعو الأجر في كل يوم ذروة\n\n*ثمن الهامش*\n\n1. **تنبؤ منحاز إلى الأقل** يحتاج هامشًا كبيرًا\n2. **هامش كبير** يزيد الموظفين في كل أيام الذروة، حتى التي أصاب فيها\n3. **المقارنة العادلة** كلفة التنبؤ مع هامشه، مقابل خط الأساس مع هامشه","notes":"السؤال الذي يكتبونه للمديرة في الخطوة 5: بأي تنبؤ نبني جدول الأسبوع الكبير، وبأي هامش؟ الجواب الجيد يذكر عدد أيام العمل الإضافية، لا النسبة وحدها.","minutes":null,"lo":["LO2"]},{"id":"check-peak","n":29,"title":"أي رقم تضعه أمام المديرة؟","kind":"quiz","session":3,"hash":"347391bb","md":"#### [day1#check-peak] أي رقم تضعه أمام المديرة؟\n\n*نقطة تحقق*\n\n**سؤال:** تنبؤ بركاب حافلات مهرجان (ليس من ملفات الرفادة): متوسط نسبة خطئه 4% على الشهر، و15% في أيام المهرجان الخمسة بانحياز إلى الأقل. ستبني المديرة جدول السائقين لأيام المهرجان. أي رقم يحكم؟\n\n- أ. 15% في أيام المهرجان، وانحيازه إلى الأقل\n- ب. 4% على الشهر كله\n- ج. متوسط الرقمين، نحو 9%\n- د. 15%، دون حاجة إلى معرفة اتجاهه في تلك الأيام","notes":"الإجابة: أ. إن اختار بعضهم «د» فاسأل: لو كان الانحياز إلى الأعلى، هل تضيف سائقين؟ ثم انتقل إلى المختبر 1.3.","minutes":null,"lo":["LO2"]},{"id":"lab-1-3","n":30,"title":"فحص التنبؤ: الجزء الثاني","kind":"lab","session":3,"hash":"222a429f","md":"#### [day1#lab-1-3] فحص التنبؤ: الجزء الثاني\n\nالمختبر 1.3 · 25 دقيقة\n\nتبني جدول أخطاء الذروة للتنبؤين على أيام الذروة الستة من تقويم الموسم الثالث، وتحسب الانحياز، ثم الهامش الاحتياطي الذي يغطي أيام الذروة الستة وعدد موظفي الاستقبال الناتج. يبدأ من ملف الجزء الأول المكتمل.\n\n[D1_3_peak_error.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_3_peak_error.html)\n\n- [ ] افتح ملف البداية وحدد أيام الذروة الستة (4 د)\n- [ ] احسب الخطأ والانحياز في أيام الذروة للتنبؤين (7 د)\n- [ ] املأ جدول أخطاء الذروة وقارنه بمتوسط الموسم (4 د)\n- [ ] احسب الهامش الاحتياطي الذي يغطي أيام الذروة (6 د)\n- [ ] حوّل الهامش إلى عدد موظفين واكتب سطرين للمديرة (4 د)\n- [ ] ✱ إضافي: أعد الحساب بتعريف آخر للذروة (أعلى عشرة أيام) وانظر هل يتغير الهامش","notes":"يبدأ من forecast_part2_start.xlsx. راقب من يقرّب أكبر نقص إلى 20% دون أن يحسبه نسبة من التنبؤ: اطلب منه أن يتحقق في ورقة «التوظيف» هل نقص الموظفون. المختبر يبني دليل المخرج الثاني: جدول أخطاء الذروة والهامش.","minutes":null,"lo":[]},{"id":"debrief-1-3","n":31,"title":"في الذروة انقلب الترتيب: «توقّع» يخطئ أكثر، وإلى الأقل","kind":"content","session":3,"hash":"8bd8761f","md":"#### [day1#debrief-1-3] في الذروة انقلب الترتيب: «توقّع» يخطئ أكثر، وإلى الأقل\n\n*بعد المختبر 1.3*\n\n|  | متوسط الموسم | متوسط الذروة | انحياز الذروة | الهامش |\n| --- | --- | --- | --- | --- |\n| «توقّع» | 5.6% | 9.7% | -9.3% | 25% |\n| خط الأساس الموسمي | 6.9% | 6.3% | 1.9% | 10% |\n\n> **بالموظفين:** دون هامش ينقص موظفو «توقّع» في 5 من 6 أيام. بالهامش: 1,148 يوم عمل لـ«توقّع» و1,138 لخط الأساس، واللازم 1,017.","notes":"الأرقام من الحل المرجعي للمختبر 1.3. أكبر نقص لـ«توقّع» 18.6% من الفعلي، أي 22.9% من التنبؤ. من قرّب إلى 20% ينقصه موظفون في يومين.\n\nالرسالة لمهجة الكعكي: «توقّع» لا يضيف شيئًا في الأسبوع الكبير على خط أساس مع هامش 10%. هامش 25% هو زيادة الوافدين في اختبار الضغط في الجلسة 7.","minutes":null,"lo":["LO2"]},{"id":"s4","n":32,"title":"النقل والإجهاد الحراري في يوم الذروة","kind":"section","session":4,"hash":"cef6c88f","md":"#### [day1#s4] النقل والإجهاد الحراري في يوم الذروة\n\n*الجلسة 4*\n\n- توزع العدد اليومي على الساعات وتجد ساعة الذروة\n- تحسب رحلات الحافلات الترددية اللازمة لساعة الذروة\n- تقرأ مؤشر الحرارة مع الرطوبة وتحدد الساعات التي تحتاج ظلًا وماءً","notes":"","minutes":null,"lo":["LO2"]},{"id":"day-to-hour","n":33,"title":"العدد اليومي لا يملأ حافلة: الساعة هي وحدة التشغيل","kind":"content","session":4,"hash":"560f8b12","md":"#### [day1#day-to-hour] العدد اليومي لا يملأ حافلة: الساعة هي وحدة التشغيل\n\n*من اليوم إلى الساعة*\n\n- الوافدون في الساعة = وافدو اليوم × حصة الساعة\n- الحصص من عدّ المواسم السابقة، ومجموعها 100%\n- ساعة الذروة قد تحمل ضعفي متوسط الساعات أو أكثر\n- الحافلات والبوابات وفرق الميدان تُخطط لساعة الذروة\n\n> **مثال:** ملعب يستقبل 40,000 في يوم مباراة، و20% منهم في الساعة السابقة لها: 8,000 في ساعة واحدة.","notes":"المثال مخترع، من خارج الحالة. اسأل: لو وزعتم الأربعين ألفًا على ساعات اليوم بالتساوي، كم يكون؟ نحو 1,700 في الساعة. الفرق بين الرقمين هو الفرق بين خطة تعمل وخطة تنهار.","minutes":null,"lo":["LO2"]},{"id":"shuttle-math","n":34,"title":"الرحلات = ركاب ساعة الذروة ÷ سعة الحافلة، مقرّبة إلى أعلى","kind":"content","session":4,"hash":"877f412b","md":"#### [day1#shuttle-math] الرحلات = ركاب ساعة الذروة ÷ سعة الحافلة، مقرّبة إلى أعلى\n\n*الحافلات الترددية*\n\n1. **ركاب الحافلات** وافدو الساعة × حصة الحافلات\n2. **الرحلات** ÷ سعة الحافلة، إلى أعلى\n3. **التردد** 3,600 ثانية ÷ الرحلات\n\n> **في مثال الملعب:** 8,000 × 25% = 2,000 راكب، وبحافلة سعتها 50: أربعون رحلة، أي حافلة كل 90 ثانية.","notes":"التردد يقول لك هل الخطة ممكنة: حافلة كل 90 ثانية من محطة واحدة تحتاج إلى رصيف ومسار ومشرفين. إن لم تكن ممكنة، فالحل ليس في الجدول بل في توزيع الوصول على ساعات أكثر.","minutes":null,"lo":["LO2"]},{"id":"heat-index","n":35,"title":"الرطوبة تجعل الحر أشد على الجسم من رقم الحرارة","kind":"content","session":4,"hash":"654ba6ab","md":"#### [day1#heat-index] الرطوبة تجعل الحر أشد على الجسم من رقم الحرارة\n\n*الإجهاد الحراري*\n\n- **مؤشر الحرارة** يجمع الحرارة والرطوبة في رقم واحد يقارب ما يشعر به الجسم\n- خطط الحرارة تعمل بفئات: حذر، وحذر شديد، وخطر\n- استعمل المؤشر الذي تنشره جهة الأرصاد المعتمدة لا حسابًا خاصًا\n- تنبيه يُطلق من درجة الحرارة وحدها يتأخر في الأيام الرطبة\n\n- **من في خطر أكثر.** كبار السن، والأطفال، ومن يمشي مسافات طويلة، ومن ينتظر واقفًا في طابور مكشوف.","notes":"لا تعطِ صيغة لمؤشر الحرارة ولا حدودًا من الذاكرة: الحدود في المختبر هي حدود خطة الحرارة في المدينة الافتراضية، وفي جهتك هي ما تعتمده جهة الأرصاد وخطة السلامة. السؤال الذي يهمنا: متى يجتمع الحر والزحام؟","minutes":null,"lo":["LO2"]},{"id":"overlap-matters","n":36,"title":"الخطر في الساعات التي يجتمع فيها الزحام والحر","kind":"content","session":4,"hash":"10e431bc","md":"#### [day1#overlap-matters] الخطر في الساعات التي يجتمع فيها الزحام والحر\n\n*التقاطع*\n\n- **أحر ساعة.** قد تكون هادئة: الناس لم يصلوا بعد.\n- **ساعة الذروة.** قد تكون بعد أن خفّ الحر قليلًا.\n- **التقاطع.** ساعات ما زال فيها الحر في فئة عالية والناس يتوافدون. هنا الظل والماء والفرق الإضافية.\n\n> **أين يقع الخطأ.** من يضع الماء عند أحر ساعة وحدها، أو الموظفين عند ساعة الذروة وحدها، يترك ساعات التقاطع بلا غطاء.","notes":"في المختبر 1.4 تعلّم ساعات التقاطع بقاعدتين: فئة «حذر شديد» أو أعلى، وحصة الساعة 6% أو أكثر. القاعدة من صنع الحالة؛ في جهتك اتفق عليها مع فريق السلامة قبل الموسم.","minutes":null,"lo":["LO2"]},{"id":"public-safety-chain","n":37,"title":"رقم الساعة يدخل في ثلاث خطط في وقت واحد","kind":"content","session":4,"hash":"beb7abbc","md":"#### [day1#public-safety-chain] رقم الساعة يدخل في ثلاث خطط في وقت واحد\n\n*السلامة العامة*\n\n1. **النقل** رحلات الحافلات ومواعيد القطار\n2. **الحرارة** الظل والماء وفرق الإسعاف\n3. **الحشد** الوافدون مع كل قطار إلى الساحة: مدخل المحاكاة","notes":"في المختبر تقسم وافدي ساعة الذروة على 24 قطارًا (قطار كل 150 ثانية). هذا الرقم هو ما يدخل نموذج الساحة في الجلسة التالية. نذكر هنا الطريقة فقط؛ الرقم من عملهم.","minutes":null,"lo":["LO2"]},{"id":"check-heat","n":38,"title":"تنبيه الحرارة في ساحة ملعب","kind":"quiz","session":4,"hash":"0bec11d4","md":"#### [day1#check-heat] تنبيه الحرارة في ساحة ملعب\n\n*نقطة تحقق*\n\n**سؤال:** ساحة ملعب (ليست ساحة المشرع) تطلق تنبيه الإجهاد الحراري لفرق الميدان حين تتجاوز الحرارة 42 درجة. في يوم رطب بقيت الحرارة 38 ومؤشر الحرارة في فئة «خطر» ساعتين، ولم يُطلق التنبيه. ما الخلل؟\n\n- أ. عتبة 42 مرتفعة، ويكفي خفضها إلى 38 درجة\n- ب. حساس الحرارة معطل ويجب استبداله\n- ج. يُترك التنبيه لتقدير مشرفي الفرق\n- د. التنبيه يقرأ الحرارة وحدها، لا مؤشر الحرارة الذي يجمعها مع الرطوبة","notes":"الإجابة: د. ثم انتقل إلى المختبر 1.4.","minutes":null,"lo":["LO2"]},{"id":"lab-1-4","n":39,"title":"يوم الذروة بالساعات","kind":"lab","session":4,"hash":"1644e534","md":"#### [day1#lab-1-4] يوم الذروة بالساعات\n\nالمختبر 1.4 · 20 دقيقة\n\nتوزع وافدي يوم الذروة على ساعاته، وتحسب رحلات الحافلات الترددية في ساعة الذروة، وتحدد الساعات التي يتقاطع فيها الزحام مع الإجهاد الحراري.\n\n[D1_4_peak_day_hours.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_4_peak_day_hours.html)\n\n- [ ] اقرأ ملف يوم الذروة وسعة الحافلة (3 د)\n- [ ] احسب الوافدين في كل ساعة وحدد ساعة الذروة (5 د)\n- [ ] احسب رحلات الحافلات اللازمة في ساعة الذروة (5 د)\n- [ ] حدد ساعات الإجهاد الحراري المتقاطعة مع الزحام (7 د)\n- [ ] ✱ إضافي: أعد حساب الرحلات إذا زاد الوافدون بالهامش الاحتياطي الذي يناسب ذروة هذا اليوم","notes":"لا يحتاج هذا المختبر إلى ملف سابق. راقب من يكتب الفئة من عمود الحرارة بدل المؤشر (لا يوجد عمود حرارة في الملف عمدًا)، ومن ينسى التقريب إلى أعلى في الرحلات.","minutes":null,"lo":[]},{"id":"debrief-1-4","n":40,"title":"ساعة الذروة ليست أحر ساعة، والخطر في ثلاث ساعات بينهما","kind":"content","session":4,"hash":"e94ff618","md":"#### [day1#debrief-1-4] ساعة الذروة ليست أحر ساعة، والخطر في ثلاث ساعات بينهما\n\n*بعد المختبر 1.4*\n\n- **10,800** وافد في ساعة الذروة (الساعة 17)، أي 450 مع كل قطار\n- **54** رحلة حافلة في ساعة الذروة، نحو واحدة كل 67 ثانية\n- **15 و16 و17** ساعات يجتمع فيها الزحام والحر الشديد","notes":"الأرقام من الحل المرجعي للمختبر 1.4. ساعات فئة «خطر» من الساعة 12 إلى الساعة 15، وساعة الذروة 17. الساعة 15 وحدها في الاثنين.\n\n450 مع كل قطار هو الرقم الذي يبدأ به نموذج الساحة في الجلسة التالية: ليس رقمًا من المورِّد بل من حسابهم.","minutes":null,"lo":["LO2"]},{"id":"s5","n":41,"title":"كيف تعمل محاكاة حركة المشاة","kind":"section","session":5,"hash":"cf50e9bb","md":"#### [day1#s5] كيف تعمل محاكاة حركة المشاة\n\n*الجلسة 5*\n\n- تصف ما تضعه في المحاكاة: المكان والبوابات والوافدين وسرعة المشي\n- تقرأ منحنى الكثافة في منطقة قياس وتجد قمته\n- تفسر لماذا تتغير القمة بتغير مساحة القياس ونافذة الزمن","notes":"","minutes":null,"lo":["LO3"]},{"id":"why-simulate","n":42,"title":"الحشد لا يُجرَّب على الناس: يُجرَّب على نموذج قبل يوم الحشد","kind":"content","session":5,"hash":"734d3068","md":"#### [day1#why-simulate] الحشد لا يُجرَّب على الناس: يُجرَّب على نموذج قبل يوم الحشد\n\n*لماذا نحاكي*\n\n- تغيير البوابات أو المسارات في يوم الحشد تجربة على أناس حقيقيين\n- المحاكاة تجرب الخطة على وكلاء رقميين يمشون نحو أهداف\n- تقول أين ومتى ترتفع الكثافة، لا هل الخطة «آمنة»\n- ما تحكم به هو قرار الهيئة في خطة السلامة\n\n- **ما تعلمته البحوث من الحشود.** حلل باحثون تسجيلات حادثة حشد في منى عام 1426هـ، فوجدوا انتقالًا مفاجئًا من حركة منتظمة إلى حركة متقطعة ثم مضطربة. قادت النتائج إلى تغييرات في التنظيم.","notes":"الدراسة: Helbing وJohansson وAl-Abideen، تحليل تجريبي لديناميكيات كوارث الحشود (arXiv physics/0701203). نذكر ما في ملخصها فقط: الانتقالات في نمط الحركة، وأنها قادت إلى تغييرات تنظيمية. لا تذكر أرقامًا للكثافة من الذاكرة.\n\nالمصادر: Helbing, Johansson, Al-Abideen, Dynamics of crowd disasters: an empirical study.","minutes":null,"lo":["LO3"]},{"id":"what-goes-in","n":43,"title":"أربعة أشياء تصفها أنت، والنموذج يحركها","kind":"content","session":5,"hash":"5a969f56","md":"#### [day1#what-goes-in] أربعة أشياء تصفها أنت، والنموذج يحركها\n\n*ما يدخل النموذج*\n\n- **المكان.** الحدود والجدران والعوائق، بالأمتار.\n- **البوابات.** مواضعها وعرضها، وأيها مفتوح.\n- **الوافدون.** كم، ومن أين، وفي أي توقيت: موجات أم تدفق.\n- **المشاة.** سرعة المشي وحجم الجسم وكيف يختار الهدف.\n\n> **أدوات مفتوحة لهذا:** JuPedSim (مكتبة بايثون) وVadere. أمثلة لا توصيات.","notes":"في الورشة نستعمل JuPedSim 1.4.2 (رخصة LGPL) لأنه يعمل في Colab وعلى حاسوب محمول. Vadere بديل مفتوح بواجهة رسومية. ما يهم المدير ليس الأداة بل أن يعرف ما وُضع فيها.\n\nالمصادر: JuPedSim documentation; JuPedSim on PyPI; Vadere repository.","minutes":null,"lo":["LO3"]},{"id":"density-unit","n":44,"title":"الكثافة = عدد الأشخاص في منطقة القياس ÷ مساحتها","kind":"content","session":5,"hash":"e51ba934","md":"#### [day1#density-unit] الكثافة = عدد الأشخاص في منطقة القياس ÷ مساحتها\n\n*الكثافة*\n\n1. **منطقة القياس** مستطيل أمام البوابة، مثلًا 8 × 5 أمتار = 40 م²\n2. **العدّ** كل ثانية: كم شخصًا داخلها\n3. **المتوسط** على نافذة زمنية، مثلًا عشر ثوانٍ\n\n> **مثال:** 72 شخصًا في 40 مترًا مربعًا = 1.8 شخص في المتر المربع.","notes":"اطلب من القاعة أن تتخيل 1.8 شخص في المتر المربع: مربع ضلعه متر واحد فيه شخصان تقريبًا. ما زال المشي ممكنًا لكنه بطيء. لا تعطِ تصنيفات خارجية للكثافة من الذاكرة.","minutes":null,"lo":["LO3"]},{"id":"measure-changes-peak","n":45,"title":"التشغيل نفسه يعطي قممًا مختلفة بمساحات قياس مختلفة","kind":"content","session":5,"hash":"5ce95e6c","md":"#### [day1#measure-changes-peak] التشغيل نفسه يعطي قممًا مختلفة بمساحات قياس مختلفة\n\n*المقياس يغيّر الرقم*\n\n| البند | القيمة |\n| --- | --- |\n| منطقة 4 × 3 م، متوسط 10 ثوانٍ | 3.77 |\n| منطقة 8 × 5 م، كل ثانية | 3.62 |\n| منطقة 8 × 5 م، متوسط 10 ثوانٍ | 3.52 |\n| منطقة 12 × 8 م، متوسط 10 ثوانٍ | 1.99 |\n\n> **أين يقع الخطأ.** منطقة قياس كبيرة تخلط الزحام عند البوابة بالفراغ خلفه، فتبدو الكثافة دون الحد.","notes":"مثال موازٍ من خارج الساحة: قاعة خروج في منشأة الفعاليات، 30 × 20 مترًا بمخرج واحد عرضه 2.5 متر، ثلاثة قطارات من 300 زائر، البذرة 1. شُغّل بالنموذج نفسه في JuPedSim (labs/_tools/demo_runs.py). القمة بالأشخاص في المتر المربع.\n\nالرسالة: لهذا تحدد خطة السلامة منطقة القياس ونافذة الزمن مع الحد. حدّ بلا تعريف للقياس لا معنى له.","minutes":null,"lo":["LO3"]},{"id":"limit-is-a-decision","n":46,"title":"الحد قرار الجهة في خطة السلامة، لا رقم يخرجه النموذج","kind":"content","session":5,"hash":"fccc26a7","md":"#### [day1#limit-is-a-decision] الحد قرار الجهة في خطة السلامة، لا رقم يخرجه النموذج\n\n*من يضع الحد*\n\n- **النموذج يقول.** في هذه الخطة، وبهذه المدخلات، تبلغ الكثافة كذا أمام هذه البوابة، وتبقى فوق كذا هذه المدة.\n- **الجهة تقرر.** الحد، ومنطقة القياس، ونافذة الزمن، وما يُفعل إذا اقتربت الكثافة منه. في ساحة المشرع: 2.0 على مستطيل 8 × 5 بمتوسط عشر ثوانٍ.\n\n> **قيم تعليمية.** أرقام الرفادة (الحد والعتبات ومنطقة القياس) من مدينة افتراضية، وليست معيارًا تشغيليًا لأي فعالية ولا لموسم الحج.","notes":"الحد 2.0 في خطة السلامة الافتراضية للرفادة، وهو قيمة تعليمية اختيرت لتظهر الفروق بين الخطتين في المختبر، لا رقم مأخوذ من دليل سلامة. الحدود الفعلية تضعها الجهة المختصة في خطة السلامة بالرجوع إلى الأدلة المنشورة، مثل دليل السلامة في الملاعب البريطاني (Green Guide) ومستويات الخدمة لـ Fruin، وإلى خبرتها في المكان. لا تذكر أرقام هذه الأدلة من الذاكرة. اسأل: في جهتك، من يوقّع على هذا الرقم؟ إن لم يعرف أحد، فالمحاكاة لا تستطيع أن تحكم على أي خطة.","minutes":null,"lo":["LO3"]},{"id":"read-curve","n":47,"title":"ثلاثة أسئلة لكل منحنى كثافة","kind":"content","session":5,"hash":"d6cf0c19","md":"#### [day1#read-curve] ثلاثة أسئلة لكل منحنى كثافة\n\n*قراءة المنحنى*\n\n1. **القمة:** أعلى قيمة بعد المتوسط، ومتى وقعت\n2. **المدة:** كم ثانية بقيت فوق الحد\n3. **العودة:** هل تنزل الكثافة قبل الموجة التالية، أم تتراكم موجة فوق موجة؟\n\n> **التراكم أخطر من القمة.** قمة تنزل قبل القطار التالي تُدار. كثافة لا تنزل تعني أن البوابة أبطأ من الوصول.","notes":"اعرض منحنى قاعة الخروج من الدفتر إن أمكن (الخطة «hall» في demo_runs.py) أو ارسمه على السبورة: ثلاث قمم، كل منها بعد قطار. اسأل: ماذا لو وصل القطار التالي قبل أن تنزل الكثافة؟","minutes":null,"lo":["LO3"]},{"id":"check-measure","n":48,"title":"تقريران عن الخطة نفسها","kind":"quiz","session":5,"hash":"5e01d59e","md":"#### [day1#check-measure] تقريران عن الخطة نفسها\n\n*نقطة تحقق*\n\n**سؤال:** مكتبان استشاريان حاكيا خطة البوابات نفسها لمحطة قطار (ليست ساحة المشرع). الأول يقول إن القمة 1.9 شخص/م²، والثاني 3.4. المدخلات واحدة. ما أول ما تسأل عنه؟\n\n- أ. أي أداة محاكاة استخدم كل مكتب\n- ب. أي التقريرين أحدث تاريخًا\n- ج. منطقة القياس ونافذة الزمن\n- د. لا شيء، نعتمد الرقم الأعلى من التقريرين احتياطًا","notes":"الإجابة: ج. ارجع إلى شريحة «المقياس يغيّر الرقم» إن تردد كثيرون. ثم انتقل إلى المختبر 1.5.","minutes":null,"lo":["LO3"]},{"id":"lab-1-5","n":49,"title":"المحاكاة: الخطة أ","kind":"lab","session":5,"hash":"b3bf6e68","md":"#### [day1#lab-1-5] المحاكاة: الخطة أ\n\nالمختبر 1.5 · 25 دقيقة\n\nتشغّل نموذج ساحة المشرع على الخطة أ (أو تقرأ نتائجها الجاهزة)، وتقرأ منحنى الكثافة أمام كل بوابة، وتسجل قمة الكثافة والمدة فوق الحد.\n\n[D1_5_plan_a.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_5_plan_a.html)\n\n- [ ] افتح دفتر المحاكاة واقرأ وصف الساحة والخطة أ (4 د)\n- [ ] شغّل الخطة أ أو افتح نتائجها الجاهزة (6 د)\n- [ ] اقرأ منحنى الكثافة أمام كل بوابة (6 د)\n- [ ] سجّل قمة الكثافة والثواني فوق الحد (5 د)\n- [ ] اكتب ما تراه في سطرين: أين يتكدس الناس ولماذا (4 د)\n- [ ] ✱ إضافي: غيّر مساحة منطقة القياس في الدفتر وانظر كيف تتغير القمة المقيسة للتشغيل نفسه","notes":"الدفتر يُرفع إلى Colab من File ثم Upload notebook. أول تشغيل يثبّت JuPedSim في دقيقة أو اثنتين. إن تعثرت شبكة القاعة، لا تنتظر: results_plan_A.csv وseries_A_base_seed1.csv هما التشغيل نفسه.\n\nالمساعد معلّم: يشرح سطرًا في الدفتر، ولا يغيّر النموذج.","minutes":null,"lo":[]},{"id":"debrief-1-5","n":50,"title":"الخطة أ تمر في اليوم المعتاد، على الحد تقريبًا","kind":"content","session":5,"hash":"420b0bef","md":"#### [day1#debrief-1-5] الخطة أ تمر في اليوم المعتاد، على الحد تقريبًا\n\n*بعد المختبر 1.5*\n\n- **1.85** قمة G1، البذرة 1\n- **1.92** قمة G2، البذرة 1\n- **0** ثانية فوق 2.0\n\n> **ما رأيتموه:** أربع موجات، كل منها بعد قطار، وتنزل قبل التالي. البوابتان في الوسط، فيمشي القادمون من الطرفين نحوه.","notes":"الأرقام من الحل المرجعي (النتائج الجاهزة للخطة أ، البذرة 1). في البذرة 3 تبلغ قمة G1 القيمة 2.00 تمامًا. اسأل: هل «تمر» خطة قمتها على الحد؟ دع السؤال مفتوحًا للجلسة التالية.","minutes":null,"lo":["LO3"]},{"id":"s6","n":51,"title":"مقارنة خطتين للبوابات","kind":"section","session":6,"hash":"2fd26ab6","md":"#### [day1#s6] مقارنة خطتين للبوابات\n\n*الجلسة 6*\n\n- تقارن خطتين بالمدخلات نفسها وعدة بذور\n- تقرأ القمة والمدة فوق الحد معًا لا القمة وحدها\n- تكتب مقارنة يمكن لمدير العمليات أن يعيدها","notes":"","minutes":null,"lo":["LO3"]},{"id":"fair-comparison","n":52,"title":"غيّر الخطة وحدها، وأبقِ كل شيء آخر كما هو","kind":"content","session":6,"hash":"7980c771","md":"#### [day1#fair-comparison] غيّر الخطة وحدها، وأبقِ كل شيء آخر كما هو\n\n*مقارنة عادلة*\n\n| يبقى ثابتًا | يتغير |\n| --- | --- |\n| الساحة وأبعادها | مواضع البوابات |\n| عدد الوافدين وتوقيت الموجات | عرض كل بوابة (والعرض الكلي ثابت) |\n| منطقة القياس ونافذة الزمن والحد |  |\n| البذور نفسها للخطتين |  |\n\n> **أين يقع الخطأ.** خطة بعرض بوابات أكبر «تفوز» دائمًا. إن تغير العرض الكلي فأنت تقارن تكلفة لا تصميمًا.","notes":"في الساحة: الخطة أ بوابتان عرض كل منهما 3 أمتار، والخطة ب ثلاث بوابات عرض كل منها مترين. العرض الكلي 6 أمتار في الخطتين. هذا ما يجعل المقارنة عن التوزيع لا عن السعة.","minutes":null,"lo":["LO3"]},{"id":"seeds","n":53,"title":"البذرة تغيّر من أين يصل كل شخص، فتغيّر القمة قليلًا","kind":"content","session":6,"hash":"68dd2ea3","md":"#### [day1#seeds] البذرة تغيّر من أين يصل كل شخص، فتغيّر القمة قليلًا\n\n*البذور*\n\n| البند | القيمة |\n| --- | --- |\n| البذرة 1 | 3.52 |\n| البذرة 2 | 3.55 |\n| البذرة 3 | 3.45 |\n\n- البذرة رقم يثبّت التوزيع العشوائي، فيتكرر التشغيل كما هو\n- ثلاث بذور تريك مقدار التذبذب\n- فرق بين خطتين أصغر من التذبذب لا يُبنى عليه قرار","notes":"المثال الموازي نفسه: قاعة الخروج بمخرج واحد، ثلاث بذور. التذبذب نحو عُشر شخص في المتر المربع. اسأل: لو كانت خطتان تختلفان بـ 0.05، هل تختار بينهما بالمحاكاة؟","minutes":null,"lo":["LO3"]},{"id":"peak-and-duration","n":54,"title":"القمة تقول كم ارتفعت الكثافة، والمدة تقول كم بقيت","kind":"content","session":6,"hash":"5dee5fc0","md":"#### [day1#peak-and-duration] القمة تقول كم ارتفعت الكثافة، والمدة تقول كم بقيت\n\n*رقمان لا رقم*\n\n- **قمة 2.3 لعشر ثوانٍ.** موجة عابرة تنزل قبل القطار التالي. تحتاج إلى مراقبة وإجراء خفيف.\n- **قمة 2.3 لثلاث دقائق.** البوابة لا تصرّف الوصول. الكثافة تتراكم، وكل قطار يزيدها.\n\n> **سجّل الاثنين** لكل بوابة وكل بذرة: القمة والثواني فوق الحد.","notes":"جدول المقارنة في المختبر 1.6 فيه العمودان. من يسجل القمة وحدها لا يرى الفرق بين خطة تتنفس وخطة تختنق.","minutes":null,"lo":["LO3"]},{"id":"spread-not-width","n":55,"title":"بوابتان بعيدتان قد تفعلان ما لا تفعله بوابة عريضة","kind":"content","session":6,"hash":"655faabf","md":"#### [day1#spread-not-width] بوابتان بعيدتان قد تفعلان ما لا تفعله بوابة عريضة\n\n*التوزيع*\n\n- **3.52** قاعة الخروج: مخرج واحد في الوسط عرضه 2.5 م\n- **1.22** القاعة نفسها: مخرجان على الطرفين عرض كل منهما 2.5 م\n\n> **انتبه:** هنا تضاعف العرض الكلي، فالفرق سعة وتوزيع معًا. في الساحة يبقى العرض ثابتًا، فما تقيسه التوزيع وحده.","notes":"المثال الموازي (demo_runs.py): قاعة الخروج بمخرج واحد وبمخرجين، البذرة 1، 300 زائر مع كل قطار. هذا المثال يخالف قاعدة الشريحة السابقة عمدًا: اسأل القاعة ما الخطأ في هذه المقارنة. الجواب: العرض الكلي تضاعف.","minutes":null,"lo":["LO3"]},{"id":"check-comparable","n":56,"title":"ما الذي يجعل المقارنة عادلة؟","kind":"quiz","session":6,"hash":"767953a7","md":"#### [day1#check-comparable] ما الذي يجعل المقارنة عادلة؟\n\n*نقطة تحقق*\n\n**سؤال:** فريق يقارن خطتين لمدخل معرض (ليس ساحة المشرع). شغّل الخطة الأولى بالبذرة 1 و2,000 زائر، والثانية بالبذرة 5 و1,800 زائر، فكانت الثانية أدنى قمة. ماذا تطلب قبل أن تقبل النتيجة؟\n\n- أ. تشغيل الخطة الثانية مرتين أخريين بالبذرة 5 نفسها\n- ب. تشغيل الخطتين بالزوار أنفسهم وبالبذور نفسها\n- ج. رأي مهندس في أي المخططين أوضح\n- د. حساب القمة بمتوسط دقيقة بدل عشر ثوانٍ","notes":"الإجابة: ب. ثم انتقل إلى المختبر 1.6.","minutes":null,"lo":["LO3"]},{"id":"lab-1-6","n":57,"title":"المحاكاة: الخطة ب","kind":"lab","session":6,"hash":"7dde14e2","md":"#### [day1#lab-1-6] المحاكاة: الخطة ب\n\nالمختبر 1.6 · 20 دقيقة\n\nتشغّل الخطة ب (أو تقرأ نتائجها) بثلاث بذور، وتملأ جدول المقارنة مع الخطة أ: قمة الكثافة والمدة فوق الحد لكل بوابة. يبدأ من نتائج الخطة أ الجاهزة.\n\n[D1_6_plan_b.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_6_plan_b.html)\n\n- [ ] افتح جدول المقارنة ونتائج الخطة أ الجاهزة (3 د)\n- [ ] شغّل الخطة ب أو افتح نتائجها بالبذور الثلاث (6 د)\n- [ ] املأ جدول المقارنة للخطتين (7 د)\n- [ ] اكتب الخطة الأفضل في الظروف المعتادة وسببها (4 د)\n- [ ] ✱ إضافي: شغّل الخطة نفسها ببذرة رابعة وانظر هل يتغير حكمك","notes":"يبدأ من results_plan_A.csv الجاهز. من يشغّل الخطة ب في Colab يغيّر PLAN والبذرة فقط. اجمع جداول المقارنة في النهاية: المختبر 1.7 يبدأ من جدول مكتمل.","minutes":null,"lo":[]},{"id":"debrief-1-6","n":58,"title":"الخطة ب أدنى في اليوم المعتاد، بالعرض الكلي نفسه","kind":"content","session":6,"hash":"cc52c7d0","md":"#### [day1#debrief-1-6] الخطة ب أدنى في اليوم المعتاد، بالعرض الكلي نفسه\n\n*بعد المختبر 1.6*\n\n| البند | القيمة |\n| --- | --- |\n| الخطة أ: أعلى قمة على البذور الثلاث | 2.00 |\n| الخطة ب: أعلى قمة على البذور الثلاث | 1.80 |\n\n> **لا ثانية فوق الحد** في أي من الخطتين في اليوم المعتاد. البذور غيّرت القمة بنحو عُشر ولم تغيّر الترتيب.","notes":"الأرقام من الحل المرجعي (results_plan_A.csv وresults_plan_B.csv). البوابة الوسطى في الخطة ب أقل البوابات حملًا. اسأل: أيكفي هذا لاختيار الخطة ب؟ ليس بعد: ماذا لو جاء أكثر مما تنبأنا؟","minutes":null,"lo":["LO3"]},{"id":"s7","n":59,"title":"اختبار الخطة تحت الضغط","kind":"section","session":7,"hash":"07797e72","md":"#### [day1#s7] اختبار الخطة تحت الضغط\n\n*الجلسة 7*\n\n- تختبر الخطة بزيادة الوافدين بقدر خطأ التنبؤ في الذروة\n- تختبر الخطة بإغلاق بوابة وتقرأ أين ينتقل الزحام\n- تختار خطة وتكتب حدودها والظرف الذي تسقط فيه","notes":"","minutes":null,"lo":["LO3"]},{"id":"stress-from-forecast","n":60,"title":"زِد الوافدين بقدر خطأ التنبؤ في الذروة","kind":"content","session":7,"hash":"309a661a","md":"#### [day1#stress-from-forecast] زِد الوافدين بقدر خطأ التنبؤ في الذروة\n\n*اختبار الضغط*\n\n- المحاكاة بالرقم المتوقع وحده تفترض أن التنبؤ صحيح\n- الهامش الذي حسبته للتوظيف هو نفسه حجم المفاجأة الممكنة في الساحة\n- اختبر الخطة بالمتوقع، ثم بالمتوقع مع الهامش\n\n> **الخيط بين الجلسات:** خطأ التنبؤ في الذروة (الجلسة 3) يصير مدخلًا لاختبار الضغط في الساحة.","notes":"اربط بما في ذاكرتهم: الهامش الذي حسبوه لـ«توقّع» في المختبر 1.3. اختبار الضغط في المختبر يزيد الوافدين بالقدر نفسه.","minutes":null,"lo":["LO3"]},{"id":"gate-closed","n":61,"title":"بوابة مغلقة لعطل أو حادث تنقل حملها إلى جاراتها","kind":"content","session":7,"hash":"66d8c6ab","md":"#### [day1#gate-closed] بوابة مغلقة لعطل أو حادث تنقل حملها إلى جاراتها\n\n*ما يتعطل*\n\n- **1.22** قاعة الخروج بمخرجين: يوم معتاد\n- **3.20** المخرجان وأحدهما مغلق: 176 ثانية فوق الحد\n\n> **أين يقع الخطأ.** خطة تُختبر وكل بواباتها مفتوحة تُختبر في اليوم الذي لا يحتاج إلى اختبار.","notes":"المثال الموازي (demo_runs.py، قاعة الخروج بمخرجين، البذرة 1). ومع زيادة الزوار بالربع وكل المخارج مفتوحة: 1.81، أي تحت الحد. الإغلاق أقسى من الزيادة في هذه القاعة؛ ولا يلزم أن يكون كذلك في الساحة.","minutes":null,"lo":["LO3"]},{"id":"robust-plan","n":62,"title":"الخطة المتينة تعرف متى تسقط وماذا تفعل حينها","kind":"content","session":7,"hash":"acc4b876","md":"#### [day1#robust-plan] الخطة المتينة تعرف متى تسقط وماذا تفعل حينها\n\n*الخطة المتينة*\n\n**يوم معتاد** تحت الحد بهامش ← **ضغط واحد** أين تتجاوز، وكم ثانية ← **ضغطان معًا** تتجاوز: ما الإجراء ومن يقرره\n\n> **قارن الخطتين في كل اختبار**، ثم اختر التي تبقى أدنى في أكثرها، واكتب الظرف الذي تسقط فيه.","notes":"لا توجد خطة لا تسقط إذا زدت الضغط. السؤال الإداري: في أي ظرف، وهل في البطاقة إجراء لذلك الظرف؟ هذا يقود إلى الجلسة 8.","minutes":null,"lo":["LO3"]},{"id":"simulate-before-reroute","n":63,"title":"حاكِ قبل أن تغيّر المسار","kind":"content","session":7,"hash":"f23dd81e","md":"#### [day1#simulate-before-reroute] حاكِ قبل أن تغيّر المسار\n\n*قاعدة باقية*\n\n- كل تغيير في البوابات أو المسارات يُحاكى قبل تطبيقه\n- بالمتوقع، وبالهامش، وببوابة مغلقة\n- بمنطقة القياس ونافذة الزمن اللتين في خطة السلامة\n- ويُحفظ التشغيل وبذوره ليعيده غيرك\n\n> **والتشغيل دليل.** ملف النتائج وجدول المقارنة جزء من سجل المختبرات في تقييم الورشة.","notes":"اسأل: في جهتك، هل غُيِّر مسار يومًا في يوم حشد دون محاكاة؟ من قرر، وعلى أي أساس؟ لا تطلب أسماء.","minutes":null,"lo":["LO3"]},{"id":"check-robust","n":64,"title":"أي خطة تختار لممر مشاة؟","kind":"quiz","session":7,"hash":"42cc8253","md":"#### [day1#check-robust] أي خطة تختار لممر مشاة؟\n\n*نقطة تحقق*\n\n**سؤال:** لممر مشاة إلى ملعب (ليس ساحة المشرع) خطتان. في اليوم المعتاد: الأولى 1.4 والثانية 1.6، والحد 2.0. مع زيادة الربع: الأولى 2.6 والثانية 2.1. مع مخرج مغلق: الأولى 3.5 والثانية 2.4. أيها تختار؟\n\n- أ. الأولى، لأنها أدنى في اليوم المعتاد\n- ب. لا هذه ولا تلك، فكلتاهما تتجاوز الحد\n- ج. تُجرَّب الخطتان في يوم مباراة ثم يُختار\n- د. الثانية، مع إجراء مكتوب لظرفي الضغط","notes":"الإجابة: د. إن اختار بعضهم «ج» فارجع إلى شريحة «لماذا نحاكي»: يوم المباراة ليس مختبرًا. ثم انتقل إلى المختبر 1.7.","minutes":null,"lo":["LO3"]},{"id":"lab-1-7","n":65,"title":"المحاكاة: اختبار الضغط","kind":"lab","session":7,"hash":"cf5706a6","md":"#### [day1#lab-1-7] المحاكاة: اختبار الضغط\n\nالمختبر 1.7 · 25 دقيقة\n\nتقرأ نتائج أربعة اختبارات ضغط للخطتين: زيادة الوافدين ربعًا، وإغلاق بوابة، والاثنان معًا، وتختار الخطة وتكتب الظرف الذي تتجاوز فيه الحد. يبدأ من جدول المقارنة المكتمل.\n\n[D1_7_stress_test.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_7_stress_test.html)\n\n- [ ] افتح جدول المقارنة المكتمل وملف اختبارات الضغط (3 د)\n- [ ] املأ قمم الكثافة في الاختبارات الأربعة (7 د)\n- [ ] حدد أي اختبار يتجاوز الحد في كل خطة (5 د)\n- [ ] اختر الخطة واكتب الظرف الذي تسقط فيه (6 د)\n- [ ] سجّل كثافات الذروة والخطة المختارة في السجل (4 د)\n- [ ] ✱ إضافي: اقترح تعديلًا واحدًا على الخطة المختارة، وصف التشغيل الذي يثبت أنه يكفي","notes":"يبدأ من comparison_complete.xlsx وresults_stress.csv. من يريد أن يرى رقمًا يتكرر يشغّل صفًا واحدًا في الدفتر؛ اختبار «الاثنان معًا» للخطة أ يأخذ أطول وقت. هذا دليل المخرج الثالث: كثافات الذروة وخطة مختارة. اجمعه في النهاية.","minutes":null,"lo":[]},{"id":"debrief-1-7","n":66,"title":"كل اختبار ضغط يكسر الخطتين، والخطة ب تبقى أدنى في كل منها","kind":"content","session":7,"hash":"9ad2a12b","md":"#### [day1#debrief-1-7] كل اختبار ضغط يكسر الخطتين، والخطة ب تبقى أدنى في كل منها\n\n*بعد المختبر 1.7*\n\n| الاختبار | الخطة أ | الخطة ب |\n| --- | --- | --- |\n| وافدون أكثر بالربع | 2.80 | 2.40 |\n| بوابة مغلقة | 4.09 | 3.02 |\n| الاثنان معًا | 4.77 | 3.63 |\n\n> **القرار المرجعي:** الخطة ب، ومعها إجراء عند الاقتراب من الحد، وإيقاف بقرار إنسان، وإصلاح أي بوابة معطلة قبل الذروة.","notes":"أعلى قمة على البذور الثلاث، من الحل المرجعي (results_stress.csv). مع زيادة الربع تبقى الخطة ب فوق الحد حتى 75 ثانية عند بوابة جانبية، والخطة أ حتى 136 ثانية. الأرقام الدقيقة كلها في check.py.\n\nمن اختار الخطة أ لأنها «مرت» في اليوم المعتاد: اسأله عن 450 مع كل قطار مقابل 563.","minutes":null,"lo":["LO3"]},{"id":"s8","n":67,"title":"إنسان يقود ويملك قرار الإيقاف","kind":"section","session":8,"hash":"6630e24c","md":"#### [day1#s8] إنسان يقود ويملك قرار الإيقاف\n\n*الجلسة 8*\n\n- تكتب عتبات كثافة يقابلها إجراء ومسؤول عنه\n- تسمي من يملك قرار الإيقاف ومن ينفذه\n- تحدد البديل حين يتعطل نظام العد","notes":"","minutes":null,"lo":["LO3"]},{"id":"person-in-command","n":68,"title":"النظام ينبه، والإنسان يقرر الإيقاف","kind":"content","session":8,"hash":"d8f40ef0","md":"#### [day1#person-in-command] النظام ينبه، والإنسان يقرر الإيقاف\n\n*القيادة البشرية*\n\n- قرار إيقاف الدخول يصعب الرجوع عنه وقد يمس الأرواح\n- مبادئ سدايا تطلب في مثله إشرافًا بشريًا وقرارًا أخيرًا لإنسان\n- صاحب القرار يُسمّى بدوره في خطة السلامة قبل الموسم\n- من ينفذ غير من يقرر، وكلاهما معروف\n\n- **ما لا يُترك للنظام.** إيقاف الدخول، وتحويل الحشد إلى مسار آخر، وفتح منفذ طوارئ. النظام يقدّم الرقم والتنبيه.","notes":"المبدأ من مبادئ أخلاقيات الذكاء الاصطناعي، مبدأ الموثوقية والسلامة: القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا. صياغة الشريحة تلخيص.\n\nالمصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.","minutes":null,"lo":["LO3"]},{"id":"three-thresholds","n":69,"title":"ثلاث عتبات، لكل منها فعل وشخص","kind":"content","session":8,"hash":"697238be","md":"#### [day1#three-thresholds] ثلاث عتبات، لكل منها فعل وشخص\n\n*العتبات*\n\n1. **تحت الحد** إجراء مبكر يبطئ الوصول، لأن أثره يحتاج وقتًا\n2. **عند الحد** حبس الموجة التالية في مكانها، ونداء\n3. **فوق الحد** إيقاف الدخول بقرار صاحب الصلاحية\n\n> **أين يقع الخطأ.** أول إجراء عند الحد نفسه يأتي متأخرًا: الكثافة تواصل الصعود حتى يصل أثره.","notes":"مثال من خارج الساحة لصياغة الفعل: «يُبطئ مشرف المحطة خروج الركاب إلى الممر» فعل يُنفَّذ؛ «تحسين التدفق» ليس فعلًا. البطاقة في المختبر 1.8 تطلب الصياغة الأولى.","minutes":null,"lo":["LO3"]},{"id":"when-counter-fails","n":70,"title":"العداد المتوقف يبدو هادئًا","kind":"content","session":8,"hash":"da8f3090","md":"#### [day1#when-counter-fails] العداد المتوقف يبدو هادئًا\n\n*البدائل*\n\n**شاشة غرفة العمليات:** الكثافة أمام البوابة: 1.1 (لم تتغير منذ دقائق)\n\n**مشرف البوابة باللاسلكي:** الطابور يمتد إلى نصف الساحة.\n\n- من يلاحظ الرقم الثابت، وبأي تنبيه؟\n- العدّ اليدوي: من يعدّ، وكل كم دقيقة\n- القاعدة إلى أن يعود العداد، مكتوبة قبل الموسم","notes":"حوار مخترع. اسأل: كم دقيقة مرّت قبل أن يتصل المشرف؟ لو لم يتصل؟ البديل يُكتب قبل الموسم، لا يُرتجل في يوم الحشد.","minutes":null,"lo":["LO3"]},{"id":"stop-path","n":71,"title":"من الرقم إلى البوابة في أقل من دقيقة","kind":"content","session":8,"hash":"8f965e2f","md":"#### [day1#stop-path] من الرقم إلى البوابة في أقل من دقيقة\n\n*مسار القرار*\n\n| الخطوة | من |\n| --- | --- |\n| يرى الرقم ويتحقق منه | مشغل غرفة العمليات |\n| يقرر | مدير العمليات المناوب |\n| يبلّغ البوابات ومشغل القطار | غرفة العمليات، بقناة واحدة معروفة |\n| ينفذ ويؤكد | مشرفو البوابات |","notes":"الأدوار هنا عامة، وفي خطة السلامة الافتراضية للرفادة مدير العمليات المناوب هو صاحب القرار. اطلب من مشارك أن يقرأ المسار بصوت عالٍ ويقدّر الثواني في كل خطوة.","minutes":null,"lo":["LO3"]},{"id":"check-command","n":72,"title":"من يوقف الدخول حين يتعطل العداد؟","kind":"quiz","session":8,"hash":"e3d6c1f1","md":"#### [day1#check-command] من يوقف الدخول حين يتعطل العداد؟\n\n*نقطة تحقق*\n\n**سؤال:** في مدخل معرض (ليس ساحة المشرع) توقف نظام عدّ الكثافة، وأبلغ مشرف البوابة أن الطابور يمتد ويضغط. خطة السلامة تسمّي مدير العمليات المناوب صاحبًا لقرار الإيقاف. ماذا يحدث؟\n\n- أ. يقرر مدير العمليات المناوب من العدّ اليدوي وبلاغ المشرف\n- ب. لا قرار حتى يعود النظام ويؤكد الكثافة\n- ج. يوقف المشرف الدخول بنفسه لأنه يرى الطابور\n- د. يتصل المدير بالمورِّد ليقدّر الكثافة عن بعد","notes":"الإجابة: أ. إن اختار بعضهم «ج» فاسأل: لو أوقف كل مشرف بوابته بتقديره، من يرى الساحة كلها؟ وفرّق بين هذا وبين الخطر الوشيك على الأرواح: ما يفعله المشرف حينها يحدده إجراء الطوارئ في خطة السلامة، ويبلّغ غرفة العمليات فورًا. ثم انتقل إلى المختبر 1.8.","minutes":null,"lo":["LO3"]},{"id":"lab-1-8","n":73,"title":"بطاقة القيادة والإيقاف","kind":"lab","session":8,"hash":"2b4172c4","md":"#### [day1#lab-1-8] بطاقة القيادة والإيقاف\n\nالمختبر 1.8 · 20 دقيقة\n\nتكتب بطاقة لمدير العمليات: ثلاث عتبات كثافة وما يقابلها من إجراء ومسؤول، ومن يملك قرار إيقاف الدخول، وما يفعله الفريق حين يتعطل العداد.\n\n[D1_8_command_card.html](https://sdaiaacademy.github.io/use-sec-212/labs/D1_8_command_card.html)\n\n- [ ] اقرأ مقتطف خطة السلامة وقالب البطاقة (3 د)\n- [ ] اكتب ثلاث عتبات وإجراء كل منها (6 د)\n- [ ] سمِّ صاحب قرار الإيقاف ومن ينفذه (4 د)\n- [ ] اكتب البديل حين يتعطل العداد (7 د)\n- [ ] ✱ إضافي: اكتب رسالة النداء التي تُبث في الساحة عند العتبة الثانية بلغتين","notes":"البطاقة بالأدوار لا بالأسماء. راقب العتبة الأولى عند الحد نفسه، وصياغات مثل «تحسين التدفق». البطاقة تدخل الخريطة غدًا في صف عدّ الكثافة.","minutes":null,"lo":[]},{"id":"debrief-1-8","n":74,"title":"بطاقة مرجعية لساحة المشرع","kind":"content","session":8,"hash":"27aee1f1","md":"#### [day1#debrief-1-8] بطاقة مرجعية لساحة المشرع\n\n*بعد المختبر 1.8*\n\n| العتبة | الإجراء | من |\n| --- | --- | --- |\n| 1.5 | إبطاء الخروج من المحطة إلى الساحة، وفتح مسار الانتظار الجانبي | مشرف المحطة ومشرفو الساحة |\n| 2.0 | حبس الركاب في المحطة دقيقتين مع تأخير القطار التالي، ونداء بلغات الزوار | مدير العمليات المناوب يطلب، ومشغل القطار ينفذ |\n| 2.5 | إيقاف الدخول إلى الساحة | مدير العمليات المناوب يقرر، ومشرفو البوابات ينفذون |\n\n> **عند تعطل العداد:** عدّ يدوي من كل بوابة كل دقيقتين، وتُعامل الساحة كأنها عند العتبة الأولى حتى يعود.","notes":"البطاقة المرجعية من مفتاح المدرّب، وعتباتها قيم تعليمية لمدينة افتراضية، لا معيار تشغيلي. حبس الركاب لا يصلح إلا إن كان في الرصيف متسع ويُؤخَّر القطار التالي معه، وإلا انتقل الزحام من الساحة إلى الرصيف. اقبل أي بطاقة عتبتها الأولى تحت الحد وإجراءاتها أفعال لها أصحاب. العتبات 1.5 و2.0 و2.5 هي التي يطلبها بيان حاجة السلامة في اليوم 2.","minutes":null,"lo":["LO3"]},{"id":"wrap-up","n":75,"title":"ثلاثة أمور تبقى معك","kind":"content","session":8,"hash":"44e49ae0","md":"#### [day1#wrap-up] ثلاثة أمور تبقى معك\n\n*خلاصة اليوم 1*\n\n- **احكم في الذروة.** «توقّع» أدق على الموسم (5.6% مقابل 6.9%)، وأسوأ في الأسبوع الكبير (9.7% مقابل 6.3%) وإلى الأقل.\n- **حاكِ قبل يوم الحشد.** الخطة ب أدنى في كل اختبار، وتتجاوز الحد حين يأتي الوافدون بقدر خطأ التنبؤ.\n- **إنسان يقود.** ثلاث عتبات بأفعال وأصحاب، والإيقاف لمدير العمليات، وبديل مكتوب حين يتعطل العداد.","notes":"الأرقام من الحلول المرجعية للمختبرات 1.2 و1.3 و1.7. اسأل كل طاولة عن رقم واحد فاجأها اليوم.","minutes":null,"lo":[]},{"id":"next","n":76,"title":"اليوم 2: المساعد، والطاقة، والخصوصية، والخريطة","kind":"content","session":8,"hash":"a12f75a0","md":"#### [day1#next] اليوم 2: المساعد، والطاقة، والخصوصية، والخريطة\n\n*التالي*\n\nغدًا: تقدير إجابات «مِضياف» بأربع لغات دون مساعد، وادعاء «نسيم» أمام قراءات العداد، وخيارات الكاميرات والقياسات الحيوية في الساحة، وأول خريطة للفرص والمخاطر. احتفظ بجدول الترتيب والبطاقة: يدخلان الخريطة.","notes":"من لم يكمل مختبرًا يكمله من الملفات نفسها؛ لكل مختبر غدًا ملف بداية. ذكّرهم بأن تقدير الإجابات ومراجعة الخصوصية غدًا دون أي مساعد ذكي.","minutes":null,"lo":[]}],"activities":[{"id":"check-stakes-q1","slide":"check-stakes","type":"single","prompt":"متحف تراثي (ليس من حالات الرفادة) يدرس استخدامين: شاشة تتنبأ بزمن الانتظار عند الشباك من عدّ التذاكر، وكاميرات عند المدخل تقدّر عمر الزائر لتطبيق سعر الأطفال آليًا. أيهما أعلى مخاطر، ولماذا؟","options":[{"key":"أ","text":"الشاشة، لأن كل الزوار يرونها"},{"key":"ب","text":"الكاميرات، لأنها تحلل الوجوه"},{"key":"ج","text":"الشاشة، لأن خطأها يكلف المتحف أكثر"},{"key":"د","text":"متساويان، لأن كليهما آلي بالكامل"}],"correct":[1],"explanation":"الكاميرات تعالج وجه كل داخل، ومنهم أطفال لم يطلبوا شيئًا، والخطأ فيها يقع على أشخاص لا يعلمون. الشاشة تلمس أعدادًا مجمعة وخطؤها يُتدارك.","misconceptions":["يرتب بما يراه الزوار: الشاشة ظاهرة للجميع، لكن خطأها يُتدارك ولا يلمس بيانات شخصية","","يرتب بالقيمة المالية: الخطأ في السعر صغير، والمخاطر في البيانات التي تُجمع عن الوجوه","يخلط بين التقنية والأثر: كون الاستخدامين آليين لا يجعل مخاطرهما متساوية"],"lo":["LO1"]},{"id":"check-floor-q1","slide":"check-floor","type":"single","prompt":"مورِّد يتنبأ بإشغال فنادق مدينة (ليست الرفادة) ويعلن أن متوسط نسبة خطئه 7%. ما المقارنة التي تخبرك هل هذا جيد؟","options":[{"key":"أ","text":"بنسبة الخطأ في عرض المورِّد السابق"},{"key":"ب","text":"بنسبة خطأ معتادة في قطاع الطيران"},{"key":"ج","text":"بخطأ خط الأساس الموسمي"},{"key":"د","text":"بنطاق الثقة الذي يعلنه المورِّد"}],"correct":[2],"explanation":"خط الأساس الموسمي هو ما تحصل عليه بلا نظام. التنبؤ مفيد بقدر ما يتفوق عليه على الأيام نفسها، وبالمقياس نفسه.","misconceptions":["يقبل المعيار الذي يختاره البائع: رقم المورِّد وحده لا يقول هل يفعل ما لا تفعله طريقة بسيطة","يقارن بمعيار عام: نسبة مقبولة في قطاع آخر لا تقول شيئًا عن هذه المدينة وهذا الموسم","","يخلط بين الثقة والدقة: نطاق الثقة الذي يعلنه المورِّد ليس اختبارًا على بيانات المدينة"],"lo":["LO2"]},{"id":"check-peak-q1","slide":"check-peak","type":"single","prompt":"تنبؤ بركاب حافلات مهرجان (ليس من ملفات الرفادة): متوسط نسبة خطئه 4% على الشهر، و15% في أيام المهرجان الخمسة بانحياز إلى الأقل. ستبني المديرة جدول السائقين لأيام المهرجان. أي رقم يحكم؟","options":[{"key":"أ","text":"15% في أيام المهرجان، وانحيازه إلى الأقل"},{"key":"ب","text":"4% على الشهر كله"},{"key":"ج","text":"متوسط الرقمين، نحو 9%"},{"key":"د","text":"15%، دون حاجة إلى معرفة اتجاهه في تلك الأيام"}],"correct":[0],"explanation":"الجدول يُبنى لأيام المهرجان، فالخطأ فيها هو الذي يحدد الهامش، واتجاهه إلى الأقل يقول إن الهامش يُضاف.","misconceptions":["","يحكم بمتوسط يخلط الأيام العادية بأيام القرار: 4% تخفي خطأ الأيام الخمسة","يرى أن المتوسط بين الرقمين يوازن الصورة: لكنه يقلل الخطأ في الأيام التي يُبنى لها الجدول","يظن أن الانحياز لا يهم ما دام الخطأ معروفًا: الاتجاه يحدد هل يُضاف السائقون أم يُنقصون"],"lo":["LO2"]},{"id":"check-heat-q1","slide":"check-heat","type":"single","prompt":"ساحة ملعب (ليست ساحة المشرع) تطلق تنبيه الإجهاد الحراري لفرق الميدان حين تتجاوز الحرارة 42 درجة. في يوم رطب بقيت الحرارة 38 ومؤشر الحرارة في فئة «خطر» ساعتين، ولم يُطلق التنبيه. ما الخلل؟","options":[{"key":"أ","text":"عتبة 42 مرتفعة، ويكفي خفضها إلى 38 درجة"},{"key":"ب","text":"حساس الحرارة معطل ويجب استبداله"},{"key":"ج","text":"يُترك التنبيه لتقدير مشرفي الفرق"},{"key":"د","text":"التنبيه يقرأ الحرارة وحدها، لا مؤشر الحرارة الذي يجمعها مع الرطوبة"}],"correct":[3],"explanation":"الرطوبة ترفع ما يشعر به الجسم. التنبيه الذي يقرأ الحرارة وحدها يتأخر في الأيام الرطبة، فيُبنى على مؤشر الحرارة وفئاته.","misconceptions":["يرى العتبة وحدها: خفضها يطلق تنبيهات في الأيام الجافة بلا حاجة، ولا يدخل الرطوبة في الحساب","ينسب الخلل إلى الحساس: الحساس قرأ الحرارة صحيحة، والقاعدة هي التي تتجاهل الرطوبة","يرى الفرق أقدر من القاعدة: التقدير بالعين يتأخر ويختلف من مشرف إلى آخر",""],"lo":["LO2"]},{"id":"check-measure-q1","slide":"check-measure","type":"single","prompt":"مكتبان استشاريان حاكيا خطة البوابات نفسها لمحطة قطار (ليست ساحة المشرع). الأول يقول إن القمة 1.9 شخص/م²، والثاني 3.4. المدخلات واحدة. ما أول ما تسأل عنه؟","options":[{"key":"أ","text":"أي أداة محاكاة استخدم كل مكتب"},{"key":"ب","text":"أي التقريرين أحدث تاريخًا"},{"key":"ج","text":"منطقة القياس ونافذة الزمن"},{"key":"د","text":"لا شيء، نعتمد الرقم الأعلى من التقريرين احتياطًا"}],"correct":[2],"explanation":"التشغيل نفسه يعطي قممًا مختلفة بمساحات ونوافذ مختلفة. قبل المقارنة يجب أن يقيس التقريران كما تعرّف خطة السلامة.","misconceptions":["يفترض أن الأداة تفسر الفرق: أداتان مختلفتان قد تقاربان، والأرجح أن القياس نفسه مختلف","يرى الأحدث أدق: تاريخ التقرير لا يغيّر كيف تُقاس الكثافة","","يأخذ الأسوأ احتياطًا: قد يكون الرقم الأعلى من منطقة صغيرة جدًا لا تطابق خطة السلامة"],"lo":["LO3"]},{"id":"check-comparable-q1","slide":"check-comparable","type":"single","prompt":"فريق يقارن خطتين لمدخل معرض (ليس ساحة المشرع). شغّل الخطة الأولى بالبذرة 1 و2,000 زائر، والثانية بالبذرة 5 و1,800 زائر، فكانت الثانية أدنى قمة. ماذا تطلب قبل أن تقبل النتيجة؟","options":[{"key":"أ","text":"تشغيل الخطة الثانية مرتين أخريين بالبذرة 5 نفسها"},{"key":"ب","text":"تشغيل الخطتين بالزوار أنفسهم وبالبذور نفسها"},{"key":"ج","text":"رأي مهندس في أي المخططين أوضح"},{"key":"د","text":"حساب القمة بمتوسط دقيقة بدل عشر ثوانٍ"}],"correct":[1],"explanation":"الخطة الثانية حملت زوارًا أقل وبذرة أخرى. لا تُنسب النتيجة إلى الخطة إلا إذا كان الفرق الوحيد بين التشغيلين هو الخطة.","misconceptions":["يزيد التشغيلات دون إصلاح الخلل: مدخلات مختلفة تبقى مختلفة مهما تكرر التشغيل","","يحكم بالتقدير لا بالمقارنة: الرأي يتأثر بشكل المخطط لا بالأرقام","يغيّر المقياس بدل المدخلات: نافذة أطول تخفض القمتين ولا تجعل المقارنة عادلة"],"lo":["LO3"]},{"id":"check-robust-q1","slide":"check-robust","type":"single","prompt":"لممر مشاة إلى ملعب (ليس ساحة المشرع) خطتان. في اليوم المعتاد: الأولى 1.4 والثانية 1.6، والحد 2.0. مع زيادة الربع: الأولى 2.6 والثانية 2.1. مع مخرج مغلق: الأولى 3.5 والثانية 2.4. أيها تختار؟","options":[{"key":"أ","text":"الأولى، لأنها أدنى في اليوم المعتاد"},{"key":"ب","text":"لا هذه ولا تلك، فكلتاهما تتجاوز الحد"},{"key":"ج","text":"تُجرَّب الخطتان في يوم مباراة ثم يُختار"},{"key":"د","text":"الثانية، مع إجراء مكتوب لظرفي الضغط"}],"correct":[3],"explanation":"الثانية أدنى في اختباري الضغط وتبقى تحت الحد في اليوم المعتاد. تتجاوز تحت الضغط، فتُختار ومعها إجراء مكتوب لذلك الظرف.","misconceptions":["يحكم باليوم المعتاد وحده: الفرق فيه صغير، والفرق تحت الضغط كبير","يرى تجاوز الحد سببًا لرفض الخطتين: لا توجد خطة لا تسقط، والمطلوب معرفة متى وما الإجراء","يجرّب على الناس: تجربة الخطة على حشد حقيقي هي ما تُجرى المحاكاة لتجنبه",""],"lo":["LO3"]},{"id":"check-command-q1","slide":"check-command","type":"single","prompt":"في مدخل معرض (ليس ساحة المشرع) توقف نظام عدّ الكثافة، وأبلغ مشرف البوابة أن الطابور يمتد ويضغط. خطة السلامة تسمّي مدير العمليات المناوب صاحبًا لقرار الإيقاف. ماذا يحدث؟","options":[{"key":"أ","text":"يقرر مدير العمليات المناوب من العدّ اليدوي وبلاغ المشرف"},{"key":"ب","text":"لا قرار حتى يعود النظام ويؤكد الكثافة"},{"key":"ج","text":"يوقف المشرف الدخول بنفسه لأنه يرى الطابور"},{"key":"د","text":"يتصل المدير بالمورِّد ليقدّر الكثافة عن بعد"}],"correct":[0],"explanation":"صاحب القرار لا يتغير لأن العداد توقف. يقرر من المصادر البديلة المكتوبة في البطاقة: العدّ اليدوي وبلاغ المشرف.","misconceptions":["","يربط القرار بالنظام: القرار للإنسان، والنظام مصدر رقم واحد بين مصادر","ينقل قرار الساحة كلها إلى بوابة واحدة: المشرف يبلغ وينفذ، وقرار إيقاف الدخول للمدير المناوب","يرى المورِّد مسؤولًا عن التشغيل: المورِّد يصلح العطل، ولا يدير الحشد"],"lo":["LO3"]}],"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":"day1.md","llms":"../llms.txt"},"tasks":[],"tools":[]},"bridge":{"allowedOrigins":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.5 · المحاكاة: الخطة أ · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_5_plan_a.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-5">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.5</span>
+<h1>المحاكاة: الخطة أ</h1>
+<p>تشغّل نموذج ساحة المشرع على الخطة أ (أو تقرأ نتائجها الجاهزة)، وتقرأ منحنى الكثافة أمام كل بوابة، وتسجل قمة الكثافة والمدة فوق الحد.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 1</span><span>الجلسة 5: كيف تعمل محاكاة حركة المشاة</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.5">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>تشغيل للخطة أ في نموذج ساحة المشرع (أو قراءة نتائجها الجاهزة)، ومنحنى الكثافة أمام كل بوابة.</li>
+      <li>قمة الكثافة لكل بوابة والثواني فوق الحد، وسطران تصف فيهما أين يتكدس الناس ولماذا.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="sim/plaza_sim.ipynb" download><b>sim/plaza_sim.ipynb</b><span>دفتر المحاكاة الجاهز: يُرفع إلى Google Colab ويُشغَّل كله. لا كود تكتبه.</span></a>
+    <a href="sim/plaza_sim.py" download><b>sim/plaza_sim.py</b><span>النموذج نفسه برنامجًا واحدًا لمن يشغّل على حاسوبه بـ uv.</span></a>
+    <a href="files/sim/results_plan_A.csv" download><b>sim/results_plan_A.csv</b><span>النتائج الجاهزة للخطة أ بثلاث بذور، لمن لم يعمل عنده التشغيل.</span></a>
+    <a href="files/sim/series_A_base_seed1.csv" download><b>sim/series_A_base_seed1.csv</b><span>منحنى الكثافة ثانية بثانية للخطة أ، البذرة 1.</span></a>
+    <a href="files/command/safety_plan_excerpt.txt" target="_blank"><b>command/safety_plan_excerpt.txt</b><span>حد الكثافة ومنطقة القياس كما تحددهما خطة السلامة.</span></a>
+  </div>
+  <p class="small">يجوز مساعد عام بدور المعلّم: يشرح لك ما يفعله سطر في الدفتر. لا تحتاج إلى أي مفتاح أو حساب مدفوع.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح دفتر المحاكاة واقرأ وصف الساحة والخطة أ <span class="min">4 د</span></h3>
+    <p>في Google Colab: File ثم Upload notebook، واختر <code>plaza_sim.ipynb</code>. اقرأ الخلية الأولى: الساحة 50 × 30 مترًا، وقطار كل 150 ثانية يحمل 450 زائرًا، والخطة أ بوابتان في الوسط عرض كل منهما 3 أمتار.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · شغّل الخطة أ أو افتح نتائجها الجاهزة <span class="min">6 د</span></h3>
+    <p>اترك الاختيارات على <code>PLAN = "A"</code> و<code>SCENARIO = "base"</code> و<code>SEED = 1</code>، ثم Runtime ثم Run all. أول تشغيل يثبّت المكتبة، والمحاكاة نفسها أقل من دقيقة. إن تعثر التشغيل، افتح <code>results_plan_A.csv</code> و<code>series_A_base_seed1.csv</code> في جدول البيانات.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · اقرأ منحنى الكثافة أمام كل بوابة <span class="min">6 د</span></h3>
+    <p>كم موجة ترى؟ هل تعود الكثافة إلى قرب الصفر بين قطار وآخر، أم تتراكم؟ أي بوابة أعلى، ومتى؟</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · سجّل قمة الكثافة والثواني فوق الحد <span class="min">5 د</span></h3>
+    <table>
+      <tr><th>البوابة</th><th>قمة الكثافة (شخص/م²)</th><th>ثوانٍ فوق 2.0</th></tr>
+      <tr><td>G1</td><td class="fill"></td><td class="fill"></td></tr>
+      <tr><td>G2</td><td class="fill"></td><td class="fill"></td></tr>
+    </table>
+  </div>
+
+  <div class="step">
+    <h3>5 · اكتب ما تراه في سطرين: أين يتكدس الناس ولماذا <span class="min">4 د</span></h3>
+    <p>استعمل ما في النموذج فقط: مكان البوابات، واتجاه الوصول، وعرض البوابة. لا تحكم على الخطة بعد؛ المقارنة في المختبر 1.6.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>في خلية التشغيل أضف <code>area=(4.0, 3.0)</code> إلى سطر <code>run(PLAN, SCENARIO, SEED)</code> لتغيّر مساحة منطقة القياس، وانظر كيف تتغير القمة المقيسة للتشغيل نفسه.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>هل القمة رقم يخرجه النموذج وحده، أم يتوقف على مساحة القياس ونافذة الزمن؟</li>
+    <li>من وضع الحد 2.0: النموذج أم الهيئة؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع (البذرة 1): G1 قمة 1.85 وG2 قمة 1.92، ولا ثانية فوق الحد. على البذور الثلاث تبلغ القمة 2.00 عند G1 في البذرة 3، أي على الحد تمامًا دون تجاوزه. الخطة أ تمر في اليوم المعتاد بلا هامش تقريبًا.</p>
+    <p>المنحنى أربع موجات واضحة، تصل كل منها إلى قمتها بعد وصول القطار بنحو دقيقة، وتنزل قبل القطار التالي. البوابتان متجاورتان في الوسط، فكل القادمين من الطرفين يمشون نحو الوسط.</p>
+    <p>إن تعثر Colab (شبكة القاعة أو تثبيت المكتبة)، لا تنتظر: الملفات الجاهزة هي التشغيل نفسه. وقت التشغيل على حاسوب محمول نحو عشر ثوانٍ لكل خطة.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D1_4_peak_day_hours.html" rel="prev">→ المختبر السابق</a><a href="D1_6_plan_b.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"1.5","title":"المحاكاة: الخطة أ","summary":"تشغّل نموذج ساحة المشرع على الخطة أ (أو تقرأ نتائجها الجاهزة)، وتقرأ منحنى الكثافة أمام كل بوابة، وتسجل قمة الكثافة والمدة فوق الحد.","minutes":25,"day":1,"unit":"اليوم 1","session":5,"deck":"../slides/day1.html#lab-1-5","prev":"D1_4_peak_day_hours.html","next":"D1_6_plan_b.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

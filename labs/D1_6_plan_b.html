@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.6 · المحاكاة: الخطة ب · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_6_plan_b.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-6">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.6</span>
+<h1>المحاكاة: الخطة ب</h1>
+<p>تشغّل الخطة ب (أو تقرأ نتائجها) بثلاث بذور، وتملأ جدول المقارنة مع الخطة أ: قمة الكثافة والمدة فوق الحد لكل بوابة. يبدأ من نتائج الخطة أ الجاهزة.</p>
+<div class="meta"><span>20 دقيقة</span><span>اليوم 1</span><span>الجلسة 6: مقارنة خطتين للبوابات</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.6">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>جدول مقارنة للخطتين في يوم معتاد: قمة الكثافة والثواني فوق الحد لكل بوابة وكل بذرة.</li>
+      <li>جملة تقول أي الخطتين أفضل في الظروف المعتادة، وبأي هامش عن الحد.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/sim/comparison_sheet.xlsx" download><b>sim/comparison_sheet.xlsx</b><span>جدول المقارنة: الخلايا الملونة لك.</span></a>
+    <a href="files/sim/results_plan_A.csv" download><b>sim/results_plan_A.csv</b><span>نتائج الخطة أ الجاهزة بثلاث بذور: نقطة البداية.</span></a>
+    <a href="files/sim/results_plan_B.csv" download><b>sim/results_plan_B.csv</b><span>نتائج الخطة ب الجاهزة، لمن لم يعمل عنده التشغيل.</span></a>
+    <a href="sim/plaza_sim.ipynb" download><b>sim/plaza_sim.ipynb</b><span>دفتر المحاكاة.</span></a>
+  </div>
+  <p class="small">يبدأ من نتائج الخطة أ الجاهزة، لا من تشغيلك في المختبر 1.5. يجوز مساعد عام بدور المعلّم.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح جدول المقارنة ونتائج الخطة أ الجاهزة <span class="min">3 د</span></h3>
+    <p>انقل صفوف الخطة أ من <code>results_plan_A.csv</code> (عمودا <code>peak_density</code> و<code>seconds_above_limit</code>) إلى الجدول.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · شغّل الخطة ب أو افتح نتائجها بالبذور الثلاث <span class="min">6 د</span></h3>
+    <p>في الدفتر: <code>PLAN = "B"</code>، والبذور 1 ثم 2 ثم 3. الخطة ب ثلاث بوابات موزعة عرض كل منها مترين: عرض البوابات كلها 6 أمتار، مثل الخطة أ.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · املأ جدول المقارنة للخطتين <span class="min">7 د</span></h3>
+    <p>لكل خطة: أعلى قمة على كل البوابات والبذور، ومجموع الثواني فوق الحد. انظر إلى الفرق بين البذور: هل يغيّر ترتيب الخطتين؟</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · اكتب الخطة الأفضل في الظروف المعتادة وسببها <span class="min">4 د</span></h3>
+    <p>جملة واحدة فيها: الخطة، وأعلى قمة لها، والمسافة بينها وبين الحد. لا تختر الخطة النهائية بعد: اختبار الضغط في المختبر 1.7.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>شغّل الخطة نفسها ببذرة رابعة وانظر هل يتغير حكمك.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>ما الذي بقي ثابتًا بين الخطتين حتى تكون المقارنة عادلة؟</li>
+    <li>لماذا ثلاث بذور لا بذرة واحدة؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع: أعلى قمة للخطة أ 2.00 (على الحد)، وللخطة ب 1.80، ولا ثانية فوق الحد لأي منهما في اليوم المعتاد. البذور تغيّر القمة بنحو عُشر شخص في المتر المربع ولا تغيّر الترتيب.</p>
+    <p>الخطة ب أفضل لأنها توزع القادمين على الساحة بدل أن تجمعهم في وسطها، بالعرض الكلي نفسه. البوابة الوسطى في الخطة ب هي الأقل حملًا.</p>
+    <p>اجمع جدول المقارنة من كل مشارك في نهاية المختبر: المختبر 1.7 يبدأ من جدول مكتمل.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D1_5_plan_a.html" rel="prev">→ المختبر السابق</a><a href="D1_7_stress_test.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"1.6","title":"المحاكاة: الخطة ب","summary":"تشغّل الخطة ب (أو تقرأ نتائجها) بثلاث بذور، وتملأ جدول المقارنة مع الخطة أ: قمة الكثافة والمدة فوق الحد لكل بوابة. يبدأ من نتائج الخطة أ الجاهزة.","minutes":20,"day":1,"unit":"اليوم 1","session":6,"deck":"../slides/day1.html#lab-1-6","prev":"D1_5_plan_a.html","next":"D1_7_stress_test.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

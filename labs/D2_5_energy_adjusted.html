@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="fluency">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.5 · الطاقة: التوفير المعدّل · الذكاء الاصطناعي في المدن والسياحة والحج</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_5_energy_adjusted.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+<link rel="stylesheet" href="../assets/course.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-5">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.5</span>
+<h1>الطاقة: التوفير المعدّل</h1>
+<p>تبني خط أساس للاستهلاك اليومي من درجات أيام التبريد وعدد الزوار في سنة الأساس، وتحسب التوفير المعدّل بعد تشغيل «نسيم»، وتطرح أثر تبديل الإنارة، وتكتب حكمك على الادعاء. يبدأ من ملف المقارنة الخام المكتمل.</p>
+<div class="meta"><span>25 دقيقة</span><span>اليوم 2</span><span>الجلسة 5: عدّل قبل أن تصدّق</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.5">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>خط أساس للاستهلاك اليومي من درجات التبريد وعدد الزوار في سنة الأساس.</li>
+      <li>التوفير المعدّل بعد «نسيم»، وتوفير «نسيم» وحده بعد طرح أثر الإنارة، وحكمك على الادعاء في ثلاث جمل.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/energy/energy_part2_start.xlsx" download><b>energy/energy_part2_start.xlsx</b><span>ملف البداية: المقارنة الخام مكتملة، وورقة «خط الأساس» لك.</span></a>
+    <a href="files/energy/naseem_claim.txt" target="_blank"><b>energy/naseem_claim.txt</b><span>تقدير أثر الإنارة: 180 كيلوواط ساعة يوميًا من الشهر 14.</span></a>
+  </div>
+  <p class="small">يبدأ من ملف البداية. يجوز مساعد عام بدور المعلّم: يشرح لك دالة الانحدار، ولا يكتب حكمك.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح ملف البداية واقرأ ورقة سنة الأساس <span class="min">3 د</span></h3>
+    <p>سنة الأساس: الأشهر 1 إلى 12 في ورقة «العداد»، قبل «نسيم». منها يتعلم خط الأساس كيف يتغير الاستهلاك مع الحر والزوار.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · احسب معاملات خط الأساس بدالة الانحدار <span class="min">7 د</span></h3>
+    <p>الدالة <code>LINEST</code> على صفوف الأشهر 1 إلى 12: الكهرباء (العمود F) بدلالة درجات التبريد والزوار (العمودان D وE). تعطيك ثلاثة أرقام: معامل الزوار، ومعامل درجات التبريد، والثابت (بهذا الترتيب في Excel وCalc وSheets).</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · احسب الاستهلاك المتوقع والتوفير المعدّل <span class="min">6 د</span></h3>
+    <p>لكل يوم من الأشهر 13 إلى 18: المتوقع = الثابت + معامل التبريد × درجات التبريد + معامل الزوار × الزوار. اجمع المتوقع والفعلي على الأيام نفسها. التوفير المعدّل = 1 ناقص (الفعلي ÷ المتوقع).</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · اطرح أثر تبديل الإنارة <span class="min">4 د</span></h3>
+    <p>180 × عدد الأيام في الملف من الشهر 14 إلى 18. توفير «نسيم» وحده = (المتوقع ناقص الفعلي ناقص أثر الإنارة) ÷ المتوقع.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · اكتب حكمك على الادعاء في ثلاث جمل <span class="min">5 د</span></h3>
+    <p>لعبدالهادي المليباري: ما الذي يمكن نسبته إلى «نسيم»، وما الذي يُنسب إلى غيره، وما الذي تطلبه من المورِّد قبل التجديد.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>أعد بناء خط الأساس بدرجات أيام التبريد وحدها وقارن التوفير الناتج.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>لماذا يُبنى خط الأساس على سنة كاملة قبل التشغيل، لا على الأشهر الستة المقابلة وحدها؟</li>
+    <li>كم من الانخفاض يبقى لـ«نسيم» بعد الطقس والزوار والإنارة؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب</summary>
+    <p>المرجع: الكهرباء اليومية = 2,536 + 207.5 × درجات التبريد + 0.331 × الزوار. المتوقع في الأشهر 13 إلى 18 = 1,065,271، والفعلي 974,984: توفير معدّل 8.5%. أثر الإنارة 25,380. «نسيم» وحده 6.1% مقابل ادعاء 19%.</p>
+    <p>أخطاء معتادة: قراءة معاملات LINEST بالترتيب المعكوس (المعامل الأول للعمود الأخير)؛ حساب المتوقع على أيام لا تقابلها قراءة؛ طرح الإنارة من الشهر 13.</p>
+    <p>الحكم المرجعي: «نسيم» يوفر نحو 6%، وهو توفير حقيقي لكنه ثلث المعلن. يُطلب من المورِّد قياس وتحقق بخط أساس معدّل بالطقس والإشغال في العقد، لا مقارنة فواتير.</p>
+  </details>
+</article>
+<nav class="pager"><a href="D2_4_energy_raw.html" rel="prev">→ المختبر السابق</a><a href="D2_6_privacy_options.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار الطلاقة في البيانات والذكاء الاصطناعي · الذكاء الاصطناعي في المدن والسياحة والحج<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-17⁩ · الإيداع 8f7e6a3</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-17T22:07:03Z","version":"2027.1.0","commit":"8f7e6a3"},"course":{"id":"use-sec-212","code":"USE-SEC-212","title":"الذكاء الاصطناعي في المدن والسياحة والحج","track":"fluency","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/use-sec-212/","repo":"SDAIAAcademy/use-sec-212","home":"../index.html"},"lab":{"id":"2.5","title":"الطاقة: التوفير المعدّل","summary":"تبني خط أساس للاستهلاك اليومي من درجات أيام التبريد وعدد الزوار في سنة الأساس، وتحسب التوفير المعدّل بعد تشغيل «نسيم»، وتطرح أثر تبديل الإنارة، وتكتب حكمك على الادعاء. يبدأ من ملف المقارنة الخام المكتمل.","minutes":25,"day":2,"unit":"اليوم 2","session":5,"deck":"../slides/day2.html#lab-2-5","prev":"D2_4_energy_raw.html","next":"D2_6_privacy_options.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
