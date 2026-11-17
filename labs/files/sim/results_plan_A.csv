@@ -1,0 +1,7 @@
+plan,scenario,seed,gate,gate_x_m,visitors,peak_density,seconds_above_limit,seconds_to_clear
+A,base,1,G1,21.0,1800,1.85,0,558
+A,base,1,G2,29.0,1800,1.92,0,558
+A,base,2,G1,21.0,1800,1.94,0,554
+A,base,2,G2,29.0,1800,1.96,0,554
+A,base,3,G1,21.0,1800,2.0,0,557
+A,base,3,G2,29.0,1800,1.92,0,557

@@ -1,294 +1,853 @@
 <section class="slide title" id="title" data-auto="title">
-  <aside class="notes">REPLACE: الترحيب، والتعريف بنفسك، وسؤال للقاعة يضبط الإيقاع، وإيقاع اليوم</aside>
+  <aside class="notes"><p>رحّب بالمشاركين واطلب من كل منهم جملة واحدة: خدمة للزوار في جهته من ورقة العمل التحضيري، وأي نظام فيها يتنبأ أو يعدّ أو يتعرف أو يجيب. ستعود إلى هذه الأوراق في المختبر 1.1.</p><p>كل ما في الورشة اصطناعي: هيئة الرفادة ومدينتها وأشخاصها وأرقامها. لا يضع أحد بيانات زوار حقيقية في أي مساعد.</p></aside>
 </section>
 
-<section class="slide" id="agenda" data-auto="agenda"></section>
+<section class="slide" id="agenda" data-auto="agenda">
+  <aside class="notes"><p>اليوم الأول عن سؤالين: هل نثق بالأرقام التي نخطط بها لأيام الذروة، وهل تتحمل الساحة ما نخطط له. ثماني جلسات قصيرة، في كل منها شرح ثم مختبر. الاستراحات بزر B.</p></aside>
+</section>
+
+<section class="slide" id="setup-check">
+  <div class="kicker">قبل أن نبدأ</div>
+  <h2>ثلاثة أشياء مفتوحة على حاسوبك</h2>
+  <div class="cols cols-3">
+    <div class="card c-teal"><h4>جدول بيانات</h4><p class="small mb0">Excel أو LibreOffice Calc أو Google Sheets. افتح <span class="en">arrivals_seasons.xlsx</span>: هل ترى ثلاث أوراق؟</p></div>
+    <div class="card c-cyan"><h4>Google Colab</h4><p class="small mb0">حساب Google يفتح <span class="en">colab.research.google.com</span>. لمختبرات المحاكاة فقط، ولها نتائج جاهزة إن لم يعمل.</p></div>
+    <div class="card c-purple"><h4>حزمة الملفات</h4><p class="small mb0">مجلد <span class="en">labs/files</span> من صفحة المقرر، وورقة عملك التحضيري.</p></div>
+  </div>
+  <div class="callout note mt"><b>لا مفتاح ولا اشتراك.</b> لا يحتاج أي مختبر إلى مفتاح نموذج أو خدمة مدفوعة.</div>
+  <aside class="notes"><p>دقيقتان. من لم يفتح Colab لا ينتظر: مختبرات المحاكاة 1.5 إلى 1.7 لها ملفات نتائج جاهزة هي التشغيل نفسه. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته في المختبر 1.1.</p></aside>
+</section>
+
+<section class="slide" id="ai-rules">
+  <div class="kicker">قواعد استخدام الذكاء الاصطناعي في الورشة</div>
+  <h2>متى تستعين بمساعد، ومتى لا</h2>
+  <table class="t">
+    <tr><th>القاعدة</th><th>أين</th></tr>
+    <tr><td><b>دون ذكاء اصطناعي</b></td><td>فحص السيناريوهات العشرة، ومراجعة الخصوصية (2.6 و2.7)، وتقدير إجابات المساعد (2.1 و2.2)</td></tr>
+    <tr><td><b>مساعد بدور المعلّم</b></td><td>مختبرات التنبؤ والمحاكاة والطاقة: يشرح الصيغة ولا يحكم بدلًا منك</td></tr>
+    <tr><td><b>مساعد كامل</b></td><td>الخريطة، وتدافع عنها بنفسك مباشرة</td></tr>
+  </table>
+  <aside class="notes"><p>هذه قواعد المقرر كما يحددها الدليل. السبب في كل منها: ما يقيس حكمك أنت يُعمل دونه، وما يقيس قدرتك على العمل بالأرقام يجوز فيه معلّم، وما ستعمله في جهتك مع مساعد يُعمل معه ثم تُسأل عنه.</p></aside>
+</section>
 
 <!-- الجلسة 1 -->
 
 <section class="slide section" id="s1" data-auto="section" data-session="1"></section>
 
-<section class="slide" id="s1-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
-  <div class="cols cols-2">
+<section class="slide" id="rifada-case" data-lo="LO1">
+  <div class="kicker">دراسة الحالة</div>
+  <h2>هيئة الرفادة تستقبل الزوار والمعتمرين والحجاج العابرين</h2>
+  <div class="cols cols-21">
     <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
+      <li><b>مدينة الرفادة</b> مدينة افتراضية: حي تاريخي تتقدمه ساحة المشرع، ومنشأة فعاليات، وخط قطار، ومركز زوار</li>
+      <li><b>نحو مليونين وثلاثمئة ألف وافد</b> في الموسم، أكثر من نصفهم من خارج المملكة</li>
+      <li><b>أنظمة تدرسها الهيئة:</b> «توقّع» للتنبؤ، و«مِضياف» للمساعدة بأربع لغات، و«نسيم» للتكييف، وخيارات للكاميرات</li>
+      <li><b>دورك:</b> مدير يطلب النظام ويوقّع على قبوله، لا مهندس يبنيه</li>
     </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
+    <div class="card c-teal"><h4>من في الحالة</h4><p class="small mb0">مهجة الكعكي مديرة خدمات الزوار، ونادر الزمزمي مدير عمليات الحشود، ومنتهى فلاتة مسؤولة حماية البيانات، وعبدالهادي المليباري مدير المرافق والطاقة، وغيداء حجازي قائدة مكتب الزوار متعدد اللغات.</p></div>
   </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+  <aside class="notes"><p>كل ما في الحالة افتراضي، ومنه المدينة. لا تقارن أرقامها بمدينة حقيقية.</p><p>اسأل: من منكم يطلب أنظمة لجهته أو يوقّع على قبولها؟ هذا المقرر لهم. من يبني النماذج يجد العمق في مقررات المسار الهندسي.</p></aside>
 </section>
 
-<section class="slide" id="s1-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
+<section class="slide" id="visitor-journey" data-lo="LO1">
+  <div class="kicker">رحلة الزائر</div>
+  <h2>الاستخدامات تقع على طول رحلة الزائر، ولكل محطة بياناتها</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+    <div class="step c-teal"><b>قبل الوصول</b>تنبؤ الأعداد، وتوزيع الموظفين، والحجوزات</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الوصول والتنقل</b>القطار والحافلات، والحرارة في الطريق</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>في الساحة</b>عدّ الكثافة، والبوابات، والكاميرات</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>الخدمة</b>الإرشاد بلغات الزوار، والمباني، والطوارئ</div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout tip mt"><b>اسأل في كل محطة:</b> ماذا يرى النظام، ومن يبني قرارًا على مخرجه، ومن يقع عليه خطؤه؟</div>
+  <aside class="notes"><p>اطلب من كل مشارك أن يضع خدمة من ورقته التحضيرية على إحدى المحطات الأربع، في نصف دقيقة. الأسئلة الثلاثة في الصندوق هي أعمدة جدول المختبر 1.1.</p></aside>
+</section>
+
+<section class="slide" id="two-stakes" data-lo="LO1">
+  <div class="kicker">نوعان من المخاطر</div>
+  <h2>خطر على سلامة الناس في الحشد، وخطر على خصوصيتهم</h2>
+  <div class="cols cols-2">
+    <div class="card c-coral"><h4>مخاطر السلامة</h4><p class="small mb0">خطأ يؤخر قرارًا في حشد أو حر أو طارئ: كثافة تُقرأ أقل من حقيقتها، أو إحالة عاجلة لا تحدث. الضرر جسدي، وقد لا يُتدارك.</p></div>
+    <div class="card c-purple"><h4>مخاطر الخصوصية</h4><p class="small mb0">بيانات تُجمع عن أناس لم يطلبوا شيئًا: صورة، أو موقع، أو وجه، أو محادثة. الضرر قد لا يُرى، ويقع على من لا يعلم.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> نظام بلا بيانات شخصية قد يكون عالي المخاطر في السلامة، ونظام آمن جسديًا قد يكون عالي المخاطر في الخصوصية. قدّر كلًّا على حدة.</div>
+  <aside class="notes"><p>هذا التفريق هو عمودا التقدير في المختبر 1.1. مثال من خارج الحالة: حساس امتلاء موقف سيارات لا يلمس بيانات شخصية، وخطؤه يرسل السيارات إلى موقف ممتلئ؛ وقارئ لوحات السيارات عند المدخل يلمس بيانات تتبع أصحابها.</p></aside>
+</section>
+
+<section class="slide" id="who-is-affected" data-lo="LO1">
+  <div class="kicker">من يتأثر</div>
+  <h2>المتأثر في الأماكن العامة غالبًا ليس مستخدم النظام</h2>
+  <table class="t">
+    <tr><th>الاستخدام (أمثلة من خارج الحالة)</th><th>من يستخدمه</th><th>من يقع عليه</th></tr>
+    <tr><td>حساسات امتلاء المواقف</td><td>إدارة المواقف</td><td>السائقون، ولا بيانات عنهم</td></tr>
+    <tr><td>قراءة لوحات السيارات عند المدخل</td><td>إدارة المواقف</td><td>كل سائق يدخل، وتتبع تنقله</td></tr>
+    <tr><td>شاشة زمن الانتظار من عدّ الهواتف</td><td>الزائر المنتظر</td><td>كل من يحمل هاتفًا في المكان</td></tr>
+    <tr class="hl"><td>بوابات تذاكر بمسح الوجه</td><td>منظم الفعالية</td><td>كل داخل، ومنهم أطفال</td></tr>
+  </table>
+  <aside class="notes"><p>الأمثلة من خارج حالات الرفادة عمدًا: الحالات الست للمختبر 1.1. اسأل: أي هذه الأربعة يقع خطؤه على أطفال؟ وأيها يجمع بيانات عمن لم يستخدمه؟</p></aside>
+</section>
+
+<section class="slide" id="sdaia-levels" data-lo="LO1">
+  <div class="kicker">مبادئ أخلاقيات الذكاء الاصطناعي، سدايا</div>
+  <h2>أربعة مستويات للمخاطر، يحددها الأثر لا التقنية</h2>
+  <table class="t small">
+    <tr><th>المستوى</th><th>ما تقوله المبادئ، بإيجاز</th></tr>
+    <tr><td><b>بسيطة أو منعدمة</b></td><td>لا قيود، ويوصى بالالتزام بالأخلاقيات. مثالها مرشحات البريد العشوائي</td></tr>
+    <tr><td><b>محدودة</b></td><td>تخضع لمبادئ الأخلاقيات</td></tr>
+    <tr class="hl"><td><b>عالية</b></td><td>مخاطر عالية على الحقوق الأساسية: تقييم مطابقة قبل التشغيل وبعده، ومراعاة المتطلبات النظامية</td></tr>
+    <tr><td><b>غير مقبولة</b></td><td>لا يُسمح بها، مثل التصنيف الاجتماعي واستغلال الأطفال وتشويه السلوك</td></tr>
+  </table>
+  <div class="callout note mt"><b>ومعها:</b> القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا لإنسان، ولا تُستخدم الأنظمة للمراقبة الجماعية.</div>
+  <aside class="notes"><p>المستويات من قسم نطاق المخاطر في المبادئ، والسطر الأخير من مبدأ الموثوقية والسلامة. صياغة الشريحة تلخيص، لا اقتباس.</p><p>المصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي (النسخة العربية والإنجليزية).</p></aside>
+</section>
+
+<section class="slide" id="worst-error" data-lo="LO1">
+  <div class="kicker">كيف ترتب</div>
+  <h2>رتّب بأسوأ خطأ واقعي ومن يقع عليه، لا بالخطأ المعتاد</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>ماذا يفعل</b>يتنبأ، يعدّ، يتعرف، يجيب، يضبط</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>ما يلمسه</b>أعداد مجمعة، صورة، موقع، وجه، محادثة</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>أسوأ خطأ</b>من يقع عليه، وهل يعلم، وهل يُتدارك</div>
+  </div>
+  <div class="callout tip mt"><b>عند التساوي</b> قدّم الحالة التي يقع خطؤها على أشخاص لا يعلمون بالنظام ولا يستطيعون الاعتراض.</div>
+  <aside class="notes"><p>هذه خطوات المختبر 1.1 الثلاث. مثال من خارج الحالة: شاشة زمن الانتظار، أسوأ خطؤها أن تقول عشر دقائق والانتظار ساعة؛ يقع على المنتظر، ويعلم به، ويُتدارك. قارنه بقارئ اللوحات: خطؤه أن يُحفظ مسار سائق شهورًا، ولا يعلم به.</p></aside>
+</section>
+
+<section class="slide" id="check-stakes" data-lo="LO1">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي الاستخدامين أعلى مخاطر؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO1">
+    <p class="lead">متحف تراثي (ليس من حالات الرفادة) يدرس استخدامين: شاشة تتنبأ بزمن الانتظار عند الشباك من عدّ التذاكر، وكاميرات عند المدخل تقدّر عمر الزائر لتطبيق سعر الأطفال آليًا. أيهما أعلى مخاطر، ولماذا؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يرتب بما يراه الزوار: الشاشة ظاهرة للجميع، لكن خطأها يُتدارك ولا يلمس بيانات شخصية">الشاشة، لأن كل الزوار يرونها</div>
+      <div class="opt" data-ok>الكاميرات، لأنها تحلل وجه كل داخل ومنهم أطفال</div>
+      <div class="opt" data-why="يرتب بالقيمة المالية: الخطأ في السعر صغير، والمخاطر في البيانات التي تُجمع عن الوجوه">الشاشة، لأن خطأها يكلف المتحف أكثر</div>
+      <div class="opt" data-why="يخلط بين التقنية والأثر: كون الاستخدامين آليين لا يجعل مخاطرهما متساوية">متساويان، لأن كليهما آلي بالكامل</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الكاميرات تعالج وجه كل داخل، ومنهم أطفال لم يطلبوا شيئًا، والخطأ فيها يقع على أشخاص لا يعلمون. الشاشة تلمس أعدادًا مجمعة وخطؤها يُتدارك.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. إن اختار كثيرون «ج» فارجع إلى شريحة «نوعان من المخاطر»: الكلفة المالية ليست مخاطر السلامة ولا الخصوصية. ثم انتقل إلى المختبر.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-1" data-auto="lab" data-lab="1.1">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>دون مساعد. من لم يحضر ورقة العمل التحضيري يكتب ثلاث خدمات من ذاكرته. اجمع جداول الترتيب بعد الخطوة 4، قبل مقارنة الزملاء: هذه النسخة دليل المخرج الأول.</p><p>راقب من يضع «توقّع» في الأسفل «لأنه بلا بيانات شخصية» دون أن يذكر أثر خطئه على المنتظرين في الحر.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-1" data-lo="LO1">
+  <div class="kicker">بعد المختبر 1.1</div>
+  <h2>الحالات الثلاث الأعلى: العدّ في الساحة، وأساور الأطفال، والوجوه</h2>
+  <div class="cols cols-3">
+    <div class="card c-coral"><h4>D2 عدّ الكثافة</h4><p class="small mb0">قرار الإيقاف يُبنى عليه، والكاميرات تصوّر كل من في الساحة. سلامة عالية وخصوصية متوسطة.</p></div>
+    <div class="card c-purple"><h4>D6 أساور الأطفال</h4><p class="small mb0">موقع أطفال كل دقيقة طوال الزيارة. خصوصية عالية، وسلامة عالية إذا تعطل واطمأن الأهل.</p></div>
+    <div class="card c-navy"><h4>D3 الوجوه عند البوابات</h4><p class="small mb0">بيانات حيوية لتحديد الهوية، وهي حساسة في نظام حماية البيانات الشخصية. الخطأ يوقف بريئًا أمام الناس.</p></div>
+  </div>
+  <div class="callout note mt"><b>والأسفل:</b> «نسيم» ثم «توقّع». لكن «توقّع» ليس بلا مخاطر: خطؤه إلى الأقل في الذروة يترك المنتظرين في الحر.</div>
+  <aside class="notes"><p>الترتيب المرجعي: D2، D6، D3، D4، D1، D5. اقبل ترتيبًا آخر للثلاث الأعلى إذا سمّى السبب البيانات والأشخاص وأسوأ خطأ. اسأل الطاولات عن موضع الخلاف الذي سجلوه في الخطوة 5.</p><p>المصدر: تعريف البيانات الحساسة في نظام حماية البيانات الشخصية.</p></aside>
 </section>
 
 <!-- الجلسة 2 -->
 
 <section class="slide section" id="s2" data-auto="section" data-session="2"></section>
 
-<section class="slide" id="s2-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
+<section class="slide" id="floor-first" data-lo="LO2">
+  <div class="kicker">خط الأساس</div>
+  <h2>لا يُحكم على تنبؤ إلا بمقارنته بطريقة بسيطة</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
+      <li><b>خط الأساس الموسمي:</b> القيمة في اليوم نفسه من الموسم السابق</li>
+      <li>ومعها نمو معلوم إن وُجد: <b>الموسم السابق × (1 + النمو)</b></li>
+      <li>لا يحتاج إلى نموذج ولا مورِّد، ويحسبه أي جدول بيانات</li>
+      <li>إن لم يتفوق النظام عليه، فما الذي تدفع ثمنه؟</li>
     </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
+    <div class="card c-teal"><h4>في كتب التنبؤ</h4><p class="small mb0">الطريقة الموسمية البسيطة تجعل التنبؤ مساويًا لآخر قيمة من الموسم نفسه، وتُستخدم مقياسًا تُقارن به الطرق الأعقد.</p></div>
   </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+  <aside class="notes"><p>الطريقة من كتاب Hyndman وAthanasopoulos، الفصل الخامس: الطرق البسيطة تُستعمل معايير للمقارنة لا طريقةً مختارة. خط أساس الهيئة يضيف إليها نمو الخطة.</p><p>المصادر: Hyndman and Athanasopoulos, Forecasting: Principles and Practice, 3rd ed., Some simple forecasting methods.</p></aside>
 </section>
 
-<section class="slide" id="s2-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
+<section class="slide" id="error-measures" data-lo="LO2">
+  <div class="kicker">مقاييس الخطأ</div>
+  <h2>الخطأ بإشارته يقول الاتجاه، وبقيمته المطلقة يقول الحجم</h2>
+  <table class="t">
+    <tr><th>المقياس</th><th>الحساب</th><th>يجيب عن</th></tr>
+    <tr><td>الخطأ</td><td>التنبؤ ناقص الفعلي</td><td>هل التنبؤ أعلى من الواقع أم أقل؟</td></tr>
+    <tr><td>نسبة الخطأ</td><td>الخطأ ÷ الفعلي</td><td>كم بالنسبة إلى حجم اليوم؟</td></tr>
+    <tr><td>متوسط نسبة الخطأ المطلقة</td><td>متوسط القيم المطلقة للنسب</td><td>كم يخطئ عادة، في أي اتجاه</td></tr>
+    <tr><td>الانحياز</td><td>متوسط النسب بإشارتها</td><td>هل يميل دائمًا إلى جهة واحدة؟</td></tr>
+  </table>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> متوسط النسب بإشارتها قد يقترب من الصفر لأن الأخطاء تلغي بعضها. هذا انحياز، لا دقة.</div>
+  <aside class="notes"><p>اكتب على السبورة مثالًا من يومين: خطأ +10% ثم −10%. المتوسط بالإشارة صفر، والمتوسط المطلق 10%. الأول يقول إن التنبؤ غير منحاز، والثاني إنه يخطئ عشرة في المئة كل يوم.</p></aside>
+</section>
+
+<section class="slide" id="worked-museum" data-lo="LO2">
+  <div class="kicker">مثال محلول</div>
+  <h2>تذاكر متحف في أربعة أيام: التنبؤ مقابل خط الأساس</h2>
+  <table class="t">
+    <tr><th>اليوم</th><th class="num">الفعلي</th><th class="num">التنبؤ</th><th class="num">نسبة الخطأ</th><th class="num">خط الأساس</th><th class="num">نسبة الخطأ</th></tr>
+    <tr><td>1</td><td class="num">1,000</td><td class="num">950</td><td class="num"><span class="ltr">-5%</span></td><td class="num">1,080</td><td class="num">8%</td></tr>
+    <tr><td>2</td><td class="num">1,200</td><td class="num">1,140</td><td class="num"><span class="ltr">-5%</span></td><td class="num">1,140</td><td class="num"><span class="ltr">-5%</span></td></tr>
+    <tr><td>3</td><td class="num">800</td><td class="num">840</td><td class="num">5%</td><td class="num">760</td><td class="num"><span class="ltr">-5%</span></td></tr>
+    <tr class="hl"><td>4</td><td class="num">2,000</td><td class="num">1,500</td><td class="num"><span class="ltr">-25%</span></td><td class="num">1,900</td><td class="num"><span class="ltr">-5%</span></td></tr>
+  </table>
+  <p class="lead mt">متوسط النسبة المطلقة: 10% للتنبؤ، و5.75% لخط الأساس.</p>
+  <aside class="notes"><p>مثال مخترع للتوضيح، ليس من ملف الرفادة. احسب مع القاعة صفًا واحدًا: (950 − 1,000) ÷ 1,000 = −5%. ثم اسأل: ما الذي حدث في اليوم 4؟ لا تجب الآن؛ الجلسة التالية عن هذا اليوم بالذات.</p></aside>
+</section>
+
+<section class="slide" id="spreadsheet-steps" data-lo="LO2">
+  <div class="kicker">في جدول البيانات</div>
+  <h2>أربعة أعمدة تكفي للحكم على تنبؤ</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+    <div class="step c-teal"><b>خط الأساس</b>الموسم السابق × (1 + النمو)</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الخطأ</b>التنبؤ ناقص الفعلي</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>النسبة</b>الخطأ ÷ الفعلي</div>
+    <div class="arrow">←</div>
+    <div class="step c-purple"><b>المتوسط</b>للقيمة المطلقة، لكل تنبؤ</div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout tip mt"><b>قسّم على الفعلي.</b> هكذا يُقارن تنبؤان على الأيام نفسها بمقام واحد.</div>
+  <aside class="notes"><p>اعرض في جدول البيانات صيغة واحدة لكل عمود على مثال المتحف، لا على ملف الرفادة. من لا يعرف ABS يضيف عمودًا للقيمة المطلقة.</p><p>المساعد هنا معلّم: اسأله «اشرح لي ABS» لا «احسب لي الخطأ».</p></aside>
+</section>
+
+<section class="slide" id="check-floor" data-lo="LO2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>متى يكون التنبؤ مفيدًا؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">مورِّد يتنبأ بإشغال فنادق مدينة (ليست الرفادة) ويعلن أن متوسط نسبة خطئه 7%. ما المقارنة التي تخبرك هل هذا جيد؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يقبل المعيار الذي يختاره البائع: رقم المورِّد وحده لا يقول هل يفعل ما لا تفعله طريقة بسيطة">بنسبة الخطأ في عرض المورِّد السابق</div>
+      <div class="opt" data-why="يقارن بمعيار عام: نسبة مقبولة في قطاع آخر لا تقول شيئًا عن هذه المدينة وهذا الموسم">بنسبة خطأ معتادة في قطاع الطيران</div>
+      <div class="opt" data-ok>بخطأ خط الأساس الموسمي على الأيام نفسها</div>
+      <div class="opt" data-why="يخلط بين الثقة والدقة: نطاق الثقة الذي يعلنه المورِّد ليس اختبارًا على بيانات المدينة">بنطاق الثقة الذي يعلنه المورِّد للتنبؤ</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> خط الأساس الموسمي هو ما تحصل عليه بلا نظام. التنبؤ مفيد بقدر ما يتفوق عليه على الأيام نفسها، وبالمقياس نفسه.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. ذكّر بأن المقارنة على الأيام نفسها: لا تقارن خطأ موسم بخطأ موسم آخر. ثم انتقل إلى المختبر 1.2.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-2" data-auto="lab" data-lab="1.2">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>المساعد معلّم. الخطأ الأكثر شيوعًا: قسمة الخطأ على التنبؤ. والثاني: أخذ الموسم 1 بدل الموسم 2. اجمع ملفات المشاركين في نهاية المختبر، قبل أن يفتحوا ملف البداية للمختبر 1.3، فهو يحوي هذا الحساب مكتملًا.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-2" data-lo="LO2">
+  <div class="kicker">بعد المختبر 1.2</div>
+  <h2>على الموسم كله، «توقّع» يبدو أدق من خط الأساس</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">5.6%</div><div class="lbl">متوسط نسبة خطأ «توقّع» على 60 يومًا</div></div>
+    <div class="stat center"><div class="big">6.9%</div><div class="lbl">متوسط نسبة خطأ خط الأساس الموسمي</div></div>
+  </div>
+  <div class="callout warn mt"><b>لا توقّع بعد.</b> الموظفون لا يُوزَّعون على متوسط الموسم، بل على أيام الذروة. هناك نحكم في الجلسة التالية.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.2. اسأل: لو كان هذا كل ما عندك، هل تشتري «توقّع»؟ أكثرهم سيقول نعم. هذا هو الفخ.</p></aside>
 </section>
 
 <!-- الجلسة 3 -->
 
 <section class="slide section" id="s3" data-auto="section" data-session="3"></section>
 
-<section class="slide" id="s3-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
-    </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
-  </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+<section class="slide" id="peak-sets-staff" data-lo="LO2">
+  <div class="kicker">الذروة</div>
+  <h2>أيام الذروة هي التي تحدد عدد الموظفين والحافلات والماء</h2>
+  <ul class="bullets">
+    <li>يومٌ عادي يخطئ فيه التنبؤ 10% يمر بلا أثر يذكر</li>
+    <li>يوم ذروة يخطئ فيه 10% إلى الأقل يعني طوابير في الحر ونقصًا في الموظفين</li>
+    <li>متوسط الموسم يخلط الأيام كلها بوزن واحد</li>
+    <li><b>احكم على التنبؤ في الأيام التي تُبنى عليها القرارات</b></li>
+  </ul>
+  <div class="callout tip mt"><b>العبارة التي تبقى.</b> احكم على التنبؤ في الذروة.</div>
+  <aside class="notes"><p>ارجع إلى مثال المتحف: اليوم 4 كان يوم مهرجان، وأخطأ فيه التنبؤ ربع العدد. متوسطه 10% يخفي أن خطأه كله تقريبًا في اليوم الذي يهم.</p></aside>
 </section>
 
-<section class="slide" id="s3-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+<section class="slide" id="peak-in-advance" data-lo="LO2">
+  <div class="kicker">أي أيام هي الذروة؟</div>
+  <h2>حدد أيام الذروة قبل الموسم، من التقويم</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>صحيح</h4><p class="small mb0">أيام تعرفها قبل الموسم: فعالية كبرى، وعطلة، وموسم معلوم. هي الأيام التي ستبني لها جدول الموظفين.</p></div>
+    <div class="card c-coral"><h4>مضلِّل</h4><p class="small mb0">«الأيام التي ظهرت عالية» بعد وقوعها. تختار بها الأيام التي أخطأ فيها التنبؤ إلى الأقل، فتبدو النتيجة أسوأ أو أفضل مما هي.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <aside class="notes"><p>في المختبر تأتي أيام الذروة من تقويم الموسم في ملف README. في جهتك: من يملك تقويم الفعاليات؟ اطلبه قبل أن تقيّم أي تنبؤ.</p></aside>
+</section>
+
+<section class="slide" id="bias-at-peak" data-lo="LO2">
+  <div class="kicker">الانحياز في الذروة</div>
+  <h2>النموذج الناعم يقصّ القمم</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li>نموذج يتعلم «اليوم المعتاد» جيدًا يقترب من المتوسط في كل مكان</li>
+      <li>عند القمة يتنبأ بأقل من الواقع، يومًا بعد يوم</li>
+      <li>متوسط الموسم يبقى جيدًا لأن أيام القمة قليلة</li>
+      <li>الانحياز السالب في الذروة هو العلامة</li>
+    </ul>
+    <div class="card c-coral"><h4>في مثال المتحف</h4><p class="small mb0">في اليوم 4 كان الخطأ <span class="ltr">-25%</span>، والأيام الثلاثة الأخرى بين <span class="ltr">-5%</span> و5%. نموذج جيد في الأيام العادية، وسيئ في اليوم الوحيد الذي يهم.</p></div>
+  </div>
+  <aside class="notes"><p>لا تقل إن «توقّع» يفعل هذا؛ دعهم يكتشفون ذلك في المختبر. السؤال الذي يأخذونه معهم: ما انحياز التنبؤ في أيام الذروة وحدها؟</p></aside>
+</section>
+
+<section class="slide" id="buffer-of-forecast" data-lo="LO2">
+  <div class="kicker">الهامش الاحتياطي</div>
+  <h2>الهامش يُضاف إلى التنبؤ، فاحسبه نسبةً من التنبؤ</h2>
+  <div class="cols cols-2">
+    <div class="stack">
+      <div class="stat center"><div class="big">1,500</div><div class="lbl">التنبؤ في يوم المهرجان (مثال المتحف)</div></div>
+      <div class="stat center"><div class="big">2,000</div><div class="lbl">الفعلي</div></div>
+    </div>
+    <ul class="bullets">
+      <li>النقص = 500، أي <b>25% من الفعلي</b></li>
+      <li>لكن لتصل من 1,500 إلى 2,000 تحتاج <b>33% من التنبؤ</b></li>
+      <li>الهامش = أكبر (الفعلي ÷ التنبؤ ناقص 1) في أيام الذروة</li>
+      <li>قرّبه إلى أعلى، لا إلى أقرب رقم</li>
+    </ul>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> هامش 25% على 1,500 يعطي 1,875، والفعلي 2,000.</div>
+  <aside class="notes"><p>هذا أكثر خطأ يتكرر في المختبر 1.3. احسبه على السبورة. ثم اسأل: كم موظفًا يخدم 2,000 زائر إن خدم الموظف 250؟ ثمانية. وبهامش 25% تحسب سبعة ونصفًا فتقرّب إلى ثمانية، ولكن في أرقام أكبر لا يحميك التقريب.</p></aside>
+</section>
+
+<section class="slide" id="buffer-has-cost" data-lo="LO2">
+  <div class="kicker">ثمن الهامش</div>
+  <h2>كل نقطة في الهامش موظفون مدفوعو الأجر في كل يوم ذروة</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>تنبؤ منحاز إلى الأقل</b>يحتاج هامشًا كبيرًا</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>هامش كبير</b>يزيد الموظفين في كل أيام الذروة، حتى التي أصاب فيها</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>المقارنة العادلة</b>كلفة التنبؤ مع هامشه، مقابل خط الأساس مع هامشه</div>
+  </div>
+  <aside class="notes"><p>السؤال الذي يكتبونه للمديرة في الخطوة 5: بأي تنبؤ نبني جدول الأسبوع الكبير، وبأي هامش؟ الجواب الجيد يذكر عدد أيام العمل الإضافية، لا النسبة وحدها.</p></aside>
+</section>
+
+<section class="slide" id="check-peak" data-lo="LO2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي رقم تضعه أمام المديرة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">تنبؤ بركاب حافلات مهرجان (ليس من ملفات الرفادة): متوسط نسبة خطئه 4% على الشهر، و15% في أيام المهرجان الخمسة بانحياز إلى الأقل. ستبني المديرة جدول السائقين لأيام المهرجان. أي رقم يحكم؟</p>
+    <div class="opts">
+      <div class="opt" data-ok>15% في أيام المهرجان، وانحيازه إلى الأقل</div>
+      <div class="opt" data-why="يحكم بمتوسط يخلط الأيام العادية بأيام القرار: 4% تخفي خطأ الأيام الخمسة">4% على الشهر كله</div>
+      <div class="opt" data-why="يرى أن المتوسط بين الرقمين يوازن الصورة: لكنه يقلل الخطأ في الأيام التي يُبنى لها الجدول">متوسط الرقمين، نحو 9%</div>
+      <div class="opt" data-why="يظن أن الانحياز لا يهم ما دام الخطأ معروفًا: الاتجاه يحدد هل يُضاف السائقون أم يُنقصون">15%، دون حاجة إلى معرفة اتجاهه</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الجدول يُبنى لأيام المهرجان، فالخطأ فيها هو الذي يحدد الهامش، واتجاهه إلى الأقل يقول إن الهامش يُضاف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. إن اختار بعضهم «د» فاسأل: لو كان الانحياز إلى الأعلى، هل تضيف سائقين؟ ثم انتقل إلى المختبر 1.3.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-3" data-auto="lab" data-lab="1.3">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>يبدأ من forecast_part2_start.xlsx. راقب من يقرّب أكبر نقص إلى 20% دون أن يحسبه نسبة من التنبؤ: اطلب منه أن يتحقق في ورقة «التوظيف» هل نقص الموظفون. المختبر يبني دليل المخرج الثاني: جدول أخطاء الذروة والهامش.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-3" data-lo="LO2">
+  <div class="kicker">بعد المختبر 1.3</div>
+  <h2>في الذروة انقلب الترتيب: «توقّع» يخطئ أكثر، وإلى الأقل</h2>
+  <table class="t">
+    <tr><th></th><th class="num">متوسط الموسم</th><th class="num">متوسط الذروة</th><th class="num">انحياز الذروة</th><th class="num">الهامش</th></tr>
+    <tr><td>«توقّع»</td><td class="num">5.6%</td><td class="num">9.7%</td><td class="num"><span class="ltr">-9.3%</span></td><td class="num">25%</td></tr>
+    <tr class="hl"><td>خط الأساس الموسمي</td><td class="num">6.9%</td><td class="num">6.3%</td><td class="num">1.9%</td><td class="num">10%</td></tr>
+  </table>
+  <div class="callout note mt"><b>بالموظفين:</b> دون هامش ينقص موظفو «توقّع» في 5 من 6 أيام. بالهامش: 1,148 يوم عمل لـ«توقّع» و1,138 لخط الأساس، واللازم 1,017.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.3. أكبر نقص لـ«توقّع» 18.6% من الفعلي، أي 22.9% من التنبؤ. من قرّب إلى 20% ينقصه موظفون في يومين.</p><p>الرسالة لمهجة الكعكي: «توقّع» لا يضيف شيئًا في الأسبوع الكبير على خط أساس مع هامش 10%. هامش 25% هو زيادة الوافدين في اختبار الضغط في الجلسة 7.</p></aside>
 </section>
 
 <!-- الجلسة 4 -->
 
 <section class="slide section" id="s4" data-auto="section" data-session="4"></section>
 
-<section class="slide" id="s4-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
-    </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
-  </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+<section class="slide" id="day-to-hour" data-lo="LO2">
+  <div class="kicker">من اليوم إلى الساعة</div>
+  <h2>العدد اليومي لا يملأ حافلة: الساعة هي وحدة التشغيل</h2>
+  <ul class="bullets">
+    <li>الوافدون في الساعة = وافدو اليوم × حصة الساعة</li>
+    <li>الحصص من عدّ المواسم السابقة، ومجموعها 100%</li>
+    <li>ساعة الذروة قد تحمل ضعفي متوسط الساعات أو أكثر</li>
+    <li>الحافلات والبوابات وفرق الميدان تُخطط لساعة الذروة</li>
+  </ul>
+  <div class="callout tip mt"><b>مثال:</b> ملعب يستقبل 40,000 في يوم مباراة، و20% منهم في الساعة السابقة لها: 8,000 في ساعة واحدة.</div>
+  <aside class="notes"><p>المثال مخترع، من خارج الحالة. اسأل: لو وزعتم الأربعين ألفًا على ساعات اليوم بالتساوي، كم يكون؟ نحو 1,700 في الساعة. الفرق بين الرقمين هو الفرق بين خطة تعمل وخطة تنهار.</p></aside>
 </section>
 
-<section class="slide" id="s4-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
+<section class="slide" id="shuttle-math" data-lo="LO2">
+  <div class="kicker">الحافلات الترددية</div>
+  <h2>الرحلات = ركاب ساعة الذروة ÷ سعة الحافلة، مقرّبة إلى أعلى</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+    <div class="step c-teal"><b>ركاب الحافلات</b>وافدو الساعة × حصة الحافلات</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الرحلات</b>÷ سعة الحافلة، إلى أعلى</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>التردد</b>3,600 ثانية ÷ الرحلات</div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout note mt"><b>في مثال الملعب:</b> 8,000 × 25% = 2,000 راكب، وبحافلة سعتها 50: أربعون رحلة، أي حافلة كل 90 ثانية.</div>
+  <aside class="notes"><p>التردد يقول لك هل الخطة ممكنة: حافلة كل 90 ثانية من محطة واحدة تحتاج إلى رصيف ومسار ومشرفين. إن لم تكن ممكنة، فالحل ليس في الجدول بل في توزيع الوصول على ساعات أكثر.</p></aside>
+</section>
+
+<section class="slide" id="heat-index" data-lo="LO2">
+  <div class="kicker">الإجهاد الحراري</div>
+  <h2>الرطوبة تجعل الحر أشد على الجسم من رقم الحرارة</h2>
+  <div class="cols cols-2">
+    <ul class="bullets">
+      <li><b>مؤشر الحرارة</b> يجمع الحرارة والرطوبة في رقم واحد يقارب ما يشعر به الجسم</li>
+      <li>خطط الحرارة تعمل بفئات: حذر، وحذر شديد، وخطر</li>
+      <li>استعمل المؤشر الذي تنشره جهة الأرصاد المعتمدة لا حسابًا خاصًا</li>
+      <li>تنبيه يُطلق من درجة الحرارة وحدها يتأخر في الأيام الرطبة</li>
+    </ul>
+    <div class="card c-coral"><h4>من في خطر أكثر</h4><p class="small mb0">كبار السن، والأطفال، ومن يمشي مسافات طويلة، ومن ينتظر واقفًا في طابور مكشوف.</p></div>
+  </div>
+  <aside class="notes"><p>لا تعطِ صيغة لمؤشر الحرارة ولا حدودًا من الذاكرة: الحدود في المختبر هي حدود خطة الحرارة في المدينة الافتراضية، وفي جهتك هي ما تعتمده جهة الأرصاد وخطة السلامة. السؤال الذي يهمنا: متى يجتمع الحر والزحام؟</p></aside>
+</section>
+
+<section class="slide" id="overlap-matters" data-lo="LO2">
+  <div class="kicker">التقاطع</div>
+  <h2>الخطر في الساعات التي يجتمع فيها الزحام والحر</h2>
+  <div class="cols cols-3">
+    <div class="card c-amber"><h4>أحر ساعة</h4><p class="small mb0">قد تكون هادئة: الناس لم يصلوا بعد.</p></div>
+    <div class="card c-cyan"><h4>ساعة الذروة</h4><p class="small mb0">قد تكون بعد أن خفّ الحر قليلًا.</p></div>
+    <div class="card c-coral"><h4>التقاطع</h4><p class="small mb0">ساعات ما زال فيها الحر في فئة عالية والناس يتوافدون. هنا الظل والماء والفرق الإضافية.</p></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> من يضع الماء عند أحر ساعة وحدها، أو الموظفين عند ساعة الذروة وحدها، يترك ساعات التقاطع بلا غطاء.</div>
+  <aside class="notes"><p>في المختبر 1.4 تعلّم ساعات التقاطع بقاعدتين: فئة «حذر شديد» أو أعلى، وحصة الساعة 6% أو أكثر. القاعدة من صنع الحالة؛ في جهتك اتفق عليها مع فريق السلامة قبل الموسم.</p></aside>
+</section>
+
+<section class="slide" id="public-safety-chain" data-lo="LO2">
+  <div class="kicker">السلامة العامة</div>
+  <h2>رقم الساعة يدخل في ثلاث خطط في وقت واحد</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>النقل</b>رحلات الحافلات ومواعيد القطار</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>الحرارة</b>الظل والماء وفرق الإسعاف</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>الحشد</b>الوافدون مع كل قطار إلى الساحة: مدخل المحاكاة</div>
+  </div>
+  <aside class="notes"><p>في المختبر تقسم وافدي ساعة الذروة على 24 قطارًا (قطار كل 150 ثانية). هذا الرقم هو ما يدخل نموذج الساحة في الجلسة التالية. نذكر هنا الطريقة فقط؛ الرقم من عملهم.</p></aside>
+</section>
+
+<section class="slide" id="check-heat" data-lo="LO2">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>تنبيه الحرارة في ساحة ملعب</h2>
+  <div class="quiz" data-type="single" data-lo="LO2">
+    <p class="lead">ساحة ملعب (ليست ساحة المشرع) تطلق تنبيه الإجهاد الحراري لفرق الميدان حين تتجاوز الحرارة 42 درجة. في يوم رطب بقيت الحرارة 38 ومؤشر الحرارة في فئة «خطر» ساعتين، ولم يُطلق التنبيه. ما الخلل؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يرى العتبة وحدها: خفضها يطلق تنبيهات في الأيام الجافة بلا حاجة، ولا يدخل الرطوبة في الحساب">عتبة 42 مرتفعة، ويكفي خفضها إلى 38</div>
+      <div class="opt" data-why="ينسب الخلل إلى الحساس: الحساس قرأ الحرارة صحيحة، والقاعدة هي التي تتجاهل الرطوبة">حساس الحرارة معطل ويجب استبداله</div>
+      <div class="opt" data-why="يرى الفرق أقدر من القاعدة: التقدير بالعين يتأخر ويختلف من مشرف إلى آخر">يُترك التنبيه لتقدير مشرفي الفرق</div>
+      <div class="opt" data-ok>التنبيه يقرأ الحرارة لا مؤشر الحرارة</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الرطوبة ترفع ما يشعر به الجسم. التنبيه الذي يقرأ الحرارة وحدها يتأخر في الأيام الرطبة، فيُبنى على مؤشر الحرارة وفئاته.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. ثم انتقل إلى المختبر 1.4.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-4" data-auto="lab" data-lab="1.4">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>لا يحتاج هذا المختبر إلى ملف سابق. راقب من يكتب الفئة من عمود الحرارة بدل المؤشر (لا يوجد عمود حرارة في الملف عمدًا)، ومن ينسى التقريب إلى أعلى في الرحلات.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-4" data-lo="LO2">
+  <div class="kicker">بعد المختبر 1.4</div>
+  <h2>ساعة الذروة ليست أحر ساعة، والخطر في ثلاث ساعات بينهما</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">10,800</div><div class="lbl">وافد في ساعة الذروة (الساعة 17)، أي 450 مع كل قطار</div></div>
+    <div class="stat center"><div class="big">54</div><div class="lbl">رحلة حافلة في ساعة الذروة، نحو واحدة كل 67 ثانية</div></div>
+    <div class="stat center"><div class="big">15 و16 و17</div><div class="lbl">ساعات يجتمع فيها الزحام والحر الشديد</div></div>
+  </div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي للمختبر 1.4. ساعات فئة «خطر» من الساعة 12 إلى الساعة 15، وساعة الذروة 17. الساعة 15 وحدها في الاثنين.</p><p>450 مع كل قطار هو الرقم الذي يبدأ به نموذج الساحة في الجلسة التالية: ليس رقمًا من المورِّد بل من حسابهم.</p></aside>
 </section>
 
 <!-- الجلسة 5 -->
 
 <section class="slide section" id="s5" data-auto="section" data-session="5"></section>
 
-<section class="slide" id="s5-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
+<section class="slide" id="why-simulate" data-lo="LO3">
+  <div class="kicker">لماذا نحاكي</div>
+  <h2>الحشد لا يُجرَّب على الناس: يُجرَّب على نموذج قبل يوم الحشد</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
+      <li>تغيير البوابات أو المسارات في يوم الحشد تجربة على أناس حقيقيين</li>
+      <li>المحاكاة تجرب الخطة على وكلاء رقميين يمشون نحو أهداف</li>
+      <li>تقول أين ومتى ترتفع الكثافة، لا هل الخطة «آمنة»</li>
+      <li>ما تحكم به هو قرار الهيئة في خطة السلامة</li>
     </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
+    <div class="card c-coral"><h4>ما تعلمته البحوث من الحشود</h4><p class="small mb0">حلل باحثون تسجيلات حادثة حشد في منى عام 1426هـ، فوجدوا انتقالًا مفاجئًا من حركة منتظمة إلى حركة متقطعة ثم مضطربة. قادت النتائج إلى تغييرات في التنظيم.</p></div>
   </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+  <aside class="notes"><p>الدراسة: Helbing وJohansson وAl-Abideen، تحليل تجريبي لديناميكيات كوارث الحشود (arXiv physics/0701203). نذكر ما في ملخصها فقط: الانتقالات في نمط الحركة، وأنها قادت إلى تغييرات تنظيمية. لا تذكر أرقامًا للكثافة من الذاكرة.</p><p>المصادر: Helbing, Johansson, Al-Abideen, Dynamics of crowd disasters: an empirical study.</p></aside>
 </section>
 
-<section class="slide" id="s5-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+<section class="slide" id="what-goes-in" data-lo="LO3">
+  <div class="kicker">ما يدخل النموذج</div>
+  <h2>أربعة أشياء تصفها أنت، والنموذج يحركها</h2>
+  <div class="cols cols-4 gap-s">
+    <div class="card c-teal"><h4>المكان</h4><p class="small mb0">الحدود والجدران والعوائق، بالأمتار.</p></div>
+    <div class="card c-cyan"><h4>البوابات</h4><p class="small mb0">مواضعها وعرضها، وأيها مفتوح.</p></div>
+    <div class="card c-coral"><h4>الوافدون</h4><p class="small mb0">كم، ومن أين، وفي أي توقيت: موجات أم تدفق.</p></div>
+    <div class="card c-purple"><h4>المشاة</h4><p class="small mb0">سرعة المشي وحجم الجسم وكيف يختار الهدف.</p></div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout note mt"><b>أدوات مفتوحة لهذا:</b> <span class="en">JuPedSim</span> (مكتبة بايثون) و<span class="en">Vadere</span>. أمثلة لا توصيات.</div>
+  <aside class="notes"><p>في الورشة نستعمل JuPedSim 1.4.2 (رخصة LGPL) لأنه يعمل في Colab وعلى حاسوب محمول. Vadere بديل مفتوح بواجهة رسومية. ما يهم المدير ليس الأداة بل أن يعرف ما وُضع فيها.</p><p>المصادر: JuPedSim documentation; JuPedSim on PyPI; Vadere repository.</p></aside>
+</section>
+
+<section class="slide" id="density-unit" data-lo="LO3">
+  <div class="kicker">الكثافة</div>
+  <h2>الكثافة = عدد الأشخاص في منطقة القياس ÷ مساحتها</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>منطقة القياس</b>مستطيل أمام البوابة، مثلًا 8 × 5 أمتار = 40 م²</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>العدّ</b>كل ثانية: كم شخصًا داخلها</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>المتوسط</b>على نافذة زمنية، مثلًا عشر ثوانٍ</div>
+  </div>
+  <div class="callout tip mt"><b>مثال:</b> 72 شخصًا في 40 مترًا مربعًا = 1.8 شخص في المتر المربع.</div>
+  <aside class="notes"><p>اطلب من القاعة أن تتخيل 1.8 شخص في المتر المربع: مربع ضلعه متر واحد فيه شخصان تقريبًا. ما زال المشي ممكنًا لكنه بطيء. لا تعطِ تصنيفات خارجية للكثافة من الذاكرة.</p></aside>
+</section>
+
+<section class="slide" id="measure-changes-peak" data-lo="LO3">
+  <div class="kicker">المقياس يغيّر الرقم</div>
+  <h2>التشغيل نفسه يعطي قممًا مختلفة بمساحات قياس مختلفة</h2>
+  <div class="bars">
+    <div class="row"><span>منطقة 4 × 3 م، متوسط 10 ثوانٍ</span><div class="bar c-coral" style="--w:100%"></div><span class="val">3.77</span></div>
+    <div class="row"><span>منطقة 8 × 5 م، كل ثانية</span><div class="bar c-amber" style="--w:96%"></div><span class="val">3.62</span></div>
+    <div class="row"><span>منطقة 8 × 5 م، متوسط 10 ثوانٍ</span><div class="bar c-teal" style="--w:93%"></div><span class="val">3.52</span></div>
+    <div class="row"><span>منطقة 12 × 8 م، متوسط 10 ثوانٍ</span><div class="bar c-cyan" style="--w:53%"></div><span class="val">1.99</span></div>
+  </div>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> منطقة قياس كبيرة تخلط الزحام عند البوابة بالفراغ خلفه، فتبدو الكثافة دون الحد.</div>
+  <aside class="notes"><p>مثال موازٍ من خارج الساحة: قاعة خروج في منشأة الفعاليات، 30 × 20 مترًا بمخرج واحد عرضه 2.5 متر، ثلاثة قطارات من 300 زائر، البذرة 1. شُغّل بالنموذج نفسه في JuPedSim (labs/_tools/demo_runs.py). القمة بالأشخاص في المتر المربع.</p><p>الرسالة: لهذا تحدد خطة السلامة منطقة القياس ونافذة الزمن مع الحد. حدّ بلا تعريف للقياس لا معنى له.</p></aside>
+</section>
+
+<section class="slide" id="limit-is-a-decision" data-lo="LO3">
+  <div class="kicker">من يضع الحد</div>
+  <h2>الحد قرار الجهة في خطة السلامة، لا رقم يخرجه النموذج</h2>
+  <div class="cols cols-2">
+    <div class="card c-teal"><h4>النموذج يقول</h4><p class="small mb0">في هذه الخطة، وبهذه المدخلات، تبلغ الكثافة كذا أمام هذه البوابة، وتبقى فوق كذا هذه المدة.</p></div>
+    <div class="card c-coral"><h4>الجهة تقرر</h4><p class="small mb0">الحد، ومنطقة القياس، ونافذة الزمن، وما يُفعل إذا اقتربت الكثافة منه. في ساحة المشرع: 2.0 على مستطيل 8 × 5 بمتوسط عشر ثوانٍ.</p></div>
+  </div>
+  <aside class="notes"><p>الحد 2.0 في خطة السلامة الافتراضية للرفادة. اسأل: في جهتك، من يوقّع على هذا الرقم؟ إن لم يعرف أحد، فالمحاكاة لا تستطيع أن تحكم على أي خطة.</p></aside>
+</section>
+
+<section class="slide" id="read-curve" data-lo="LO3">
+  <div class="kicker">قراءة المنحنى</div>
+  <h2>ثلاثة أسئلة لكل منحنى كثافة</h2>
+  <ol class="bullets">
+    <li><b>القمة:</b> أعلى قيمة بعد المتوسط، ومتى وقعت</li>
+    <li><b>المدة:</b> كم ثانية بقيت فوق الحد</li>
+    <li><b>العودة:</b> هل تنزل الكثافة قبل الموجة التالية، أم تتراكم موجة فوق موجة؟</li>
+  </ol>
+  <div class="callout tip mt"><b>التراكم أخطر من القمة.</b> قمة تنزل قبل القطار التالي تُدار. كثافة لا تنزل تعني أن البوابة أبطأ من الوصول.</div>
+  <aside class="notes"><p>اعرض منحنى قاعة الخروج من الدفتر إن أمكن (الخطة «hall» في demo_runs.py) أو ارسمه على السبورة: ثلاث قمم، كل منها بعد قطار. اسأل: ماذا لو وصل القطار التالي قبل أن تنزل الكثافة؟</p></aside>
+</section>
+
+<section class="slide" id="check-measure" data-lo="LO3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>تقريران عن الخطة نفسها</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">مكتبان استشاريان حاكيا خطة البوابات نفسها لمحطة قطار (ليست ساحة المشرع). الأول يقول إن القمة 1.9 شخص/م²، والثاني 3.4. المدخلات واحدة. ما أول ما تسأل عنه؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يفترض أن الأداة تفسر الفرق: أداتان مختلفتان قد تقاربان، والأرجح أن القياس نفسه مختلف">أي أداة محاكاة استخدم كل مكتب</div>
+      <div class="opt" data-why="يرى الأحدث أدق: تاريخ التقرير لا يغيّر كيف تُقاس الكثافة">أي التقريرين أحدث تاريخًا</div>
+      <div class="opt" data-ok>منطقة القياس ونافذة الزمن في كل تقرير</div>
+      <div class="opt" data-why="يأخذ الأسوأ احتياطًا: قد يكون الرقم الأعلى من منطقة صغيرة جدًا لا تطابق خطة السلامة">لا شيء، نعتمد الرقم الأعلى احتياطًا</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> التشغيل نفسه يعطي قممًا مختلفة بمساحات ونوافذ مختلفة. قبل المقارنة يجب أن يقيس التقريران كما تعرّف خطة السلامة.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ج. ارجع إلى شريحة «المقياس يغيّر الرقم» إن تردد كثيرون. ثم انتقل إلى المختبر 1.5.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-5" data-auto="lab" data-lab="1.5">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>الدفتر يُرفع إلى Colab من File ثم Upload notebook. أول تشغيل يثبّت JuPedSim في دقيقة أو اثنتين. إن تعثرت شبكة القاعة، لا تنتظر: results_plan_A.csv وseries_A_base_seed1.csv هما التشغيل نفسه.</p><p>المساعد معلّم: يشرح سطرًا في الدفتر، ولا يغيّر النموذج.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-5" data-lo="LO3">
+  <div class="kicker">بعد المختبر 1.5</div>
+  <h2>الخطة أ تمر في اليوم المعتاد، على الحد تقريبًا</h2>
+  <div class="cols cols-3">
+    <div class="stat center"><div class="big">1.85</div><div class="lbl">قمة G1، البذرة 1</div></div>
+    <div class="stat center"><div class="big">1.92</div><div class="lbl">قمة G2، البذرة 1</div></div>
+    <div class="stat center"><div class="big">0</div><div class="lbl">ثانية فوق 2.0</div></div>
+  </div>
+  <div class="callout note mt"><b>ما رأيتموه:</b> أربع موجات، كل منها بعد قطار، وتنزل قبل التالي. البوابتان في الوسط، فيمشي القادمون من الطرفين نحوه.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي (النتائج الجاهزة للخطة أ، البذرة 1). في البذرة 3 تبلغ قمة G1 القيمة 2.00 تمامًا. اسأل: هل «تمر» خطة قمتها على الحد؟ دع السؤال مفتوحًا للجلسة التالية.</p></aside>
 </section>
 
 <!-- الجلسة 6 -->
 
 <section class="slide section" id="s6" data-auto="section" data-session="6"></section>
 
-<section class="slide" id="s6-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
-    </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
-  </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+<section class="slide" id="fair-comparison" data-lo="LO3">
+  <div class="kicker">مقارنة عادلة</div>
+  <h2>غيّر الخطة وحدها، وأبقِ كل شيء آخر كما هو</h2>
+  <table class="t">
+    <tr><th>يبقى ثابتًا</th><th>يتغير</th></tr>
+    <tr><td>الساحة وأبعادها</td><td>مواضع البوابات</td></tr>
+    <tr><td>عدد الوافدين وتوقيت الموجات</td><td>عرض كل بوابة (والعرض الكلي ثابت)</td></tr>
+    <tr><td>منطقة القياس ونافذة الزمن والحد</td><td></td></tr>
+    <tr><td>البذور نفسها للخطتين</td><td></td></tr>
+  </table>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> خطة بعرض بوابات أكبر «تفوز» دائمًا. إن تغير العرض الكلي فأنت تقارن تكلفة لا تصميمًا.</div>
+  <aside class="notes"><p>في الساحة: الخطة أ بوابتان عرض كل منهما 3 أمتار، والخطة ب ثلاث بوابات عرض كل منها مترين. العرض الكلي 6 أمتار في الخطتين. هذا ما يجعل المقارنة عن التوزيع لا عن السعة.</p></aside>
 </section>
 
-<section class="slide" id="s6-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+<section class="slide" id="seeds" data-lo="LO3">
+  <div class="kicker">البذور</div>
+  <h2>البذرة تغيّر من أين يصل كل شخص، فتغيّر القمة قليلًا</h2>
+  <div class="cols cols-2">
+    <div class="bars">
+      <div class="row"><span>البذرة 1</span><div class="bar c-teal" style="--w:99%"></div><span class="val">3.52</span></div>
+      <div class="row"><span>البذرة 2</span><div class="bar c-teal" style="--w:100%"></div><span class="val">3.55</span></div>
+      <div class="row"><span>البذرة 3</span><div class="bar c-teal" style="--w:97%"></div><span class="val">3.45</span></div>
+    </div>
+    <ul class="bullets">
+      <li>البذرة رقم يثبّت التوزيع العشوائي، فيتكرر التشغيل كما هو</li>
+      <li>ثلاث بذور تريك مقدار التذبذب</li>
+      <li>فرق بين خطتين أصغر من التذبذب لا يُبنى عليه قرار</li>
+    </ul>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <aside class="notes"><p>المثال الموازي نفسه: قاعة الخروج بمخرج واحد، ثلاث بذور. التذبذب نحو عُشر شخص في المتر المربع. اسأل: لو كانت خطتان تختلفان بـ 0.05، هل تختار بينهما بالمحاكاة؟</p></aside>
+</section>
+
+<section class="slide" id="peak-and-duration" data-lo="LO3">
+  <div class="kicker">رقمان لا رقم</div>
+  <h2>القمة تقول كم ارتفعت الكثافة، والمدة تقول كم بقيت</h2>
+  <div class="cols cols-2">
+    <div class="card c-cyan"><h4>قمة 2.3 لعشر ثوانٍ</h4><p class="small mb0">موجة عابرة تنزل قبل القطار التالي. تحتاج إلى مراقبة وإجراء خفيف.</p></div>
+    <div class="card c-coral"><h4>قمة 2.3 لثلاث دقائق</h4><p class="small mb0">البوابة لا تصرّف الوصول. الكثافة تتراكم، وكل قطار يزيدها.</p></div>
+  </div>
+  <div class="callout tip mt"><b>سجّل الاثنين</b> لكل بوابة وكل بذرة: القمة والثواني فوق الحد.</div>
+  <aside class="notes"><p>جدول المقارنة في المختبر 1.6 فيه العمودان. من يسجل القمة وحدها لا يرى الفرق بين خطة تتنفس وخطة تختنق.</p></aside>
+</section>
+
+<section class="slide" id="spread-not-width" data-lo="LO3">
+  <div class="kicker">التوزيع</div>
+  <h2>بوابتان بعيدتان قد تفعلان ما لا تفعله بوابة عريضة</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">3.52</div><div class="lbl">قاعة الخروج: مخرج واحد في الوسط عرضه 2.5 م</div></div>
+    <div class="stat center"><div class="big">1.22</div><div class="lbl">القاعة نفسها: مخرجان على الطرفين عرض كل منهما 2.5 م</div></div>
+  </div>
+  <div class="callout note mt"><b>انتبه:</b> هنا تضاعف العرض الكلي، فالفرق سعة وتوزيع معًا. في الساحة يبقى العرض ثابتًا، فما تقيسه التوزيع وحده.</div>
+  <aside class="notes"><p>المثال الموازي (demo_runs.py): قاعة الخروج بمخرج واحد وبمخرجين، البذرة 1، 300 زائر مع كل قطار. هذا المثال يخالف قاعدة الشريحة السابقة عمدًا: اسأل القاعة ما الخطأ في هذه المقارنة. الجواب: العرض الكلي تضاعف.</p></aside>
+</section>
+
+<section class="slide" id="check-comparable" data-lo="LO3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>ما الذي يجعل المقارنة عادلة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">فريق يقارن خطتين لمدخل معرض (ليس ساحة المشرع). شغّل الخطة الأولى بالبذرة 1 و2,000 زائر، والثانية بالبذرة 5 و1,800 زائر، فكانت الثانية أدنى قمة. ماذا تطلب قبل أن تقبل النتيجة؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يزيد التشغيلات دون إصلاح الخلل: مدخلات مختلفة تبقى مختلفة مهما تكرر التشغيل">تشغيل الخطة الثانية مرتين أخريين بالبذرة 5</div>
+      <div class="opt" data-ok>تشغيل الخطتين بالزوار أنفسهم وبالبذور نفسها</div>
+      <div class="opt" data-why="يحكم بالتقدير لا بالمقارنة: الرأي يتأثر بشكل المخطط لا بالأرقام">رأي مهندس في أي المخططين أوضح</div>
+      <div class="opt" data-why="يغيّر المقياس بدل المدخلات: نافذة أطول تخفض القمتين ولا تجعل المقارنة عادلة">حساب القمة بمتوسط دقيقة بدل عشر ثوانٍ</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الخطة الثانية حملت زوارًا أقل وبذرة أخرى. لا تُنسب النتيجة إلى الخطة إلا إذا كان الفرق الوحيد بين التشغيلين هو الخطة.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: ب. ثم انتقل إلى المختبر 1.6.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-6" data-auto="lab" data-lab="1.6">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>يبدأ من results_plan_A.csv الجاهز. من يشغّل الخطة ب في Colab يغيّر PLAN والبذرة فقط. اجمع جداول المقارنة في النهاية: المختبر 1.7 يبدأ من جدول مكتمل.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-6" data-lo="LO3">
+  <div class="kicker">بعد المختبر 1.6</div>
+  <h2>الخطة ب أدنى في اليوم المعتاد، بالعرض الكلي نفسه</h2>
+  <div class="bars">
+    <div class="row"><span>الخطة أ: أعلى قمة على البذور الثلاث</span><div class="bar c-coral" style="--w:100%"></div><span class="val">2.00</span></div>
+    <div class="row"><span>الخطة ب: أعلى قمة على البذور الثلاث</span><div class="bar c-teal" style="--w:90%"></div><span class="val">1.80</span></div>
+  </div>
+  <div class="callout note mt"><b>لا ثانية فوق الحد</b> في أي من الخطتين في اليوم المعتاد. البذور غيّرت القمة بنحو عُشر ولم تغيّر الترتيب.</div>
+  <aside class="notes"><p>الأرقام من الحل المرجعي (results_plan_A.csv وresults_plan_B.csv). البوابة الوسطى في الخطة ب أقل البوابات حملًا. اسأل: أيكفي هذا لاختيار الخطة ب؟ ليس بعد: ماذا لو جاء أكثر مما تنبأنا؟</p></aside>
 </section>
 
 <!-- الجلسة 7 -->
 
 <section class="slide section" id="s7" data-auto="section" data-session="7"></section>
 
-<section class="slide" id="s7-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
-  <div class="cols cols-2">
-    <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
-    </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
-  </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+<section class="slide" id="stress-from-forecast" data-lo="LO3">
+  <div class="kicker">اختبار الضغط</div>
+  <h2>زِد الوافدين بقدر خطأ التنبؤ في الذروة</h2>
+  <ul class="bullets">
+    <li>المحاكاة بالرقم المتوقع وحده تفترض أن التنبؤ صحيح</li>
+    <li>الهامش الذي حسبته للتوظيف هو نفسه حجم المفاجأة الممكنة في الساحة</li>
+    <li>اختبر الخطة بالمتوقع، ثم بالمتوقع مع الهامش</li>
+  </ul>
+  <div class="callout tip mt"><b>الخيط بين الجلسات:</b> خطأ التنبؤ في الذروة (الجلسة 3) يصير مدخلًا لاختبار الضغط في الساحة.</div>
+  <aside class="notes"><p>اربط بما في ذاكرتهم: الهامش الذي حسبوه لـ«توقّع» في المختبر 1.3. اختبار الضغط في المختبر يزيد الوافدين بالقدر نفسه.</p></aside>
 </section>
 
-<section class="slide" id="s7-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
-  <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+<section class="slide" id="gate-closed" data-lo="LO3">
+  <div class="kicker">ما يتعطل</div>
+  <h2>بوابة مغلقة لعطل أو حادث تنقل حملها إلى جاراتها</h2>
+  <div class="cols cols-2">
+    <div class="stat center"><div class="big">1.22</div><div class="lbl">قاعة الخروج بمخرجين: يوم معتاد</div></div>
+    <div class="stat center"><div class="big">3.20</div><div class="lbl">المخرجان وأحدهما مغلق: 176 ثانية فوق الحد</div></div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> خطة تُختبر وكل بواباتها مفتوحة تُختبر في اليوم الذي لا يحتاج إلى اختبار.</div>
+  <aside class="notes"><p>المثال الموازي (demo_runs.py، قاعة الخروج بمخرجين، البذرة 1). ومع زيادة الزوار بالربع وكل المخارج مفتوحة: 1.81، أي تحت الحد. الإغلاق أقسى من الزيادة في هذه القاعة؛ ولا يلزم أن يكون كذلك في الساحة.</p></aside>
+</section>
+
+<section class="slide" id="robust-plan" data-lo="LO3">
+  <div class="kicker">الخطة المتينة</div>
+  <h2>الخطة المتينة تعرف متى تسقط وماذا تفعل حينها</h2>
+  <div class="flow">
+    <div class="step c-teal"><b>يوم معتاد</b>تحت الحد بهامش</div>
+    <div class="arrow">←</div>
+    <div class="step c-cyan"><b>ضغط واحد</b>أين تتجاوز، وكم ثانية</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>ضغطان معًا</b>تتجاوز: ما الإجراء ومن يقرره</div>
+  </div>
+  <div class="callout tip mt"><b>قارن الخطتين في كل اختبار</b>، ثم اختر التي تبقى أدنى في أكثرها، واكتب الظرف الذي تسقط فيه.</div>
+  <aside class="notes"><p>لا توجد خطة لا تسقط إذا زدت الضغط. السؤال الإداري: في أي ظرف، وهل في البطاقة إجراء لذلك الظرف؟ هذا يقود إلى الجلسة 8.</p></aside>
+</section>
+
+<section class="slide" id="simulate-before-reroute" data-lo="LO3">
+  <div class="kicker">قاعدة باقية</div>
+  <h2>حاكِ قبل أن تغيّر المسار</h2>
+  <ul class="bullets">
+    <li>كل تغيير في البوابات أو المسارات يُحاكى قبل تطبيقه</li>
+    <li>بالمتوقع، وبالهامش، وببوابة مغلقة</li>
+    <li>بمنطقة القياس ونافذة الزمن اللتين في خطة السلامة</li>
+    <li>ويُحفظ التشغيل وبذوره ليعيده غيرك</li>
+  </ul>
+  <div class="callout note mt"><b>والتشغيل دليل.</b> ملف النتائج وجدول المقارنة جزء من سجل المختبرات في تقييم الورشة.</div>
+  <aside class="notes"><p>اسأل: في جهتك، هل غُيِّر مسار يومًا في يوم حشد دون محاكاة؟ من قرر، وعلى أي أساس؟ لا تطلب أسماء.</p></aside>
+</section>
+
+<section class="slide" id="check-robust" data-lo="LO3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>أي خطة تختار لممر مشاة؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">لممر مشاة إلى ملعب (ليس ساحة المشرع) خطتان. في اليوم المعتاد: الأولى 1.4 والثانية 1.6، والحد 2.0. مع زيادة الربع: الأولى 2.6 والثانية 2.1. مع مخرج مغلق: الأولى 3.5 والثانية 2.4. أيها تختار؟</p>
+    <div class="opts">
+      <div class="opt" data-why="يحكم باليوم المعتاد وحده: الفرق فيه صغير، والفرق تحت الضغط كبير">الأولى، لأنها أدنى في اليوم المعتاد</div>
+      <div class="opt" data-why="يرى تجاوز الحد سببًا لرفض الخطتين: لا توجد خطة لا تسقط، والمطلوب معرفة متى وما الإجراء">لا هذه ولا تلك، فكلتاهما تتجاوز الحد</div>
+      <div class="opt" data-why="يعامل الاختبارات بالتساوي ويجمع القمم: المجموع يخفي أي اختبار يكسر أي خطة">التي مجموع قممها في الاختبارات الثلاثة أقل</div>
+      <div class="opt" data-ok>الثانية، مع إجراء مكتوب لظرفي الضغط</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> الثانية أدنى في اختباري الضغط وتبقى تحت الحد في اليوم المعتاد. تتجاوز تحت الضغط، فتُختار ومعها إجراء مكتوب لذلك الظرف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: د. المجموع في «ج» يعطي الأولى 7.5 والثانية 6.1، فيصل إلى الجواب نفسه بطريق خاطئ: اسأل من اختاره لماذا لا يكفي. ثم انتقل إلى المختبر 1.7.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-7" data-auto="lab" data-lab="1.7">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>يبدأ من comparison_complete.xlsx وresults_stress.csv. من يريد أن يرى رقمًا يتكرر يشغّل صفًا واحدًا في الدفتر؛ اختبار «الاثنان معًا» للخطة أ يأخذ أطول وقت. هذا دليل المخرج الثالث: كثافات الذروة وخطة مختارة. اجمعه في النهاية.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-7" data-lo="LO3">
+  <div class="kicker">بعد المختبر 1.7</div>
+  <h2>كل اختبار ضغط يكسر الخطتين، والخطة ب تبقى أدنى في كل منها</h2>
+  <table class="t">
+    <tr><th>الاختبار</th><th class="num">الخطة أ</th><th class="num">الخطة ب</th></tr>
+    <tr><td>وافدون أكثر بالربع</td><td class="num">2.80</td><td class="num">2.40</td></tr>
+    <tr><td>بوابة مغلقة</td><td class="num">4.09</td><td class="num">3.02</td></tr>
+    <tr class="hl"><td>الاثنان معًا</td><td class="num">4.77</td><td class="num">3.63</td></tr>
+  </table>
+  <div class="callout note mt"><b>القرار المرجعي:</b> الخطة ب، ومعها إجراء عند الاقتراب من الحد، وإيقاف بقرار إنسان، وإصلاح أي بوابة معطلة قبل الذروة.</div>
+  <aside class="notes"><p>أعلى قمة على البذور الثلاث، من الحل المرجعي (results_stress.csv). مع زيادة الربع تبقى الخطة ب فوق الحد حتى 75 ثانية عند بوابة جانبية، والخطة أ حتى 136 ثانية. الأرقام الدقيقة كلها في check.py.</p><p>من اختار الخطة أ لأنها «مرت» في اليوم المعتاد: اسأله عن 450 مع كل قطار مقابل 563.</p></aside>
 </section>
 
 <!-- الجلسة 8 -->
 
 <section class="slide section" id="s8" data-auto="section" data-session="8"></section>
 
-<section class="slide" id="s8-idea">
-  <div class="kicker">REPLACE: السؤال الذي تجيب عنه الشريحة</div>
-  <h2>REPLACE: فكرة واحدة في جملة</h2>
+<section class="slide" id="person-in-command" data-lo="LO3">
+  <div class="kicker">القيادة البشرية</div>
+  <h2>النظام ينبه، والإنسان يقرر الإيقاف</h2>
   <div class="cols cols-2">
     <ul class="bullets">
-      <li>REPLACE: ست نقاط على الأكثر، كل منها فكرة تامة</li>
-      <li>REPLACE: أبرز العبارة الأساسية، والأرقام من تشغيل المختبر لا من الذاكرة</li>
+      <li>قرار إيقاف الدخول يصعب الرجوع عنه وقد يمس الأرواح</li>
+      <li>مبادئ سدايا تطلب في مثله إشرافًا بشريًا وقرارًا أخيرًا لإنسان</li>
+      <li>صاحب القرار يُسمّى بدوره في خطة السلامة قبل الموسم</li>
+      <li>من ينفذ غير من يقرر، وكلاهما معروف</li>
     </ul>
-    <div class="card c-teal"><h4>في دراسة الحالة</h4><p class="small mb0">REPLACE: اربط الفكرة بدراسة الحالة وبياناتها</p></div>
+    <div class="card c-coral"><h4>ما لا يُترك للنظام</h4><p class="small mb0">إيقاف الدخول، وتحويل الحشد إلى مسار آخر، وفتح منفذ طوارئ. النظام يقدّم الرقم والتنبيه.</p></div>
   </div>
-  <div class="callout warn mt"><b>أين يقع الخطأ.</b> REPLACE: الخطأ الذي سيقع فيه المشاركون، وكيف يتعرفون عليه</div>
-  <aside class="notes">REPLACE: ما تقوله، والعرض الحي، والسؤال للقاعة، والخطأ الشائع وحلّه</aside>
+  <aside class="notes"><p>المبدأ من مبادئ أخلاقيات الذكاء الاصطناعي، مبدأ الموثوقية والسلامة: القرارات التي يصعب الرجوع عنها أو تمس الحياة تستدعي إشرافًا بشريًا وقرارًا أخيرًا. صياغة الشريحة تلخيص.</p><p>المصادر: سدايا، مبادئ أخلاقيات الذكاء الاصطناعي.</p></aside>
 </section>
 
-<section class="slide" id="s8-steps">
-  <div class="kicker">خطوة بخطوة</div>
-  <h2>REPLACE: عملية تظهر خطوة مع كل ضغطة</h2>
+<section class="slide" id="three-thresholds" data-lo="LO3">
+  <div class="kicker">العتبات</div>
+  <h2>ثلاث عتبات، لكل منها فعل وشخص</h2>
   <div class="flow">
-    <div class="step c-teal"><b>1 · REPLACE: الاسم</b>REPLACE: ما يحدث أولًا</div>
-    <div class="arrow frag" data-frag="b">←</div><div class="step c-cyan frag" data-frag="b"><b>2 · REPLACE: الاسم</b>REPLACE: الجزء التالي</div>
-    <div class="arrow frag" data-frag="c">←</div><div class="step c-coral frag" data-frag="c"><b>3 · REPLACE: الاسم</b>REPLACE: النتيجة</div>
+    <div class="step c-teal"><b>تحت الحد</b>إجراء مبكر يبطئ الوصول، لأن أثره يحتاج وقتًا</div>
+    <div class="arrow">←</div>
+    <div class="step c-amber"><b>عند الحد</b>حبس الموجة التالية في مكانها، ونداء</div>
+    <div class="arrow">←</div>
+    <div class="step c-coral"><b>فوق الحد</b>إيقاف الدخول بقرار صاحب الصلاحية</div>
   </div>
-  <div class="callout tip mt frag"><b>الخلاصة.</b> REPLACE: الجملة التي تبقى في الذاكرة</div>
-  <aside class="notes">اضغط مرة لكل خطوة، وقل ما تضيفه كل خطوة قبل ظهور التالية. REPLACE: المثال الذي تشرحه</aside>
+  <div class="callout warn mt"><b>أين يقع الخطأ.</b> أول إجراء عند الحد نفسه يأتي متأخرًا: الكثافة تواصل الصعود حتى يصل أثره.</div>
+  <aside class="notes"><p>مثال من خارج الساحة لصياغة الفعل: «يُبطئ مشرف المحطة خروج الركاب إلى الممر» فعل يُنفَّذ؛ «تحسين التدفق» ليس فعلًا. البطاقة في المختبر 1.8 تطلب الصياغة الأولى.</p></aside>
+</section>
+
+<section class="slide" id="when-counter-fails" data-lo="LO3">
+  <div class="kicker">البدائل</div>
+  <h2>العداد المتوقف يبدو هادئًا</h2>
+  <div class="chat">
+    <div class="msg ai"><span class="who">شاشة غرفة العمليات</span>الكثافة أمام البوابة: 1.1 (لم تتغير منذ دقائق)</div>
+    <div class="msg user"><span class="who">مشرف البوابة باللاسلكي</span>الطابور يمتد إلى نصف الساحة.</div>
+  </div>
+  <ul class="bullets mt">
+    <li>من يلاحظ الرقم الثابت، وبأي تنبيه؟</li>
+    <li>العدّ اليدوي: من يعدّ، وكل كم دقيقة</li>
+    <li>القاعدة حتى يعود العداد: افترض العتبة الأولى</li>
+  </ul>
+  <aside class="notes"><p>حوار مخترع. اسأل: كم دقيقة مرّت قبل أن يتصل المشرف؟ لو لم يتصل؟ البديل يُكتب قبل الموسم، لا يُرتجل في يوم الحشد.</p></aside>
+</section>
+
+<section class="slide" id="stop-path" data-lo="LO3">
+  <div class="kicker">مسار القرار</div>
+  <h2>من الرقم إلى البوابة في أقل من دقيقة</h2>
+  <table class="t">
+    <tr><th>الخطوة</th><th>من</th></tr>
+    <tr><td>يرى الرقم ويتحقق منه</td><td>مشغل غرفة العمليات</td></tr>
+    <tr><td>يقرر</td><td>مدير العمليات المناوب</td></tr>
+    <tr><td>يبلّغ البوابات ومشغل القطار</td><td>غرفة العمليات، بقناة واحدة معروفة</td></tr>
+    <tr><td>ينفذ ويؤكد</td><td>مشرفو البوابات</td></tr>
+  </table>
+  <aside class="notes"><p>الأدوار هنا عامة، وفي خطة السلامة الافتراضية للرفادة مدير العمليات المناوب هو صاحب القرار. اطلب من مشارك أن يقرأ المسار بصوت عالٍ ويقدّر الثواني في كل خطوة.</p></aside>
+</section>
+
+<section class="slide" id="check-command" data-lo="LO3">
+  <div class="kicker">نقطة تحقق</div>
+  <h2>من يوقف الدخول حين يتعطل العداد؟</h2>
+  <div class="quiz" data-type="single" data-lo="LO3">
+    <p class="lead">في مدخل معرض (ليس ساحة المشرع) توقف نظام عدّ الكثافة، وأبلغ مشرف البوابة أن الطابور يمتد ويضغط. خطة السلامة تسمّي مدير العمليات المناوب صاحبًا لقرار الإيقاف. ماذا يحدث؟</p>
+    <div class="opts">
+      <div class="opt" data-ok>يقرر مدير العمليات من العدّ اليدوي والبلاغ</div>
+      <div class="opt" data-why="يربط القرار بالنظام: القرار للإنسان، والنظام مصدر رقم واحد بين مصادر">لا قرار حتى يعود النظام ويؤكد الكثافة</div>
+      <div class="opt" data-why="ينقل الصلاحية إلى من في الميدان: المشرف ينفذ ويبلغ، ولا يملك قرار الإيقاف">يوقف المشرف الدخول بنفسه لأنه يرى الطابور</div>
+      <div class="opt" data-why="يرى المورِّد مسؤولًا عن التشغيل: المورِّد يصلح العطل، ولا يدير الحشد">يتصل المدير بالمورِّد ليقدّر الكثافة عن بعد</div>
+    </div>
+    <div class="callout tip why"><b>لماذا.</b> صاحب القرار لا يتغير لأن العداد توقف. يقرر من المصادر البديلة المكتوبة في البطاقة: العدّ اليدوي وبلاغ المشرف.</div>
+  </div>
+  <aside class="notes"><p>الإجابة: أ. إن اختار بعضهم «ج» فاسأل: لو أوقف كل مشرف بوابته بتقديره، من يرى الساحة كلها؟ ثم انتقل إلى المختبر 1.8.</p></aside>
 </section>
 
 <section class="slide lab" id="lab-1-8" data-auto="lab" data-lab="1.8">
-  <aside class="notes">REPLACE: ما تراقبه أثناء عمل المشاركين، والمشكلات المعتادة، والبديل لمن لم يُنهِ مختبرًا سابقًا</aside>
+  <aside class="notes"><p>البطاقة بالأدوار لا بالأسماء. راقب العتبة الأولى عند الحد نفسه، وصياغات مثل «تحسين التدفق». البطاقة تدخل الخريطة غدًا في صف عدّ الكثافة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-1-8" data-lo="LO3">
+  <div class="kicker">بعد المختبر 1.8</div>
+  <h2>بطاقة مرجعية لساحة المشرع</h2>
+  <table class="t small">
+    <tr><th>العتبة</th><th>الإجراء</th><th>من</th></tr>
+    <tr><td>1.5</td><td>إبطاء الخروج من المحطة إلى الساحة، وفتح مسار الانتظار الجانبي</td><td>مشرف المحطة ومشرفو الساحة</td></tr>
+    <tr><td>2.0</td><td>حبس الركاب في المحطة دقيقتين، ونداء بلغات الزوار</td><td>مدير العمليات المناوب يطلب، ومشغل القطار ينفذ</td></tr>
+    <tr class="hl"><td>2.5</td><td>إيقاف الدخول إلى الساحة</td><td>مدير العمليات المناوب يقرر، ومشرفو البوابات ينفذون</td></tr>
+  </table>
+  <div class="callout note mt"><b>عند تعطل العداد:</b> عدّ يدوي من كل بوابة كل دقيقتين، وتُعامل الساحة كأنها عند العتبة الأولى حتى يعود.</div>
+  <aside class="notes"><p>البطاقة المرجعية من مفتاح المدرّب. اقبل أي بطاقة عتبتها الأولى تحت الحد وإجراءاتها أفعال لها أصحاب. العتبات 1.5 و2.0 و2.5 هي التي يطلبها بيان حاجة السلامة في اليوم 2.</p></aside>
 </section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">خلاصة اليوم 1</div>
   <h2>ثلاثة أمور تبقى معك</h2>
   <div class="cols cols-3">
-    <div class="card c-teal"><h4>تذكّر</h4><p class="small mb0">REPLACE: فكرة يحتفظ بها المشاركون</p></div>
-    <div class="card c-coral"><h4>تذكّر</h4><p class="small mb0">REPLACE: فكرة يحتفظ بها المشاركون</p></div>
-    <div class="card c-purple"><h4>تذكّر</h4><p class="small mb0">REPLACE: فكرة يحتفظ بها المشاركون</p></div>
+    <div class="card c-teal"><h4>احكم في الذروة</h4><p class="small mb0">«توقّع» أدق على الموسم (5.6% مقابل 6.9%)، وأسوأ في الأسبوع الكبير (9.7% مقابل 6.3%) وإلى الأقل.</p></div>
+    <div class="card c-coral"><h4>حاكِ قبل يوم الحشد</h4><p class="small mb0">الخطة ب أدنى في كل اختبار، وتتجاوز الحد حين يأتي الوافدون بقدر خطأ التنبؤ.</p></div>
+    <div class="card c-purple"><h4>إنسان يقود</h4><p class="small mb0">ثلاث عتبات بأفعال وأصحاب، والإيقاف لمدير العمليات، وبديل مكتوب حين يتعطل العداد.</p></div>
   </div>
+  <aside class="notes"><p>الأرقام من الحلول المرجعية للمختبرات 1.2 و1.3 و1.7. اسأل كل طاولة عن رقم واحد فاجأها اليوم.</p></aside>
 </section>
 
 <section class="slide dark" id="next" data-label="التالي">
   <div class="kicker">التالي</div>
-  <h2>اليوم 2: REPLACE: موضوع هذه الوحدة في كلمات قليلة</h2>
-  <p class="lead">REPLACE: ما يجهزه المشاركون قبل ذلك، والمختبرات غير المكتملة يمكن إكمالها في المنزل</p>
-  <aside class="notes">REPLACE: الحسابات أو التثبيتات أو القراءة التي يحتاجها المشاركون قبل الوحدة التالية</aside>
+  <h2>اليوم 2: المساعد، والطاقة، والخصوصية، والخريطة</h2>
+  <p class="lead">غدًا: تقدير إجابات «مِضياف» بأربع لغات دون مساعد، وادعاء «نسيم» أمام قراءات العداد، وخيارات الكاميرات والقياسات الحيوية في الساحة، وأول خريطة للفرص والمخاطر. احتفظ بجدول الترتيب والبطاقة: يدخلان الخريطة.</p>
+  <aside class="notes"><p>من لم يكمل مختبرًا يكمله من الملفات نفسها؛ لكل مختبر غدًا ملف بداية. ذكّرهم بأن تقدير الإجابات ومراجعة الخصوصية غدًا دون أي مساعد ذكي.</p></aside>
 </section>
