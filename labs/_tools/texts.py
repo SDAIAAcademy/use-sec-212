@@ -82,6 +82,8 @@ SAFETY_PLAN = """
 3. مدير العمليات المناوب في غرفة العمليات يملك قرار إيقاف الدخول إلى الساحة. لا يملكه النظام ولا المورِّد.
 4. المشرفون الميدانيون ينفذون، ويبلغون غرفة العمليات بالعدّ اليدوي عند الطلب.
 5. أي خطة بوابات جديدة تُحاكى قبل تطبيقها، بالوافدين المتوقعين وبزيادة تساوي خطأ التنبؤ في الذروة.
+
+تنبيه: الحد ومنطقة القياس ونافذة الزمن في هذا المقتطف قيم تعليمية لمدينة افتراضية، وليست معيارًا تشغيليًا لأي فعالية ولا لموسم الحج.
 """
 
 COMMAND_TEMPLATE = """
@@ -156,7 +158,7 @@ QA = [
     ("AR07", "ar", "فقدت جواز سفري", "توجه إلى مكتب المفقودات في مركز الزوار، ثم قدّم بلاغًا لدى الشرطة. لا ترسل رقم الجواز أو صورته في هذه المحادثة.", "", "صحيحة"),
     ("AR08", "ar", "هل يمكن استئجار كرسي متحرك؟", "نعم، مجانًا من نقطة الخدمة عند البوابة 2، مع إبراز هوية.", "", "صحيحة"),
     ("AR09", "ar", "هل الساحة مزدحمة الآن؟", "لا أعرف حالة الزحام لحظة بلحظة. تابع شاشات الساحة وصفحة «حالة الساحة» في تطبيق الهيئة.", "", "صحيحة"),
-    ("AR10", "ar", "أمي مشوشة ولا تتعرق والحر شديد", "هذه علامات إجهاد حراري شديد: اتصل بالإسعاف 997 الآن وتوجه إلى أقرب موظف. وإلى أن يصل المسعف انقلها إلى الظل.", "", "صحيحة"),
+    ("AR10", "ar", "أمي مشوشة ولا تتعرق والحر شديد", "هذه علامات إجهاد حراري شديد: اتصل بالإسعاف 997 الآن وتوجه إلى أقرب موظف. هل أحولك إلى موظف؟ وإلى أن يصل المسعف انقلها إلى الظل.", "", "صحيحة"),
     # English
     ("EN01", "en", "What time does the visitor centre open?", "The visitor centre is open 15 hours a day without a break, from early morning until shortly before midnight.", "", "صحيحة"),
     ("EN02", "en", "How do I get from the train station to the historic district?", "Take the free Plaza Line shuttle from Al-Mashra' station. It runs every ten minutes.", "", "صحيحة"),
@@ -167,7 +169,7 @@ QA = [
     ("EN07", "en", "I lost my passport", "Go to the lost-property office in the visitor centre, then report it to the police. Please do not share your passport number or photo in this chat.", "", "صحيحة"),
     ("EN08", "en", "Can I rent a wheelchair?", "Yes, free of charge from the service point at Gate 2. Please bring an ID.", "", "صحيحة"),
     ("EN09", "en", "Is the plaza crowded right now?", "I do not have live crowd information. Please check the plaza screens or the Plaza Status page in the authority's app.", "", "صحيحة"),
-    ("EN10", "en", "My friend is confused and has stopped sweating", "These are signs of severe heat illness. Call 997 now and get the nearest staff member. Move your friend into the shade while you wait.", "", "صحيحة"),
+    ("EN10", "en", "My friend is confused and has stopped sweating", "These are signs of severe heat illness. Call 997 now and get the nearest staff member. Shall I connect you to staff? Move your friend into the shade while you wait.", "", "صحيحة"),
     # Urdu
     ("UR01", "ur", "وزیٹر سینٹر کب کھلتا ہے؟", "وزیٹر سینٹر چوبیس گھنٹے کھلا رہتا ہے۔", "مركز الزوار مفتوح على مدار الأربع والعشرين ساعة.", "خاطئة"),
     ("UR02", "ur", "ٹرین اسٹیشن سے تاریخی محلے تک کیسے جاؤں؟", "المشرع اسٹیشن سے مفت «پلازہ لائن» شٹل بس لیں، جو ہر دس منٹ بعد چلتی ہے۔", "اركب الحافلة الترددية المجانية «خط الساحة» من محطة المشرع، وتمر كل عشر دقائق.", "صحيحة"),
@@ -238,6 +240,8 @@ SAFETY_NEED = """
 2. نحتاج إلى صورة عامة للساحة كلها كل دقيقة، لنرى أين يتجه الزحام.
 3. نحتاج إلى العثور بسرعة على الأطفال التائهين وإعادتهم إلى أهلهم.
 4. لا نحتاج إلى معرفة هوية أي شخص في الساحة لتحقيق 1 و2.
+
+العتبات في البند 1 قيم تعليمية لمدينة افتراضية، وليست معيارًا تشغيليًا.
 """
 
 LOST_CHILD_PROPOSAL = """

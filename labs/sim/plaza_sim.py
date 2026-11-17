@@ -20,7 +20,7 @@ import jupedsim as jps
 import shapely
 
 PLAZA_W, PLAZA_D, DT = 50.0, 30.0, 0.05
-LIMIT = 2.0  # persons per square metre, from the safety plan (a decision of the authority)
+LIMIT = 2.0  # persons per square metre: a teaching value from the fictional safety plan of the case
 PLANS = {
     "A": [(21.0, 3.0), (29.0, 3.0)],                # two central gates, 3 m each
     "B": [(10.0, 2.0), (25.0, 2.0), (40.0, 2.0)],   # three spread gates, 2 m each
